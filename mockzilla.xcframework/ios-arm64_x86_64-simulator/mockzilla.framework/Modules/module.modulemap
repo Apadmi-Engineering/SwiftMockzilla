@@ -1,0 +1,6 @@
+framework module mockzilla {
+    umbrella header "mockzilla.h"
+
+    export *
+    module * { export * }
+}
