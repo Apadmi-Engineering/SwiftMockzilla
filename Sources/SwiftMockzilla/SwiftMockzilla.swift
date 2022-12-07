@@ -10,7 +10,7 @@ public func stopMockzilla() {
     MockzillaKt.stopMockzilla()
 }
 
-extension EndpointConfiguration.Builder {
+public extension EndpointConfiguration.Builder {
     func setSwiftPatternMatcher(block: @escaping (MockzillaHttpRequest) -> Bool) -> EndpointConfiguration.Builder {
         setPatternMatcher {
             KotlinBoolean(bool: block($0))
