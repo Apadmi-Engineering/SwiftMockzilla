@@ -1,11 +1,11 @@
 import XCTest
 @testable import SwiftMockzilla
+import mockzilla
 
 final class SwiftMockzillaTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(SwiftMockzilla().text, "Hello, World!")
+    func sanityCheck() throws {
+        XCTAssertEqual(Ktor_httpHttpStatusCode.Companion.shared.OK, HttpStatusCode.OK)
+        XCTAssertEqual(MockzillaHttpResponse(),
+                       MockzillaHttpResponse(statusCode: HttpStatusCode.OK, headers: [:], body: ""))
     }
 }

@@ -5,11 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftMockzilla",
+    platforms:[.iOS(.v13)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "SwiftMockzilla",
-            targets: ["SwiftMockzilla"]),
+            targets: ["SwiftMockzilla", "mockzilla"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -20,14 +21,13 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "SwiftMockzilla",
-            dependencies: []),
-        .binaryTarget(
-            name: "mockzilla",
-            url: "https://firebasestorage.googleapis.com/v0/b/mockzilla-cloud.appspot.com/o/mockzilla.xcframework.zip?alt=media&token=757839e0-cc75-4ecf-b62a-4e2e4a86f7c2",
-            checksum: "eee5c8e6deba83d13be31543509832726d2a2e32ec4d7208b264dd83228605f8"
-        ),
+            dependencies: ["mockzilla"]),
         .testTarget(
             name: "SwiftMockzillaTests",
-            dependencies: ["SwiftMockzilla"]),
+            dependencies: ["SwiftMockzilla", "mockzilla"]), 
+        .binaryTarget(
+            name: "mockzilla",
+            path: "./mockzilla.xcframework"
+        ),
     ]
 )
