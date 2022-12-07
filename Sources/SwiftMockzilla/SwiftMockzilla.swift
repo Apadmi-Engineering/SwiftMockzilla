@@ -10,6 +10,14 @@ public func stopMockzilla() {
     MockzillaKt.stopMockzilla()
 }
 
+extension EndpointConfiguration.Builder {
+    func setSwiftPatternMatcher(block: @escaping (MockzillaHttpRequest) -> Bool) -> EndpointConfiguration.Builder {
+        setPatternMatcher {
+            KotlinBoolean(bool: block($0))
+        }
+    }
+}
+
 public extension MockzillaHttpResponse {
     convenience init(
         status: Ktor_httpHttpStatusCode = HttpStatusCode.OK,
