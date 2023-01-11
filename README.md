@@ -2,7 +2,7 @@
 
 This repository exists to host the SPM package for Mockzilla. 
 
-Any issues or feedback should be reported against the main repository here: [](https://github.com/Apadmi-Engineering/Mockzilla/issues).
+Any issues or feedback should be reported against the main repository here: [https://github.com/Apadmi-Engineering/Mockzilla/issues]().
 
 # SPM Dependency
 
@@ -56,7 +56,7 @@ If a request is made which doesn't match any endpoint, an error is returned.
 
 ```
 let getMyCow = EndpointConfiguration.Builder(id: "cow")
-					.setSwiftPatternMatcher {
+				.setSwiftPatternMatcher {
                     $0.uri.hasSuffix("cow")
                 }
                 .setDefaultHandler { request in
@@ -127,8 +127,8 @@ This can be changed by calling the following on your Mockzilla config:
 
 ```
 let config = MockzillaConfig.Builder()
-	.setFailureProbability(percentage: value)
-   .build()
+    .setFailureProbability(percentage: value)
+    .build()
 
 startMockzilla(config)
 
@@ -199,8 +199,5 @@ val config = MockzillaConfig.Builder()
 	.build()
 
 startMockzilla(config)
-
-
-
 
 ```
