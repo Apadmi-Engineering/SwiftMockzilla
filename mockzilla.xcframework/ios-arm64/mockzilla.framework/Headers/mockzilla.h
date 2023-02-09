@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class MockzillaMockzillaHttpRequest, MockzillaMockzillaHttpResponse, MockzillaEndpointConfiguration, MockzillaEndpointConfigurationBuilder, MockzillaMetaDataCompanion, MockzillaMetaData, MockzillaMockzillaConfigLogLevel, MockzillaMockzillaConfig, MockzillaMockzillaConfigBuilderCompanion, MockzillaMockzillaConfigBuilder, MockzillaKotlinEnumCompanion, MockzillaKotlinEnum<E>, MockzillaKotlinArray<T>, MockzillaKtor_httpHttpMethod, MockzillaKtor_httpHttpStatusCode, MockzillaKtor_httpHttpMethodCompanion, MockzillaKtor_httpHttpStatusCodeCompanion, MockzillaKotlinx_serialization_coreSerializersModule, MockzillaKotlinx_serialization_coreSerialKind, MockzillaKotlinNothing;
+@class MockzillaMockzillaHttpRequest, MockzillaMockzillaHttpResponse, MockzillaEndpointConfiguration, MockzillaEndpointConfigurationBuilder, MockzillaMetaDataCompanion, MockzillaMetaData, MockzillaMockzillaConfigLogLevel, MockzillaMockzillaConfig, MockzillaMockzillaConfigBuilderCompanion, MockzillaMockzillaConfigBuilder, MockzillaKotlinEnumCompanion, MockzillaKotlinEnum<E>, MockzillaKotlinArray<T>, MockzillaKtor_httpHttpMethod, MockzillaKtor_httpHttpStatusCode, MockzillaMockzillaRuntimeParams, MockzillaKtor_httpHttpMethodCompanion, MockzillaKtor_httpHttpStatusCodeCompanion, MockzillaKotlinx_serialization_coreSerializersModule, MockzillaKotlinx_serialization_coreSerialKind, MockzillaKotlinNothing;
 
 @protocol MockzillaKotlinx_serialization_coreKSerializer, MockzillaKotlinComparable, MockzillaKotlinx_serialization_coreEncoder, MockzillaKotlinx_serialization_coreSerialDescriptor, MockzillaKotlinx_serialization_coreSerializationStrategy, MockzillaKotlinx_serialization_coreDecoder, MockzillaKotlinx_serialization_coreDeserializationStrategy, MockzillaKotlinIterator, MockzillaKotlinx_serialization_coreCompositeEncoder, MockzillaKotlinAnnotation, MockzillaKotlinx_serialization_coreCompositeDecoder, MockzillaKotlinx_serialization_coreSerializersModuleCollector, MockzillaKotlinKClass, MockzillaKotlinKDeclarationContainer, MockzillaKotlinKAnnotatedElement, MockzillaKotlinKClassifier;
 
@@ -148,16 +148,6 @@ __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("EndpointConfiguration")))
 @interface MockzillaEndpointConfiguration : MockzillaBase
 - (instancetype)initWithName:(NSString *)name key:(NSString *)key failureProbability:(MockzillaInt * _Nullable)failureProbability delayMean:(MockzillaInt * _Nullable)delayMean delayVariance:(MockzillaInt * _Nullable)delayVariance endpointMatcher:(MockzillaBoolean *(^)(MockzillaMockzillaHttpRequest *))endpointMatcher webApiDefaultResponse:(MockzillaMockzillaHttpResponse * _Nullable)webApiDefaultResponse webApiErrorResponse:(MockzillaMockzillaHttpResponse * _Nullable)webApiErrorResponse defaultHandler:(MockzillaMockzillaHttpResponse *(^)(MockzillaMockzillaHttpRequest *))defaultHandler errorHandler:(MockzillaMockzillaHttpResponse *(^)(MockzillaMockzillaHttpRequest *))errorHandler __attribute__((swift_name("init(name:key:failureProbability:delayMean:delayVariance:endpointMatcher:webApiDefaultResponse:webApiErrorResponse:defaultHandler:errorHandler:)"))) __attribute__((objc_designated_initializer));
-- (NSString *)component1 __attribute__((swift_name("component1()"))) __attribute__((deprecated("use corresponding property instead")));
-- (MockzillaMockzillaHttpResponse *(^)(MockzillaMockzillaHttpRequest *))component10 __attribute__((swift_name("component10()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSString *)component2 __attribute__((swift_name("component2()"))) __attribute__((deprecated("use corresponding property instead")));
-- (MockzillaInt * _Nullable)component3 __attribute__((swift_name("component3()"))) __attribute__((deprecated("use corresponding property instead")));
-- (MockzillaInt * _Nullable)component4 __attribute__((swift_name("component4()"))) __attribute__((deprecated("use corresponding property instead")));
-- (MockzillaInt * _Nullable)component5 __attribute__((swift_name("component5()"))) __attribute__((deprecated("use corresponding property instead")));
-- (MockzillaBoolean *(^)(MockzillaMockzillaHttpRequest *))component6 __attribute__((swift_name("component6()"))) __attribute__((deprecated("use corresponding property instead")));
-- (MockzillaMockzillaHttpResponse * _Nullable)component7 __attribute__((swift_name("component7()"))) __attribute__((deprecated("use corresponding property instead")));
-- (MockzillaMockzillaHttpResponse * _Nullable)component8 __attribute__((swift_name("component8()"))) __attribute__((deprecated("use corresponding property instead")));
-- (MockzillaMockzillaHttpResponse *(^)(MockzillaMockzillaHttpRequest *))component9 __attribute__((swift_name("component9()"))) __attribute__((deprecated("use corresponding property instead")));
 - (MockzillaEndpointConfiguration *)doCopyName:(NSString *)name key:(NSString *)key failureProbability:(MockzillaInt * _Nullable)failureProbability delayMean:(MockzillaInt * _Nullable)delayMean delayVariance:(MockzillaInt * _Nullable)delayVariance endpointMatcher:(MockzillaBoolean *(^)(MockzillaMockzillaHttpRequest *))endpointMatcher webApiDefaultResponse:(MockzillaMockzillaHttpResponse * _Nullable)webApiDefaultResponse webApiErrorResponse:(MockzillaMockzillaHttpResponse * _Nullable)webApiErrorResponse defaultHandler:(MockzillaMockzillaHttpResponse *(^)(MockzillaMockzillaHttpRequest *))defaultHandler errorHandler:(MockzillaMockzillaHttpResponse *(^)(MockzillaMockzillaHttpRequest *))errorHandler __attribute__((swift_name("doCopy(name:key:failureProbability:delayMean:delayVariance:endpointMatcher:webApiDefaultResponse:webApiErrorResponse:defaultHandler:errorHandler:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -200,13 +190,6 @@ __attribute__((swift_name("MetaData")))
 @interface MockzillaMetaData : MockzillaBase
 - (instancetype)initWithAppName:(NSString *)appName appPackage:(NSString *)appPackage operatingSystemVersion:(NSString *)operatingSystemVersion deviceModel:(NSString *)deviceModel appVersion:(NSString *)appVersion operatingSystem:(NSString *)operatingSystem mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("init(appName:appPackage:operatingSystemVersion:deviceModel:appVersion:operatingSystem:mockzillaVersion:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaMetaDataCompanion *companion __attribute__((swift_name("companion")));
-- (NSString *)component1 __attribute__((swift_name("component1()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSString *)component2 __attribute__((swift_name("component2()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSString *)component3 __attribute__((swift_name("component3()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSString *)component4 __attribute__((swift_name("component4()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSString *)component5 __attribute__((swift_name("component5()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSString *)component6 __attribute__((swift_name("component6()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSString *)component7 __attribute__((swift_name("component7()"))) __attribute__((deprecated("use corresponding property instead")));
 - (MockzillaMetaData *)doCopyAppName:(NSString *)appName appPackage:(NSString *)appPackage operatingSystemVersion:(NSString *)operatingSystemVersion deviceModel:(NSString *)deviceModel appVersion:(NSString *)appVersion operatingSystem:(NSString *)operatingSystem mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("doCopy(appName:appPackage:operatingSystemVersion:deviceModel:appVersion:operatingSystem:mockzillaVersion:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -233,16 +216,13 @@ __attribute__((swift_name("MetaData.Companion")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("MockzillaConfig")))
 @interface MockzillaMockzillaConfig : MockzillaBase
-- (instancetype)initWithPort:(int32_t)port metaData:(MockzillaMetaData *)metaData endpoints:(NSArray<MockzillaEndpointConfiguration *> *)endpoints logLevel:(MockzillaMockzillaConfigLogLevel *)logLevel __attribute__((swift_name("init(port:metaData:endpoints:logLevel:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithPort:(int32_t)port metaData:(MockzillaMetaData *)metaData endpoints:(NSArray<MockzillaEndpointConfiguration *> *)endpoints allowKeepAlive:(BOOL)allowKeepAlive logLevel:(MockzillaMockzillaConfigLogLevel *)logLevel __attribute__((swift_name("init(port:metaData:endpoints:allowKeepAlive:logLevel:)"))) __attribute__((objc_designated_initializer));
 - (NSString *)baseUrl __attribute__((swift_name("baseUrl()")));
-- (int32_t)component1 __attribute__((swift_name("component1()"))) __attribute__((deprecated("use corresponding property instead")));
-- (MockzillaMetaData *)component2 __attribute__((swift_name("component2()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSArray<MockzillaEndpointConfiguration *> *)component3 __attribute__((swift_name("component3()"))) __attribute__((deprecated("use corresponding property instead")));
-- (MockzillaMockzillaConfigLogLevel *)component4 __attribute__((swift_name("component4()"))) __attribute__((deprecated("use corresponding property instead")));
-- (MockzillaMockzillaConfig *)doCopyPort:(int32_t)port metaData:(MockzillaMetaData *)metaData endpoints:(NSArray<MockzillaEndpointConfiguration *> *)endpoints logLevel:(MockzillaMockzillaConfigLogLevel *)logLevel __attribute__((swift_name("doCopy(port:metaData:endpoints:logLevel:)")));
+- (MockzillaMockzillaConfig *)doCopyPort:(int32_t)port metaData:(MockzillaMetaData *)metaData endpoints:(NSArray<MockzillaEndpointConfiguration *> *)endpoints allowKeepAlive:(BOOL)allowKeepAlive logLevel:(MockzillaMockzillaConfigLogLevel *)logLevel __attribute__((swift_name("doCopy(port:metaData:endpoints:allowKeepAlive:logLevel:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) BOOL allowKeepAlive __attribute__((swift_name("allowKeepAlive")));
 @property (readonly) NSArray<MockzillaEndpointConfiguration *> *endpoints __attribute__((swift_name("endpoints")));
 @property (readonly) MockzillaMockzillaConfigLogLevel *logLevel __attribute__((swift_name("logLevel")));
 @property (readonly) MockzillaMetaData *metaData __attribute__((swift_name("metaData")));
@@ -258,6 +238,7 @@ __attribute__((swift_name("MockzillaConfig.Builder")))
 - (MockzillaMockzillaConfigBuilder *)addEndpointEndpoint:(MockzillaEndpointConfiguration *)endpoint __attribute__((swift_name("addEndpoint(endpoint:)")));
 - (MockzillaMockzillaConfigBuilder *)addEndpointEndpoint_:(MockzillaEndpointConfigurationBuilder *)endpoint __attribute__((swift_name("addEndpoint(endpoint_:)")));
 - (MockzillaMockzillaConfig *)build __attribute__((swift_name("build()")));
+- (MockzillaMockzillaConfigBuilder *)setAllowKeepAliveAllowKeepAlive:(BOOL)allowKeepAlive __attribute__((swift_name("setAllowKeepAlive(allowKeepAlive:)")));
 - (MockzillaMockzillaConfigBuilder *)setAppNameName:(NSString *)name __attribute__((swift_name("setAppName(name:)")));
 - (MockzillaMockzillaConfigBuilder *)setAppPackageAppPackage:(NSString *)appPackage __attribute__((swift_name("setAppPackage(appPackage:)")));
 - (MockzillaMockzillaConfigBuilder *)setAppVersionVersion:(NSString *)version __attribute__((swift_name("setAppVersion(version:)")));
@@ -317,10 +298,6 @@ __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("MockzillaHttpRequest")))
 @interface MockzillaMockzillaHttpRequest : MockzillaBase
 - (instancetype)initWithUri:(NSString *)uri headers:(NSDictionary<NSString *, NSString *> *)headers body:(NSString *)body method:(MockzillaKtor_httpHttpMethod *)method __attribute__((swift_name("init(uri:headers:body:method:)"))) __attribute__((objc_designated_initializer));
-- (NSString *)component1 __attribute__((swift_name("component1()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSDictionary<NSString *, NSString *> *)component2 __attribute__((swift_name("component2()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSString *)component3 __attribute__((swift_name("component3()"))) __attribute__((deprecated("use corresponding property instead")));
-- (MockzillaKtor_httpHttpMethod *)component4 __attribute__((swift_name("component4()"))) __attribute__((deprecated("use corresponding property instead")));
 - (MockzillaMockzillaHttpRequest *)doCopyUri:(NSString *)uri headers:(NSDictionary<NSString *, NSString *> *)headers body:(NSString *)body method:(MockzillaKtor_httpHttpMethod *)method __attribute__((swift_name("doCopy(uri:headers:body:method:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -335,9 +312,6 @@ __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("MockzillaHttpResponse")))
 @interface MockzillaMockzillaHttpResponse : MockzillaBase
 - (instancetype)initWithStatusCode:(MockzillaKtor_httpHttpStatusCode *)statusCode headers:(NSDictionary<NSString *, NSString *> *)headers body:(NSString *)body __attribute__((swift_name("init(statusCode:headers:body:)"))) __attribute__((objc_designated_initializer));
-- (MockzillaKtor_httpHttpStatusCode *)component1 __attribute__((swift_name("component1()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSDictionary<NSString *, NSString *> *)component2 __attribute__((swift_name("component2()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSString *)component3 __attribute__((swift_name("component3()"))) __attribute__((deprecated("use corresponding property instead")));
 - (MockzillaMockzillaHttpResponse *)doCopyStatusCode:(MockzillaKtor_httpHttpStatusCode *)statusCode headers:(NSDictionary<NSString *, NSString *> *)headers body:(NSString *)body __attribute__((swift_name("doCopy(statusCode:headers:body:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -348,9 +322,23 @@ __attribute__((swift_name("MockzillaHttpResponse")))
 @end
 
 __attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("MockzillaRuntimeParams")))
+@interface MockzillaMockzillaRuntimeParams : MockzillaBase
+- (instancetype)initWithConfig:(MockzillaMockzillaConfig *)config mockBaseUrl:(NSString *)mockBaseUrl apiBaseUrl:(NSString *)apiBaseUrl port:(int32_t)port __attribute__((swift_name("init(config:mockBaseUrl:apiBaseUrl:port:)"))) __attribute__((objc_designated_initializer));
+- (MockzillaMockzillaRuntimeParams *)doCopyConfig:(MockzillaMockzillaConfig *)config mockBaseUrl:(NSString *)mockBaseUrl apiBaseUrl:(NSString *)apiBaseUrl port:(int32_t)port __attribute__((swift_name("doCopy(config:mockBaseUrl:apiBaseUrl:port:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *apiBaseUrl __attribute__((swift_name("apiBaseUrl")));
+@property (readonly) MockzillaMockzillaConfig *config __attribute__((swift_name("config")));
+@property (readonly) NSString *mockBaseUrl __attribute__((swift_name("mockBaseUrl")));
+@property (readonly) int32_t port __attribute__((swift_name("port")));
+@end
+
+__attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("MockzillaKt")))
 @interface MockzillaMockzillaKt : MockzillaBase
-+ (MockzillaMockzillaConfig *)startMockzillaConfig:(MockzillaMockzillaConfig *)config __attribute__((swift_name("startMockzilla(config:)")));
++ (MockzillaMockzillaRuntimeParams *)startMockzillaConfig:(MockzillaMockzillaConfig *)config __attribute__((swift_name("startMockzilla(config:)")));
 + (void)stopMockzilla __attribute__((swift_name("stopMockzilla()")));
 @end
 
@@ -399,7 +387,6 @@ __attribute__((swift_name("Ktor_httpHttpMethod")))
 @interface MockzillaKtor_httpHttpMethod : MockzillaBase
 - (instancetype)initWithValue:(NSString *)value __attribute__((swift_name("init(value:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaKtor_httpHttpMethodCompanion *companion __attribute__((swift_name("companion")));
-- (NSString *)component1 __attribute__((swift_name("component1()"))) __attribute__((deprecated("use corresponding property instead")));
 - (MockzillaKtor_httpHttpMethod *)doCopyValue:(NSString *)value __attribute__((swift_name("doCopy(value:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -412,8 +399,6 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode")))
 @interface MockzillaKtor_httpHttpStatusCode : MockzillaBase
 - (instancetype)initWithValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("init(value:description:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaKtor_httpHttpStatusCodeCompanion *companion __attribute__((swift_name("companion")));
-- (int32_t)component1 __attribute__((swift_name("component1()"))) __attribute__((deprecated("use corresponding property instead")));
-- (NSString *)component2 __attribute__((swift_name("component2()"))) __attribute__((deprecated("use corresponding property instead")));
 - (MockzillaKtor_httpHttpStatusCode *)doCopyValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("doCopy(value:description:)")));
 - (MockzillaKtor_httpHttpStatusCode *)descriptionValue:(NSString *)value __attribute__((swift_name("description(value:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
@@ -774,18 +759,8 @@ __attribute__((swift_name("Kotlinx_serialization_coreSerializersModuleCollector"
 - (void)contextualKClass:(id<MockzillaKotlinKClass>)kClass provider:(id<MockzillaKotlinx_serialization_coreKSerializer> (^)(NSArray<id<MockzillaKotlinx_serialization_coreKSerializer>> *))provider __attribute__((swift_name("contextual(kClass:provider:)")));
 - (void)contextualKClass:(id<MockzillaKotlinKClass>)kClass serializer:(id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("contextual(kClass:serializer:)")));
 - (void)polymorphicBaseClass:(id<MockzillaKotlinKClass>)baseClass actualClass:(id<MockzillaKotlinKClass>)actualClass actualSerializer:(id<MockzillaKotlinx_serialization_coreKSerializer>)actualSerializer __attribute__((swift_name("polymorphic(baseClass:actualClass:actualSerializer:)")));
-- (void)polymorphicDefaultBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultDeserializerProvider:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultDeserializerProvider __attribute__((swift_name("polymorphicDefault(baseClass:defaultDeserializerProvider:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
+- (void)polymorphicDefaultBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultDeserializerProvider:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultDeserializerProvider __attribute__((swift_name("polymorphicDefault(baseClass:defaultDeserializerProvider:)"))) __attribute__((deprecated("Deprecated in favor of function with more precise name: polymorphicDefaultDeserializer")));
 - (void)polymorphicDefaultDeserializerBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultDeserializerProvider:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultDeserializerProvider __attribute__((swift_name("polymorphicDefaultDeserializer(baseClass:defaultDeserializerProvider:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 - (void)polymorphicDefaultSerializerBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultSerializerProvider:(id<MockzillaKotlinx_serialization_coreSerializationStrategy> _Nullable (^)(id))defaultSerializerProvider __attribute__((swift_name("polymorphicDefaultSerializer(baseClass:defaultSerializerProvider:)")));
 @end
 

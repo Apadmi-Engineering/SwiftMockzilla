@@ -2,7 +2,7 @@ import mockzilla
 
 public let HttpStatusCode = Ktor_httpHttpStatusCode.Companion.shared
 
-public func startMockzilla(config mockzillaConfig: MockzillaConfig) -> MockzillaConfig {
+public func startMockzilla(config mockzillaConfig: MockzillaConfig) -> MockzillaRuntimeParams {
     MockzillaKt.startMockzilla(config: mockzillaConfig)
 }
 

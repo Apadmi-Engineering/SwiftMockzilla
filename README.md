@@ -30,14 +30,20 @@ startMockzilla(config)
 ```
 
 
+## Stopping the server
+
+It's important (especially on iOS) to stop the server when your app is about to terminate.
+
+```
+stopMockzilla()
+```
+
+
 ## Calling the server
 
 Mockzilla runs on device, i.e. on localhost. By default the port is 8080 and your configured endpoints are surfaced on the `local-mock` path. 
 
 In other words your base url should be: `http://localhost:8080/local-mock`.
-
-You can also access the baseUrl by calling `config.baseUrl` on your mockzilla config.
-
 
 ### Tips
 
@@ -198,6 +204,16 @@ val config = MockzillaConfig.Builder()
 	.setAppPackage(appPackage: "com.apadmi.example")  // Used by web portal
 	.build()
 
-startMockzilla(config)
+```
+
+## Known issues
+
+### iOS Crashes
+
+When killing the app through XCode the server doesn't always cleanup it's resources correctly and crashes.
 
 ```
+io.ktor.utils.io.errors.PosixException.AddressAlreadyInUseException: EADDRINUSE
+```
+
+Ktor issue opened [here](https://youtrack.jetbrains.com/issue/KTOR-5529/Feature-request-SOREUSEADDR-option-for-embedded-server).
