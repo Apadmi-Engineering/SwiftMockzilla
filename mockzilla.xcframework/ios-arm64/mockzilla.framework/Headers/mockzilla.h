@@ -216,15 +216,15 @@ __attribute__((swift_name("MetaData.Companion")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("MockzillaConfig")))
 @interface MockzillaMockzillaConfig : MockzillaBase
-- (instancetype)initWithPort:(int32_t)port metaData:(MockzillaMetaData *)metaData endpoints:(NSArray<MockzillaEndpointConfiguration *> *)endpoints allowKeepAlive:(BOOL)allowKeepAlive isRelease:(BOOL)isRelease logLevel:(MockzillaMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzillaConfigReleaseModeConfig *)releaseModeConfig __attribute__((swift_name("init(port:metaData:endpoints:allowKeepAlive:isRelease:logLevel:releaseModeConfig:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithPort:(int32_t)port metaData:(MockzillaMetaData *)metaData endpoints:(NSArray<MockzillaEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzillaConfigReleaseModeConfig *)releaseModeConfig __attribute__((swift_name("init(port:metaData:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:)"))) __attribute__((objc_designated_initializer));
 - (NSString *)baseUrl __attribute__((swift_name("baseUrl()")));
-- (MockzillaMockzillaConfig *)doCopyPort:(int32_t)port metaData:(MockzillaMetaData *)metaData endpoints:(NSArray<MockzillaEndpointConfiguration *> *)endpoints allowKeepAlive:(BOOL)allowKeepAlive isRelease:(BOOL)isRelease logLevel:(MockzillaMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzillaConfigReleaseModeConfig *)releaseModeConfig __attribute__((swift_name("doCopy(port:metaData:endpoints:allowKeepAlive:isRelease:logLevel:releaseModeConfig:)")));
+- (MockzillaMockzillaConfig *)doCopyPort:(int32_t)port metaData:(MockzillaMetaData *)metaData endpoints:(NSArray<MockzillaEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzillaConfigReleaseModeConfig *)releaseModeConfig __attribute__((swift_name("doCopy(port:metaData:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) BOOL allowKeepAlive __attribute__((swift_name("allowKeepAlive")));
 @property (readonly) NSArray<MockzillaEndpointConfiguration *> *endpoints __attribute__((swift_name("endpoints")));
 @property (readonly) BOOL isRelease __attribute__((swift_name("isRelease")));
+@property (readonly) BOOL localhostOnly __attribute__((swift_name("localhostOnly")));
 @property (readonly) MockzillaMockzillaConfigLogLevel *logLevel __attribute__((swift_name("logLevel")));
 @property (readonly) MockzillaMetaData *metaData __attribute__((swift_name("metaData")));
 @property (readonly) int32_t port __attribute__((swift_name("port")));
@@ -240,7 +240,6 @@ __attribute__((swift_name("MockzillaConfig.Builder")))
 - (MockzillaMockzillaConfigBuilder *)addEndpointEndpoint:(MockzillaEndpointConfiguration *)endpoint __attribute__((swift_name("addEndpoint(endpoint:)")));
 - (MockzillaMockzillaConfigBuilder *)addEndpointEndpoint_:(MockzillaEndpointConfigurationBuilder *)endpoint __attribute__((swift_name("addEndpoint(endpoint_:)")));
 - (MockzillaMockzillaConfig *)build __attribute__((swift_name("build()")));
-- (MockzillaMockzillaConfigBuilder *)setAllowKeepAliveAllowKeepAlive:(BOOL)allowKeepAlive __attribute__((swift_name("setAllowKeepAlive(allowKeepAlive:)")));
 - (MockzillaMockzillaConfigBuilder *)setAppNameName:(NSString *)name __attribute__((swift_name("setAppName(name:)")));
 - (MockzillaMockzillaConfigBuilder *)setAppPackageAppPackage:(NSString *)appPackage __attribute__((swift_name("setAppPackage(appPackage:)")));
 - (MockzillaMockzillaConfigBuilder *)setAppVersionVersion:(NSString *)version __attribute__((swift_name("setAppVersion(version:)")));
@@ -248,6 +247,7 @@ __attribute__((swift_name("MockzillaConfig.Builder")))
 - (MockzillaMockzillaConfigBuilder *)setDeviceModelModel:(NSString *)model __attribute__((swift_name("setDeviceModel(model:)")));
 - (MockzillaMockzillaConfigBuilder *)setFailureProbabilityPercentagePercentage:(int32_t)percentage __attribute__((swift_name("setFailureProbabilityPercentage(percentage:)")));
 - (MockzillaMockzillaConfigBuilder *)setIsReleaseModeEnabledIsRelease:(BOOL)isRelease __attribute__((swift_name("setIsReleaseModeEnabled(isRelease:)")));
+- (MockzillaMockzillaConfigBuilder *)setLocalhostOnlyLocalhostOnly:(BOOL)localhostOnly __attribute__((swift_name("setLocalhostOnly(localhostOnly:)")));
 - (MockzillaMockzillaConfigBuilder *)setLogLevelLevel:(MockzillaMockzillaConfigLogLevel *)level __attribute__((swift_name("setLogLevel(level:)")));
 - (MockzillaMockzillaConfigBuilder *)setMeanDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setMeanDelayMillis(delay:)")));
 - (MockzillaMockzillaConfigBuilder *)setOsOsName:(NSString *)osName __attribute__((swift_name("setOs(osName:)")));
@@ -478,9 +478,10 @@ __attribute__((swift_name("Ktor_httpHttpMethod")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpHttpStatusCode")))
-@interface MockzillaKtor_httpHttpStatusCode : MockzillaBase
+@interface MockzillaKtor_httpHttpStatusCode : MockzillaBase <MockzillaKotlinComparable>
 - (instancetype)initWithValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("init(value:description:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaKtor_httpHttpStatusCodeCompanion *companion __attribute__((swift_name("companion")));
+- (int32_t)compareToOther:(MockzillaKtor_httpHttpStatusCode *)other __attribute__((swift_name("compareTo(other:)")));
 - (MockzillaKtor_httpHttpStatusCode *)doCopyValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("doCopy(value:description:)")));
 - (MockzillaKtor_httpHttpStatusCode *)descriptionValue:(NSString *)value __attribute__((swift_name("description(value:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
@@ -797,6 +798,7 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
 @property (readonly) MockzillaKtor_httpHttpStatusCode *SwitchProxy __attribute__((swift_name("SwitchProxy")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *SwitchingProtocols __attribute__((swift_name("SwitchingProtocols")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *TemporaryRedirect __attribute__((swift_name("TemporaryRedirect")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *TooEarly __attribute__((swift_name("TooEarly")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *TooManyRequests __attribute__((swift_name("TooManyRequests")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *Unauthorized __attribute__((swift_name("Unauthorized")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *UnprocessableEntity __attribute__((swift_name("UnprocessableEntity")));
