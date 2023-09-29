@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class MockzillaMockzillaHttpRequest, MockzillaMockzillaHttpResponse, MockzillaEndpointConfiguration, MockzillaEndpointConfigurationBuilder, MockzillaMetaDataCompanion, MockzillaMetaData, MockzillaMockzillaConfigLogLevel, MockzillaMockzillaConfigReleaseModeConfig, MockzillaMockzillaConfig, MockzillaMockzillaConfigBuilderCompanion, MockzillaMockzillaConfigBuilder, MockzillaKotlinEnumCompanion, MockzillaKotlinEnum<E>, MockzillaKotlinArray<T>, MockzillaKtor_httpHttpMethod, MockzillaKtor_httpHttpStatusCode, MockzillaMockzillaRuntimeParams, MockzillaAuthHeaderProviderHeader, MockzillaKtor_httpHttpMethodCompanion, MockzillaKtor_httpHttpStatusCodeCompanion, MockzillaKotlinThrowable, MockzillaKotlinException, MockzillaKotlinRuntimeException, MockzillaKotlinIllegalStateException, MockzillaKotlinx_serialization_coreSerializersModule, MockzillaKotlinx_serialization_coreSerialKind, MockzillaKotlinNothing;
+@class MockzillaMockzillaHttpRequest, MockzillaMockzillaHttpResponse, MockzillaEndpointConfiguration, MockzillaEndpointConfigurationBuilder, MockzillaMetaDataCompanion, MockzillaMetaData, MockzillaMockzillaConfigLogLevel, MockzillaMockzillaConfigReleaseModeConfig, MockzillaMockzillaConfig, MockzillaMockzillaConfigBuilderCompanion, MockzillaMockzillaConfigBuilder, MockzillaKotlinEnumCompanion, MockzillaKotlinEnum<E>, MockzillaMockzillaConfigLogLevelCompanion, MockzillaKotlinArray<T>, MockzillaKtor_httpHttpMethod, MockzillaKtor_httpHttpStatusCode, MockzillaMockzillaRuntimeParams, MockzillaAuthHeaderProviderHeader, MockzillaKotlinThrowable, MockzillaKtor_httpHttpMethodCompanion, MockzillaKtor_httpHttpStatusCodeCompanion, MockzillaKotlinException, MockzillaKotlinRuntimeException, MockzillaKotlinIllegalStateException, MockzillaKotlinx_serialization_coreSerializersModule, MockzillaKotlinx_serialization_coreSerialKind, MockzillaKotlinNothing;
 
-@protocol MockzillaKotlinx_serialization_coreKSerializer, MockzillaKotlinComparable, MockzillaAuthHeaderProvider, MockzillaKotlinx_serialization_coreEncoder, MockzillaKotlinx_serialization_coreSerialDescriptor, MockzillaKotlinx_serialization_coreSerializationStrategy, MockzillaKotlinx_serialization_coreDecoder, MockzillaKotlinx_serialization_coreDeserializationStrategy, MockzillaKotlinIterator, MockzillaKotlinx_serialization_coreCompositeEncoder, MockzillaKotlinAnnotation, MockzillaKotlinx_serialization_coreCompositeDecoder, MockzillaKotlinx_serialization_coreSerializersModuleCollector, MockzillaKotlinKClass, MockzillaKotlinKDeclarationContainer, MockzillaKotlinKAnnotatedElement, MockzillaKotlinKClassifier;
+@protocol MockzillaKotlinx_serialization_coreKSerializer, MockzillaMockzillaLogWriter, MockzillaKotlinComparable, MockzillaAuthHeaderProvider, MockzillaKotlinx_serialization_coreEncoder, MockzillaKotlinx_serialization_coreSerialDescriptor, MockzillaKotlinx_serialization_coreSerializationStrategy, MockzillaKotlinx_serialization_coreDecoder, MockzillaKotlinx_serialization_coreDeserializationStrategy, MockzillaKotlinIterator, MockzillaKotlinx_serialization_coreCompositeEncoder, MockzillaKotlinAnnotation, MockzillaKotlinx_serialization_coreCompositeDecoder, MockzillaKotlinx_serialization_coreSerializersModuleCollector, MockzillaKotlinKClass, MockzillaKotlinKDeclarationContainer, MockzillaKotlinKAnnotatedElement, MockzillaKotlinKClassifier;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -216,11 +216,12 @@ __attribute__((swift_name("MetaData.Companion")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("MockzillaConfig")))
 @interface MockzillaMockzillaConfig : MockzillaBase
-- (instancetype)initWithPort:(int32_t)port endpoints:(NSArray<MockzillaEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzillaConfigReleaseModeConfig *)releaseModeConfig __attribute__((swift_name("init(port:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:)"))) __attribute__((objc_designated_initializer));
-- (MockzillaMockzillaConfig *)doCopyPort:(int32_t)port endpoints:(NSArray<MockzillaEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzillaConfigReleaseModeConfig *)releaseModeConfig __attribute__((swift_name("doCopy(port:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:)")));
+- (instancetype)initWithPort:(int32_t)port endpoints:(NSArray<MockzillaEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzillaConfigReleaseModeConfig *)releaseModeConfig additionalLogWriters:(NSArray<id<MockzillaMockzillaLogWriter>> *)additionalLogWriters __attribute__((swift_name("init(port:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:additionalLogWriters:)"))) __attribute__((objc_designated_initializer));
+- (MockzillaMockzillaConfig *)doCopyPort:(int32_t)port endpoints:(NSArray<MockzillaEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzillaConfigReleaseModeConfig *)releaseModeConfig additionalLogWriters:(NSArray<id<MockzillaMockzillaLogWriter>> *)additionalLogWriters __attribute__((swift_name("doCopy(port:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:additionalLogWriters:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSArray<id<MockzillaMockzillaLogWriter>> *additionalLogWriters __attribute__((swift_name("additionalLogWriters")));
 @property (readonly) NSArray<MockzillaEndpointConfiguration *> *endpoints __attribute__((swift_name("endpoints")));
 @property (readonly) BOOL isRelease __attribute__((swift_name("isRelease")));
 @property (readonly) BOOL localhostOnly __attribute__((swift_name("localhostOnly")));
@@ -237,6 +238,7 @@ __attribute__((swift_name("MockzillaConfig.Builder")))
 @property (class, readonly, getter=companion) MockzillaMockzillaConfigBuilderCompanion *companion __attribute__((swift_name("companion")));
 - (MockzillaMockzillaConfigBuilder *)addEndpointEndpoint:(MockzillaEndpointConfiguration *)endpoint __attribute__((swift_name("addEndpoint(endpoint:)")));
 - (MockzillaMockzillaConfigBuilder *)addEndpointEndpoint_:(MockzillaEndpointConfigurationBuilder *)endpoint __attribute__((swift_name("addEndpoint(endpoint_:)")));
+- (MockzillaMockzillaConfigBuilder *)addLogWriterLogWriter:(id<MockzillaMockzillaLogWriter>)logWriter __attribute__((swift_name("addLogWriter(logWriter:)")));
 - (MockzillaMockzillaConfig *)build __attribute__((swift_name("build()")));
 - (MockzillaMockzillaConfigBuilder *)setDelayVarianceMillisVariance:(int32_t)variance __attribute__((swift_name("setDelayVarianceMillis(variance:)")));
 - (MockzillaMockzillaConfigBuilder *)setFailureProbabilityPercentagePercentage:(int32_t)percentage __attribute__((swift_name("setFailureProbabilityPercentage(percentage:)")));
@@ -281,6 +283,7 @@ __attribute__((swift_name("MockzillaConfig.LogLevel")))
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 - (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (class, readonly, getter=companion) MockzillaMockzillaConfigLogLevelCompanion *companion __attribute__((swift_name("companion")));
 @property (class, readonly) MockzillaMockzillaConfigLogLevel *assert __attribute__((swift_name("assert")));
 @property (class, readonly) MockzillaMockzillaConfigLogLevel *debug __attribute__((swift_name("debug")));
 @property (class, readonly) MockzillaMockzillaConfigLogLevel *error __attribute__((swift_name("error")));
@@ -288,6 +291,15 @@ __attribute__((swift_name("MockzillaConfig.LogLevel")))
 @property (class, readonly) MockzillaMockzillaConfigLogLevel *verbose __attribute__((swift_name("verbose")));
 @property (class, readonly) MockzillaMockzillaConfigLogLevel *warn __attribute__((swift_name("warn")));
 + (MockzillaKotlinArray<MockzillaMockzillaConfigLogLevel *> *)values __attribute__((swift_name("values()")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("MockzillaConfig.LogLevelCompanion")))
+@interface MockzillaMockzillaConfigLogLevelCompanion : MockzillaBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MockzillaMockzillaConfigLogLevelCompanion *shared __attribute__((swift_name("shared")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -366,6 +378,12 @@ __attribute__((swift_name("AuthHeaderProviderHeader")))
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *key __attribute__((swift_name("key")));
 @property (readonly) NSString *value __attribute__((swift_name("value")));
+@end
+
+__attribute__((swift_name("MockzillaLogWriter")))
+@protocol MockzillaMockzillaLogWriter
+@required
+- (void)logLogLevel:(MockzillaMockzillaConfigLogLevel *)logLevel message:(NSString *)message tag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable __attribute__((swift_name("log(logLevel:message:tag:throwable:)")));
 @end
 
 __attribute__((objc_subclassing_restricted))
