@@ -291,6 +291,7 @@ __attribute__((swift_name("MockzillaConfig.LogLevel")))
 @property (class, readonly) MockzillaMockzillaConfigLogLevel *verbose __attribute__((swift_name("verbose")));
 @property (class, readonly) MockzillaMockzillaConfigLogLevel *warn __attribute__((swift_name("warn")));
 + (MockzillaKotlinArray<MockzillaMockzillaConfigLogLevel *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MockzillaMockzillaConfigLogLevel *> *entries __attribute__((swift_name("entries")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -486,11 +487,16 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode")))
 
 __attribute__((swift_name("KotlinThrowable")))
 @interface MockzillaKotlinThrowable : MockzillaBase
-- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
+
+/**
+ * @note annotations
+ *   kotlin.experimental.ExperimentalNativeApi
+*/
 - (MockzillaKotlinArray<NSString *> *)getStackTrace __attribute__((swift_name("getStackTrace()")));
 - (void)printStackTrace __attribute__((swift_name("printStackTrace()")));
 - (NSString *)description __attribute__((swift_name("description()")));
@@ -504,8 +510,8 @@ __attribute__((swift_name("KotlinException")))
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 @end
 
 __attribute__((swift_name("KotlinRuntimeException")))
@@ -513,8 +519,8 @@ __attribute__((swift_name("KotlinRuntimeException")))
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 @end
 
 __attribute__((swift_name("KotlinIllegalStateException")))
@@ -522,8 +528,8 @@ __attribute__((swift_name("KotlinIllegalStateException")))
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 @end
 
 
@@ -536,8 +542,8 @@ __attribute__((swift_name("KotlinCancellationException")))
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 @end
 
 __attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
@@ -742,13 +748,13 @@ __attribute__((swift_name("Ktor_ioByteReadChannel")))
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)readAvailableDst:(MockzillaKtor_ioChunkBuffer *)dst completionHandler:(void (^)(MockzillaInt * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readAvailable(dst:completionHandler:)")));
+- (int32_t)readAvailableMin:(int32_t)min block:(void (^)(MockzillaKtor_ioBuffer *))block __attribute__((swift_name("readAvailable(min:block:)")));
 
 /**
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)readAvailableDst:(MockzillaKotlinByteArray *)dst offset:(int32_t)offset length:(int32_t)length completionHandler:(void (^)(MockzillaInt * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readAvailable(dst:offset:length:completionHandler:)")));
-- (int32_t)readAvailableMin:(int32_t)min block:(void (^)(MockzillaKtor_ioBuffer *))block __attribute__((swift_name("readAvailable(min:block:)")));
 
 /**
  * @note This method converts instances of CancellationException to errors.
@@ -932,8 +938,8 @@ __attribute__((swift_name("Ktor_httpRequestConnectionPoint")))
 
 __attribute__((swift_name("Ktor_utilsPipeline")))
 @interface MockzillaKtor_utilsPipeline<TSubject, TContext> : MockzillaBase
-- (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithPhases:(MockzillaKotlinArray<MockzillaKtor_utilsPipelinePhase *> *)phases __attribute__((swift_name("init(phases:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer));
 - (void)addPhasePhase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("addPhase(phase:)")));
 - (void)afterIntercepted __attribute__((swift_name("afterIntercepted()")));
 
@@ -958,8 +964,8 @@ __attribute__((swift_name("Ktor_utilsPipeline")))
 __attribute__((swift_name("Ktor_server_coreApplicationReceivePipeline")))
 @interface MockzillaKtor_server_coreApplicationReceivePipeline : MockzillaKtor_utilsPipeline<id, id<MockzillaKtor_server_coreApplicationCall>>
 - (instancetype)initWithDevelopmentMode:(BOOL)developmentMode __attribute__((swift_name("init(developmentMode:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 - (instancetype)initWithPhases:(MockzillaKotlinArray<MockzillaKtor_utilsPipelinePhase *> *)phases __attribute__((swift_name("init(phases:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly, getter=companion) MockzillaKtor_server_coreApplicationReceivePipelinePhases *companion __attribute__((swift_name("companion")));
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @end
@@ -1247,8 +1253,8 @@ __attribute__((swift_name("Ktor_ioInput")))
  * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
 */
 - (void)markNoMoreChunksAvailable __attribute__((swift_name("markNoMoreChunksAvailable()")));
-- (int64_t)peekToDestination:(MockzillaKtor_ioMemory *)destination destinationOffset:(int64_t)destinationOffset offset:(int64_t)offset min:(int64_t)min max:(int64_t)max __attribute__((swift_name("peekTo(destination:destinationOffset:offset:min:max:)")));
 - (int32_t)peekToBuffer:(MockzillaKtor_ioChunkBuffer *)buffer __attribute__((swift_name("peekTo(buffer:)")));
+- (int64_t)peekToDestination:(MockzillaKtor_ioMemory *)destination destinationOffset:(int64_t)destinationOffset offset:(int64_t)offset min:(int64_t)min max:(int64_t)max __attribute__((swift_name("peekTo(destination:destinationOffset:offset:min:max:)")));
 - (int8_t)readByte __attribute__((swift_name("readByte()")));
 - (NSString *)readTextMin:(int32_t)min max:(int32_t)max __attribute__((swift_name("readText(min:max:)")));
 - (int32_t)readTextOut:(id<MockzillaKotlinAppendable>)out min:(int32_t)min max:(int32_t)max __attribute__((swift_name("readText(out:min:max:)")));
@@ -1321,8 +1327,8 @@ __attribute__((swift_name("KotlinAppendable")))
 __attribute__((swift_name("Ktor_server_coreApplicationCallPipeline")))
 @interface MockzillaKtor_server_coreApplicationCallPipeline : MockzillaKtor_utilsPipeline<MockzillaKotlinUnit *, id<MockzillaKtor_server_coreApplicationCall>>
 - (instancetype)initWithDevelopmentMode:(BOOL)developmentMode environment:(id<MockzillaKtor_server_coreApplicationEnvironment> _Nullable)environment __attribute__((swift_name("init(developmentMode:environment:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 - (instancetype)initWithPhases:(MockzillaKotlinArray<MockzillaKtor_utilsPipelinePhase *> *)phases __attribute__((swift_name("init(phases:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly, getter=companion) MockzillaKtor_server_coreApplicationCallPipelineApplicationPhase *companion __attribute__((swift_name("companion")));
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @property (readonly) id<MockzillaKtor_server_coreApplicationEnvironment> _Nullable environment __attribute__((swift_name("environment")));
@@ -1564,8 +1570,8 @@ __attribute__((swift_name("Ktor_server_coreApplicationCallPipeline.ApplicationPh
 __attribute__((swift_name("Ktor_server_coreApplicationSendPipeline")))
 @interface MockzillaKtor_server_coreApplicationSendPipeline : MockzillaKtor_utilsPipeline<id, id<MockzillaKtor_server_coreApplicationCall>>
 - (instancetype)initWithDevelopmentMode:(BOOL)developmentMode __attribute__((swift_name("init(developmentMode:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 - (instancetype)initWithPhases:(MockzillaKotlinArray<MockzillaKtor_utilsPipelinePhase *> *)phases __attribute__((swift_name("init(phases:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly, getter=companion) MockzillaKtor_server_coreApplicationSendPipelinePhases *companion __attribute__((swift_name("companion")));
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @end
