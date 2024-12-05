@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'SwiftMockzilla'
-    spec.version                  = '2.1.0'
+    spec.version                  = '2.1.1'
     spec.homepage                 = 'https://apadmi-engineering.github.io/Mockzilla/'
     spec.source                   = { :git => 'https://github.com/Apadmi-Engineering/SwiftMockzilla.git', :tag => 'vnull' }
     spec.authors                  = ''
