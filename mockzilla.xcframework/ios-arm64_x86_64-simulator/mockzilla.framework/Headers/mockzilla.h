@@ -233,7 +233,12 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("MockzillaKt")))
 @interface MockzillaMockzillaKt : MockzillaBase
-+ (MockzillaMockzilla_commonMockzillaRuntimeParams *)startMockzillaConfig:(MockzillaMockzilla_commonMockzillaConfig *)config __attribute__((swift_name("startMockzilla(config:)")));
+
+/**
+ * @note This method converts instances of PortConflictException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
++ (MockzillaMockzilla_commonMockzillaRuntimeParams * _Nullable)startMockzillaConfig:(MockzillaMockzilla_commonMockzillaConfig *)config error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startMockzilla(config:)")));
 + (void)stopMockzilla __attribute__((swift_name("stopMockzilla()")));
 @end
 
@@ -467,6 +472,19 @@ __attribute__((swift_name("Mockzilla_commonMockzillaLogWriter")))
 @protocol MockzillaMockzilla_commonMockzillaLogWriter
 @required
 - (void)logLogLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel message:(NSString *)message tag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable __attribute__((swift_name("log(logLevel:message:tag:throwable:)")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonPortConflictException")))
+@interface MockzillaMockzilla_commonPortConflictException : MockzillaKotlinRuntimeException
+- (instancetype)initWithPort:(int32_t)port __attribute__((swift_name("init(port:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
++ (instancetype)new __attribute__((unavailable));
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)initWithCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (readonly) NSString *message __attribute__((swift_name("message")));
+@property (readonly) int32_t port __attribute__((swift_name("port")));
 @end
 
 __attribute__((objc_subclassing_restricted))
