@@ -178,6 +178,25 @@ __attribute__((swift_name("ZeroConfDiscoveryServiceImpl.Companion")))
 @property (class, readonly, getter=shared) MockzillaZeroConfDiscoveryServiceImplCompanion *shared __attribute__((swift_name("shared")));
 @end
 
+
+/**
+ * A collection of storage-backed key-value data
+ *
+ * This class allows storage of values with the [Int], [Long], [String], [Float], [Double], or [Boolean] types, using a
+ * [String] reference as a key. Values will be persisted across app launches.
+ *
+ * The specific persistence mechanism is defined using a platform-specific implementation, so certain behavior may vary
+ * across platforms. In general, updates will be reflected immediately in-memory, but will be persisted to disk
+ * asynchronously.
+ *
+ * Operator extensions are defined in order to simplify usage. In addition, property delegates are provided for cleaner
+ * syntax and better type-safety when interacting with values stored in a `Settings` instance.
+ *
+ * The KeychainSettings implementation saves data to the Apple keychain. Data is saved using the generic password type,
+ * where keys are account names and values are treated as passwords. The value passed to the `String` constructor will
+ * be used as the service name. It's also possible to pass custom key-value pairs as attributes that will be added to
+ * every key, if the default behavior does not fit your needs.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KeychainSettings")))
 @interface MockzillaKeychainSettings : MockzillaBase
@@ -235,16 +254,34 @@ __attribute__((swift_name("MockzillaKt")))
 @interface MockzillaMockzillaKt : MockzillaBase
 
 /**
+ * Internal method to start the Mockzilla server. Consumer apps should prefer using the top-level
+ * `startMockzilla()` function to avoid breaking changes.
+ *
+ * @param config The config with which to initialise mockzilla.
+ *
  * @note This method converts instances of PortConflictException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 + (MockzillaMockzilla_commonMockzillaRuntimeParams * _Nullable)startMockzillaConfig:(MockzillaMockzilla_commonMockzillaConfig *)config error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startMockzilla(config:)")));
+
+/**
+ * Stops the Mockzilla server,
+ */
 + (void)stopMockzilla __attribute__((swift_name("stopMockzilla()")));
 @end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("NestedClassBridgeGenerationKt")))
 @interface MockzillaNestedClassBridgeGenerationKt : MockzillaBase
+
+/**
+ * For some infuriating reason, nested classes defined in dependent modules don't automatically have
+ * headers generated unless they're being used within the module. This usage forces the generation
+ * of the headers.
+ *
+ * @param noop [MockzillaConfig.Builder] Just a reference to the builder to force the header generation.
+ * @return
+ */
 + (void)noOpConfigBuilderNoop:(MockzillaMockzilla_commonMockzillaConfigBuilder *)noop __attribute__((swift_name("noOpConfigBuilder(noop:)")));
 @end
 
