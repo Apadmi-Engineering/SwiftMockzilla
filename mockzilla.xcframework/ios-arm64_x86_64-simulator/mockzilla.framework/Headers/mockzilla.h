@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class MockzillaMockzilla_commonMetaData, MockzillaKermitLogger, MockzillaKeychainSettings, MockzillaZeroConfDiscoveryServiceImplCompanion, MockzillaKotlinUnit, MockzillaKotlinPair<__covariant A, __covariant B>, MockzillaKotlinArray<T>, MockzillaMockzilla_commonEndpointConfiguration, MockzillaMockzilla_commonMockzillaConfigLogLevel, MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig, MockzillaMockzilla_commonMockzillaConfig, MockzillaMockzilla_commonMockzillaRuntimeParams, MockzillaMockzilla_commonMockzillaConfigBuilder, MockzillaKotlinThrowable, MockzillaKotlinException, MockzillaKotlinRuntimeException, MockzillaKotlinIllegalStateException, MockzillaMockzilla_commonRunTarget, MockzillaMockzilla_commonMetaDataCompanion, MockzillaKermitLoggerCompanion, MockzillaKermitSeverity, MockzillaMockzilla_commonDashboardOptionsConfig, MockzillaMockzilla_commonMockzillaHttpResponse, MockzillaKotlinEnumCompanion, MockzillaKotlinEnum<E>, MockzillaMockzilla_commonMockzillaConfigBuilderCompanion, MockzillaMockzilla_commonEndpointConfigurationBuilder, MockzillaKermitLogWriter, MockzillaMockzilla_commonDashboardOverridePreset, MockzillaMockzilla_commonDashboardOptionsConfigCompanion, MockzillaKotlinByteArray, MockzillaKtor_httpHttpMethod, MockzillaKtor_httpHttpStatusCode, MockzillaMockzilla_commonMockzillaHttpResponseCompanion, MockzillaMockzilla_commonAuthHeaderProviderHeader, MockzillaMockzilla_commonDashboardOptionsConfigBuilder, MockzillaMockzilla_commonDashboardOverridePresetCompanion, MockzillaKotlinByteIterator, MockzillaKtor_httpHttpMethodCompanion, MockzillaKtor_server_coreRequestCookies, MockzillaKtor_server_coreApplicationReceivePipeline, MockzillaKtor_httpHttpStatusCodeCompanion, MockzillaKotlinx_serialization_coreSerializersModule, MockzillaKotlinx_serialization_coreSerialKind, MockzillaKotlinNothing, MockzillaKtor_ioMemory, MockzillaKtor_ioChunkBuffer, MockzillaKtor_ioBuffer, MockzillaKtor_ioByteReadPacket, MockzillaKtor_server_coreApplication, MockzillaKtor_httpCookieEncoding, MockzillaKtor_utilsPipelinePhase, MockzillaKtor_utilsPipeline<TSubject, TContext>, MockzillaKtor_server_coreApplicationReceivePipelinePhases, MockzillaKtor_ioMemoryCompanion, MockzillaKtor_ioBufferCompanion, MockzillaKtor_ioChunkBufferCompanion, MockzillaKtor_ioInputCompanion, MockzillaKtor_ioInput, MockzillaKtor_ioByteReadPacketCompanion, MockzillaKtor_server_coreApplicationCallPipelineApplicationPhase, MockzillaKtor_server_coreApplicationSendPipeline, MockzillaKtor_server_coreApplicationCallPipeline, MockzillaKtor_utilsAttributeKey<T>, MockzillaKtor_server_coreResponseCookies, MockzillaKtor_server_coreResponseHeaders, MockzillaKtor_eventsEvents, MockzillaKtor_server_coreApplicationSendPipelinePhases, MockzillaKtor_httpHeadersBuilder, MockzillaKtor_httpURLBuilder, MockzillaKtor_httpCookie, MockzillaKtor_utilsGMTDate, MockzillaKtor_utilsLogLevel, MockzillaKtor_eventsEventDefinition<T>, MockzillaKtor_utilsStringValuesBuilderImpl, MockzillaKtor_httpURLProtocol, MockzillaKtor_httpURLBuilderCompanion, MockzillaKtor_httpUrl, MockzillaKtor_httpVersionCheckResult, MockzillaKtor_utilsGMTDateCompanion, MockzillaKtor_utilsWeekDay, MockzillaKtor_utilsMonth, MockzillaKtor_httpURLProtocolCompanion, MockzillaKtor_httpUrlCompanion, MockzillaKtor_utilsWeekDayCompanion, MockzillaKtor_utilsMonthCompanion;
+@class MockzillaKermitLogWriter, MockzillaKermitLogger, MockzillaKermitLoggerCompanion, MockzillaKermitSeverity, MockzillaKeychainSettings, MockzillaKotlinArray<T>, MockzillaKotlinByteArray, MockzillaKotlinByteIterator, MockzillaKotlinEnum<E>, MockzillaKotlinEnumCompanion, MockzillaKotlinException, MockzillaKotlinIllegalStateException, MockzillaKotlinKTypeProjection, MockzillaKotlinKTypeProjectionCompanion, MockzillaKotlinKVariance, MockzillaKotlinNothing, MockzillaKotlinPair<__covariant A, __covariant B>, MockzillaKotlinRuntimeException, MockzillaKotlinThrowable, MockzillaKotlinUnit, MockzillaKotlinx_io_coreBuffer, MockzillaKotlinx_serialization_coreSerialKind, MockzillaKotlinx_serialization_coreSerializersModule, MockzillaKtor_eventsEventDefinition<T>, MockzillaKtor_eventsEvents, MockzillaKtor_httpCookie, MockzillaKtor_httpCookieCompanion, MockzillaKtor_httpCookieEncoding, MockzillaKtor_httpHeadersBuilder, MockzillaKtor_httpHttpMethod, MockzillaKtor_httpHttpMethodCompanion, MockzillaKtor_httpHttpStatusCode, MockzillaKtor_httpHttpStatusCodeCompanion, MockzillaKtor_httpURLBuilder, MockzillaKtor_httpURLBuilderCompanion, MockzillaKtor_httpURLProtocol, MockzillaKtor_httpURLProtocolCompanion, MockzillaKtor_httpUrl, MockzillaKtor_httpUrlCompanion, MockzillaKtor_httpVersionCheckResult, MockzillaKtor_server_coreApplication, MockzillaKtor_server_coreApplicationCallPipeline, MockzillaKtor_server_coreApplicationCallPipelineApplicationPhase, MockzillaKtor_server_coreApplicationReceivePipeline, MockzillaKtor_server_coreApplicationReceivePipelinePhases, MockzillaKtor_server_coreApplicationSendPipeline, MockzillaKtor_server_coreApplicationSendPipelinePhases, MockzillaKtor_server_coreConnectorType, MockzillaKtor_server_coreConnectorTypeCompanion, MockzillaKtor_server_coreRequestCookies, MockzillaKtor_server_coreResponseCookies, MockzillaKtor_server_coreResponseHeaders, MockzillaKtor_utilsAttributeKey<T>, MockzillaKtor_utilsGMTDate, MockzillaKtor_utilsGMTDateCompanion, MockzillaKtor_utilsLogLevel, MockzillaKtor_utilsMonth, MockzillaKtor_utilsMonthCompanion, MockzillaKtor_utilsPipeline<TSubject, TContext>, MockzillaKtor_utilsPipelinePhase, MockzillaKtor_utilsStringValuesBuilderImpl, MockzillaKtor_utilsTypeInfo, MockzillaKtor_utilsWeekDay, MockzillaKtor_utilsWeekDayCompanion, MockzillaMockzilla_commonAuthHeaderProviderHeader, MockzillaMockzilla_commonDashboardOptionsConfig, MockzillaMockzilla_commonDashboardOptionsConfigBuilder, MockzillaMockzilla_commonDashboardOptionsConfigCompanion, MockzillaMockzilla_commonDashboardOverridePreset, MockzillaMockzilla_commonDashboardOverridePresetCompanion, MockzillaMockzilla_commonEndpointConfiguration, MockzillaMockzilla_commonEndpointConfigurationBuilder, MockzillaMockzilla_commonMetaData, MockzillaMockzilla_commonMetaDataCompanion, MockzillaMockzilla_commonMockzillaConfig, MockzillaMockzilla_commonMockzillaConfigBuilder, MockzillaMockzilla_commonMockzillaConfigBuilderCompanion, MockzillaMockzilla_commonMockzillaConfigLogLevel, MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig, MockzillaMockzilla_commonMockzillaHttpResponse, MockzillaMockzilla_commonMockzillaHttpResponseCompanion, MockzillaMockzilla_commonMockzillaRuntimeParams, MockzillaMockzilla_commonRunTarget, MockzillaZeroConfDiscoveryServiceImplCompanion;
 
-@protocol MockzillaZeroConfDiscoveryService, MockzillaMockzilla_commonMockzillaLogWriter, MockzillaKermitLoggerConfig, MockzillaKotlinIterator, MockzillaMockzilla_commonMockzillaHttpRequest, MockzillaKotlinComparable, MockzillaMockzilla_commonAuthHeaderProvider, MockzillaKotlinx_serialization_coreKSerializer, MockzillaKtor_server_coreApplicationRequest, MockzillaKotlinx_serialization_coreEncoder, MockzillaKotlinx_serialization_coreSerialDescriptor, MockzillaKotlinx_serialization_coreSerializationStrategy, MockzillaKotlinx_serialization_coreDecoder, MockzillaKotlinx_serialization_coreDeserializationStrategy, MockzillaKtor_ioByteReadChannel, MockzillaKtor_server_coreApplicationCall, MockzillaKtor_httpHeaders, MockzillaKtor_httpRequestConnectionPoint, MockzillaKtor_httpParameters, MockzillaKotlinx_serialization_coreCompositeEncoder, MockzillaKotlinAnnotation, MockzillaKotlinx_serialization_coreCompositeDecoder, MockzillaKtor_ioReadSession, MockzillaKotlinSuspendFunction1, MockzillaKotlinAppendable, MockzillaKtor_utilsAttributes, MockzillaKtor_server_coreApplicationResponse, MockzillaKotlinMapEntry, MockzillaKtor_utilsStringValues, MockzillaKotlinSuspendFunction2, MockzillaKotlinx_serialization_coreSerializersModuleCollector, MockzillaKotlinKClass, MockzillaKtor_ioObjectPool, MockzillaKtor_ioCloseable, MockzillaKotlinFunction, MockzillaKtor_server_coreApplicationEnvironment, MockzillaKotlinCoroutineContext, MockzillaKotlinx_coroutines_coreCoroutineScope, MockzillaKtor_server_coreResponsePushBuilder, MockzillaKotlinKDeclarationContainer, MockzillaKotlinKAnnotatedElement, MockzillaKotlinKClassifier, MockzillaKtor_server_coreApplicationConfig, MockzillaKtor_utilsLogger, MockzillaKotlinCoroutineContextElement, MockzillaKotlinCoroutineContextKey, MockzillaKtor_httpVersion, MockzillaKtor_server_coreApplicationConfigValue, MockzillaKotlinx_coroutines_coreDisposableHandle, MockzillaKtor_utilsStringValuesBuilder, MockzillaKtor_httpParametersBuilder;
+@protocol MockzillaKermitLoggerConfig, MockzillaKotlinAnnotation, MockzillaKotlinAutoCloseable, MockzillaKotlinComparable, MockzillaKotlinCoroutineContext, MockzillaKotlinCoroutineContextElement, MockzillaKotlinCoroutineContextKey, MockzillaKotlinFunction, MockzillaKotlinIterator, MockzillaKotlinKAnnotatedElement, MockzillaKotlinKClass, MockzillaKotlinKClassifier, MockzillaKotlinKDeclarationContainer, MockzillaKotlinKType, MockzillaKotlinMapEntry, MockzillaKotlinSuspendFunction2, MockzillaKotlinx_coroutines_coreCoroutineScope, MockzillaKotlinx_coroutines_coreDisposableHandle, MockzillaKotlinx_io_coreRawSink, MockzillaKotlinx_io_coreRawSource, MockzillaKotlinx_io_coreSink, MockzillaKotlinx_io_coreSource, MockzillaKotlinx_serialization_coreCompositeDecoder, MockzillaKotlinx_serialization_coreCompositeEncoder, MockzillaKotlinx_serialization_coreDecoder, MockzillaKotlinx_serialization_coreDeserializationStrategy, MockzillaKotlinx_serialization_coreEncoder, MockzillaKotlinx_serialization_coreKSerializer, MockzillaKotlinx_serialization_coreSerialDescriptor, MockzillaKotlinx_serialization_coreSerializationStrategy, MockzillaKotlinx_serialization_coreSerializersModuleCollector, MockzillaKtor_httpHeaders, MockzillaKtor_httpParameters, MockzillaKtor_httpParametersBuilder, MockzillaKtor_httpRequestConnectionPoint, MockzillaKtor_httpVersion, MockzillaKtor_ioByteReadChannel, MockzillaKtor_server_coreApplicationCall, MockzillaKtor_server_coreApplicationConfig, MockzillaKtor_server_coreApplicationConfigValue, MockzillaKtor_server_coreApplicationEngine, MockzillaKtor_server_coreApplicationEnvironment, MockzillaKtor_server_coreApplicationRequest, MockzillaKtor_server_coreApplicationResponse, MockzillaKtor_server_coreEngineConnectorConfig, MockzillaKtor_server_corePipelineCall, MockzillaKtor_server_corePipelineResponse, MockzillaKtor_server_coreResponsePushBuilder, MockzillaKtor_utilsAttributes, MockzillaKtor_utilsLogger, MockzillaKtor_utilsStringValues, MockzillaKtor_utilsStringValuesBuilder, MockzillaMockzilla_commonAuthHeaderProvider, MockzillaMockzilla_commonMockzillaHttpRequest, MockzillaMockzilla_commonMockzillaLogWriter, MockzillaZeroConfDiscoveryService;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -178,6 +178,25 @@ __attribute__((swift_name("ZeroConfDiscoveryServiceImpl.Companion")))
 @property (class, readonly, getter=shared) MockzillaZeroConfDiscoveryServiceImplCompanion *shared __attribute__((swift_name("shared")));
 @end
 
+
+/**
+ * A collection of storage-backed key-value data
+ *
+ * This class allows storage of values with the [Int], [Long], [String], [Float], [Double], or [Boolean] types, using a
+ * [String] reference as a key. Values will be persisted across app launches.
+ *
+ * The specific persistence mechanism is defined using a platform-specific implementation, so certain behavior may vary
+ * across platforms. In general, updates will be reflected immediately in-memory, but will be persisted to disk
+ * asynchronously.
+ *
+ * Operator extensions are defined in order to simplify usage. In addition, property delegates are provided for cleaner
+ * syntax and better type-safety when interacting with values stored in a `Settings` instance.
+ *
+ * The KeychainSettings implementation saves data to the Apple keychain. Data is saved using the generic password type,
+ * where keys are account names and values are treated as passwords. The value passed to the `String` constructor will
+ * be used as the service name. It's also possible to pass custom key-value pairs as attributes that will be added to
+ * every key, if the default behavior does not fit your needs.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KeychainSettings")))
 @interface MockzillaKeychainSettings : MockzillaBase
@@ -233,13 +252,36 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("MockzillaKt")))
 @interface MockzillaMockzillaKt : MockzillaBase
-+ (MockzillaMockzilla_commonMockzillaRuntimeParams *)startMockzillaConfig:(MockzillaMockzilla_commonMockzillaConfig *)config __attribute__((swift_name("startMockzilla(config:)")));
+
+/**
+ * Internal method to start the Mockzilla server. Consumer apps should prefer using the top-level
+ * `startMockzilla()` function to avoid breaking changes.
+ *
+ * @param config The config with which to initialise mockzilla.
+ *
+ * @note This method converts instances of PortConflictException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
++ (MockzillaMockzilla_commonMockzillaRuntimeParams * _Nullable)startMockzillaConfig:(MockzillaMockzilla_commonMockzillaConfig *)config error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startMockzilla(config:)")));
+
+/**
+ * Stops the Mockzilla server,
+ */
 + (void)stopMockzilla __attribute__((swift_name("stopMockzilla()")));
 @end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("NestedClassBridgeGenerationKt")))
 @interface MockzillaNestedClassBridgeGenerationKt : MockzillaBase
+
+/**
+ * For some infuriating reason, nested classes defined in dependent modules don't automatically have
+ * headers generated unless they're being used within the module. This usage forces the generation
+ * of the headers.
+ *
+ * @param noop [MockzillaConfig.Builder] Just a reference to the builder to force the header generation.
+ * @return
+ */
 + (void)noOpConfigBuilderNoop:(MockzillaMockzilla_commonMockzillaConfigBuilder *)noop __attribute__((swift_name("noOpConfigBuilder(noop:)")));
 @end
 
@@ -467,6 +509,19 @@ __attribute__((swift_name("Mockzilla_commonMockzillaLogWriter")))
 @protocol MockzillaMockzilla_commonMockzillaLogWriter
 @required
 - (void)logLogLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel message:(NSString *)message tag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable __attribute__((swift_name("log(logLevel:message:tag:throwable:)")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonPortConflictException")))
+@interface MockzillaMockzilla_commonPortConflictException : MockzillaKotlinRuntimeException
+- (instancetype)initWithPort:(int32_t)port __attribute__((swift_name("init(port:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
++ (instancetype)new __attribute__((unavailable));
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)initWithCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (readonly) NSString *message __attribute__((swift_name("message")));
+@property (readonly) int32_t port __attribute__((swift_name("port")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -783,7 +838,6 @@ __attribute__((swift_name("Ktor_server_coreApplicationRequest")))
 @property (readonly) MockzillaKtor_server_coreRequestCookies *cookies __attribute__((swift_name("cookies")));
 @property (readonly) id<MockzillaKtor_httpHeaders> headers __attribute__((swift_name("headers")));
 @property (readonly) id<MockzillaKtor_httpRequestConnectionPoint> local __attribute__((swift_name("local")));
-@property (readonly) MockzillaKtor_server_coreApplicationReceivePipeline *pipeline __attribute__((swift_name("pipeline")));
 @property (readonly) id<MockzillaKtor_httpParameters> queryParameters __attribute__((swift_name("queryParameters")));
 @property (readonly) id<MockzillaKtor_httpParameters> rawQueryParameters __attribute__((swift_name("rawQueryParameters")));
 @end
@@ -1020,152 +1074,34 @@ __attribute__((swift_name("Ktor_ioByteReadChannel")))
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
-- (void)awaitContentWithCompletionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("awaitContent(completionHandler:)")));
-- (BOOL)cancelCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("cancel(cause:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)discardMax:(int64_t)max completionHandler:(void (^)(MockzillaLong * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("discard(max:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)peekToDestination:(MockzillaKtor_ioMemory *)destination destinationOffset:(int64_t)destinationOffset offset:(int64_t)offset min:(int64_t)min max:(int64_t)max completionHandler:(void (^)(MockzillaLong * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("peekTo(destination:destinationOffset:offset:min:max:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readAvailableDst:(MockzillaKtor_ioChunkBuffer *)dst completionHandler:(void (^)(MockzillaInt * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readAvailable(dst:completionHandler:)")));
-- (int32_t)readAvailableMin:(int32_t)min block:(void (^)(MockzillaKtor_ioBuffer *))block __attribute__((swift_name("readAvailable(min:block:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readAvailableDst:(MockzillaKotlinByteArray *)dst offset:(int32_t)offset length:(int32_t)length completionHandler:(void (^)(MockzillaInt * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readAvailable(dst:offset:length:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readAvailableDst:(void *)dst offset:(int32_t)offset length:(int32_t)length completionHandler_:(void (^)(MockzillaInt * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readAvailable(dst:offset:length:completionHandler_:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readAvailableDst:(void *)dst offset:(int64_t)offset length:(int64_t)length completionHandler__:(void (^)(MockzillaInt * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readAvailable(dst:offset:length:completionHandler__:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readBooleanWithCompletionHandler:(void (^)(MockzillaBoolean * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readBoolean(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readByteWithCompletionHandler:(void (^)(MockzillaByte * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readByte(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readDoubleWithCompletionHandler:(void (^)(MockzillaDouble * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readDouble(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readFloatWithCompletionHandler:(void (^)(MockzillaFloat * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readFloat(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readFullyDst:(MockzillaKtor_ioChunkBuffer *)dst n:(int32_t)n completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("readFully(dst:n:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readFullyDst:(MockzillaKotlinByteArray *)dst offset:(int32_t)offset length:(int32_t)length completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("readFully(dst:offset:length:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readFullyDst:(void *)dst offset:(int32_t)offset length:(int32_t)length completionHandler_:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("readFully(dst:offset:length:completionHandler_:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readFullyDst:(void *)dst offset:(int64_t)offset length:(int64_t)length completionHandler__:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("readFully(dst:offset:length:completionHandler__:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readIntWithCompletionHandler:(void (^)(MockzillaInt * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readInt(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readLongWithCompletionHandler:(void (^)(MockzillaLong * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readLong(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readPacketSize:(int32_t)size completionHandler:(void (^)(MockzillaKtor_ioByteReadPacket * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readPacket(size:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readRemainingLimit:(int64_t)limit completionHandler:(void (^)(MockzillaKtor_ioByteReadPacket * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readRemaining(limit:completionHandler:)")));
-- (void)readSessionConsumer:(void (^)(id<MockzillaKtor_ioReadSession>))consumer __attribute__((swift_name("readSession(consumer:)"))) __attribute__((deprecated("Use read { } instead.")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readShortWithCompletionHandler:(void (^)(MockzillaShort * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readShort(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readSuspendableSessionConsumer:(id<MockzillaKotlinSuspendFunction1>)consumer completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("readSuspendableSession(consumer:completionHandler:)"))) __attribute__((deprecated("Use read { } instead.")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readUTF8LineLimit:(int32_t)limit completionHandler:(void (^)(NSString * _Nullable_result, NSError * _Nullable))completionHandler __attribute__((swift_name("readUTF8Line(limit:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readUTF8LineToOut:(id<MockzillaKotlinAppendable>)out limit:(int32_t)limit completionHandler:(void (^)(MockzillaBoolean * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readUTF8LineTo(out:limit:completionHandler:)")));
-@property (readonly) int32_t availableForRead __attribute__((swift_name("availableForRead")));
+- (void)awaitContentMin:(int32_t)min completionHandler:(void (^)(MockzillaBoolean * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("awaitContent(min:completionHandler:)")));
+- (void)cancelCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("cancel(cause:)")));
 @property (readonly) MockzillaKotlinThrowable * _Nullable closedCause __attribute__((swift_name("closedCause")));
 @property (readonly) BOOL isClosedForRead __attribute__((swift_name("isClosedForRead")));
-@property (readonly) BOOL isClosedForWrite __attribute__((swift_name("isClosedForWrite")));
-@property (readonly) int64_t totalBytesRead __attribute__((swift_name("totalBytesRead")));
+@property (readonly) id<MockzillaKotlinx_io_coreSource> readBuffer __attribute__((swift_name("readBuffer")));
+@end
+
+__attribute__((swift_name("Kotlinx_coroutines_coreCoroutineScope")))
+@protocol MockzillaKotlinx_coroutines_coreCoroutineScope
+@required
+@property (readonly) id<MockzillaKotlinCoroutineContext> coroutineContext __attribute__((swift_name("coroutineContext")));
 @end
 
 __attribute__((swift_name("Ktor_server_coreApplicationCall")))
-@protocol MockzillaKtor_server_coreApplicationCall
+@protocol MockzillaKtor_server_coreApplicationCall <MockzillaKotlinx_coroutines_coreCoroutineScope>
 @required
+
+/**
+ * @note This method converts instances of CancellationException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (void)receiveNullableTypeInfo:(MockzillaKtor_utilsTypeInfo *)typeInfo completionHandler:(void (^)(id _Nullable_result, NSError * _Nullable))completionHandler __attribute__((swift_name("receiveNullable(typeInfo:completionHandler:)")));
+
+/**
+ * @note This method converts instances of CancellationException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (void)respondMessage:(id _Nullable)message typeInfo:(MockzillaKtor_utilsTypeInfo * _Nullable)typeInfo completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("respond(message:typeInfo:completionHandler:)")));
 @property (readonly) MockzillaKtor_server_coreApplication *application __attribute__((swift_name("application")));
 @property (readonly) id<MockzillaKtor_utilsAttributes> attributes __attribute__((swift_name("attributes")));
 @property (readonly) id<MockzillaKtor_httpParameters> parameters __attribute__((swift_name("parameters")));
@@ -1212,12 +1148,12 @@ __attribute__((swift_name("Ktor_httpHeaders")))
 __attribute__((swift_name("Ktor_httpRequestConnectionPoint")))
 @protocol MockzillaKtor_httpRequestConnectionPoint
 @required
-@property (readonly) NSString *host __attribute__((swift_name("host"))) __attribute__((deprecated("Use localHost or serverHost instead")));
+@property (readonly) NSString *host __attribute__((swift_name("host"))) __attribute__((unavailable("Use localHost or serverHost instead")));
 @property (readonly) NSString *localAddress __attribute__((swift_name("localAddress")));
 @property (readonly) NSString *localHost __attribute__((swift_name("localHost")));
 @property (readonly) int32_t localPort __attribute__((swift_name("localPort")));
 @property (readonly) MockzillaKtor_httpHttpMethod *method __attribute__((swift_name("method")));
-@property (readonly) int32_t port __attribute__((swift_name("port"))) __attribute__((deprecated("Use localPort or serverPort instead")));
+@property (readonly) int32_t port __attribute__((swift_name("port"))) __attribute__((unavailable("Use localPort or serverPort instead")));
 @property (readonly) NSString *remoteAddress __attribute__((swift_name("remoteAddress")));
 @property (readonly) NSString *remoteHost __attribute__((swift_name("remoteHost")));
 @property (readonly) int32_t remotePort __attribute__((swift_name("remotePort")));
@@ -1226,40 +1162,6 @@ __attribute__((swift_name("Ktor_httpRequestConnectionPoint")))
 @property (readonly) int32_t serverPort __attribute__((swift_name("serverPort")));
 @property (readonly) NSString *uri __attribute__((swift_name("uri")));
 @property (readonly) NSString *version __attribute__((swift_name("version")));
-@end
-
-__attribute__((swift_name("Ktor_utilsPipeline")))
-@interface MockzillaKtor_utilsPipeline<TSubject, TContext> : MockzillaBase
-- (instancetype)initWithPhases:(MockzillaKotlinArray<MockzillaKtor_utilsPipelinePhase *> *)phases __attribute__((swift_name("init(phases:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer));
-- (void)addPhasePhase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("addPhase(phase:)")));
-- (void)afterIntercepted __attribute__((swift_name("afterIntercepted()")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)executeContext:(TContext)context subject:(TSubject)subject completionHandler:(void (^)(TSubject _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("execute(context:subject:completionHandler:)")));
-- (void)insertPhaseAfterReference:(MockzillaKtor_utilsPipelinePhase *)reference phase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("insertPhaseAfter(reference:phase:)")));
-- (void)insertPhaseBeforeReference:(MockzillaKtor_utilsPipelinePhase *)reference phase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("insertPhaseBefore(reference:phase:)")));
-- (void)interceptPhase:(MockzillaKtor_utilsPipelinePhase *)phase block:(id<MockzillaKotlinSuspendFunction2>)block __attribute__((swift_name("intercept(phase:block:)")));
-- (NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptorsForPhasePhase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("interceptorsForPhase(phase:)")));
-- (void)mergeFrom:(MockzillaKtor_utilsPipeline<TSubject, TContext> *)from __attribute__((swift_name("merge(from:)")));
-- (void)mergePhasesFrom:(MockzillaKtor_utilsPipeline<TSubject, TContext> *)from __attribute__((swift_name("mergePhases(from:)")));
-- (void)resetFromFrom:(MockzillaKtor_utilsPipeline<TSubject, TContext> *)from __attribute__((swift_name("resetFrom(from:)")));
-@property (readonly) id<MockzillaKtor_utilsAttributes> attributes __attribute__((swift_name("attributes")));
-@property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
-@property (readonly, getter=isEmpty_) BOOL isEmpty __attribute__((swift_name("isEmpty")));
-@property (readonly) NSArray<MockzillaKtor_utilsPipelinePhase *> *items __attribute__((swift_name("items")));
-@end
-
-__attribute__((swift_name("Ktor_server_coreApplicationReceivePipeline")))
-@interface MockzillaKtor_server_coreApplicationReceivePipeline : MockzillaKtor_utilsPipeline<id, id<MockzillaKtor_server_coreApplicationCall>>
-- (instancetype)initWithDevelopmentMode:(BOOL)developmentMode __attribute__((swift_name("init(developmentMode:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithPhases:(MockzillaKotlinArray<MockzillaKtor_utilsPipelinePhase *> *)phases __attribute__((swift_name("init(phases:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
-- (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
-@property (class, readonly, getter=companion) MockzillaKtor_server_coreApplicationReceivePipelinePhases *companion __attribute__((swift_name("companion")));
-@property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @end
 
 __attribute__((swift_name("Ktor_httpParameters")))
@@ -1442,206 +1344,106 @@ __attribute__((swift_name("KotlinNothing")))
 @interface MockzillaKotlinNothing : MockzillaBase
 @end
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioMemory")))
-@interface MockzillaKtor_ioMemory : MockzillaBase
-- (instancetype)initWithPointer:(void *)pointer size:(int64_t)size __attribute__((swift_name("init(pointer:size:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) MockzillaKtor_ioMemoryCompanion *companion __attribute__((swift_name("companion")));
-- (void)doCopyToDestination:(MockzillaKtor_ioMemory *)destination offset:(int32_t)offset length:(int32_t)length destinationOffset:(int32_t)destinationOffset __attribute__((swift_name("doCopyTo(destination:offset:length:destinationOffset:)")));
-- (void)doCopyToDestination:(MockzillaKtor_ioMemory *)destination offset:(int64_t)offset length:(int64_t)length destinationOffset_:(int64_t)destinationOffset __attribute__((swift_name("doCopyTo(destination:offset:length:destinationOffset_:)")));
-- (int8_t)loadAtIndex:(int32_t)index __attribute__((swift_name("loadAt(index:)")));
-- (int8_t)loadAtIndex_:(int64_t)index __attribute__((swift_name("loadAt(index_:)")));
-- (MockzillaKtor_ioMemory *)sliceOffset:(int32_t)offset length:(int32_t)length __attribute__((swift_name("slice(offset:length:)")));
-- (MockzillaKtor_ioMemory *)sliceOffset:(int64_t)offset length_:(int64_t)length __attribute__((swift_name("slice(offset:length_:)")));
-- (void)storeAtIndex:(int32_t)index value:(int8_t)value __attribute__((swift_name("storeAt(index:value:)")));
-- (void)storeAtIndex:(int64_t)index value_:(int8_t)value __attribute__((swift_name("storeAt(index:value_:)")));
-@property (readonly) void *pointer __attribute__((swift_name("pointer")));
-@property (readonly) int64_t size __attribute__((swift_name("size")));
-@property (readonly) int32_t size32 __attribute__((swift_name("size32")));
-@end
-
-__attribute__((swift_name("Ktor_ioBuffer")))
-@interface MockzillaKtor_ioBuffer : MockzillaBase
-- (instancetype)initWithMemory:(MockzillaKtor_ioMemory *)memory __attribute__((swift_name("init(memory:)"))) __attribute__((objc_designated_initializer)) __attribute__((deprecated("\n    We're migrating to the new kotlinx-io library.\n    This declaration is deprecated and will be removed in Ktor 4.0.0\n    If you have any problems with migration, please contact us in \n    https://youtrack.jetbrains.com/issue/KTOR-6030/Migrate-to-new-kotlinx.io-library\n    ")));
-@property (class, readonly, getter=companion) MockzillaKtor_ioBufferCompanion *companion __attribute__((swift_name("companion")));
-- (void)commitWrittenCount:(int32_t)count __attribute__((swift_name("commitWritten(count:)")));
-- (void)discardExactCount:(int32_t)count __attribute__((swift_name("discardExact(count:)")));
-- (MockzillaKtor_ioBuffer *)duplicate __attribute__((swift_name("duplicate()")));
 
 /**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
+ * @note annotations
+ *   kotlin.SinceKotlin(version="2.0")
 */
-- (void)duplicateToCopy:(MockzillaKtor_ioBuffer *)copy __attribute__((swift_name("duplicateTo(copy:)")));
-- (int8_t)readByte __attribute__((swift_name("readByte()")));
-- (void)reserveEndGapEndGap:(int32_t)endGap __attribute__((swift_name("reserveEndGap(endGap:)")));
-- (void)reserveStartGapStartGap:(int32_t)startGap __attribute__((swift_name("reserveStartGap(startGap:)")));
-- (void)reset __attribute__((swift_name("reset()")));
-- (void)resetForRead __attribute__((swift_name("resetForRead()")));
-- (void)resetForWrite __attribute__((swift_name("resetForWrite()")));
-- (void)resetForWriteLimit:(int32_t)limit __attribute__((swift_name("resetForWrite(limit:)")));
-- (void)rewindCount:(int32_t)count __attribute__((swift_name("rewind(count:)")));
-- (NSString *)description __attribute__((swift_name("description()")));
-- (int32_t)tryPeekByte __attribute__((swift_name("tryPeekByte()")));
-- (int32_t)tryReadByte __attribute__((swift_name("tryReadByte()")));
-- (void)writeByteValue:(int8_t)value __attribute__((swift_name("writeByte(value:)")));
-@property (readonly) int32_t capacity __attribute__((swift_name("capacity")));
-@property (readonly) int32_t endGap __attribute__((swift_name("endGap")));
-@property (readonly) int32_t limit __attribute__((swift_name("limit")));
-@property (readonly) MockzillaKtor_ioMemory *memory __attribute__((swift_name("memory")));
-@property (readonly) int32_t readPosition __attribute__((swift_name("readPosition")));
-@property (readonly) int32_t readRemaining __attribute__((swift_name("readRemaining")));
-@property (readonly) int32_t startGap __attribute__((swift_name("startGap")));
-@property (readonly) int32_t writePosition __attribute__((swift_name("writePosition")));
-@property (readonly) int32_t writeRemaining __attribute__((swift_name("writeRemaining")));
-@end
-
-__attribute__((swift_name("Ktor_ioChunkBuffer")))
-@interface MockzillaKtor_ioChunkBuffer : MockzillaKtor_ioBuffer
-- (instancetype)initWithMemory:(MockzillaKtor_ioMemory *)memory origin:(MockzillaKtor_ioChunkBuffer * _Nullable)origin parentPool:(id<MockzillaKtor_ioObjectPool> _Nullable)parentPool __attribute__((swift_name("init(memory:origin:parentPool:)"))) __attribute__((objc_designated_initializer)) __attribute__((deprecated("\n    We're migrating to the new kotlinx-io library.\n    This declaration is deprecated and will be removed in Ktor 4.0.0\n    If you have any problems with migration, please contact us in \n    https://youtrack.jetbrains.com/issue/KTOR-6030/Migrate-to-new-kotlinx.io-library\n    ")));
-- (instancetype)initWithMemory:(MockzillaKtor_ioMemory *)memory __attribute__((swift_name("init(memory:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
-@property (class, readonly, getter=companion) MockzillaKtor_ioChunkBufferCompanion *companion __attribute__((swift_name("companion")));
-- (MockzillaKtor_ioChunkBuffer * _Nullable)cleanNext __attribute__((swift_name("cleanNext()")));
-- (MockzillaKtor_ioChunkBuffer *)duplicate __attribute__((swift_name("duplicate()")));
-- (void)releasePool:(id<MockzillaKtor_ioObjectPool>)pool __attribute__((swift_name("release(pool:)")));
-- (void)reset __attribute__((swift_name("reset()")));
-@property (getter=next_) MockzillaKtor_ioChunkBuffer * _Nullable next __attribute__((swift_name("next")));
-@property (readonly) MockzillaKtor_ioChunkBuffer * _Nullable origin __attribute__((swift_name("origin")));
-@property (readonly) int32_t referenceCount __attribute__((swift_name("referenceCount")));
-@end
-
-__attribute__((swift_name("Ktor_ioCloseable")))
-@protocol MockzillaKtor_ioCloseable
+__attribute__((swift_name("KotlinAutoCloseable")))
+@protocol MockzillaKotlinAutoCloseable
 @required
 - (void)close __attribute__((swift_name("close()")));
 @end
 
-__attribute__((swift_name("Ktor_ioInput")))
-@interface MockzillaKtor_ioInput : MockzillaBase <MockzillaKtor_ioCloseable>
-- (instancetype)initWithHead:(MockzillaKtor_ioChunkBuffer *)head remaining:(int64_t)remaining pool:(id<MockzillaKtor_ioObjectPool>)pool __attribute__((swift_name("init(head:remaining:pool:)"))) __attribute__((objc_designated_initializer)) __attribute__((deprecated("\n    We're migrating to the new kotlinx-io library.\n    This declaration is deprecated and will be removed in Ktor 4.0.0\n    If you have any problems with migration, please contact us in \n    https://youtrack.jetbrains.com/issue/KTOR-6030/Migrate-to-new-kotlinx.io-library\n    ")));
-@property (class, readonly, getter=companion) MockzillaKtor_ioInputCompanion *companion __attribute__((swift_name("companion")));
-- (BOOL)canRead __attribute__((swift_name("canRead()")));
-- (void)close __attribute__((swift_name("close()")));
+__attribute__((swift_name("Kotlinx_io_coreRawSource")))
+@protocol MockzillaKotlinx_io_coreRawSource <MockzillaKotlinAutoCloseable>
+@required
+- (int64_t)readAtMostToSink:(MockzillaKotlinx_io_coreBuffer *)sink byteCount:(int64_t)byteCount __attribute__((swift_name("readAtMostTo(sink:byteCount:)")));
+@end
 
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (void)closeSource __attribute__((swift_name("closeSource()")));
-- (int32_t)discardN:(int32_t)n __attribute__((swift_name("discard(n:)")));
-- (int64_t)discardN_:(int64_t)n __attribute__((swift_name("discard(n_:)")));
-- (void)discardExactN:(int32_t)n __attribute__((swift_name("discardExact(n:)")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (MockzillaKtor_ioChunkBuffer * _Nullable)fill __attribute__((swift_name("fill()")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (int32_t)fillDestination:(MockzillaKtor_ioMemory *)destination offset:(int32_t)offset length:(int32_t)length __attribute__((swift_name("fill(destination:offset:length:)")));
-- (BOOL)hasBytesN:(int32_t)n __attribute__((swift_name("hasBytes(n:)")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (void)markNoMoreChunksAvailable __attribute__((swift_name("markNoMoreChunksAvailable()")));
-- (int32_t)peekToBuffer:(MockzillaKtor_ioChunkBuffer *)buffer __attribute__((swift_name("peekTo(buffer:)")));
-- (int64_t)peekToDestination:(MockzillaKtor_ioMemory *)destination destinationOffset:(int64_t)destinationOffset offset:(int64_t)offset min:(int64_t)min max:(int64_t)max __attribute__((swift_name("peekTo(destination:destinationOffset:offset:min:max:)")));
+__attribute__((swift_name("Kotlinx_io_coreSource")))
+@protocol MockzillaKotlinx_io_coreSource <MockzillaKotlinx_io_coreRawSource>
+@required
+- (BOOL)exhausted __attribute__((swift_name("exhausted()")));
+- (id<MockzillaKotlinx_io_coreSource>)peek __attribute__((swift_name("peek()")));
+- (int32_t)readAtMostToSink:(MockzillaKotlinByteArray *)sink startIndex:(int32_t)startIndex endIndex:(int32_t)endIndex __attribute__((swift_name("readAtMostTo(sink:startIndex:endIndex:)")));
 - (int8_t)readByte __attribute__((swift_name("readByte()")));
-- (NSString *)readTextMin:(int32_t)min max:(int32_t)max __attribute__((swift_name("readText(min:max:)")));
-- (int32_t)readTextOut:(id<MockzillaKotlinAppendable>)out min:(int32_t)min max:(int32_t)max __attribute__((swift_name("readText(out:min:max:)")));
-- (NSString *)readTextExactExactCharacters:(int32_t)exactCharacters __attribute__((swift_name("readTextExact(exactCharacters:)")));
-- (void)readTextExactOut:(id<MockzillaKotlinAppendable>)out exactCharacters:(int32_t)exactCharacters __attribute__((swift_name("readTextExact(out:exactCharacters:)")));
-- (void)release_ __attribute__((swift_name("release()")));
-- (int32_t)tryPeek __attribute__((swift_name("tryPeek()")));
-@property (readonly) BOOL endOfInput __attribute__((swift_name("endOfInput")));
-@property (readonly) id<MockzillaKtor_ioObjectPool> pool __attribute__((swift_name("pool")));
-@property (readonly) int64_t remaining __attribute__((swift_name("remaining")));
+- (int32_t)readInt __attribute__((swift_name("readInt()")));
+- (int64_t)readLong __attribute__((swift_name("readLong()")));
+- (int16_t)readShort __attribute__((swift_name("readShort()")));
+- (void)readToSink:(id<MockzillaKotlinx_io_coreRawSink>)sink byteCount:(int64_t)byteCount __attribute__((swift_name("readTo(sink:byteCount:)")));
+- (BOOL)requestByteCount:(int64_t)byteCount __attribute__((swift_name("request(byteCount:)")));
+- (void)requireByteCount:(int64_t)byteCount __attribute__((swift_name("require(byteCount:)")));
+- (void)skipByteCount:(int64_t)byteCount __attribute__((swift_name("skip(byteCount:)")));
+- (int64_t)transferToSink:(id<MockzillaKotlinx_io_coreRawSink>)sink __attribute__((swift_name("transferTo(sink:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.io.InternalIoApi
+*/
+@property (readonly) MockzillaKotlinx_io_coreBuffer *buffer __attribute__((swift_name("buffer")));
 @end
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioByteReadPacket")))
-@interface MockzillaKtor_ioByteReadPacket : MockzillaKtor_ioInput
-- (instancetype)initWithHead:(MockzillaKtor_ioChunkBuffer *)head pool:(id<MockzillaKtor_ioObjectPool>)pool __attribute__((swift_name("init(head:pool:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithHead:(MockzillaKtor_ioChunkBuffer *)head remaining:(int64_t)remaining pool:(id<MockzillaKtor_ioObjectPool>)pool __attribute__((swift_name("init(head:remaining:pool:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
-@property (class, readonly, getter=companion) MockzillaKtor_ioByteReadPacketCompanion *companion __attribute__((swift_name("companion")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (void)closeSource __attribute__((swift_name("closeSource()")));
-- (MockzillaKtor_ioByteReadPacket *)doCopy __attribute__((swift_name("doCopy()")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (MockzillaKtor_ioChunkBuffer * _Nullable)fill __attribute__((swift_name("fill()")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (int32_t)fillDestination:(MockzillaKtor_ioMemory *)destination offset:(int32_t)offset length:(int32_t)length __attribute__((swift_name("fill(destination:offset:length:)")));
+__attribute__((swift_name("Ktor_utilsTypeInfo")))
+@interface MockzillaKtor_utilsTypeInfo : MockzillaBase
+- (instancetype)initWithType:(id<MockzillaKotlinKClass>)type kotlinType:(id<MockzillaKotlinKType> _Nullable)kotlinType __attribute__((swift_name("init(type:kotlinType:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithType:(id<MockzillaKotlinKClass>)type reifiedType:(id<MockzillaKotlinKType>)reifiedType kotlinType:(id<MockzillaKotlinKType> _Nullable)kotlinType __attribute__((swift_name("init(type:reifiedType:kotlinType:)"))) __attribute__((objc_designated_initializer)) __attribute__((deprecated("Use constructor without reifiedType parameter.")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) id<MockzillaKotlinKType> _Nullable kotlinType __attribute__((swift_name("kotlinType")));
+@property (readonly) id<MockzillaKotlinKClass> type __attribute__((swift_name("type")));
 @end
 
-__attribute__((swift_name("Ktor_ioReadSession")))
-@protocol MockzillaKtor_ioReadSession
-@required
-- (int32_t)discardN:(int32_t)n __attribute__((swift_name("discard(n:)")));
-- (MockzillaKtor_ioChunkBuffer * _Nullable)requestAtLeast:(int32_t)atLeast __attribute__((swift_name("request(atLeast:)")));
-@property (readonly) int32_t availableForRead __attribute__((swift_name("availableForRead")));
-@end
-
-__attribute__((swift_name("KotlinFunction")))
-@protocol MockzillaKotlinFunction
-@required
-@end
-
-__attribute__((swift_name("KotlinSuspendFunction1")))
-@protocol MockzillaKotlinSuspendFunction1 <MockzillaKotlinFunction>
-@required
+__attribute__((swift_name("Ktor_utilsPipeline")))
+@interface MockzillaKtor_utilsPipeline<TSubject, TContext> : MockzillaBase
+- (instancetype)initWithPhases:(MockzillaKotlinArray<MockzillaKtor_utilsPipelinePhase *> *)phases __attribute__((swift_name("init(phases:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer));
+- (void)addPhasePhase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("addPhase(phase:)")));
+- (void)afterIntercepted __attribute__((swift_name("afterIntercepted()")));
 
 /**
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
-- (void)invokeP1:(id _Nullable)p1 completionHandler:(void (^)(id _Nullable_result, NSError * _Nullable))completionHandler __attribute__((swift_name("invoke(p1:completionHandler:)")));
-@end
-
-__attribute__((swift_name("KotlinAppendable")))
-@protocol MockzillaKotlinAppendable
-@required
-- (id<MockzillaKotlinAppendable>)appendValue:(unichar)value __attribute__((swift_name("append(value:)")));
-- (id<MockzillaKotlinAppendable>)appendValue_:(id _Nullable)value __attribute__((swift_name("append(value_:)")));
-- (id<MockzillaKotlinAppendable>)appendValue:(id _Nullable)value startIndex:(int32_t)startIndex endIndex:(int32_t)endIndex __attribute__((swift_name("append(value:startIndex:endIndex:)")));
+- (void)executeContext:(TContext)context subject:(TSubject)subject completionHandler:(void (^)(TSubject _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("execute(context:subject:completionHandler:)")));
+- (void)insertPhaseAfterReference:(MockzillaKtor_utilsPipelinePhase *)reference phase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("insertPhaseAfter(reference:phase:)")));
+- (void)insertPhaseBeforeReference:(MockzillaKtor_utilsPipelinePhase *)reference phase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("insertPhaseBefore(reference:phase:)")));
+- (void)interceptPhase:(MockzillaKtor_utilsPipelinePhase *)phase block:(id<MockzillaKotlinSuspendFunction2>)block __attribute__((swift_name("intercept(phase:block:)")));
+- (NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptorsForPhasePhase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("interceptorsForPhase(phase:)")));
+- (void)mergeFrom:(MockzillaKtor_utilsPipeline<TSubject, TContext> *)from __attribute__((swift_name("merge(from:)")));
+- (void)mergePhasesFrom:(MockzillaKtor_utilsPipeline<TSubject, TContext> *)from __attribute__((swift_name("mergePhases(from:)")));
+- (void)resetFromFrom:(MockzillaKtor_utilsPipeline<TSubject, TContext> *)from __attribute__((swift_name("resetFrom(from:)")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) id<MockzillaKtor_utilsAttributes> attributes __attribute__((swift_name("attributes")));
+@property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
+@property (readonly, getter=isEmpty_) BOOL isEmpty __attribute__((swift_name("isEmpty")));
+@property (readonly) NSArray<MockzillaKtor_utilsPipelinePhase *> *items __attribute__((swift_name("items")));
 @end
 
 __attribute__((swift_name("Ktor_server_coreApplicationCallPipeline")))
-@interface MockzillaKtor_server_coreApplicationCallPipeline : MockzillaKtor_utilsPipeline<MockzillaKotlinUnit *, id<MockzillaKtor_server_coreApplicationCall>>
-- (instancetype)initWithDevelopmentMode:(BOOL)developmentMode environment:(id<MockzillaKtor_server_coreApplicationEnvironment> _Nullable)environment __attribute__((swift_name("init(developmentMode:environment:)"))) __attribute__((objc_designated_initializer));
+@interface MockzillaKtor_server_coreApplicationCallPipeline : MockzillaKtor_utilsPipeline<MockzillaKotlinUnit *, id<MockzillaKtor_server_corePipelineCall>>
+- (instancetype)initWithDevelopmentMode:(BOOL)developmentMode environment:(id<MockzillaKtor_server_coreApplicationEnvironment>)environment __attribute__((swift_name("init(developmentMode:environment:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithPhases:(MockzillaKotlinArray<MockzillaKtor_utilsPipelinePhase *> *)phases __attribute__((swift_name("init(phases:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 - (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly, getter=companion) MockzillaKtor_server_coreApplicationCallPipelineApplicationPhase *companion __attribute__((swift_name("companion")));
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
-@property (readonly) id<MockzillaKtor_server_coreApplicationEnvironment> _Nullable environment __attribute__((swift_name("environment")));
+@property (readonly) id<MockzillaKtor_server_coreApplicationEnvironment> environment __attribute__((swift_name("environment")));
 @property (readonly) MockzillaKtor_server_coreApplicationReceivePipeline *receivePipeline __attribute__((swift_name("receivePipeline")));
 @property (readonly) MockzillaKtor_server_coreApplicationSendPipeline *sendPipeline __attribute__((swift_name("sendPipeline")));
-@end
-
-__attribute__((swift_name("Kotlinx_coroutines_coreCoroutineScope")))
-@protocol MockzillaKotlinx_coroutines_coreCoroutineScope
-@required
-@property (readonly) id<MockzillaKotlinCoroutineContext> coroutineContext __attribute__((swift_name("coroutineContext")));
 @end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_server_coreApplication")))
 @interface MockzillaKtor_server_coreApplication : MockzillaKtor_server_coreApplicationCallPipeline <MockzillaKotlinx_coroutines_coreCoroutineScope>
-- (instancetype)initWithEnvironment:(id<MockzillaKtor_server_coreApplicationEnvironment>)environment __attribute__((swift_name("init(environment:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithDevelopmentMode:(BOOL)developmentMode environment:(id<MockzillaKtor_server_coreApplicationEnvironment> _Nullable)environment __attribute__((swift_name("init(developmentMode:environment:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)initWithDevelopmentMode:(BOOL)developmentMode environment:(id<MockzillaKtor_server_coreApplicationEnvironment>)environment __attribute__((swift_name("init(developmentMode:environment:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 - (void)dispose __attribute__((swift_name("dispose()")));
 @property (readonly) id<MockzillaKotlinCoroutineContext> coroutineContext __attribute__((swift_name("coroutineContext")));
-@property (readonly) id<MockzillaKtor_server_coreApplicationEnvironment> environment __attribute__((swift_name("environment")));
+@property (readonly) id<MockzillaKtor_server_coreApplicationEngine> engine __attribute__((swift_name("engine")));
+@property (readonly) MockzillaKtor_eventsEvents *monitor __attribute__((swift_name("monitor")));
+@property (readonly) id<MockzillaKotlinCoroutineContext> parentCoroutineContext __attribute__((swift_name("parentCoroutineContext")));
+@property NSString *rootPath __attribute__((swift_name("rootPath")));
 @end
 
 __attribute__((swift_name("Ktor_utilsAttributes")))
@@ -1669,7 +1471,20 @@ __attribute__((swift_name("Ktor_server_coreApplicationResponse")))
 @property (readonly) MockzillaKtor_server_coreResponseHeaders *headers __attribute__((swift_name("headers")));
 @property (readonly) BOOL isCommitted __attribute__((swift_name("isCommitted")));
 @property (readonly) BOOL isSent __attribute__((swift_name("isSent")));
-@property (readonly) MockzillaKtor_server_coreApplicationSendPipeline *pipeline __attribute__((swift_name("pipeline")));
+@end
+
+
+/**
+ * @note annotations
+ *   kotlin.SinceKotlin(version="1.3")
+*/
+__attribute__((swift_name("KotlinCoroutineContext")))
+@protocol MockzillaKotlinCoroutineContext
+@required
+- (id _Nullable)foldInitial:(id _Nullable)initial operation:(id _Nullable (^)(id _Nullable, id<MockzillaKotlinCoroutineContextElement>))operation __attribute__((swift_name("fold(initial:operation:)")));
+- (id<MockzillaKotlinCoroutineContextElement> _Nullable)getKey_:(id<MockzillaKotlinCoroutineContextKey>)key __attribute__((swift_name("get(key_:)")));
+- (id<MockzillaKotlinCoroutineContext>)minusKeyKey:(id<MockzillaKotlinCoroutineContextKey>)key __attribute__((swift_name("minusKey(key:)")));
+- (id<MockzillaKotlinCoroutineContext>)plusContext:(id<MockzillaKotlinCoroutineContext>)context __attribute__((swift_name("plus(context:)")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -1683,6 +1498,7 @@ __attribute__((swift_name("Ktor_httpCookieEncoding")))
 @property (class, readonly) MockzillaKtor_httpCookieEncoding *uriEncoding __attribute__((swift_name("uriEncoding")));
 @property (class, readonly) MockzillaKtor_httpCookieEncoding *base64Encoding __attribute__((swift_name("base64Encoding")));
 + (MockzillaKotlinArray<MockzillaKtor_httpCookieEncoding *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MockzillaKtor_httpCookieEncoding *> *entries __attribute__((swift_name("entries")));
 @end
 
 __attribute__((swift_name("KotlinMapEntry")))
@@ -1690,37 +1506,6 @@ __attribute__((swift_name("KotlinMapEntry")))
 @required
 @property (readonly) id _Nullable key __attribute__((swift_name("key")));
 @property (readonly) id _Nullable value __attribute__((swift_name("value")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_utilsPipelinePhase")))
-@interface MockzillaKtor_utilsPipelinePhase : MockzillaBase
-- (instancetype)initWithName:(NSString *)name __attribute__((swift_name("init(name:)"))) __attribute__((objc_designated_initializer));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSString *name __attribute__((swift_name("name")));
-@end
-
-__attribute__((swift_name("KotlinSuspendFunction2")))
-@protocol MockzillaKotlinSuspendFunction2 <MockzillaKotlinFunction>
-@required
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)invokeP1:(id _Nullable)p1 p2:(id _Nullable)p2 completionHandler:(void (^)(id _Nullable_result, NSError * _Nullable))completionHandler __attribute__((swift_name("invoke(p1:p2:completionHandler:)")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_server_coreApplicationReceivePipeline.Phases")))
-@interface MockzillaKtor_server_coreApplicationReceivePipelinePhases : MockzillaBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)phases __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MockzillaKtor_server_coreApplicationReceivePipelinePhases *shared __attribute__((swift_name("shared")));
-@property (readonly) MockzillaKtor_utilsPipelinePhase *After __attribute__((swift_name("After")));
-@property (readonly) MockzillaKtor_utilsPipelinePhase *Before __attribute__((swift_name("Before")));
-@property (readonly) MockzillaKtor_utilsPipelinePhase *Transform __attribute__((swift_name("Transform")));
 @end
 
 
@@ -1772,76 +1557,135 @@ __attribute__((swift_name("KotlinKClass")))
 @property (readonly) NSString * _Nullable simpleName __attribute__((swift_name("simpleName")));
 @end
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioMemory.Companion")))
-@interface MockzillaKtor_ioMemoryCompanion : MockzillaBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MockzillaKtor_ioMemoryCompanion *shared __attribute__((swift_name("shared")));
-@property (readonly) MockzillaKtor_ioMemory *Empty __attribute__((swift_name("Empty")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioBuffer.Companion")))
-@interface MockzillaKtor_ioBufferCompanion : MockzillaBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MockzillaKtor_ioBufferCompanion *shared __attribute__((swift_name("shared")));
-@property (readonly) MockzillaKtor_ioBuffer *Empty __attribute__((swift_name("Empty")));
-@property (readonly) int32_t ReservedSize __attribute__((swift_name("ReservedSize")));
-@end
-
-__attribute__((swift_name("Ktor_ioObjectPool")))
-@protocol MockzillaKtor_ioObjectPool <MockzillaKtor_ioCloseable>
+__attribute__((swift_name("Kotlinx_io_coreRawSink")))
+@protocol MockzillaKotlinx_io_coreRawSink <MockzillaKotlinAutoCloseable>
 @required
-- (id)borrow __attribute__((swift_name("borrow()")));
-- (void)dispose __attribute__((swift_name("dispose()")));
-- (void)recycleInstance:(id)instance __attribute__((swift_name("recycle(instance:)")));
-@property (readonly) int32_t capacity __attribute__((swift_name("capacity")));
+- (void)flush __attribute__((swift_name("flush()")));
+- (void)writeSource:(MockzillaKotlinx_io_coreBuffer *)source byteCount:(int64_t)byteCount __attribute__((swift_name("write(source:byteCount:)")));
+@end
+
+__attribute__((swift_name("Kotlinx_io_coreSink")))
+@protocol MockzillaKotlinx_io_coreSink <MockzillaKotlinx_io_coreRawSink>
+@required
+- (void)emit __attribute__((swift_name("emit()")));
+
+/**
+ * @note annotations
+ *   kotlinx.io.InternalIoApi
+*/
+- (void)hintEmit __attribute__((swift_name("hintEmit()")));
+- (int64_t)transferFromSource:(id<MockzillaKotlinx_io_coreRawSource>)source __attribute__((swift_name("transferFrom(source:)")));
+- (void)writeSource:(id<MockzillaKotlinx_io_coreRawSource>)source byteCount_:(int64_t)byteCount __attribute__((swift_name("write(source:byteCount_:)")));
+- (void)writeSource:(MockzillaKotlinByteArray *)source startIndex:(int32_t)startIndex endIndex:(int32_t)endIndex __attribute__((swift_name("write(source:startIndex:endIndex:)")));
+- (void)writeByteByte:(int8_t)byte __attribute__((swift_name("writeByte(byte:)")));
+- (void)writeIntInt:(int32_t)int_ __attribute__((swift_name("writeInt(int:)")));
+- (void)writeLongLong:(int64_t)long_ __attribute__((swift_name("writeLong(long:)")));
+- (void)writeShortShort:(int16_t)short_ __attribute__((swift_name("writeShort(short:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.io.InternalIoApi
+*/
+@property (readonly) MockzillaKotlinx_io_coreBuffer *buffer __attribute__((swift_name("buffer")));
 @end
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioChunkBuffer.Companion")))
-@interface MockzillaKtor_ioChunkBufferCompanion : MockzillaBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MockzillaKtor_ioChunkBufferCompanion *shared __attribute__((swift_name("shared")));
-@property (readonly) MockzillaKtor_ioChunkBuffer *Empty __attribute__((swift_name("Empty")));
-@property (readonly) id<MockzillaKtor_ioObjectPool> EmptyPool __attribute__((swift_name("EmptyPool")));
-@property (readonly) id<MockzillaKtor_ioObjectPool> Pool __attribute__((swift_name("Pool")));
+__attribute__((swift_name("Kotlinx_io_coreBuffer")))
+@interface MockzillaKotlinx_io_coreBuffer : MockzillaBase <MockzillaKotlinx_io_coreSource, MockzillaKotlinx_io_coreSink>
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (void)clear __attribute__((swift_name("clear()")));
+- (void)close __attribute__((swift_name("close()")));
+- (MockzillaKotlinx_io_coreBuffer *)doCopy __attribute__((swift_name("doCopy()")));
+- (void)doCopyToOut:(MockzillaKotlinx_io_coreBuffer *)out startIndex:(int64_t)startIndex endIndex:(int64_t)endIndex __attribute__((swift_name("doCopyTo(out:startIndex:endIndex:)")));
+- (void)emit __attribute__((swift_name("emit()")));
+- (BOOL)exhausted __attribute__((swift_name("exhausted()")));
+- (void)flush __attribute__((swift_name("flush()")));
+- (int8_t)getPosition:(int64_t)position __attribute__((swift_name("get(position:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.io.InternalIoApi
+*/
+- (void)hintEmit __attribute__((swift_name("hintEmit()")));
+- (id<MockzillaKotlinx_io_coreSource>)peek __attribute__((swift_name("peek()")));
+- (int64_t)readAtMostToSink:(MockzillaKotlinx_io_coreBuffer *)sink byteCount:(int64_t)byteCount __attribute__((swift_name("readAtMostTo(sink:byteCount:)")));
+- (int32_t)readAtMostToSink:(MockzillaKotlinByteArray *)sink startIndex:(int32_t)startIndex endIndex:(int32_t)endIndex __attribute__((swift_name("readAtMostTo(sink:startIndex:endIndex:)")));
+- (int8_t)readByte __attribute__((swift_name("readByte()")));
+- (int32_t)readInt __attribute__((swift_name("readInt()")));
+- (int64_t)readLong __attribute__((swift_name("readLong()")));
+- (int16_t)readShort __attribute__((swift_name("readShort()")));
+- (void)readToSink:(id<MockzillaKotlinx_io_coreRawSink>)sink byteCount:(int64_t)byteCount __attribute__((swift_name("readTo(sink:byteCount:)")));
+- (BOOL)requestByteCount:(int64_t)byteCount __attribute__((swift_name("request(byteCount:)")));
+- (void)requireByteCount:(int64_t)byteCount __attribute__((swift_name("require(byteCount:)")));
+- (void)skipByteCount:(int64_t)byteCount __attribute__((swift_name("skip(byteCount:)")));
+- (NSString *)description __attribute__((swift_name("description()")));
+- (int64_t)transferFromSource:(id<MockzillaKotlinx_io_coreRawSource>)source __attribute__((swift_name("transferFrom(source:)")));
+- (int64_t)transferToSink:(id<MockzillaKotlinx_io_coreRawSink>)sink __attribute__((swift_name("transferTo(sink:)")));
+- (void)writeSource:(MockzillaKotlinx_io_coreBuffer *)source byteCount:(int64_t)byteCount __attribute__((swift_name("write(source:byteCount:)")));
+- (void)writeSource:(id<MockzillaKotlinx_io_coreRawSource>)source byteCount_:(int64_t)byteCount __attribute__((swift_name("write(source:byteCount_:)")));
+- (void)writeSource:(MockzillaKotlinByteArray *)source startIndex:(int32_t)startIndex endIndex:(int32_t)endIndex __attribute__((swift_name("write(source:startIndex:endIndex:)")));
+- (void)writeByteByte:(int8_t)byte __attribute__((swift_name("writeByte(byte:)")));
+- (void)writeIntInt:(int32_t)int_ __attribute__((swift_name("writeInt(int:)")));
+- (void)writeLongLong:(int64_t)long_ __attribute__((swift_name("writeLong(long:)")));
+- (void)writeShortShort:(int16_t)short_ __attribute__((swift_name("writeShort(short:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.io.InternalIoApi
+*/
+@property (readonly) MockzillaKotlinx_io_coreBuffer *buffer __attribute__((swift_name("buffer")));
+@property (readonly) int64_t size __attribute__((swift_name("size")));
+@end
+
+__attribute__((swift_name("KotlinKType")))
+@protocol MockzillaKotlinKType
+@required
+
+/**
+ * @note annotations
+ *   kotlin.SinceKotlin(version="1.1")
+*/
+@property (readonly) NSArray<MockzillaKotlinKTypeProjection *> *arguments __attribute__((swift_name("arguments")));
+
+/**
+ * @note annotations
+ *   kotlin.SinceKotlin(version="1.1")
+*/
+@property (readonly) id<MockzillaKotlinKClassifier> _Nullable classifier __attribute__((swift_name("classifier")));
+@property (readonly) BOOL isMarkedNullable __attribute__((swift_name("isMarkedNullable")));
 @end
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioInput.Companion")))
-@interface MockzillaKtor_ioInputCompanion : MockzillaBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MockzillaKtor_ioInputCompanion *shared __attribute__((swift_name("shared")));
+__attribute__((swift_name("Ktor_utilsPipelinePhase")))
+@interface MockzillaKtor_utilsPipelinePhase : MockzillaBase
+- (instancetype)initWithName:(NSString *)name __attribute__((swift_name("init(name:)"))) __attribute__((objc_designated_initializer));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *name __attribute__((swift_name("name")));
 @end
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioByteReadPacket.Companion")))
-@interface MockzillaKtor_ioByteReadPacketCompanion : MockzillaBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MockzillaKtor_ioByteReadPacketCompanion *shared __attribute__((swift_name("shared")));
-@property (readonly) MockzillaKtor_ioByteReadPacket *Empty __attribute__((swift_name("Empty")));
+__attribute__((swift_name("KotlinFunction")))
+@protocol MockzillaKotlinFunction
+@required
+@end
+
+__attribute__((swift_name("KotlinSuspendFunction2")))
+@protocol MockzillaKotlinSuspendFunction2 <MockzillaKotlinFunction>
+@required
+
+/**
+ * @note This method converts instances of CancellationException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (void)invokeP1:(id _Nullable)p1 p2:(id _Nullable)p2 completionHandler:(void (^)(id _Nullable_result, NSError * _Nullable))completionHandler __attribute__((swift_name("invoke(p1:p2:completionHandler:)")));
 @end
 
 __attribute__((swift_name("Ktor_server_coreApplicationEnvironment")))
 @protocol MockzillaKtor_server_coreApplicationEnvironment
 @required
 @property (readonly) id<MockzillaKtor_server_coreApplicationConfig> config __attribute__((swift_name("config")));
-@property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @property (readonly) id<MockzillaKtor_utilsLogger> log __attribute__((swift_name("log")));
-@property (readonly) MockzillaKtor_eventsEvents *monitor __attribute__((swift_name("monitor")));
-@property (readonly) id<MockzillaKotlinCoroutineContext> parentCoroutineContext __attribute__((swift_name("parentCoroutineContext")));
-@property (readonly) NSString *rootPath __attribute__((swift_name("rootPath")));
+@property (readonly) MockzillaKtor_eventsEvents *monitor __attribute__((swift_name("monitor"))) __attribute__((deprecated("Moved to Application")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -1853,14 +1697,23 @@ __attribute__((swift_name("Ktor_server_coreApplicationCallPipeline.ApplicationPh
 @property (class, readonly, getter=shared) MockzillaKtor_server_coreApplicationCallPipelineApplicationPhase *shared __attribute__((swift_name("shared")));
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Call __attribute__((swift_name("Call")));
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Fallback __attribute__((swift_name("Fallback")));
-@property (readonly) MockzillaKtor_utilsPipelinePhase *Features __attribute__((swift_name("Features"))) __attribute__((deprecated("Renamed to Plugins")));
+@property (readonly) MockzillaKtor_utilsPipelinePhase *Features __attribute__((swift_name("Features"))) __attribute__((unavailable("Renamed to Plugins")));
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Monitoring __attribute__((swift_name("Monitoring")));
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Plugins __attribute__((swift_name("Plugins")));
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Setup __attribute__((swift_name("Setup")));
 @end
 
+__attribute__((swift_name("Ktor_server_coreApplicationReceivePipeline")))
+@interface MockzillaKtor_server_coreApplicationReceivePipeline : MockzillaKtor_utilsPipeline<id, id<MockzillaKtor_server_corePipelineCall>>
+- (instancetype)initWithDevelopmentMode:(BOOL)developmentMode __attribute__((swift_name("init(developmentMode:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithPhases:(MockzillaKotlinArray<MockzillaKtor_utilsPipelinePhase *> *)phases __attribute__((swift_name("init(phases:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (class, readonly, getter=companion) MockzillaKtor_server_coreApplicationReceivePipelinePhases *companion __attribute__((swift_name("companion")));
+@property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
+@end
+
 __attribute__((swift_name("Ktor_server_coreApplicationSendPipeline")))
-@interface MockzillaKtor_server_coreApplicationSendPipeline : MockzillaKtor_utilsPipeline<id, id<MockzillaKtor_server_coreApplicationCall>>
+@interface MockzillaKtor_server_coreApplicationSendPipeline : MockzillaKtor_utilsPipeline<id, id<MockzillaKtor_server_corePipelineCall>>
 - (instancetype)initWithDevelopmentMode:(BOOL)developmentMode __attribute__((swift_name("init(developmentMode:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithPhases:(MockzillaKotlinArray<MockzillaKtor_utilsPipelinePhase *> *)phases __attribute__((swift_name("init(phases:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 - (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
@@ -1868,24 +1721,57 @@ __attribute__((swift_name("Ktor_server_coreApplicationSendPipeline")))
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @end
 
+__attribute__((swift_name("Ktor_server_corePipelineCall")))
+@protocol MockzillaKtor_server_corePipelineCall <MockzillaKtor_server_coreApplicationCall>
+@required
+@end
+
+__attribute__((swift_name("Ktor_server_coreApplicationEngine")))
+@protocol MockzillaKtor_server_coreApplicationEngine
+@required
 
 /**
- * @note annotations
- *   kotlin.SinceKotlin(version="1.3")
+ * @note This method converts instances of CancellationException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
 */
-__attribute__((swift_name("KotlinCoroutineContext")))
-@protocol MockzillaKotlinCoroutineContext
-@required
-- (id _Nullable)foldInitial:(id _Nullable)initial operation:(id _Nullable (^)(id _Nullable, id<MockzillaKotlinCoroutineContextElement>))operation __attribute__((swift_name("fold(initial:operation:)")));
-- (id<MockzillaKotlinCoroutineContextElement> _Nullable)getKey_:(id<MockzillaKotlinCoroutineContextKey>)key __attribute__((swift_name("get(key_:)")));
-- (id<MockzillaKotlinCoroutineContext>)minusKeyKey:(id<MockzillaKotlinCoroutineContextKey>)key __attribute__((swift_name("minusKey(key:)")));
-- (id<MockzillaKotlinCoroutineContext>)plusContext:(id<MockzillaKotlinCoroutineContext>)context __attribute__((swift_name("plus(context:)")));
+- (void)resolvedConnectorsWithCompletionHandler:(void (^)(NSArray<id<MockzillaKtor_server_coreEngineConnectorConfig>> * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("resolvedConnectors(completionHandler:)")));
+- (id<MockzillaKtor_server_coreApplicationEngine>)startWait:(BOOL)wait __attribute__((swift_name("start(wait:)")));
+
+/**
+ * @note This method converts instances of CancellationException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (void)startSuspendWait:(BOOL)wait completionHandler:(void (^)(id<MockzillaKtor_server_coreApplicationEngine> _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("startSuspend(wait:completionHandler:)")));
+- (void)stopGracePeriodMillis:(int64_t)gracePeriodMillis timeoutMillis:(int64_t)timeoutMillis __attribute__((swift_name("stop(gracePeriodMillis:timeoutMillis:)")));
+
+/**
+ * @note This method converts instances of CancellationException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (void)stopSuspendGracePeriodMillis:(int64_t)gracePeriodMillis timeoutMillis:(int64_t)timeoutMillis completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("stopSuspend(gracePeriodMillis:timeoutMillis:completionHandler:)")));
+@property (readonly) id<MockzillaKtor_server_coreApplicationEnvironment> environment __attribute__((swift_name("environment")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_eventsEvents")))
+@interface MockzillaKtor_eventsEvents : MockzillaBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (void)raiseDefinition:(MockzillaKtor_eventsEventDefinition<id> *)definition value:(id _Nullable)value __attribute__((swift_name("raise(definition:value:)")));
+- (id<MockzillaKotlinx_coroutines_coreDisposableHandle>)subscribeDefinition:(MockzillaKtor_eventsEventDefinition<id> *)definition handler:(void (^)(id _Nullable))handler __attribute__((swift_name("subscribe(definition:handler:)")));
+- (void)unsubscribeDefinition:(MockzillaKtor_eventsEventDefinition<id> *)definition handler:(void (^)(id _Nullable))handler __attribute__((swift_name("unsubscribe(definition:handler:)")));
 @end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsAttributeKey")))
 @interface MockzillaKtor_utilsAttributeKey<T> : MockzillaBase
-- (instancetype)initWithName:(NSString *)name __attribute__((swift_name("init(name:)"))) __attribute__((objc_designated_initializer));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmOverloads
+*/
+- (instancetype)initWithName:(NSString *)name type:(MockzillaKtor_utilsTypeInfo *)type __attribute__((swift_name("init(name:type:)"))) __attribute__((objc_designated_initializer));
+- (MockzillaKtor_utilsAttributeKey<T> *)doCopyName:(NSString *)name type:(MockzillaKtor_utilsTypeInfo *)type __attribute__((swift_name("doCopy(name:type:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
@@ -1904,11 +1790,10 @@ __attribute__((swift_name("Ktor_server_coreResponsePushBuilder")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_server_coreResponseCookies")))
 @interface MockzillaKtor_server_coreResponseCookies : MockzillaBase
-- (instancetype)initWithResponse:(id<MockzillaKtor_server_coreApplicationResponse>)response secureTransport:(BOOL)secureTransport __attribute__((swift_name("init(response:secureTransport:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithResponse:(id<MockzillaKtor_server_corePipelineResponse>)response __attribute__((swift_name("init(response:)"))) __attribute__((objc_designated_initializer));
 - (void)appendItem:(MockzillaKtor_httpCookie *)item __attribute__((swift_name("append(item:)")));
-- (void)appendName:(NSString *)name value:(NSString *)value encoding:(MockzillaKtor_httpCookieEncoding *)encoding maxAge:(int32_t)maxAge expires:(MockzillaKtor_utilsGMTDate * _Nullable)expires domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path secure:(BOOL)secure httpOnly:(BOOL)httpOnly extensions:(NSDictionary<NSString *, id> *)extensions __attribute__((swift_name("append(name:value:encoding:maxAge:expires:domain:path:secure:httpOnly:extensions:)"))) __attribute__((unavailable("Convert maxAge to Long")));
-- (void)appendName:(NSString *)name value:(NSString *)value encoding:(MockzillaKtor_httpCookieEncoding *)encoding maxAge:(int64_t)maxAge expires:(MockzillaKtor_utilsGMTDate * _Nullable)expires domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path secure:(BOOL)secure httpOnly:(BOOL)httpOnly extensions_:(NSDictionary<NSString *, id> *)extensions __attribute__((swift_name("append(name:value:encoding:maxAge:expires:domain:path:secure:httpOnly:extensions_:)")));
-- (void)appendExpiredName:(NSString *)name domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path __attribute__((swift_name("appendExpired(name:domain:path:)"))) __attribute__((deprecated("This method doesn't bypass all flags and extensions so it will be removed in future major release. Please consider using append with expires parameter instead.")));
+- (void)appendName:(NSString *)name value:(NSString *)value encoding:(MockzillaKtor_httpCookieEncoding *)encoding maxAge:(MockzillaLong * _Nullable)maxAge expires:(MockzillaKtor_utilsGMTDate * _Nullable)expires domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path secure:(BOOL)secure httpOnly:(BOOL)httpOnly extensions:(NSDictionary<NSString *, id> *)extensions __attribute__((swift_name("append(name:value:encoding:maxAge:expires:domain:path:secure:httpOnly:extensions:)")));
+- (void)appendExpiredName:(NSString *)name domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path __attribute__((swift_name("appendExpired(name:domain:path:)"))) __attribute__((unavailable("This method doesn't bypass all flags and extensions so it will be removed in future major release. Please consider using append with expires parameter instead.")));
 - (MockzillaKtor_httpCookie * _Nullable)getName:(NSString *)name __attribute__((swift_name("get(name:)")));
 @end
 
@@ -1943,6 +1828,35 @@ __attribute__((swift_name("Ktor_server_coreResponseHeaders")))
 @property (readonly) NSSet<NSString *> *managedByEngineHeaders __attribute__((swift_name("managedByEngineHeaders")));
 @end
 
+__attribute__((swift_name("KotlinCoroutineContextElement")))
+@protocol MockzillaKotlinCoroutineContextElement <MockzillaKotlinCoroutineContext>
+@required
+@property (readonly) id<MockzillaKotlinCoroutineContextKey> key __attribute__((swift_name("key")));
+@end
+
+__attribute__((swift_name("KotlinCoroutineContextKey")))
+@protocol MockzillaKotlinCoroutineContextKey
+@required
+@end
+
+
+/**
+ * @note annotations
+ *   kotlin.SinceKotlin(version="1.1")
+*/
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KotlinKTypeProjection")))
+@interface MockzillaKotlinKTypeProjection : MockzillaBase
+- (instancetype)initWithVariance:(MockzillaKotlinKVariance * _Nullable)variance type:(id<MockzillaKotlinKType> _Nullable)type __attribute__((swift_name("init(variance:type:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) MockzillaKotlinKTypeProjectionCompanion *companion __attribute__((swift_name("companion")));
+- (MockzillaKotlinKTypeProjection *)doCopyVariance:(MockzillaKotlinKVariance * _Nullable)variance type:(id<MockzillaKotlinKType> _Nullable)type __attribute__((swift_name("doCopy(variance:type:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) id<MockzillaKotlinKType> _Nullable type __attribute__((swift_name("type")));
+@property (readonly) MockzillaKotlinKVariance * _Nullable variance __attribute__((swift_name("variance")));
+@end
+
 __attribute__((swift_name("Ktor_server_coreApplicationConfig")))
 @protocol MockzillaKtor_server_coreApplicationConfig
 @required
@@ -1971,13 +1885,15 @@ __attribute__((swift_name("Ktor_utilsLogger")))
 @end
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_eventsEvents")))
-@interface MockzillaKtor_eventsEvents : MockzillaBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (void)raiseDefinition:(MockzillaKtor_eventsEventDefinition<id> *)definition value:(id _Nullable)value __attribute__((swift_name("raise(definition:value:)")));
-- (id<MockzillaKotlinx_coroutines_coreDisposableHandle>)subscribeDefinition:(MockzillaKtor_eventsEventDefinition<id> *)definition handler:(void (^)(id _Nullable))handler __attribute__((swift_name("subscribe(definition:handler:)")));
-- (void)unsubscribeDefinition:(MockzillaKtor_eventsEventDefinition<id> *)definition handler:(void (^)(id _Nullable))handler __attribute__((swift_name("unsubscribe(definition:handler:)")));
+__attribute__((swift_name("Ktor_server_coreApplicationReceivePipeline.Phases")))
+@interface MockzillaKtor_server_coreApplicationReceivePipelinePhases : MockzillaBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)phases __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MockzillaKtor_server_coreApplicationReceivePipelinePhases *shared __attribute__((swift_name("shared")));
+@property (readonly) MockzillaKtor_utilsPipelinePhase *After __attribute__((swift_name("After")));
+@property (readonly) MockzillaKtor_utilsPipelinePhase *Before __attribute__((swift_name("Before")));
+@property (readonly) MockzillaKtor_utilsPipelinePhase *Transform __attribute__((swift_name("Transform")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -1996,15 +1912,24 @@ __attribute__((swift_name("Ktor_server_coreApplicationSendPipeline.Phases")))
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Transform __attribute__((swift_name("Transform")));
 @end
 
-__attribute__((swift_name("KotlinCoroutineContextElement")))
-@protocol MockzillaKotlinCoroutineContextElement <MockzillaKotlinCoroutineContext>
+__attribute__((swift_name("Ktor_server_coreEngineConnectorConfig")))
+@protocol MockzillaKtor_server_coreEngineConnectorConfig
 @required
-@property (readonly) id<MockzillaKotlinCoroutineContextKey> key __attribute__((swift_name("key")));
+@property (readonly) NSString *host __attribute__((swift_name("host")));
+@property (readonly) int32_t port __attribute__((swift_name("port")));
+@property (readonly) MockzillaKtor_server_coreConnectorType *type __attribute__((swift_name("type")));
 @end
 
-__attribute__((swift_name("KotlinCoroutineContextKey")))
-@protocol MockzillaKotlinCoroutineContextKey
+__attribute__((swift_name("Ktor_eventsEventDefinition")))
+@interface MockzillaKtor_eventsEventDefinition<T> : MockzillaBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+@end
+
+__attribute__((swift_name("Kotlinx_coroutines_coreDisposableHandle")))
+@protocol MockzillaKotlinx_coroutines_coreDisposableHandle
 @required
+- (void)dispose __attribute__((swift_name("dispose()")));
 @end
 
 __attribute__((swift_name("Ktor_utilsStringValuesBuilder")))
@@ -2091,7 +2016,7 @@ __attribute__((swift_name("Ktor_httpHeadersBuilder")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpURLBuilder")))
 @interface MockzillaKtor_httpURLBuilder : MockzillaBase
-- (instancetype)initWithProtocol:(MockzillaKtor_httpURLProtocol *)protocol host:(NSString *)host port:(int32_t)port user:(NSString * _Nullable)user password:(NSString * _Nullable)password pathSegments:(NSArray<NSString *> *)pathSegments parameters:(id<MockzillaKtor_httpParameters>)parameters fragment:(NSString *)fragment trailingQuery:(BOOL)trailingQuery __attribute__((swift_name("init(protocol:host:port:user:password:pathSegments:parameters:fragment:trailingQuery:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithProtocol:(MockzillaKtor_httpURLProtocol * _Nullable)protocol host:(NSString *)host port:(int32_t)port user:(NSString * _Nullable)user password:(NSString * _Nullable)password pathSegments:(NSArray<NSString *> *)pathSegments parameters:(id<MockzillaKtor_httpParameters>)parameters fragment:(NSString *)fragment trailingQuery:(BOOL)trailingQuery __attribute__((swift_name("init(protocol:host:port:user:password:pathSegments:parameters:fragment:trailingQuery:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaKtor_httpURLBuilderCompanion *companion __attribute__((swift_name("companion")));
 - (MockzillaKtor_httpUrl *)build __attribute__((swift_name("build()")));
 - (NSString *)buildString __attribute__((swift_name("buildString()")));
@@ -2108,6 +2033,7 @@ __attribute__((swift_name("Ktor_httpURLBuilder")))
 @property NSArray<NSString *> *pathSegments __attribute__((swift_name("pathSegments")));
 @property int32_t port __attribute__((swift_name("port")));
 @property MockzillaKtor_httpURLProtocol *protocol __attribute__((swift_name("protocol")));
+@property MockzillaKtor_httpURLProtocol * _Nullable protocolOrNull __attribute__((swift_name("protocolOrNull")));
 @property BOOL trailingQuery __attribute__((swift_name("trailingQuery")));
 @property NSString * _Nullable user __attribute__((swift_name("user")));
 @end
@@ -2119,11 +2045,23 @@ __attribute__((swift_name("Ktor_httpVersion")))
 - (MockzillaKtor_httpVersionCheckResult *)checkRequestHeaders:(id<MockzillaKtor_httpHeaders>)requestHeaders __attribute__((swift_name("check(requestHeaders:)")));
 @end
 
+__attribute__((swift_name("Ktor_server_corePipelineResponse")))
+@protocol MockzillaKtor_server_corePipelineResponse <MockzillaKtor_server_coreApplicationResponse>
+@required
+@property (readonly) MockzillaKtor_server_coreApplicationSendPipeline *pipeline __attribute__((swift_name("pipeline")));
+@end
+
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.Serializable
+*/
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpCookie")))
 @interface MockzillaKtor_httpCookie : MockzillaBase
-- (instancetype)initWithName:(NSString *)name value:(NSString *)value encoding:(MockzillaKtor_httpCookieEncoding *)encoding maxAge:(int32_t)maxAge expires:(MockzillaKtor_utilsGMTDate * _Nullable)expires domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path secure:(BOOL)secure httpOnly:(BOOL)httpOnly extensions:(NSDictionary<NSString *, id> *)extensions __attribute__((swift_name("init(name:value:encoding:maxAge:expires:domain:path:secure:httpOnly:extensions:)"))) __attribute__((objc_designated_initializer));
-- (MockzillaKtor_httpCookie *)doCopyName:(NSString *)name value:(NSString *)value encoding:(MockzillaKtor_httpCookieEncoding *)encoding maxAge:(int32_t)maxAge expires:(MockzillaKtor_utilsGMTDate * _Nullable)expires domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path secure:(BOOL)secure httpOnly:(BOOL)httpOnly extensions:(NSDictionary<NSString *, id> *)extensions __attribute__((swift_name("doCopy(name:value:encoding:maxAge:expires:domain:path:secure:httpOnly:extensions:)")));
+- (instancetype)initWithName:(NSString *)name value:(NSString *)value encoding:(MockzillaKtor_httpCookieEncoding *)encoding maxAge:(MockzillaInt * _Nullable)maxAge expires:(MockzillaKtor_utilsGMTDate * _Nullable)expires domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path secure:(BOOL)secure httpOnly:(BOOL)httpOnly extensions:(NSDictionary<NSString *, id> *)extensions __attribute__((swift_name("init(name:value:encoding:maxAge:expires:domain:path:secure:httpOnly:extensions:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) MockzillaKtor_httpCookieCompanion *companion __attribute__((swift_name("companion")));
+- (MockzillaKtor_httpCookie *)doCopyName:(NSString *)name value:(NSString *)value encoding:(MockzillaKtor_httpCookieEncoding *)encoding maxAge:(MockzillaInt * _Nullable)maxAge expires:(MockzillaKtor_utilsGMTDate * _Nullable)expires domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path secure:(BOOL)secure httpOnly:(BOOL)httpOnly extensions:(NSDictionary<NSString *, id> *)extensions __attribute__((swift_name("doCopy(name:value:encoding:maxAge:expires:domain:path:secure:httpOnly:extensions:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
@@ -2132,18 +2070,25 @@ __attribute__((swift_name("Ktor_httpCookie")))
 @property (readonly) MockzillaKtor_utilsGMTDate * _Nullable expires __attribute__((swift_name("expires")));
 @property (readonly) NSDictionary<NSString *, id> *extensions __attribute__((swift_name("extensions")));
 @property (readonly) BOOL httpOnly __attribute__((swift_name("httpOnly")));
-@property (readonly) int32_t maxAge __attribute__((swift_name("maxAge")));
+@property (readonly) MockzillaInt * _Nullable maxAge __attribute__((swift_name("maxAge")));
 @property (readonly) NSString *name __attribute__((swift_name("name")));
 @property (readonly) NSString * _Nullable path __attribute__((swift_name("path")));
 @property (readonly) BOOL secure __attribute__((swift_name("secure")));
 @property (readonly) NSString *value __attribute__((swift_name("value")));
 @end
 
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.Serializable
+*/
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsGMTDate")))
 @interface MockzillaKtor_utilsGMTDate : MockzillaBase <MockzillaKotlinComparable>
+- (instancetype)initWithSeconds:(int32_t)seconds minutes:(int32_t)minutes hours:(int32_t)hours dayOfWeek:(MockzillaKtor_utilsWeekDay *)dayOfWeek dayOfMonth:(int32_t)dayOfMonth dayOfYear:(int32_t)dayOfYear month:(MockzillaKtor_utilsMonth *)month year:(int32_t)year timestamp:(int64_t)timestamp __attribute__((swift_name("init(seconds:minutes:hours:dayOfWeek:dayOfMonth:dayOfYear:month:year:timestamp:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaKtor_utilsGMTDateCompanion *companion __attribute__((swift_name("companion")));
 - (int32_t)compareToOther:(MockzillaKtor_utilsGMTDate *)other __attribute__((swift_name("compareTo(other:)")));
+- (MockzillaKtor_utilsGMTDate *)doCopy __attribute__((swift_name("doCopy()")));
 - (MockzillaKtor_utilsGMTDate *)doCopySeconds:(int32_t)seconds minutes:(int32_t)minutes hours:(int32_t)hours dayOfWeek:(MockzillaKtor_utilsWeekDay *)dayOfWeek dayOfMonth:(int32_t)dayOfMonth dayOfYear:(int32_t)dayOfYear month:(MockzillaKtor_utilsMonth *)month year:(int32_t)year timestamp:(int64_t)timestamp __attribute__((swift_name("doCopy(seconds:minutes:hours:dayOfWeek:dayOfMonth:dayOfYear:month:year:timestamp:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -2157,6 +2102,52 @@ __attribute__((swift_name("Ktor_utilsGMTDate")))
 @property (readonly) int32_t seconds __attribute__((swift_name("seconds")));
 @property (readonly) int64_t timestamp __attribute__((swift_name("timestamp")));
 @property (readonly) int32_t year __attribute__((swift_name("year")));
+@end
+
+
+/**
+ * @note annotations
+ *   kotlin.SinceKotlin(version="1.1")
+*/
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KotlinKVariance")))
+@interface MockzillaKotlinKVariance : MockzillaKotlinEnum<MockzillaKotlinKVariance *>
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (class, readonly) MockzillaKotlinKVariance *invariant __attribute__((swift_name("invariant")));
+@property (class, readonly) MockzillaKotlinKVariance *in __attribute__((swift_name("in")));
+@property (class, readonly) MockzillaKotlinKVariance *out __attribute__((swift_name("out")));
++ (MockzillaKotlinArray<MockzillaKotlinKVariance *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MockzillaKotlinKVariance *> *entries __attribute__((swift_name("entries")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KotlinKTypeProjection.Companion")))
+@interface MockzillaKotlinKTypeProjectionCompanion : MockzillaBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MockzillaKotlinKTypeProjectionCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmStatic
+*/
+- (MockzillaKotlinKTypeProjection *)contravariantType:(id<MockzillaKotlinKType>)type __attribute__((swift_name("contravariant(type:)")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmStatic
+*/
+- (MockzillaKotlinKTypeProjection *)covariantType:(id<MockzillaKotlinKType>)type __attribute__((swift_name("covariant(type:)")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmStatic
+*/
+- (MockzillaKotlinKTypeProjection *)invariantType:(id<MockzillaKotlinKType>)type __attribute__((swift_name("invariant(type:)")));
+@property (readonly) MockzillaKotlinKTypeProjection *STAR __attribute__((swift_name("STAR")));
 @end
 
 __attribute__((swift_name("Ktor_server_coreApplicationConfigValue")))
@@ -2178,18 +2169,19 @@ __attribute__((swift_name("Ktor_utilsLogLevel")))
 @property (class, readonly) MockzillaKtor_utilsLogLevel *warn __attribute__((swift_name("warn")));
 @property (class, readonly) MockzillaKtor_utilsLogLevel *error __attribute__((swift_name("error")));
 + (MockzillaKotlinArray<MockzillaKtor_utilsLogLevel *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MockzillaKtor_utilsLogLevel *> *entries __attribute__((swift_name("entries")));
 @end
 
-__attribute__((swift_name("Ktor_eventsEventDefinition")))
-@interface MockzillaKtor_eventsEventDefinition<T> : MockzillaBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-@end
-
-__attribute__((swift_name("Kotlinx_coroutines_coreDisposableHandle")))
-@protocol MockzillaKotlinx_coroutines_coreDisposableHandle
-@required
-- (void)dispose __attribute__((swift_name("dispose()")));
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_server_coreConnectorType")))
+@interface MockzillaKtor_server_coreConnectorType : MockzillaBase
+- (instancetype)initWithName:(NSString *)name __attribute__((swift_name("init(name:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) MockzillaKtor_server_coreConnectorTypeCompanion *companion __attribute__((swift_name("companion")));
+- (MockzillaKtor_server_coreConnectorType *)doCopyName:(NSString *)name __attribute__((swift_name("doCopy(name:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *name __attribute__((swift_name("name")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -2231,9 +2223,12 @@ __attribute__((swift_name("Ktor_httpUrl")))
 @property (readonly) NSString *host __attribute__((swift_name("host")));
 @property (readonly) id<MockzillaKtor_httpParameters> parameters __attribute__((swift_name("parameters")));
 @property (readonly) NSString * _Nullable password __attribute__((swift_name("password")));
-@property (readonly) NSArray<NSString *> *pathSegments __attribute__((swift_name("pathSegments")));
+@property (readonly) NSArray<NSString *> *pathSegments __attribute__((swift_name("pathSegments"))) __attribute__((deprecated("\n        `pathSegments` is deprecated.\n\n        This property will contain an empty path segment at the beginning for URLs with a hostname,\n        and an empty path segment at the end for the URLs with a trailing slash. If you need to keep this behaviour please\n        use [rawSegments]. If you only need to access the meaningful parts of the path, consider using [segments] instead.\n             \n        Please decide if you need [rawSegments] or [segments] explicitly.\n        ")));
 @property (readonly) int32_t port __attribute__((swift_name("port")));
 @property (readonly) MockzillaKtor_httpURLProtocol *protocol __attribute__((swift_name("protocol")));
+@property (readonly) MockzillaKtor_httpURLProtocol * _Nullable protocolOrNull __attribute__((swift_name("protocolOrNull")));
+@property (readonly) NSArray<NSString *> *rawSegments __attribute__((swift_name("rawSegments")));
+@property (readonly) NSArray<NSString *> *segments __attribute__((swift_name("segments")));
 @property (readonly) int32_t specifiedPort __attribute__((swift_name("specifiedPort")));
 @property (readonly) BOOL trailingQuery __attribute__((swift_name("trailingQuery")));
 @property (readonly) NSString * _Nullable user __attribute__((swift_name("user")));
@@ -2254,17 +2249,18 @@ __attribute__((swift_name("Ktor_httpVersionCheckResult")))
 @property (class, readonly) MockzillaKtor_httpVersionCheckResult *notModified __attribute__((swift_name("notModified")));
 @property (class, readonly) MockzillaKtor_httpVersionCheckResult *preconditionFailed __attribute__((swift_name("preconditionFailed")));
 + (MockzillaKotlinArray<MockzillaKtor_httpVersionCheckResult *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MockzillaKtor_httpVersionCheckResult *> *entries __attribute__((swift_name("entries")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *statusCode __attribute__((swift_name("statusCode")));
 @end
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_utilsGMTDate.Companion")))
-@interface MockzillaKtor_utilsGMTDateCompanion : MockzillaBase
+__attribute__((swift_name("Ktor_httpCookie.Companion")))
+@interface MockzillaKtor_httpCookieCompanion : MockzillaBase
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MockzillaKtor_utilsGMTDateCompanion *shared __attribute__((swift_name("shared")));
-@property (readonly) MockzillaKtor_utilsGMTDate *START __attribute__((swift_name("START")));
+@property (class, readonly, getter=shared) MockzillaKtor_httpCookieCompanion *shared __attribute__((swift_name("shared")));
+- (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -2282,6 +2278,7 @@ __attribute__((swift_name("Ktor_utilsWeekDay")))
 @property (class, readonly) MockzillaKtor_utilsWeekDay *saturday __attribute__((swift_name("saturday")));
 @property (class, readonly) MockzillaKtor_utilsWeekDay *sunday __attribute__((swift_name("sunday")));
 + (MockzillaKotlinArray<MockzillaKtor_utilsWeekDay *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MockzillaKtor_utilsWeekDay *> *entries __attribute__((swift_name("entries")));
 @property (readonly) NSString *value __attribute__((swift_name("value")));
 @end
 
@@ -2305,7 +2302,30 @@ __attribute__((swift_name("Ktor_utilsMonth")))
 @property (class, readonly) MockzillaKtor_utilsMonth *november __attribute__((swift_name("november")));
 @property (class, readonly) MockzillaKtor_utilsMonth *december __attribute__((swift_name("december")));
 + (MockzillaKotlinArray<MockzillaKtor_utilsMonth *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MockzillaKtor_utilsMonth *> *entries __attribute__((swift_name("entries")));
 @property (readonly) NSString *value __attribute__((swift_name("value")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_utilsGMTDate.Companion")))
+@interface MockzillaKtor_utilsGMTDateCompanion : MockzillaBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MockzillaKtor_utilsGMTDateCompanion *shared __attribute__((swift_name("shared")));
+- (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@property (readonly) MockzillaKtor_utilsGMTDate *START __attribute__((swift_name("START")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_server_coreConnectorType.Companion")))
+@interface MockzillaKtor_server_coreConnectorTypeCompanion : MockzillaBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MockzillaKtor_server_coreConnectorTypeCompanion *shared __attribute__((swift_name("shared")));
+@property (readonly) MockzillaKtor_server_coreConnectorType *HTTP __attribute__((swift_name("HTTP")));
+@property (readonly) MockzillaKtor_server_coreConnectorType *HTTPS __attribute__((swift_name("HTTPS")));
 @end
 
 __attribute__((objc_subclassing_restricted))
