@@ -8,7 +8,7 @@
 
 @class MockzillaKermitLogger, MockzillaKermitLoggerCompanion, MockzillaKermit_coreBaseLogger, MockzillaKermit_coreLogWriter, MockzillaKermit_coreSeverity, MockzillaKeychainSettings, MockzillaKotlinArray<T>, MockzillaKotlinByteArray, MockzillaKotlinByteIterator, MockzillaKotlinEnum<E>, MockzillaKotlinEnumCompanion, MockzillaKotlinException, MockzillaKotlinIllegalStateException, MockzillaKotlinKTypeProjection, MockzillaKotlinKTypeProjectionCompanion, MockzillaKotlinKVariance, MockzillaKotlinNothing, MockzillaKotlinPair<__covariant A, __covariant B>, MockzillaKotlinRuntimeException, MockzillaKotlinThrowable, MockzillaKotlinUnit, MockzillaKotlinx_io_coreBuffer, MockzillaKotlinx_serialization_coreSerialKind, MockzillaKotlinx_serialization_coreSerializersModule, MockzillaKtor_eventsEventDefinition<T>, MockzillaKtor_eventsEvents, MockzillaKtor_httpCookie, MockzillaKtor_httpCookieCompanion, MockzillaKtor_httpCookieEncoding, MockzillaKtor_httpHeadersBuilder, MockzillaKtor_httpHttpMethod, MockzillaKtor_httpHttpMethodCompanion, MockzillaKtor_httpHttpStatusCode, MockzillaKtor_httpHttpStatusCodeCompanion, MockzillaKtor_httpURLBuilder, MockzillaKtor_httpURLBuilderCompanion, MockzillaKtor_httpURLProtocol, MockzillaKtor_httpURLProtocolCompanion, MockzillaKtor_httpUrl, MockzillaKtor_httpUrlCompanion, MockzillaKtor_httpVersionCheckResult, MockzillaKtor_server_coreApplication, MockzillaKtor_server_coreApplicationCallPipeline, MockzillaKtor_server_coreApplicationCallPipelineApplicationPhase, MockzillaKtor_server_coreApplicationReceivePipeline, MockzillaKtor_server_coreApplicationReceivePipelinePhases, MockzillaKtor_server_coreApplicationSendPipeline, MockzillaKtor_server_coreApplicationSendPipelinePhases, MockzillaKtor_server_coreConnectorType, MockzillaKtor_server_coreConnectorTypeCompanion, MockzillaKtor_server_coreRequestCookies, MockzillaKtor_server_coreResponseCookies, MockzillaKtor_server_coreResponseHeaders, MockzillaKtor_utilsAttributeKey<T>, MockzillaKtor_utilsGMTDate, MockzillaKtor_utilsGMTDateCompanion, MockzillaKtor_utilsLogLevel, MockzillaKtor_utilsMonth, MockzillaKtor_utilsMonthCompanion, MockzillaKtor_utilsPipeline<TSubject, TContext>, MockzillaKtor_utilsPipelinePhase, MockzillaKtor_utilsStringValuesBuilderImpl, MockzillaKtor_utilsTypeInfo, MockzillaKtor_utilsWeekDay, MockzillaKtor_utilsWeekDayCompanion, MockzillaMockzilla_commonAuthHeaderProviderHeader, MockzillaMockzilla_commonDashboardOptionsConfig, MockzillaMockzilla_commonDashboardOptionsConfigBuilder, MockzillaMockzilla_commonDashboardOptionsConfigCompanion, MockzillaMockzilla_commonDashboardOverridePreset, MockzillaMockzilla_commonDashboardOverridePresetCompanion, MockzillaMockzilla_commonEndpointConfiguration, MockzillaMockzilla_commonEndpointConfigurationBuilder, MockzillaMockzilla_commonMetaData, MockzillaMockzilla_commonMetaDataCompanion, MockzillaMockzilla_commonMockzillaConfig, MockzillaMockzilla_commonMockzillaConfigBuilder, MockzillaMockzilla_commonMockzillaConfigBuilderCompanion, MockzillaMockzilla_commonMockzillaConfigLogLevel, MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig, MockzillaMockzilla_commonMockzillaHttpResponse, MockzillaMockzilla_commonMockzillaHttpResponseCompanion, MockzillaMockzilla_commonMockzillaRuntimeParams, MockzillaMockzilla_commonRunTarget, MockzillaZeroConfDiscoveryServiceImplCompanion;
 
-@protocol MockzillaKermit_coreLoggerConfig, MockzillaKermit_coreMutableLoggerConfig, MockzillaKotlinAnnotation, MockzillaKotlinAutoCloseable, MockzillaKotlinComparable, MockzillaKotlinCoroutineContext, MockzillaKotlinCoroutineContextElement, MockzillaKotlinCoroutineContextKey, MockzillaKotlinFunction, MockzillaKotlinIterator, MockzillaKotlinKAnnotatedElement, MockzillaKotlinKClass, MockzillaKotlinKClassifier, MockzillaKotlinKDeclarationContainer, MockzillaKotlinKType, MockzillaKotlinMapEntry, MockzillaKotlinSuspendFunction2, MockzillaKotlinx_coroutines_coreCoroutineScope, MockzillaKotlinx_coroutines_coreDisposableHandle, MockzillaKotlinx_io_coreRawSink, MockzillaKotlinx_io_coreRawSource, MockzillaKotlinx_io_coreSink, MockzillaKotlinx_io_coreSource, MockzillaKotlinx_serialization_coreCompositeDecoder, MockzillaKotlinx_serialization_coreCompositeEncoder, MockzillaKotlinx_serialization_coreDecoder, MockzillaKotlinx_serialization_coreDeserializationStrategy, MockzillaKotlinx_serialization_coreEncoder, MockzillaKotlinx_serialization_coreKSerializer, MockzillaKotlinx_serialization_coreSerialDescriptor, MockzillaKotlinx_serialization_coreSerializationStrategy, MockzillaKotlinx_serialization_coreSerializersModuleCollector, MockzillaKtor_httpHeaders, MockzillaKtor_httpParameters, MockzillaKtor_httpParametersBuilder, MockzillaKtor_httpRequestConnectionPoint, MockzillaKtor_httpVersion, MockzillaKtor_ioByteReadChannel, MockzillaKtor_server_coreApplicationCall, MockzillaKtor_server_coreApplicationConfig, MockzillaKtor_server_coreApplicationConfigValue, MockzillaKtor_server_coreApplicationEngine, MockzillaKtor_server_coreApplicationEnvironment, MockzillaKtor_server_coreApplicationRequest, MockzillaKtor_server_coreApplicationResponse, MockzillaKtor_server_coreEngineConnectorConfig, MockzillaKtor_server_corePipelineCall, MockzillaKtor_server_corePipelineResponse, MockzillaKtor_server_coreResponsePushBuilder, MockzillaKtor_utilsAttributes, MockzillaKtor_utilsLogger, MockzillaKtor_utilsStringValues, MockzillaKtor_utilsStringValuesBuilder, MockzillaMockzilla_commonAuthHeaderProvider, MockzillaMockzilla_commonMockzillaHttpRequest, MockzillaMockzilla_commonMockzillaLogWriter, MockzillaZeroConfDiscoveryService;
+@protocol MockzillaKermit_coreLoggerConfig, MockzillaKermit_coreMutableLoggerConfig, MockzillaKotlinAnnotation, MockzillaKotlinAutoCloseable, MockzillaKotlinComparable, MockzillaKotlinCoroutineContext, MockzillaKotlinCoroutineContextElement, MockzillaKotlinCoroutineContextKey, MockzillaKotlinFunction, MockzillaKotlinIterator, MockzillaKotlinKAnnotatedElement, MockzillaKotlinKClass, MockzillaKotlinKClassifier, MockzillaKotlinKDeclarationContainer, MockzillaKotlinKType, MockzillaKotlinMapEntry, MockzillaKotlinSuspendFunction2, MockzillaKotlinx_coroutines_coreCoroutineScope, MockzillaKotlinx_coroutines_coreDisposableHandle, MockzillaKotlinx_io_coreRawSink, MockzillaKotlinx_io_coreRawSource, MockzillaKotlinx_io_coreSink, MockzillaKotlinx_io_coreSource, MockzillaKotlinx_serialization_coreCompositeDecoder, MockzillaKotlinx_serialization_coreCompositeEncoder, MockzillaKotlinx_serialization_coreDecoder, MockzillaKotlinx_serialization_coreDeserializationStrategy, MockzillaKotlinx_serialization_coreEncoder, MockzillaKotlinx_serialization_coreKSerializer, MockzillaKotlinx_serialization_coreSerialDescriptor, MockzillaKotlinx_serialization_coreSerializationStrategy, MockzillaKotlinx_serialization_coreSerializersModuleCollector, MockzillaKtor_httpHeaders, MockzillaKtor_httpParameters, MockzillaKtor_httpParametersBuilder, MockzillaKtor_httpRequestConnectionPoint, MockzillaKtor_httpVersion, MockzillaKtor_ioByteReadChannel, MockzillaKtor_ioJvmSerializable, MockzillaKtor_server_coreApplicationCall, MockzillaKtor_server_coreApplicationConfig, MockzillaKtor_server_coreApplicationConfigValue, MockzillaKtor_server_coreApplicationEngine, MockzillaKtor_server_coreApplicationEnvironment, MockzillaKtor_server_coreApplicationRequest, MockzillaKtor_server_coreApplicationResponse, MockzillaKtor_server_coreEngineConnectorConfig, MockzillaKtor_server_corePipelineCall, MockzillaKtor_server_corePipelineResponse, MockzillaKtor_server_coreResponsePushBuilder, MockzillaKtor_utilsAttributes, MockzillaKtor_utilsLogger, MockzillaKtor_utilsStringValues, MockzillaKtor_utilsStringValuesBuilder, MockzillaMockzilla_commonAuthHeaderProvider, MockzillaMockzilla_commonMockzillaHttpRequest, MockzillaMockzilla_commonMockzillaLogWriter, MockzillaZeroConfDiscoveryService;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -989,66 +989,16 @@ __attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
 __attribute__((swift_name("Kotlinx_serialization_coreSerialDescriptor")))
 @protocol MockzillaKotlinx_serialization_coreSerialDescriptor
 @required
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 - (NSArray<id<MockzillaKotlinAnnotation>> *)getElementAnnotationsIndex:(int32_t)index __attribute__((swift_name("getElementAnnotations(index:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 - (id<MockzillaKotlinx_serialization_coreSerialDescriptor>)getElementDescriptorIndex:(int32_t)index __attribute__((swift_name("getElementDescriptor(index:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 - (int32_t)getElementIndexName:(NSString *)name __attribute__((swift_name("getElementIndex(name:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 - (NSString *)getElementNameIndex:(int32_t)index __attribute__((swift_name("getElementName(index:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 - (BOOL)isElementOptionalIndex:(int32_t)index __attribute__((swift_name("isElementOptional(index:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 @property (readonly) NSArray<id<MockzillaKotlinAnnotation>> *annotations __attribute__((swift_name("annotations")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 @property (readonly) int32_t elementsCount __attribute__((swift_name("elementsCount")));
 @property (readonly) BOOL isInline __attribute__((swift_name("isInline")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 @property (readonly) BOOL isNullable __attribute__((swift_name("isNullable")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 @property (readonly) MockzillaKotlinx_serialization_coreSerialKind *kind __attribute__((swift_name("kind")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 @property (readonly) NSString *serialName __attribute__((swift_name("serialName")));
 @end
 
@@ -1355,11 +1305,6 @@ __attribute__((swift_name("KotlinAnnotation")))
 @required
 @end
 
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 __attribute__((swift_name("Kotlinx_serialization_coreSerialKind")))
 @interface MockzillaKotlinx_serialization_coreSerialKind : MockzillaBase
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -2110,6 +2055,11 @@ __attribute__((swift_name("Ktor_server_corePipelineResponse")))
 @property (readonly) MockzillaKtor_server_coreApplicationSendPipeline *pipeline __attribute__((swift_name("pipeline")));
 @end
 
+__attribute__((swift_name("Ktor_ioJvmSerializable")))
+@protocol MockzillaKtor_ioJvmSerializable
+@required
+@end
+
 
 /**
  * @note annotations
@@ -2117,7 +2067,7 @@ __attribute__((swift_name("Ktor_server_corePipelineResponse")))
 */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpCookie")))
-@interface MockzillaKtor_httpCookie : MockzillaBase
+@interface MockzillaKtor_httpCookie : MockzillaBase <MockzillaKtor_ioJvmSerializable>
 - (instancetype)initWithName:(NSString *)name value:(NSString *)value encoding:(MockzillaKtor_httpCookieEncoding *)encoding maxAge:(MockzillaInt * _Nullable)maxAge expires:(MockzillaKtor_utilsGMTDate * _Nullable)expires domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path secure:(BOOL)secure httpOnly:(BOOL)httpOnly extensions:(NSDictionary<NSString *, id> *)extensions __attribute__((swift_name("init(name:value:encoding:maxAge:expires:domain:path:secure:httpOnly:extensions:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaKtor_httpCookieCompanion *companion __attribute__((swift_name("companion")));
 - (MockzillaKtor_httpCookie *)doCopyName:(NSString *)name value:(NSString *)value encoding:(MockzillaKtor_httpCookieEncoding *)encoding maxAge:(MockzillaInt * _Nullable)maxAge expires:(MockzillaKtor_utilsGMTDate * _Nullable)expires domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path secure:(BOOL)secure httpOnly:(BOOL)httpOnly extensions:(NSDictionary<NSString *, id> *)extensions __attribute__((swift_name("doCopy(name:value:encoding:maxAge:expires:domain:path:secure:httpOnly:extensions:)")));
@@ -2245,7 +2195,7 @@ __attribute__((swift_name("Ktor_server_coreConnectorType")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpURLProtocol")))
-@interface MockzillaKtor_httpURLProtocol : MockzillaBase
+@interface MockzillaKtor_httpURLProtocol : MockzillaBase <MockzillaKtor_ioJvmSerializable>
 - (instancetype)initWithName:(NSString *)name defaultPort:(int32_t)defaultPort __attribute__((swift_name("init(name:defaultPort:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaKtor_httpURLProtocolCompanion *companion __attribute__((swift_name("companion")));
 - (MockzillaKtor_httpURLProtocol *)doCopyName:(NSString *)name defaultPort:(int32_t)defaultPort __attribute__((swift_name("doCopy(name:defaultPort:)")));
@@ -2265,9 +2215,14 @@ __attribute__((swift_name("Ktor_httpURLBuilder.Companion")))
 @property (class, readonly, getter=shared) MockzillaKtor_httpURLBuilderCompanion *shared __attribute__((swift_name("shared")));
 @end
 
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.Serializable(with=NormalClass(value=io/ktor/http/UrlSerializer))
+*/
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpUrl")))
-@interface MockzillaKtor_httpUrl : MockzillaBase
+@interface MockzillaKtor_httpUrl : MockzillaBase <MockzillaKtor_ioJvmSerializable>
 @property (class, readonly, getter=companion) MockzillaKtor_httpUrlCompanion *companion __attribute__((swift_name("companion")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -2410,6 +2365,7 @@ __attribute__((swift_name("Ktor_httpUrl.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_httpUrlCompanion *shared __attribute__((swift_name("shared")));
+- (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
 __attribute__((objc_subclassing_restricted))
