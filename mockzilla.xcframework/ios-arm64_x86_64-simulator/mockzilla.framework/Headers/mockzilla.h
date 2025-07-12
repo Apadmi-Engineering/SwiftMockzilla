@@ -249,6 +249,30 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig")))
 - (void)validateInfoPlistOrThrow __attribute__((swift_name("validateInfoPlistOrThrow()")));
 @end
 
+__attribute__((swift_name("KotlinThrowable")))
+@interface MockzillaKotlinThrowable : MockzillaBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
+
+/**
+ * @note annotations
+ *   kotlin.experimental.ExperimentalNativeApi
+*/
+- (MockzillaKotlinArray<NSString *> *)getStackTrace __attribute__((swift_name("getStackTrace()")));
+- (void)printStackTrace __attribute__((swift_name("printStackTrace()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) MockzillaKotlinThrowable * _Nullable cause __attribute__((swift_name("cause")));
+@property (readonly) NSString * _Nullable message __attribute__((swift_name("message")));
+- (NSError *)asError __attribute__((swift_name("asError()")));
+@end
+
+@interface MockzillaKotlinThrowable (Extensions)
+- (BOOL)isSomeMatchInChainPredicate:(MockzillaBoolean *(^)(MockzillaKotlinThrowable *))predicate __attribute__((swift_name("isSomeMatchInChain(predicate:)")));
+@end
+
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("MockzillaKt")))
 @interface MockzillaMockzillaKt : MockzillaBase
@@ -283,26 +307,6 @@ __attribute__((swift_name("NestedClassBridgeGenerationKt")))
  * @return
  */
 + (void)noOpConfigBuilderNoop:(MockzillaMockzilla_commonMockzillaConfigBuilder *)noop __attribute__((swift_name("noOpConfigBuilder(noop:)")));
-@end
-
-__attribute__((swift_name("KotlinThrowable")))
-@interface MockzillaKotlinThrowable : MockzillaBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
-
-/**
- * @note annotations
- *   kotlin.experimental.ExperimentalNativeApi
-*/
-- (MockzillaKotlinArray<NSString *> *)getStackTrace __attribute__((swift_name("getStackTrace()")));
-- (void)printStackTrace __attribute__((swift_name("printStackTrace()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) MockzillaKotlinThrowable * _Nullable cause __attribute__((swift_name("cause")));
-@property (readonly) NSString * _Nullable message __attribute__((swift_name("message")));
-- (NSError *)asError __attribute__((swift_name("asError()")));
 @end
 
 __attribute__((swift_name("KotlinException")))
@@ -571,12 +575,13 @@ __attribute__((swift_name("Mockzilla_commonMockzillaLogWriter")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonPortConflictException")))
 @interface MockzillaMockzilla_commonPortConflictException : MockzillaKotlinRuntimeException
-- (instancetype)initWithPort:(int32_t)port __attribute__((swift_name("init(port:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithPort:(int32_t)port cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(port:cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 + (instancetype)new __attribute__((unavailable));
 - (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 - (instancetype)initWithCause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 - (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MockzillaKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (readonly) MockzillaKotlinThrowable * _Nullable cause __attribute__((swift_name("cause")));
 @property (readonly) NSString *message __attribute__((swift_name("message")));
 @property (readonly) int32_t port __attribute__((swift_name("port")));
 @end
