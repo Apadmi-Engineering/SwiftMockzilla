@@ -227,13 +227,57 @@ __attribute__((swift_name("KeychainSettings")))
 @property (readonly) int32_t size __attribute__((swift_name("size")));
 @end
 
+
+/**
+ * @property port
+ * @property endpoints
+ * @property logLevel
+ * @property isRelease
+ * @property releaseModeConfig
+ * @property localhostOnly
+ * @property additionalLogWriters
+ * @property isNetworkDiscoveryEnabled
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonMockzillaConfig")))
 @interface MockzillaMockzilla_commonMockzillaConfig : MockzillaBase
 - (instancetype)initWithPort:(int32_t)port endpoints:(NSArray<MockzillaMockzilla_commonEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *)releaseModeConfig isNetworkDiscoveryEnabled:(BOOL)isNetworkDiscoveryEnabled additionalLogWriters:(NSArray<id<MockzillaMockzilla_commonMockzillaLogWriter>> *)additionalLogWriters __attribute__((swift_name("init(port:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:isNetworkDiscoveryEnabled:additionalLogWriters:)"))) __attribute__((objc_designated_initializer));
 - (MockzillaMockzilla_commonMockzillaConfig *)doCopyPort:(int32_t)port endpoints:(NSArray<MockzillaMockzilla_commonEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *)releaseModeConfig isNetworkDiscoveryEnabled:(BOOL)isNetworkDiscoveryEnabled additionalLogWriters:(NSArray<id<MockzillaMockzilla_commonMockzillaLogWriter>> *)additionalLogWriters __attribute__((swift_name("doCopy(port:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:isNetworkDiscoveryEnabled:additionalLogWriters:)")));
+
+/**
+ * @property port
+ * @property endpoints
+ * @property logLevel
+ * @property isRelease
+ * @property releaseModeConfig
+ * @property localhostOnly
+ * @property additionalLogWriters
+ * @property isNetworkDiscoveryEnabled
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property port
+ * @property endpoints
+ * @property logLevel
+ * @property isRelease
+ * @property releaseModeConfig
+ * @property localhostOnly
+ * @property additionalLogWriters
+ * @property isNetworkDiscoveryEnabled
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * @property port
+ * @property endpoints
+ * @property logLevel
+ * @property isRelease
+ * @property releaseModeConfig
+ * @property localhostOnly
+ * @property additionalLogWriters
+ * @property isNetworkDiscoveryEnabled
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSArray<id<MockzillaMockzilla_commonMockzillaLogWriter>> *additionalLogWriters __attribute__((swift_name("additionalLogWriters")));
 @property (readonly) NSArray<MockzillaMockzilla_commonEndpointConfiguration *> *endpoints __attribute__((swift_name("endpoints")));
@@ -352,6 +396,17 @@ __attribute__((swift_name("KotlinCancellationException")))
 
 
 /**
+ * @property appName
+ * @property appPackage
+ * @property operatingSystemVersion
+ * @property deviceModel
+ * @property appVersion
+ * @property runTarget
+ * @property mockzillaVersion
+ *
+ * Don't add non optional fields to this type since that will break backward compatibility
+ *
+ *
  * @note annotations
  *   kotlinx.serialization.Serializable
 */
@@ -361,9 +416,48 @@ __attribute__((swift_name("Mockzilla_commonMetaData")))
 - (instancetype)initWithAppName:(NSString *)appName appPackage:(NSString *)appPackage operatingSystemVersion:(NSString *)operatingSystemVersion deviceModel:(NSString *)deviceModel appVersion:(NSString *)appVersion runTarget:(MockzillaMockzilla_commonRunTarget * _Nullable)runTarget mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("init(appName:appPackage:operatingSystemVersion:deviceModel:appVersion:runTarget:mockzillaVersion:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaMockzilla_commonMetaDataCompanion *companion __attribute__((swift_name("companion")));
 - (MockzillaMockzilla_commonMetaData *)doCopyAppName:(NSString *)appName appPackage:(NSString *)appPackage operatingSystemVersion:(NSString *)operatingSystemVersion deviceModel:(NSString *)deviceModel appVersion:(NSString *)appVersion runTarget:(MockzillaMockzilla_commonRunTarget * _Nullable)runTarget mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("doCopy(appName:appPackage:operatingSystemVersion:deviceModel:appVersion:runTarget:mockzillaVersion:)")));
+
+/**
+ * @property appName
+ * @property appPackage
+ * @property operatingSystemVersion
+ * @property deviceModel
+ * @property appVersion
+ * @property runTarget
+ * @property mockzillaVersion
+ *
+ * Don't add non optional fields to this type since that will break backward compatibility
+ *
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property appName
+ * @property appPackage
+ * @property operatingSystemVersion
+ * @property deviceModel
+ * @property appVersion
+ * @property runTarget
+ * @property mockzillaVersion
+ *
+ * Don't add non optional fields to this type since that will break backward compatibility
+ *
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSDictionary<NSString *, NSString *> *)toMap __attribute__((swift_name("toMap()")));
+
+/**
+ * @property appName
+ * @property appPackage
+ * @property operatingSystemVersion
+ * @property deviceModel
+ * @property appVersion
+ * @property runTarget
+ * @property mockzillaVersion
+ *
+ * Don't add non optional fields to this type since that will break backward compatibility
+ *
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *appName __attribute__((swift_name("appName")));
 @property (readonly) NSString *appPackage __attribute__((swift_name("appPackage")));
@@ -500,13 +594,61 @@ __attribute__((swift_name("KotlinArray")))
 @property (readonly) int32_t size __attribute__((swift_name("size")));
 @end
 
+
+/**
+ * @property name
+ * @property key
+ * @property shouldFail
+ * @property delay
+ * @property endpointMatcher
+ * @property versionCode
+ * @property defaultHandler
+ * @property errorHandler
+ * @property dashboardOptionsConfig
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonEndpointConfiguration")))
 @interface MockzillaMockzilla_commonEndpointConfiguration : MockzillaBase
 - (instancetype)initWithName:(NSString *)name key:(id)key shouldFail:(BOOL)shouldFail delay:(MockzillaInt * _Nullable)delay dashboardOptionsConfig:(MockzillaMockzilla_commonDashboardOptionsConfig *)dashboardOptionsConfig versionCode:(int32_t)versionCode endpointMatcher:(MockzillaBoolean *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))endpointMatcher defaultHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))defaultHandler errorHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))errorHandler __attribute__((swift_name("init(name:key:shouldFail:delay:dashboardOptionsConfig:versionCode:endpointMatcher:defaultHandler:errorHandler:)"))) __attribute__((objc_designated_initializer));
 - (MockzillaMockzilla_commonEndpointConfiguration *)doCopyName:(NSString *)name key:(id)key shouldFail:(BOOL)shouldFail delay:(MockzillaInt * _Nullable)delay dashboardOptionsConfig:(MockzillaMockzilla_commonDashboardOptionsConfig *)dashboardOptionsConfig versionCode:(int32_t)versionCode endpointMatcher:(MockzillaBoolean *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))endpointMatcher defaultHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))defaultHandler errorHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))errorHandler __attribute__((swift_name("doCopy(name:key:shouldFail:delay:dashboardOptionsConfig:versionCode:endpointMatcher:defaultHandler:errorHandler:)")));
+
+/**
+ * @property name
+ * @property key
+ * @property shouldFail
+ * @property delay
+ * @property endpointMatcher
+ * @property versionCode
+ * @property defaultHandler
+ * @property errorHandler
+ * @property dashboardOptionsConfig
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property name
+ * @property key
+ * @property shouldFail
+ * @property delay
+ * @property endpointMatcher
+ * @property versionCode
+ * @property defaultHandler
+ * @property errorHandler
+ * @property dashboardOptionsConfig
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * @property name
+ * @property key
+ * @property shouldFail
+ * @property delay
+ * @property endpointMatcher
+ * @property versionCode
+ * @property defaultHandler
+ * @property errorHandler
+ * @property dashboardOptionsConfig
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) MockzillaMockzilla_commonDashboardOptionsConfig *dashboardOptionsConfig __attribute__((swift_name("dashboardOptionsConfig")));
 @property (readonly) MockzillaMockzilla_commonMockzillaHttpResponse *(^defaultHandler)(id<MockzillaMockzilla_commonMockzillaHttpRequest>) __attribute__((swift_name("defaultHandler")));
@@ -553,13 +695,49 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.LogLevel")))
 @property (class, readonly) NSArray<MockzillaMockzilla_commonMockzillaConfigLogLevel *> *entries __attribute__((swift_name("entries")));
 @end
 
+
+/**
+ * Rate Limiting: Uses Ktor's rate limiting, params described here: https://ktor.io/docs/rate-limit.html#configure-rate-limiting
+ * Each network call will require a token with the provided lifespan
+ *
+ * @property rateLimit
+ * @property rateLimitRefillPeriod
+ * @property tokenLifeSpan
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonMockzillaConfig.ReleaseModeConfig")))
 @interface MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig : MockzillaBase
 - (instancetype)initWithRateLimit:(int32_t)rateLimit rateLimitRefillPeriod:(int64_t)rateLimitRefillPeriod tokenLifeSpan:(int64_t)tokenLifeSpan __attribute__((swift_name("init(rateLimit:rateLimitRefillPeriod:tokenLifeSpan:)"))) __attribute__((objc_designated_initializer));
 - (MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *)doCopyRateLimit:(int32_t)rateLimit rateLimitRefillPeriod:(int64_t)rateLimitRefillPeriod tokenLifeSpan:(int64_t)tokenLifeSpan __attribute__((swift_name("doCopy(rateLimit:rateLimitRefillPeriod:tokenLifeSpan:)")));
+
+/**
+ * Rate Limiting: Uses Ktor's rate limiting, params described here: https://ktor.io/docs/rate-limit.html#configure-rate-limiting
+ * Each network call will require a token with the provided lifespan
+ *
+ * @property rateLimit
+ * @property rateLimitRefillPeriod
+ * @property tokenLifeSpan
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Rate Limiting: Uses Ktor's rate limiting, params described here: https://ktor.io/docs/rate-limit.html#configure-rate-limiting
+ * Each network call will require a token with the provided lifespan
+ *
+ * @property rateLimit
+ * @property rateLimitRefillPeriod
+ * @property tokenLifeSpan
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * Rate Limiting: Uses Ktor's rate limiting, params described here: https://ktor.io/docs/rate-limit.html#configure-rate-limiting
+ * Each network call will require a token with the provided lifespan
+ *
+ * @property rateLimit
+ * @property rateLimitRefillPeriod
+ * @property tokenLifeSpan
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) int32_t rateLimit __attribute__((swift_name("rateLimit")));
 @property (readonly) int64_t rateLimitRefillPeriod __attribute__((swift_name("rateLimitRefillPeriod")));
@@ -572,6 +750,15 @@ __attribute__((swift_name("Mockzilla_commonMockzillaLogWriter")))
 - (void)logLogLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel message:(NSString *)message tag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable __attribute__((swift_name("log(logLevel:message:tag:throwable:)")));
 @end
 
+
+/**
+ * Thrown when attempting to start the Mockzilla server on a port that is occupied by another
+ * process. To resolve, either terminate the process occupying the port or update your
+ * `MockzillaConfig`.
+ *
+ * @property port The number of the port that was used to start the Mockzilla server.
+ * @property cause
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonPortConflictException")))
 @interface MockzillaMockzilla_commonPortConflictException : MockzillaKotlinRuntimeException
@@ -586,18 +773,53 @@ __attribute__((swift_name("Mockzilla_commonPortConflictException")))
 @property (readonly) int32_t port __attribute__((swift_name("port")));
 @end
 
+
+/**
+ * @property config
+ * @property mockBaseUrl
+ * @property apiBaseUrl
+ * @property port
+ * @property authHeaderProvider
+ * @property mockzillaVersion
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonMockzillaRuntimeParams")))
 @interface MockzillaMockzilla_commonMockzillaRuntimeParams : MockzillaBase
-- (instancetype)initWithConfig:(MockzillaMockzilla_commonMockzillaConfig *)config ip:(NSString *)ip mockBaseUrl:(NSString *)mockBaseUrl apiBaseUrl:(NSString *)apiBaseUrl port:(int32_t)port authHeaderProvider:(id<MockzillaMockzilla_commonAuthHeaderProvider>)authHeaderProvider mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("init(config:ip:mockBaseUrl:apiBaseUrl:port:authHeaderProvider:mockzillaVersion:)"))) __attribute__((objc_designated_initializer));
-- (MockzillaMockzilla_commonMockzillaRuntimeParams *)doCopyConfig:(MockzillaMockzilla_commonMockzillaConfig *)config ip:(NSString *)ip mockBaseUrl:(NSString *)mockBaseUrl apiBaseUrl:(NSString *)apiBaseUrl port:(int32_t)port authHeaderProvider:(id<MockzillaMockzilla_commonAuthHeaderProvider>)authHeaderProvider mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("doCopy(config:ip:mockBaseUrl:apiBaseUrl:port:authHeaderProvider:mockzillaVersion:)")));
+- (instancetype)initWithConfig:(MockzillaMockzilla_commonMockzillaConfig *)config mockBaseUrl:(NSString *)mockBaseUrl apiBaseUrl:(NSString *)apiBaseUrl port:(int32_t)port authHeaderProvider:(id<MockzillaMockzilla_commonAuthHeaderProvider>)authHeaderProvider mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("init(config:mockBaseUrl:apiBaseUrl:port:authHeaderProvider:mockzillaVersion:)"))) __attribute__((objc_designated_initializer));
+- (MockzillaMockzilla_commonMockzillaRuntimeParams *)doCopyConfig:(MockzillaMockzilla_commonMockzillaConfig *)config mockBaseUrl:(NSString *)mockBaseUrl apiBaseUrl:(NSString *)apiBaseUrl port:(int32_t)port authHeaderProvider:(id<MockzillaMockzilla_commonAuthHeaderProvider>)authHeaderProvider mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("doCopy(config:mockBaseUrl:apiBaseUrl:port:authHeaderProvider:mockzillaVersion:)")));
+
+/**
+ * @property config
+ * @property mockBaseUrl
+ * @property apiBaseUrl
+ * @property port
+ * @property authHeaderProvider
+ * @property mockzillaVersion
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property config
+ * @property mockBaseUrl
+ * @property apiBaseUrl
+ * @property port
+ * @property authHeaderProvider
+ * @property mockzillaVersion
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * @property config
+ * @property mockBaseUrl
+ * @property apiBaseUrl
+ * @property port
+ * @property authHeaderProvider
+ * @property mockzillaVersion
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *apiBaseUrl __attribute__((swift_name("apiBaseUrl")));
 @property (readonly) id<MockzillaMockzilla_commonAuthHeaderProvider> authHeaderProvider __attribute__((swift_name("authHeaderProvider")));
 @property (readonly) MockzillaMockzilla_commonMockzillaConfig *config __attribute__((swift_name("config")));
-@property (readonly) NSString *ip __attribute__((swift_name("ip")));
 @property (readonly) NSString *mockBaseUrl __attribute__((swift_name("mockBaseUrl")));
 @property (readonly) NSString *mockzillaVersion __attribute__((swift_name("mockzillaVersion")));
 @property (readonly) int32_t port __attribute__((swift_name("port")));
@@ -609,19 +831,118 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.Builder")))
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 @property (class, readonly, getter=companion) MockzillaMockzilla_commonMockzillaConfigBuilderCompanion *companion __attribute__((swift_name("companion")));
+
+/**
+ * Register an new endpoint configuration
+ *
+ * @param endpoint
+ * @return
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)addEndpointEndpoint:(MockzillaMockzilla_commonEndpointConfiguration *)endpoint __attribute__((swift_name("addEndpoint(endpoint:)")));
+
+/**
+ * Register an new endpoint configuration
+ *
+ * @param endpoint
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)addEndpointEndpoint_:(MockzillaMockzilla_commonEndpointConfigurationBuilder *)endpoint __attribute__((swift_name("addEndpoint(endpoint_:)")));
+
+/**
+ * Register an additional log writer.
+ *
+ * Mockzilla logs will then log to standard output and to any additional log writers
+ *
+ * @param logWriter
+ * @return
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)addLogWriterLogWriter:(id<MockzillaMockzilla_commonMockzillaLogWriter>)logWriter __attribute__((swift_name("addLogWriter(logWriter:)")));
+
+/**
+ * Completes the builder pattern, returning an immutable config.
+ *
+ * @return
+ */
 - (MockzillaMockzilla_commonMockzillaConfig *)build __attribute__((swift_name("build()")));
+
+/**
+ * Used to simulate latency: The artificial delay Mockzilla with add to a network request.
+ * Value set on individual endpoints takes priority over this value
+ *
+ * @param delay delay in milliseconds
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setDelayMillis(delay:)")));
+
+/**
+ * Used to simulate latency:  The artificial variance in the delay Mockzillaadds to a network
+ * request. Used alongside [setMeanDelayMillis] to calculate the actual artificial delay on each
+ * invocation. Set this value to 0 to remove any randomness from the delay.
+ *
+ * Value set on individual endpoints takes priority over this value
+ *
+ * @param delay delay in milliseconds
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setDelayVarianceMillisVariance:(int32_t)variance __attribute__((swift_name("setDelayVarianceMillis(variance:)"))) __attribute__((deprecated("No longer supported, now does nothing")));
+
+/**
+ * No-Op
+ *
+ * @param percentage Not supported
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setFailureProbabilityPercentagePercentage:(int32_t)percentage __attribute__((swift_name("setFailureProbabilityPercentage(percentage:)"))) __attribute__((deprecated("Configuring failure on top level config is now not supported")));
+
+/**
+ * Setting this to false will stop Mockzilla from using Bonjour to broadcast itself on the network
+ * Note: Broadcast is disabled in release mode regardless of this flag's value
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setIsNetworkDiscoveryEnabledIsEnabled:(BOOL)isEnabled __attribute__((swift_name("setIsNetworkDiscoveryEnabled(isEnabled:)")));
+
+/**
+ * Enable or disable release mode. See [setReleaseModeConfig] for more details
+ *
+ * @param isRelease
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setIsReleaseModeEnabledIsRelease:(BOOL)isRelease __attribute__((swift_name("setIsReleaseModeEnabled(isRelease:)")));
+
+/**
+ * Setting this value to `true` means the mockzilla server will only accept calls from localhost.
+ * Calls from other IPs will be blocked (including blocking the Mockzilla web interface)
+ *
+ * @param localhostOnly
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setLocalhostOnlyLocalhostOnly:(BOOL)localhostOnly __attribute__((swift_name("setLocalhostOnly(localhostOnly:)")));
+
+/**
+ * Configures the level of Mockzilla's logging.
+ *
+ * @param level Defaults to `LogLevel.Info`
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setLogLevelLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)level __attribute__((swift_name("setLogLevel(level:)")));
+
+/**
+ * Used to simulate latency: The artificial mean delay Mockzilla with add to a network request.
+ *
+ * Value set on individual endpoints takes priority over this value
+ *
+ * @param delay delay in milliseconds
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setMeanDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setMeanDelayMillis(delay:)"))) __attribute__((deprecated("Delay is now constant with no variance")));
+
+/**
+ * Sets the port which the server will bind to. Setting port to `0` will cause the server to
+ * choose it's port auto-magically.
+ *
+ * @param port
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setPortPort:(int32_t)port __attribute__((swift_name("setPort(port:)")));
+
+/**
+ * Sets the mockzilla release config.
+ *
+ * By default the release mode:
+ * -  Introduces rate limiting to the server
+ * -  Enforces rudamentary token authentication on each request (see documentation).
+ * - Only allows connections from 127.0.0.1 (i.e from apps running on the device).
+ */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setReleaseModeConfigReleaseConfig:(MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *)releaseConfig __attribute__((swift_name("setReleaseModeConfig(releaseConfig:)")));
 @end
 
@@ -713,6 +1034,9 @@ __attribute__((swift_name("KotlinIterator")))
 
 
 /**
+ * @property errorPresets
+ * @property successPresets
+ *
  * @note annotations
  *   kotlinx.serialization.Serializable
 */
@@ -722,8 +1046,23 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig")))
 - (instancetype)initWithErrorPresets:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)errorPresets successPresets:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)successPresets __attribute__((swift_name("init(errorPresets:successPresets:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaMockzilla_commonDashboardOptionsConfigCompanion *companion __attribute__((swift_name("companion")));
 - (MockzillaMockzilla_commonDashboardOptionsConfig *)doCopyErrorPresets:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)errorPresets successPresets:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)successPresets __attribute__((swift_name("doCopy(errorPresets:successPresets:)")));
+
+/**
+ * @property errorPresets
+ * @property successPresets
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property errorPresets
+ * @property successPresets
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * @property errorPresets
+ * @property successPresets
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *errorPresets __attribute__((swift_name("errorPresets")));
 @property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *successPresets __attribute__((swift_name("successPresets")));
@@ -732,17 +1071,51 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig")))
 __attribute__((swift_name("Mockzilla_commonMockzillaHttpRequest")))
 @protocol MockzillaMockzilla_commonMockzillaHttpRequest
 @required
+
+/**
+ * @return The request body as a ByteArray. Probably only useful for non-string request payload.
+ * Most use cases probably should use [bodyAsString]
+ * It's safe to call this method multiple times.
+ */
 - (MockzillaKotlinByteArray *)bodyAsBytes __attribute__((swift_name("bodyAsBytes()")));
+
+/**
+ * @return The request body as a string. It's safe to call this method multiple times.
+ */
 - (NSString *)bodyAsString __attribute__((swift_name("bodyAsString()")));
+
+/**
+ * The string representation of the request body
+ */
 @property (readonly) NSString *body __attribute__((swift_name("body"))) __attribute__((deprecated("`body`is deprecated")));
+
+/**
+ * Network request's headers
+ */
 @property (readonly) NSDictionary<NSString *, NSString *> *headers __attribute__((swift_name("headers")));
+
+/**
+ * Network request method
+ */
 @property (readonly) MockzillaKtor_httpHttpMethod *method __attribute__((swift_name("method")));
+
+/**
+ * The underlying ktor [ApplicationRequest](https://api.ktor.io/ktor-server/ktor-server-core/io.ktor.server.request/-application-request/index.html).
+ */
 @property (readonly) id<MockzillaKtor_server_coreApplicationRequest> underlyingKtorRequest __attribute__((swift_name("underlyingKtorRequest")));
+
+/**
+ * The full uri of the network request
+ */
 @property (readonly) NSString *uri __attribute__((swift_name("uri")));
 @end
 
 
 /**
+ * @property statusCode
+ * @property headers
+ * @property body
+ *
  * @note annotations
  *   kotlinx.serialization.Serializable
 */
@@ -752,8 +1125,26 @@ __attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse")))
 - (instancetype)initWithStatusCode:(MockzillaKtor_httpHttpStatusCode *)statusCode headers:(NSDictionary<NSString *, NSString *> *)headers body:(NSString *)body __attribute__((swift_name("init(statusCode:headers:body:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaMockzilla_commonMockzillaHttpResponseCompanion *companion __attribute__((swift_name("companion")));
 - (MockzillaMockzilla_commonMockzillaHttpResponse *)doCopyStatusCode:(MockzillaKtor_httpHttpStatusCode *)statusCode headers:(NSDictionary<NSString *, NSString *> *)headers body:(NSString *)body __attribute__((swift_name("doCopy(statusCode:headers:body:)")));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *body __attribute__((swift_name("body")));
 @property (readonly) NSDictionary<NSString *, NSString *> *headers __attribute__((swift_name("headers")));
@@ -794,23 +1185,119 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.BuilderCompanion")))
 @property (class, readonly, getter=shared) MockzillaMockzilla_commonMockzillaConfigBuilderCompanion *shared __attribute__((swift_name("shared")));
 @end
 
+
+/**
+ * @param key An identifier for this endpoint. Endpoints cannot share an id.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
 @interface MockzillaMockzilla_commonEndpointConfigurationBuilder : MockzillaBase
 - (instancetype)initWithKey:(NSString *)key __attribute__((swift_name("init(key:)"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Completes the builder - returns the configuration.
+ *
+ * @return [EndpointConfiguration]
+ */
 - (MockzillaMockzilla_commonEndpointConfiguration *)build __attribute__((swift_name("build()")));
+
+/**
+ * Configure the presets that are available to users of the dashboard.
+ *
+ * @param action
+ * @return
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)configureDashboardOverridesAction:(MockzillaMockzilla_commonDashboardOptionsConfigBuilder *(^)(MockzillaMockzilla_commonDashboardOptionsConfigBuilder *))action __attribute__((swift_name("configureDashboardOverrides(action:)")));
+
+/**
+ * The block called when a network request is made to this endpoint. Note: If the value of
+ * [setShouldFail] causes Mockzilla to generate a failure response, then this block
+ * will *not* be called, instead the block specified by [setErrorHandler] is called.
+ *
+ * @param handler
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setDefaultHandlerHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))handler __attribute__((swift_name("setDefaultHandler(handler:)")));
+
+/**
+ * No longer supported
+ *
+ * @param delay delay in milliseconds
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setDelayVarianceMillisVariance:(int32_t)variance __attribute__((swift_name("setDelayVarianceMillis(variance:)"))) __attribute__((deprecated("No longer supported")));
+
+/**
+ * The block called when a network request is made to this endpoint but Mockzilladecides to
+ * simulate a server failure.
+ *
+ * @param handler
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setErrorHandlerHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))handler __attribute__((swift_name("setErrorHandler(handler:)")));
+
+/**
+ * Probability of Mockzilla returning a simulated http error for this endpoint. 100 being a
+ * guaranteed error .
+ *
+ * @param percentage (0 -> 100 inclusive)
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setFailureProbabilityPercentage:(int32_t)percentage __attribute__((swift_name("setFailureProbability(percentage:)"))) __attribute__((deprecated("Probabilities are no longer supported")));
+
+/**
+ * Used to simulate latency: The artificial mean delay Mockzilla with add to a network request.
+ * Used alongside [setMeanDelayMillis] to calculate the actual artificial delay on each invocation.
+ *
+ * @param delay delay in milliseconds
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setMeanDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setMeanDelayMillis(delay:)")));
+
+/**
+ * Sets the human readable name of the endpoint (defaults to the value of the `key`)
+ *
+ * @param name
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setNameName:(NSString *)name __attribute__((swift_name("setName(name:)")));
+
+/**
+ * Specifies whether Mockzilla should map a network request to this endpoint.
+ *
+ * Used to map an incoming network request to the correct endpoint. The URI is matched against
+ * the given regex.
+ *
+ * This is just a utility wrapper around the more flexible [setPatternMatcher] endpoint.
+ *
+ * @param regex
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setPatternRegex:(NSString *)regex __attribute__((swift_name("setPattern(regex:)")));
+
+/**
+ * Specifies whether Mockzilla should map a network request to this endpoint.
+ *
+ * @param matcher Used to map an incoming network request to the correct endpoint.
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setPatternMatcherMatcher:(MockzillaBoolean *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))matcher __attribute__((swift_name("setPatternMatcher(matcher:)")));
+
+/**
+ * Controls whether calls to this endpoint should fail by default
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setShouldFailShouldFail:(BOOL)shouldFail __attribute__((swift_name("setShouldFail(shouldFail:)")));
+
+/**
+ * Sets the version this endpoint is currently set to. A change in the version code will
+ * automatically clear any caches on the device associated with this endpoint.
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setVersionCodeCode:(int32_t)code __attribute__((swift_name("setVersionCode(code:)")));
+
+/**
+ * The response which is prefilled in the Mockzilla web page.
+ *
+ * @param response
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setWebApiDefaultResponseResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response __attribute__((swift_name("setWebApiDefaultResponse(response:)"))) __attribute__((deprecated("Obsolete, see `configureDashboardOverrides`")));
+
+/**
+ * The error response which is prefilled in the Mockzilla web page.
+ *
+ * @param response
+ */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setWebApiErrorResponseResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response __attribute__((swift_name("setWebApiErrorResponse(response:)"))) __attribute__((deprecated("Obsolete, see `configureDashboardOverrides`")));
 @end
 
@@ -843,6 +1330,10 @@ __attribute__((swift_name("Kermit_coreLogWriter")))
 
 
 /**
+ * @property name
+ * @property description
+ * @property response
+ *
  * @note annotations
  *   kotlinx.serialization.Serializable
 */
@@ -852,21 +1343,54 @@ __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset")))
 - (instancetype)initWithName:(NSString *)name description:(NSString * _Nullable)description response:(MockzillaMockzilla_commonMockzillaHttpResponse *)response __attribute__((swift_name("init(name:description:response:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaMockzilla_commonDashboardOverridePresetCompanion *companion __attribute__((swift_name("companion")));
 - (MockzillaMockzilla_commonDashboardOverridePreset *)doCopyName:(NSString *)name description:(NSString * _Nullable)description response:(MockzillaMockzilla_commonMockzillaHttpResponse *)response __attribute__((swift_name("doCopy(name:description:response:)")));
+
+/**
+ * @property name
+ * @property description
+ * @property response
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property name
+ * @property description
+ * @property response
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * @property name
+ * @property description
+ * @property response
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString * _Nullable description_ __attribute__((swift_name("description_")));
 @property (readonly) NSString *name __attribute__((swift_name("name")));
 @property (readonly) MockzillaMockzilla_commonMockzillaHttpResponse *response __attribute__((swift_name("response")));
 @end
 
+
+/**
+ * @property errorPresets
+ * @property successPresets
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Companion")))
 @interface MockzillaMockzilla_commonDashboardOptionsConfigCompanion : MockzillaBase
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * @property errorPresets
+ * @property successPresets
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaMockzilla_commonDashboardOptionsConfigCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * @property errorPresets
+ * @property successPresets
+ */
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
@@ -922,23 +1446,61 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode")))
 @property (readonly) int32_t value __attribute__((swift_name("value")));
 @end
 
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse.Companion")))
 @interface MockzillaMockzilla_commonMockzillaHttpResponseCompanion : MockzillaBase
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaMockzilla_commonMockzillaHttpResponseCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
+
+/**
+ * @property key
+ * @property value
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonAuthHeaderProviderHeader")))
 @interface MockzillaMockzilla_commonAuthHeaderProviderHeader : MockzillaBase
 - (instancetype)initWithKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("init(key:value:)"))) __attribute__((objc_designated_initializer));
 - (MockzillaMockzilla_commonAuthHeaderProviderHeader *)doCopyKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("doCopy(key:value:)")));
+
+/**
+ * @property key
+ * @property value
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property key
+ * @property value
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * @property key
+ * @property value
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *key __attribute__((swift_name("key")));
 @property (readonly) NSString *value __attribute__((swift_name("value")));
@@ -1045,13 +1607,31 @@ __attribute__((swift_name("Kotlinx_serialization_coreDecoder")))
 @property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
 @end
 
+
+/**
+ * @property name
+ * @property description
+ * @property response
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset.Companion")))
 @interface MockzillaMockzilla_commonDashboardOverridePresetCompanion : MockzillaBase
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * @property name
+ * @property description
+ * @property response
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaMockzilla_commonDashboardOverridePresetCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * @property name
+ * @property description
+ * @property response
+ */
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
