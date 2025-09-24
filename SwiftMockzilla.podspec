@@ -15,6 +15,6 @@ Pod::Spec.new do |spec|
                 
                 
     spec.vendored_frameworks = 'Mockzilla.xcframework'
-    s.source_files = 'mockzilla_ios/Sources/mockzilla_ios/**/*.swift'
+    spec.source_files = 'Sources/SwiftMockzilla/SwiftMockzilla.swift'
     spec.swift_version = '5.9.2'
 end
