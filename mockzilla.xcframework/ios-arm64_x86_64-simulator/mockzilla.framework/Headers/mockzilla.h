@@ -781,12 +781,13 @@ __attribute__((swift_name("Mockzilla_commonPortConflictException")))
  * @property port
  * @property authHeaderProvider
  * @property mockzillaVersion
+ * @property ip
  */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonMockzillaRuntimeParams")))
 @interface MockzillaMockzilla_commonMockzillaRuntimeParams : MockzillaBase
-- (instancetype)initWithConfig:(MockzillaMockzilla_commonMockzillaConfig *)config mockBaseUrl:(NSString *)mockBaseUrl apiBaseUrl:(NSString *)apiBaseUrl port:(int32_t)port authHeaderProvider:(id<MockzillaMockzilla_commonAuthHeaderProvider>)authHeaderProvider mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("init(config:mockBaseUrl:apiBaseUrl:port:authHeaderProvider:mockzillaVersion:)"))) __attribute__((objc_designated_initializer));
-- (MockzillaMockzilla_commonMockzillaRuntimeParams *)doCopyConfig:(MockzillaMockzilla_commonMockzillaConfig *)config mockBaseUrl:(NSString *)mockBaseUrl apiBaseUrl:(NSString *)apiBaseUrl port:(int32_t)port authHeaderProvider:(id<MockzillaMockzilla_commonAuthHeaderProvider>)authHeaderProvider mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("doCopy(config:mockBaseUrl:apiBaseUrl:port:authHeaderProvider:mockzillaVersion:)")));
+- (instancetype)initWithConfig:(MockzillaMockzilla_commonMockzillaConfig *)config ip:(NSString *)ip mockBaseUrl:(NSString *)mockBaseUrl apiBaseUrl:(NSString *)apiBaseUrl port:(int32_t)port authHeaderProvider:(id<MockzillaMockzilla_commonAuthHeaderProvider>)authHeaderProvider mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("init(config:ip:mockBaseUrl:apiBaseUrl:port:authHeaderProvider:mockzillaVersion:)"))) __attribute__((objc_designated_initializer));
+- (MockzillaMockzilla_commonMockzillaRuntimeParams *)doCopyConfig:(MockzillaMockzilla_commonMockzillaConfig *)config ip:(NSString *)ip mockBaseUrl:(NSString *)mockBaseUrl apiBaseUrl:(NSString *)apiBaseUrl port:(int32_t)port authHeaderProvider:(id<MockzillaMockzilla_commonAuthHeaderProvider>)authHeaderProvider mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("doCopy(config:ip:mockBaseUrl:apiBaseUrl:port:authHeaderProvider:mockzillaVersion:)")));
 
 /**
  * @property config
@@ -795,6 +796,7 @@ __attribute__((swift_name("Mockzilla_commonMockzillaRuntimeParams")))
  * @property port
  * @property authHeaderProvider
  * @property mockzillaVersion
+ * @property ip
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
@@ -805,6 +807,7 @@ __attribute__((swift_name("Mockzilla_commonMockzillaRuntimeParams")))
  * @property port
  * @property authHeaderProvider
  * @property mockzillaVersion
+ * @property ip
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 
@@ -815,11 +818,13 @@ __attribute__((swift_name("Mockzilla_commonMockzillaRuntimeParams")))
  * @property port
  * @property authHeaderProvider
  * @property mockzillaVersion
+ * @property ip
  */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *apiBaseUrl __attribute__((swift_name("apiBaseUrl")));
 @property (readonly) id<MockzillaMockzilla_commonAuthHeaderProvider> authHeaderProvider __attribute__((swift_name("authHeaderProvider")));
 @property (readonly) MockzillaMockzilla_commonMockzillaConfig *config __attribute__((swift_name("config")));
+@property (readonly) NSString *ip __attribute__((swift_name("ip")));
 @property (readonly) NSString *mockBaseUrl __attribute__((swift_name("mockBaseUrl")));
 @property (readonly) NSString *mockzillaVersion __attribute__((swift_name("mockzillaVersion")));
 @property (readonly) int32_t port __attribute__((swift_name("port")));
