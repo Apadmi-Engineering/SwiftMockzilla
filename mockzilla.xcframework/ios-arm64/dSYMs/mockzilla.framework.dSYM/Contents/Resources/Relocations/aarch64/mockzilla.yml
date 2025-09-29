@@ -1,6 +1,6 @@
 ---
 triple:          'arm64-apple-darwin'
-binary-path:     '/Users/runner/work/Mockzilla/Mockzilla/mockzilla/build/bin/iosArm64/releaseFramework/mockzilla.framework/mockzilla'
+binary-path:     '/Users/runner/work/Mockzilla/Mockzilla/mockzilla/build/bin/iosArm64/podReleaseFramework/mockzilla.framework/mockzilla'
 relocations:
   - { offsetInCU: 0x4CF, offset: 0x4CF, size: 0x8, addend: 0x0, symName: '_kfun:kotlinx.cinterop.CPointer#$<bridge-NUN>equals(kotlin.Any?){}kotlin.Boolean(kotlin.Any?){}kotlin.Boolean', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x1C4 }
   - { offsetInCU: 0x4D7, offset: 0x4D7, size: 0x8, addend: 0x0, symName: '_kfun:kotlinx.cinterop.CPointer#$<bridge-NU>hashCode(){}kotlin.Int(){}kotlin.Int', symObjAddr: 0x1C4, symBinAddr: 0x41C4, symSize: 0x88 }
