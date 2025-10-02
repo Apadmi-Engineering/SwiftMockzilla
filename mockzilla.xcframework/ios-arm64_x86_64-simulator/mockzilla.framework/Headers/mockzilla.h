@@ -910,7 +910,7 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.Builder")))
 
 /**
  * Setting this value to `true` means the mockzilla server will only accept calls from localhost.
- * Calls from other IPs will be blocked (including blocking the Mockzilla web interface)
+ * Calls from other IPs will be blocked (including blocking the Mockzilla desktop interface)
  *
  * @param localhostOnly
  */
@@ -1224,13 +1224,6 @@ __attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setDefaultHandlerHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))handler __attribute__((swift_name("setDefaultHandler(handler:)")));
 
 /**
- * No longer supported
- *
- * @param delay delay in milliseconds
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setDelayVarianceMillisVariance:(int32_t)variance __attribute__((swift_name("setDelayVarianceMillis(variance:)"))) __attribute__((deprecated("No longer supported")));
-
-/**
  * The block called when a network request is made to this endpoint but Mockzilladecides to
  * simulate a server failure.
  *
@@ -1290,20 +1283,6 @@ __attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
  * automatically clear any caches on the device associated with this endpoint.
  */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setVersionCodeCode:(int32_t)code __attribute__((swift_name("setVersionCode(code:)")));
-
-/**
- * The response which is prefilled in the Mockzilla web page.
- *
- * @param response
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setWebApiDefaultResponseResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response __attribute__((swift_name("setWebApiDefaultResponse(response:)"))) __attribute__((deprecated("Obsolete, see `configureDashboardOverrides`")));
-
-/**
- * The error response which is prefilled in the Mockzilla web page.
- *
- * @param response
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setWebApiErrorResponseResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response __attribute__((swift_name("setWebApiErrorResponse(response:)"))) __attribute__((deprecated("Obsolete, see `configureDashboardOverrides`")));
 @end
 
 __attribute__((swift_name("Kotlinx_serialization_coreSerializationStrategy")))
