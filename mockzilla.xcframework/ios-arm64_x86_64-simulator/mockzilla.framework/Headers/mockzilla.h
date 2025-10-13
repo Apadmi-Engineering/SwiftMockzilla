@@ -227,72 +227,6 @@ __attribute__((swift_name("KeychainSettings")))
 @property (readonly) int32_t size __attribute__((swift_name("size")));
 @end
 
-
-/**
- * @property port
- * @property endpoints
- * @property logLevel
- * @property isRelease
- * @property releaseModeConfig
- * @property localhostOnly
- * @property additionalLogWriters
- * @property isNetworkDiscoveryEnabled
- */
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonMockzillaConfig")))
-@interface MockzillaMockzilla_commonMockzillaConfig : MockzillaBase
-- (instancetype)initWithPort:(int32_t)port endpoints:(NSArray<MockzillaMockzilla_commonEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *)releaseModeConfig isNetworkDiscoveryEnabled:(BOOL)isNetworkDiscoveryEnabled additionalLogWriters:(NSArray<id<MockzillaMockzilla_commonMockzillaLogWriter>> *)additionalLogWriters __attribute__((swift_name("init(port:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:isNetworkDiscoveryEnabled:additionalLogWriters:)"))) __attribute__((objc_designated_initializer));
-- (MockzillaMockzilla_commonMockzillaConfig *)doCopyPort:(int32_t)port endpoints:(NSArray<MockzillaMockzilla_commonEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *)releaseModeConfig isNetworkDiscoveryEnabled:(BOOL)isNetworkDiscoveryEnabled additionalLogWriters:(NSArray<id<MockzillaMockzilla_commonMockzillaLogWriter>> *)additionalLogWriters __attribute__((swift_name("doCopy(port:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:isNetworkDiscoveryEnabled:additionalLogWriters:)")));
-
-/**
- * @property port
- * @property endpoints
- * @property logLevel
- * @property isRelease
- * @property releaseModeConfig
- * @property localhostOnly
- * @property additionalLogWriters
- * @property isNetworkDiscoveryEnabled
- */
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-
-/**
- * @property port
- * @property endpoints
- * @property logLevel
- * @property isRelease
- * @property releaseModeConfig
- * @property localhostOnly
- * @property additionalLogWriters
- * @property isNetworkDiscoveryEnabled
- */
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-
-/**
- * @property port
- * @property endpoints
- * @property logLevel
- * @property isRelease
- * @property releaseModeConfig
- * @property localhostOnly
- * @property additionalLogWriters
- * @property isNetworkDiscoveryEnabled
- */
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSArray<id<MockzillaMockzilla_commonMockzillaLogWriter>> *additionalLogWriters __attribute__((swift_name("additionalLogWriters")));
-@property (readonly) NSArray<MockzillaMockzilla_commonEndpointConfiguration *> *endpoints __attribute__((swift_name("endpoints")));
-@property (readonly) BOOL isNetworkDiscoveryEnabled __attribute__((swift_name("isNetworkDiscoveryEnabled")));
-@property (readonly) BOOL isRelease __attribute__((swift_name("isRelease")));
-@property (readonly) BOOL localhostOnly __attribute__((swift_name("localhostOnly")));
-@property (readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *logLevel __attribute__((swift_name("logLevel")));
-@property (readonly) int32_t port __attribute__((swift_name("port")));
-@property (readonly) MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *releaseModeConfig __attribute__((swift_name("releaseModeConfig")));
-@end
-
-@interface MockzillaMockzilla_commonMockzillaConfig (Extensions)
-- (void)validateInfoPlistOrThrow __attribute__((swift_name("validateInfoPlistOrThrow()")));
-@end
-
 __attribute__((swift_name("KotlinThrowable")))
 @interface MockzillaKotlinThrowable : MockzillaBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
@@ -596,162 +530,6 @@ __attribute__((swift_name("KotlinArray")))
 
 
 /**
- * @property name
- * @property key
- * @property shouldFail
- * @property delay
- * @property endpointMatcher
- * @property versionCode
- * @property defaultHandler
- * @property errorHandler
- * @property dashboardOptionsConfig
- */
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonEndpointConfiguration")))
-@interface MockzillaMockzilla_commonEndpointConfiguration : MockzillaBase
-- (instancetype)initWithName:(NSString *)name key:(id)key shouldFail:(BOOL)shouldFail delay:(MockzillaInt * _Nullable)delay dashboardOptionsConfig:(MockzillaMockzilla_commonDashboardOptionsConfig *)dashboardOptionsConfig versionCode:(int32_t)versionCode endpointMatcher:(MockzillaBoolean *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))endpointMatcher defaultHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))defaultHandler errorHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))errorHandler __attribute__((swift_name("init(name:key:shouldFail:delay:dashboardOptionsConfig:versionCode:endpointMatcher:defaultHandler:errorHandler:)"))) __attribute__((objc_designated_initializer));
-- (MockzillaMockzilla_commonEndpointConfiguration *)doCopyName:(NSString *)name key:(id)key shouldFail:(BOOL)shouldFail delay:(MockzillaInt * _Nullable)delay dashboardOptionsConfig:(MockzillaMockzilla_commonDashboardOptionsConfig *)dashboardOptionsConfig versionCode:(int32_t)versionCode endpointMatcher:(MockzillaBoolean *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))endpointMatcher defaultHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))defaultHandler errorHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))errorHandler __attribute__((swift_name("doCopy(name:key:shouldFail:delay:dashboardOptionsConfig:versionCode:endpointMatcher:defaultHandler:errorHandler:)")));
-
-/**
- * @property name
- * @property key
- * @property shouldFail
- * @property delay
- * @property endpointMatcher
- * @property versionCode
- * @property defaultHandler
- * @property errorHandler
- * @property dashboardOptionsConfig
- */
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-
-/**
- * @property name
- * @property key
- * @property shouldFail
- * @property delay
- * @property endpointMatcher
- * @property versionCode
- * @property defaultHandler
- * @property errorHandler
- * @property dashboardOptionsConfig
- */
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-
-/**
- * @property name
- * @property key
- * @property shouldFail
- * @property delay
- * @property endpointMatcher
- * @property versionCode
- * @property defaultHandler
- * @property errorHandler
- * @property dashboardOptionsConfig
- */
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) MockzillaMockzilla_commonDashboardOptionsConfig *dashboardOptionsConfig __attribute__((swift_name("dashboardOptionsConfig")));
-@property (readonly) MockzillaMockzilla_commonMockzillaHttpResponse *(^defaultHandler)(id<MockzillaMockzilla_commonMockzillaHttpRequest>) __attribute__((swift_name("defaultHandler")));
-@property (readonly) MockzillaInt * _Nullable delay __attribute__((swift_name("delay")));
-@property (readonly) MockzillaBoolean *(^endpointMatcher)(id<MockzillaMockzilla_commonMockzillaHttpRequest>) __attribute__((swift_name("endpointMatcher")));
-@property (readonly) MockzillaMockzilla_commonMockzillaHttpResponse *(^errorHandler)(id<MockzillaMockzilla_commonMockzillaHttpRequest>) __attribute__((swift_name("errorHandler")));
-@property (readonly) id key __attribute__((swift_name("key")));
-@property (readonly) NSString *name __attribute__((swift_name("name")));
-@property (readonly) BOOL shouldFail __attribute__((swift_name("shouldFail")));
-@property (readonly) int32_t versionCode __attribute__((swift_name("versionCode")));
-@end
-
-__attribute__((swift_name("KotlinComparable")))
-@protocol MockzillaKotlinComparable
-@required
-- (int32_t)compareToOther:(id _Nullable)other __attribute__((swift_name("compareTo(other:)")));
-@end
-
-__attribute__((swift_name("KotlinEnum")))
-@interface MockzillaKotlinEnum<E> : MockzillaBase <MockzillaKotlinComparable>
-- (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) MockzillaKotlinEnumCompanion *companion __attribute__((swift_name("companion")));
-- (int32_t)compareToOther:(E)other __attribute__((swift_name("compareTo(other:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSString *name __attribute__((swift_name("name")));
-@property (readonly) int32_t ordinal __attribute__((swift_name("ordinal")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonMockzillaConfig.LogLevel")))
-@interface MockzillaMockzilla_commonMockzillaConfigLogLevel : MockzillaKotlinEnum<MockzillaMockzilla_commonMockzillaConfigLogLevel *>
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-- (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
-@property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *assert __attribute__((swift_name("assert")));
-@property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *debug __attribute__((swift_name("debug")));
-@property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *error __attribute__((swift_name("error")));
-@property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *info __attribute__((swift_name("info")));
-@property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *verbose __attribute__((swift_name("verbose")));
-@property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *warn __attribute__((swift_name("warn")));
-+ (MockzillaKotlinArray<MockzillaMockzilla_commonMockzillaConfigLogLevel *> *)values __attribute__((swift_name("values()")));
-@property (class, readonly) NSArray<MockzillaMockzilla_commonMockzillaConfigLogLevel *> *entries __attribute__((swift_name("entries")));
-@end
-
-
-/**
- * Rate Limiting: Uses Ktor's rate limiting, params described here: https://ktor.io/docs/rate-limit.html#configure-rate-limiting
- * Each network call will require a token with the provided lifespan
- *
- * @property rateLimit
- * @property rateLimitRefillPeriod
- * @property tokenLifeSpan
- */
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonMockzillaConfig.ReleaseModeConfig")))
-@interface MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig : MockzillaBase
-- (instancetype)initWithRateLimit:(int32_t)rateLimit rateLimitRefillPeriod:(int64_t)rateLimitRefillPeriod tokenLifeSpan:(int64_t)tokenLifeSpan __attribute__((swift_name("init(rateLimit:rateLimitRefillPeriod:tokenLifeSpan:)"))) __attribute__((objc_designated_initializer));
-- (MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *)doCopyRateLimit:(int32_t)rateLimit rateLimitRefillPeriod:(int64_t)rateLimitRefillPeriod tokenLifeSpan:(int64_t)tokenLifeSpan __attribute__((swift_name("doCopy(rateLimit:rateLimitRefillPeriod:tokenLifeSpan:)")));
-
-/**
- * Rate Limiting: Uses Ktor's rate limiting, params described here: https://ktor.io/docs/rate-limit.html#configure-rate-limiting
- * Each network call will require a token with the provided lifespan
- *
- * @property rateLimit
- * @property rateLimitRefillPeriod
- * @property tokenLifeSpan
- */
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-
-/**
- * Rate Limiting: Uses Ktor's rate limiting, params described here: https://ktor.io/docs/rate-limit.html#configure-rate-limiting
- * Each network call will require a token with the provided lifespan
- *
- * @property rateLimit
- * @property rateLimitRefillPeriod
- * @property tokenLifeSpan
- */
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-
-/**
- * Rate Limiting: Uses Ktor's rate limiting, params described here: https://ktor.io/docs/rate-limit.html#configure-rate-limiting
- * Each network call will require a token with the provided lifespan
- *
- * @property rateLimit
- * @property rateLimitRefillPeriod
- * @property tokenLifeSpan
- */
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) int32_t rateLimit __attribute__((swift_name("rateLimit")));
-@property (readonly) int64_t rateLimitRefillPeriod __attribute__((swift_name("rateLimitRefillPeriod")));
-@property (readonly) int64_t tokenLifeSpan __attribute__((swift_name("tokenLifeSpan")));
-@end
-
-__attribute__((swift_name("Mockzilla_commonMockzillaLogWriter")))
-@protocol MockzillaMockzilla_commonMockzillaLogWriter
-@required
-- (void)logLogLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel message:(NSString *)message tag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable __attribute__((swift_name("log(logLevel:message:tag:throwable:)")));
-@end
-
-
-/**
  * Thrown when attempting to start the Mockzilla server on a port that is occupied by another
  * process. To resolve, either terminate the process occupying the port or update your
  * `MockzillaConfig`.
@@ -828,6 +606,68 @@ __attribute__((swift_name("Mockzilla_commonMockzillaRuntimeParams")))
 @property (readonly) NSString *mockBaseUrl __attribute__((swift_name("mockBaseUrl")));
 @property (readonly) NSString *mockzillaVersion __attribute__((swift_name("mockzillaVersion")));
 @property (readonly) int32_t port __attribute__((swift_name("port")));
+@end
+
+
+/**
+ * @property port
+ * @property endpoints
+ * @property logLevel
+ * @property isRelease
+ * @property releaseModeConfig
+ * @property localhostOnly
+ * @property additionalLogWriters
+ * @property isNetworkDiscoveryEnabled
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonMockzillaConfig")))
+@interface MockzillaMockzilla_commonMockzillaConfig : MockzillaBase
+- (instancetype)initWithPort:(int32_t)port endpoints:(NSArray<MockzillaMockzilla_commonEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *)releaseModeConfig isNetworkDiscoveryEnabled:(BOOL)isNetworkDiscoveryEnabled additionalLogWriters:(NSArray<id<MockzillaMockzilla_commonMockzillaLogWriter>> *)additionalLogWriters __attribute__((swift_name("init(port:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:isNetworkDiscoveryEnabled:additionalLogWriters:)"))) __attribute__((objc_designated_initializer));
+- (MockzillaMockzilla_commonMockzillaConfig *)doCopyPort:(int32_t)port endpoints:(NSArray<MockzillaMockzilla_commonEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *)releaseModeConfig isNetworkDiscoveryEnabled:(BOOL)isNetworkDiscoveryEnabled additionalLogWriters:(NSArray<id<MockzillaMockzilla_commonMockzillaLogWriter>> *)additionalLogWriters __attribute__((swift_name("doCopy(port:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:isNetworkDiscoveryEnabled:additionalLogWriters:)")));
+
+/**
+ * @property port
+ * @property endpoints
+ * @property logLevel
+ * @property isRelease
+ * @property releaseModeConfig
+ * @property localhostOnly
+ * @property additionalLogWriters
+ * @property isNetworkDiscoveryEnabled
+ */
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property port
+ * @property endpoints
+ * @property logLevel
+ * @property isRelease
+ * @property releaseModeConfig
+ * @property localhostOnly
+ * @property additionalLogWriters
+ * @property isNetworkDiscoveryEnabled
+ */
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * @property port
+ * @property endpoints
+ * @property logLevel
+ * @property isRelease
+ * @property releaseModeConfig
+ * @property localhostOnly
+ * @property additionalLogWriters
+ * @property isNetworkDiscoveryEnabled
+ */
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSArray<id<MockzillaMockzilla_commonMockzillaLogWriter>> *additionalLogWriters __attribute__((swift_name("additionalLogWriters")));
+@property (readonly) NSArray<MockzillaMockzilla_commonEndpointConfiguration *> *endpoints __attribute__((swift_name("endpoints")));
+@property (readonly) BOOL isNetworkDiscoveryEnabled __attribute__((swift_name("isNetworkDiscoveryEnabled")));
+@property (readonly) BOOL isRelease __attribute__((swift_name("isRelease")));
+@property (readonly) BOOL localhostOnly __attribute__((swift_name("localhostOnly")));
+@property (readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *logLevel __attribute__((swift_name("logLevel")));
+@property (readonly) int32_t port __attribute__((swift_name("port")));
+@property (readonly) MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *releaseModeConfig __attribute__((swift_name("releaseModeConfig")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -951,6 +791,24 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.Builder")))
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setReleaseModeConfigReleaseConfig:(MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *)releaseConfig __attribute__((swift_name("setReleaseModeConfig(releaseConfig:)")));
 @end
 
+__attribute__((swift_name("KotlinComparable")))
+@protocol MockzillaKotlinComparable
+@required
+- (int32_t)compareToOther:(id _Nullable)other __attribute__((swift_name("compareTo(other:)")));
+@end
+
+__attribute__((swift_name("KotlinEnum")))
+@interface MockzillaKotlinEnum<E> : MockzillaBase <MockzillaKotlinComparable>
+- (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) MockzillaKotlinEnumCompanion *companion __attribute__((swift_name("companion")));
+- (int32_t)compareToOther:(E)other __attribute__((swift_name("compareTo(other:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *name __attribute__((swift_name("name")));
+@property (readonly) int32_t ordinal __attribute__((swift_name("ordinal")));
+@end
+
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonRunTarget")))
 @interface MockzillaMockzilla_commonRunTarget : MockzillaKotlinEnum<MockzillaMockzilla_commonRunTarget *>
@@ -1035,6 +893,327 @@ __attribute__((swift_name("KotlinIterator")))
 @required
 - (BOOL)hasNext __attribute__((swift_name("hasNext()")));
 - (id _Nullable)next __attribute__((swift_name("next()")));
+@end
+
+__attribute__((swift_name("Mockzilla_commonAuthHeaderProvider")))
+@protocol MockzillaMockzilla_commonAuthHeaderProvider
+@required
+
+/**
+ * @note This method converts instances of CancellationException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (void)generateHeaderWithCompletionHandler:(void (^)(MockzillaMockzilla_commonAuthHeaderProviderHeader * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("generateHeader(completionHandler:)")));
+@end
+
+
+/**
+ * @property name
+ * @property key
+ * @property shouldFail
+ * @property delay
+ * @property endpointMatcher
+ * @property versionCode
+ * @property defaultHandler
+ * @property errorHandler
+ * @property dashboardOptionsConfig
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonEndpointConfiguration")))
+@interface MockzillaMockzilla_commonEndpointConfiguration : MockzillaBase
+- (instancetype)initWithName:(NSString *)name key:(id)key shouldFail:(BOOL)shouldFail delay:(MockzillaInt * _Nullable)delay dashboardOptionsConfig:(MockzillaMockzilla_commonDashboardOptionsConfig *)dashboardOptionsConfig versionCode:(int32_t)versionCode endpointMatcher:(MockzillaBoolean *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))endpointMatcher defaultHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))defaultHandler errorHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))errorHandler __attribute__((swift_name("init(name:key:shouldFail:delay:dashboardOptionsConfig:versionCode:endpointMatcher:defaultHandler:errorHandler:)"))) __attribute__((objc_designated_initializer));
+- (MockzillaMockzilla_commonEndpointConfiguration *)doCopyName:(NSString *)name key:(id)key shouldFail:(BOOL)shouldFail delay:(MockzillaInt * _Nullable)delay dashboardOptionsConfig:(MockzillaMockzilla_commonDashboardOptionsConfig *)dashboardOptionsConfig versionCode:(int32_t)versionCode endpointMatcher:(MockzillaBoolean *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))endpointMatcher defaultHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))defaultHandler errorHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))errorHandler __attribute__((swift_name("doCopy(name:key:shouldFail:delay:dashboardOptionsConfig:versionCode:endpointMatcher:defaultHandler:errorHandler:)")));
+
+/**
+ * @property name
+ * @property key
+ * @property shouldFail
+ * @property delay
+ * @property endpointMatcher
+ * @property versionCode
+ * @property defaultHandler
+ * @property errorHandler
+ * @property dashboardOptionsConfig
+ */
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property name
+ * @property key
+ * @property shouldFail
+ * @property delay
+ * @property endpointMatcher
+ * @property versionCode
+ * @property defaultHandler
+ * @property errorHandler
+ * @property dashboardOptionsConfig
+ */
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * @property name
+ * @property key
+ * @property shouldFail
+ * @property delay
+ * @property endpointMatcher
+ * @property versionCode
+ * @property defaultHandler
+ * @property errorHandler
+ * @property dashboardOptionsConfig
+ */
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) MockzillaMockzilla_commonDashboardOptionsConfig *dashboardOptionsConfig __attribute__((swift_name("dashboardOptionsConfig")));
+@property (readonly) MockzillaMockzilla_commonMockzillaHttpResponse *(^defaultHandler)(id<MockzillaMockzilla_commonMockzillaHttpRequest>) __attribute__((swift_name("defaultHandler")));
+@property (readonly) MockzillaInt * _Nullable delay __attribute__((swift_name("delay")));
+@property (readonly) MockzillaBoolean *(^endpointMatcher)(id<MockzillaMockzilla_commonMockzillaHttpRequest>) __attribute__((swift_name("endpointMatcher")));
+@property (readonly) MockzillaMockzilla_commonMockzillaHttpResponse *(^errorHandler)(id<MockzillaMockzilla_commonMockzillaHttpRequest>) __attribute__((swift_name("errorHandler")));
+@property (readonly) id key __attribute__((swift_name("key")));
+@property (readonly) NSString *name __attribute__((swift_name("name")));
+@property (readonly) BOOL shouldFail __attribute__((swift_name("shouldFail")));
+@property (readonly) int32_t versionCode __attribute__((swift_name("versionCode")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonMockzillaConfig.LogLevel")))
+@interface MockzillaMockzilla_commonMockzillaConfigLogLevel : MockzillaKotlinEnum<MockzillaMockzilla_commonMockzillaConfigLogLevel *>
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *assert __attribute__((swift_name("assert")));
+@property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *debug __attribute__((swift_name("debug")));
+@property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *error __attribute__((swift_name("error")));
+@property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *info __attribute__((swift_name("info")));
+@property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *verbose __attribute__((swift_name("verbose")));
+@property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *warn __attribute__((swift_name("warn")));
++ (MockzillaKotlinArray<MockzillaMockzilla_commonMockzillaConfigLogLevel *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MockzillaMockzilla_commonMockzillaConfigLogLevel *> *entries __attribute__((swift_name("entries")));
+@end
+
+
+/**
+ * Rate Limiting: Uses Ktor's rate limiting, params described here: https://ktor.io/docs/rate-limit.html#configure-rate-limiting
+ * Each network call will require a token with the provided lifespan
+ *
+ * @property rateLimit
+ * @property rateLimitRefillPeriod
+ * @property tokenLifeSpan
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonMockzillaConfig.ReleaseModeConfig")))
+@interface MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig : MockzillaBase
+- (instancetype)initWithRateLimit:(int32_t)rateLimit rateLimitRefillPeriod:(int64_t)rateLimitRefillPeriod tokenLifeSpan:(int64_t)tokenLifeSpan __attribute__((swift_name("init(rateLimit:rateLimitRefillPeriod:tokenLifeSpan:)"))) __attribute__((objc_designated_initializer));
+- (MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *)doCopyRateLimit:(int32_t)rateLimit rateLimitRefillPeriod:(int64_t)rateLimitRefillPeriod tokenLifeSpan:(int64_t)tokenLifeSpan __attribute__((swift_name("doCopy(rateLimit:rateLimitRefillPeriod:tokenLifeSpan:)")));
+
+/**
+ * Rate Limiting: Uses Ktor's rate limiting, params described here: https://ktor.io/docs/rate-limit.html#configure-rate-limiting
+ * Each network call will require a token with the provided lifespan
+ *
+ * @property rateLimit
+ * @property rateLimitRefillPeriod
+ * @property tokenLifeSpan
+ */
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Rate Limiting: Uses Ktor's rate limiting, params described here: https://ktor.io/docs/rate-limit.html#configure-rate-limiting
+ * Each network call will require a token with the provided lifespan
+ *
+ * @property rateLimit
+ * @property rateLimitRefillPeriod
+ * @property tokenLifeSpan
+ */
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * Rate Limiting: Uses Ktor's rate limiting, params described here: https://ktor.io/docs/rate-limit.html#configure-rate-limiting
+ * Each network call will require a token with the provided lifespan
+ *
+ * @property rateLimit
+ * @property rateLimitRefillPeriod
+ * @property tokenLifeSpan
+ */
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) int32_t rateLimit __attribute__((swift_name("rateLimit")));
+@property (readonly) int64_t rateLimitRefillPeriod __attribute__((swift_name("rateLimitRefillPeriod")));
+@property (readonly) int64_t tokenLifeSpan __attribute__((swift_name("tokenLifeSpan")));
+@end
+
+__attribute__((swift_name("Mockzilla_commonMockzillaLogWriter")))
+@protocol MockzillaMockzilla_commonMockzillaLogWriter
+@required
+- (void)logLogLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel message:(NSString *)message tag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable __attribute__((swift_name("log(logLevel:message:tag:throwable:)")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonMockzillaConfig.BuilderCompanion")))
+@interface MockzillaMockzilla_commonMockzillaConfigBuilderCompanion : MockzillaBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MockzillaMockzilla_commonMockzillaConfigBuilderCompanion *shared __attribute__((swift_name("shared")));
+@end
+
+
+/**
+ * @param key An identifier for this endpoint. Endpoints cannot share an id.
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
+@interface MockzillaMockzilla_commonEndpointConfigurationBuilder : MockzillaBase
+- (instancetype)initWithKey:(NSString *)key __attribute__((swift_name("init(key:)"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Completes the builder - returns the configuration.
+ *
+ * @return [EndpointConfiguration]
+ */
+- (MockzillaMockzilla_commonEndpointConfiguration *)build __attribute__((swift_name("build()")));
+
+/**
+ * Configure the presets that are available to users of the dashboard.
+ *
+ * @param action
+ * @return
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)configureDashboardOverridesAction:(MockzillaMockzilla_commonDashboardOptionsConfigBuilder *(^)(MockzillaMockzilla_commonDashboardOptionsConfigBuilder *))action __attribute__((swift_name("configureDashboardOverrides(action:)")));
+
+/**
+ * The block called when a network request is made to this endpoint. Note: If the value of
+ * [setShouldFail] causes Mockzilla to generate a failure response, then this block
+ * will *not* be called, instead the block specified by [setErrorHandler] is called.
+ *
+ * @param handler
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setDefaultHandlerHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))handler __attribute__((swift_name("setDefaultHandler(handler:)")));
+
+/**
+ * The block called when a network request is made to this endpoint but Mockzilladecides to
+ * simulate a server failure.
+ *
+ * @param handler
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setErrorHandlerHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))handler __attribute__((swift_name("setErrorHandler(handler:)")));
+
+/**
+ * Probability of Mockzilla returning a simulated http error for this endpoint. 100 being a
+ * guaranteed error .
+ *
+ * @param percentage (0 -> 100 inclusive)
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setFailureProbabilityPercentage:(int32_t)percentage __attribute__((swift_name("setFailureProbability(percentage:)"))) __attribute__((deprecated("Probabilities are no longer supported")));
+
+/**
+ * Used to simulate latency: The artificial mean delay Mockzilla with add to a network request.
+ * Used alongside [setMeanDelayMillis] to calculate the actual artificial delay on each invocation.
+ *
+ * @param delay delay in milliseconds
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setMeanDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setMeanDelayMillis(delay:)")));
+
+/**
+ * Sets the human readable name of the endpoint (defaults to the value of the `key`)
+ *
+ * @param name
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setNameName:(NSString *)name __attribute__((swift_name("setName(name:)")));
+
+/**
+ * Specifies whether Mockzilla should map a network request to this endpoint.
+ *
+ * Used to map an incoming network request to the correct endpoint. The URI is matched against
+ * the given regex.
+ *
+ * This is just a utility wrapper around the more flexible [setPatternMatcher] endpoint.
+ *
+ * @param regex
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setPatternRegex:(NSString *)regex __attribute__((swift_name("setPattern(regex:)")));
+
+/**
+ * Specifies whether Mockzilla should map a network request to this endpoint.
+ *
+ * @param matcher Used to map an incoming network request to the correct endpoint.
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setPatternMatcherMatcher:(MockzillaBoolean *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))matcher __attribute__((swift_name("setPatternMatcher(matcher:)")));
+
+/**
+ * Controls whether calls to this endpoint should fail by default
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setShouldFailShouldFail:(BOOL)shouldFail __attribute__((swift_name("setShouldFail(shouldFail:)")));
+
+/**
+ * Sets the version this endpoint is currently set to. A change in the version code will
+ * automatically clear any caches on the device associated with this endpoint.
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setVersionCodeCode:(int32_t)code __attribute__((swift_name("setVersionCode(code:)")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KotlinEnumCompanion")))
+@interface MockzillaKotlinEnumCompanion : MockzillaBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MockzillaKotlinEnumCompanion *shared __attribute__((swift_name("shared")));
+@end
+
+__attribute__((swift_name("Kotlinx_serialization_coreSerializationStrategy")))
+@protocol MockzillaKotlinx_serialization_coreSerializationStrategy
+@required
+- (void)serializeEncoder:(id<MockzillaKotlinx_serialization_coreEncoder>)encoder value:(id _Nullable)value __attribute__((swift_name("serialize(encoder:value:)")));
+@property (readonly) id<MockzillaKotlinx_serialization_coreSerialDescriptor> descriptor __attribute__((swift_name("descriptor")));
+@end
+
+__attribute__((swift_name("Kotlinx_serialization_coreDeserializationStrategy")))
+@protocol MockzillaKotlinx_serialization_coreDeserializationStrategy
+@required
+- (id _Nullable)deserializeDecoder:(id<MockzillaKotlinx_serialization_coreDecoder>)decoder __attribute__((swift_name("deserialize(decoder:)")));
+@property (readonly) id<MockzillaKotlinx_serialization_coreSerialDescriptor> descriptor __attribute__((swift_name("descriptor")));
+@end
+
+__attribute__((swift_name("Kotlinx_serialization_coreKSerializer")))
+@protocol MockzillaKotlinx_serialization_coreKSerializer <MockzillaKotlinx_serialization_coreSerializationStrategy, MockzillaKotlinx_serialization_coreDeserializationStrategy>
+@required
+@end
+
+__attribute__((swift_name("Kermit_coreLogWriter")))
+@interface MockzillaKermit_coreLogWriter : MockzillaBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (BOOL)isLoggableTag:(NSString *)tag severity:(MockzillaKermit_coreSeverity *)severity __attribute__((swift_name("isLoggable(tag:severity:)")));
+- (void)logSeverity:(MockzillaKermit_coreSeverity *)severity message:(NSString *)message tag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable __attribute__((swift_name("log(severity:message:tag:throwable:)")));
+@end
+
+
+/**
+ * @property key
+ * @property value
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonAuthHeaderProviderHeader")))
+@interface MockzillaMockzilla_commonAuthHeaderProviderHeader : MockzillaBase
+- (instancetype)initWithKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("init(key:value:)"))) __attribute__((objc_designated_initializer));
+- (MockzillaMockzilla_commonAuthHeaderProviderHeader *)doCopyKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("doCopy(key:value:)")));
+
+/**
+ * @property key
+ * @property value
+ */
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property key
+ * @property value
+ */
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * @property key
+ * @property value
+ */
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *key __attribute__((swift_name("key")));
+@property (readonly) NSString *value __attribute__((swift_name("value")));
 @end
 
 
@@ -1162,154 +1341,104 @@ __attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse")))
 @end
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("KotlinEnumCompanion")))
-@interface MockzillaKotlinEnumCompanion : MockzillaBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MockzillaKotlinEnumCompanion *shared __attribute__((swift_name("shared")));
-@end
-
-__attribute__((swift_name("Mockzilla_commonAuthHeaderProvider")))
-@protocol MockzillaMockzilla_commonAuthHeaderProvider
-@required
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)generateHeaderWithCompletionHandler:(void (^)(MockzillaMockzilla_commonAuthHeaderProviderHeader * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("generateHeader(completionHandler:)")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonMockzillaConfig.BuilderCompanion")))
-@interface MockzillaMockzilla_commonMockzillaConfigBuilderCompanion : MockzillaBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MockzillaMockzilla_commonMockzillaConfigBuilderCompanion *shared __attribute__((swift_name("shared")));
-@end
-
-
-/**
- * @param key An identifier for this endpoint. Endpoints cannot share an id.
- */
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
-@interface MockzillaMockzilla_commonEndpointConfigurationBuilder : MockzillaBase
-- (instancetype)initWithKey:(NSString *)key __attribute__((swift_name("init(key:)"))) __attribute__((objc_designated_initializer));
-
-/**
- * Completes the builder - returns the configuration.
- *
- * @return [EndpointConfiguration]
- */
-- (MockzillaMockzilla_commonEndpointConfiguration *)build __attribute__((swift_name("build()")));
-
-/**
- * Configure the presets that are available to users of the dashboard.
- *
- * @param action
- * @return
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)configureDashboardOverridesAction:(MockzillaMockzilla_commonDashboardOptionsConfigBuilder *(^)(MockzillaMockzilla_commonDashboardOptionsConfigBuilder *))action __attribute__((swift_name("configureDashboardOverrides(action:)")));
-
-/**
- * The block called when a network request is made to this endpoint. Note: If the value of
- * [setShouldFail] causes Mockzilla to generate a failure response, then this block
- * will *not* be called, instead the block specified by [setErrorHandler] is called.
- *
- * @param handler
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setDefaultHandlerHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))handler __attribute__((swift_name("setDefaultHandler(handler:)")));
-
-/**
- * The block called when a network request is made to this endpoint but Mockzilladecides to
- * simulate a server failure.
- *
- * @param handler
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setErrorHandlerHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))handler __attribute__((swift_name("setErrorHandler(handler:)")));
-
-/**
- * Probability of Mockzilla returning a simulated http error for this endpoint. 100 being a
- * guaranteed error .
- *
- * @param percentage (0 -> 100 inclusive)
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setFailureProbabilityPercentage:(int32_t)percentage __attribute__((swift_name("setFailureProbability(percentage:)"))) __attribute__((deprecated("Probabilities are no longer supported")));
-
-/**
- * Used to simulate latency: The artificial mean delay Mockzilla with add to a network request.
- * Used alongside [setMeanDelayMillis] to calculate the actual artificial delay on each invocation.
- *
- * @param delay delay in milliseconds
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setMeanDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setMeanDelayMillis(delay:)")));
-
-/**
- * Sets the human readable name of the endpoint (defaults to the value of the `key`)
- *
- * @param name
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setNameName:(NSString *)name __attribute__((swift_name("setName(name:)")));
-
-/**
- * Specifies whether Mockzilla should map a network request to this endpoint.
- *
- * Used to map an incoming network request to the correct endpoint. The URI is matched against
- * the given regex.
- *
- * This is just a utility wrapper around the more flexible [setPatternMatcher] endpoint.
- *
- * @param regex
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setPatternRegex:(NSString *)regex __attribute__((swift_name("setPattern(regex:)")));
-
-/**
- * Specifies whether Mockzilla should map a network request to this endpoint.
- *
- * @param matcher Used to map an incoming network request to the correct endpoint.
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setPatternMatcherMatcher:(MockzillaBoolean *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))matcher __attribute__((swift_name("setPatternMatcher(matcher:)")));
-
-/**
- * Controls whether calls to this endpoint should fail by default
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setShouldFailShouldFail:(BOOL)shouldFail __attribute__((swift_name("setShouldFail(shouldFail:)")));
-
-/**
- * Sets the version this endpoint is currently set to. A change in the version code will
- * automatically clear any caches on the device associated with this endpoint.
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setVersionCodeCode:(int32_t)code __attribute__((swift_name("setVersionCode(code:)")));
-@end
-
-__attribute__((swift_name("Kotlinx_serialization_coreSerializationStrategy")))
-@protocol MockzillaKotlinx_serialization_coreSerializationStrategy
-@required
-- (void)serializeEncoder:(id<MockzillaKotlinx_serialization_coreEncoder>)encoder value:(id _Nullable)value __attribute__((swift_name("serialize(encoder:value:)")));
-@property (readonly) id<MockzillaKotlinx_serialization_coreSerialDescriptor> descriptor __attribute__((swift_name("descriptor")));
-@end
-
-__attribute__((swift_name("Kotlinx_serialization_coreDeserializationStrategy")))
-@protocol MockzillaKotlinx_serialization_coreDeserializationStrategy
-@required
-- (id _Nullable)deserializeDecoder:(id<MockzillaKotlinx_serialization_coreDecoder>)decoder __attribute__((swift_name("deserialize(decoder:)")));
-@property (readonly) id<MockzillaKotlinx_serialization_coreSerialDescriptor> descriptor __attribute__((swift_name("descriptor")));
-@end
-
-__attribute__((swift_name("Kotlinx_serialization_coreKSerializer")))
-@protocol MockzillaKotlinx_serialization_coreKSerializer <MockzillaKotlinx_serialization_coreSerializationStrategy, MockzillaKotlinx_serialization_coreDeserializationStrategy>
-@required
-@end
-
-__attribute__((swift_name("Kermit_coreLogWriter")))
-@interface MockzillaKermit_coreLogWriter : MockzillaBase
+__attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Builder")))
+@interface MockzillaMockzilla_commonDashboardOptionsConfigBuilder : MockzillaBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (BOOL)isLoggableTag:(NSString *)tag severity:(MockzillaKermit_coreSeverity *)severity __attribute__((swift_name("isLoggable(tag:severity:)")));
-- (void)logSeverity:(MockzillaKermit_coreSeverity *)severity message:(NSString *)message tag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable __attribute__((swift_name("log(severity:message:tag:throwable:)")));
+- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addErrorPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addErrorPreset(response:name:description:)")));
+- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addSuccessPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addSuccessPreset(response:name:description:)")));
+- (MockzillaMockzilla_commonDashboardOptionsConfig *)build __attribute__((swift_name("build()")));
+@end
+
+__attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
+@protocol MockzillaKotlinx_serialization_coreEncoder
+@required
+- (id<MockzillaKotlinx_serialization_coreCompositeEncoder>)beginCollectionDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor collectionSize:(int32_t)collectionSize __attribute__((swift_name("beginCollection(descriptor:collectionSize:)")));
+- (id<MockzillaKotlinx_serialization_coreCompositeEncoder>)beginStructureDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("beginStructure(descriptor:)")));
+- (void)encodeBooleanValue:(BOOL)value __attribute__((swift_name("encodeBoolean(value:)")));
+- (void)encodeByteValue:(int8_t)value __attribute__((swift_name("encodeByte(value:)")));
+- (void)encodeCharValue:(unichar)value __attribute__((swift_name("encodeChar(value:)")));
+- (void)encodeDoubleValue:(double)value __attribute__((swift_name("encodeDouble(value:)")));
+- (void)encodeEnumEnumDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)enumDescriptor index:(int32_t)index __attribute__((swift_name("encodeEnum(enumDescriptor:index:)")));
+- (void)encodeFloatValue:(float)value __attribute__((swift_name("encodeFloat(value:)")));
+- (id<MockzillaKotlinx_serialization_coreEncoder>)encodeInlineDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("encodeInline(descriptor:)")));
+- (void)encodeIntValue:(int32_t)value __attribute__((swift_name("encodeInt(value:)")));
+- (void)encodeLongValue:(int64_t)value __attribute__((swift_name("encodeLong(value:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (void)encodeNotNullMark __attribute__((swift_name("encodeNotNullMark()")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (void)encodeNull __attribute__((swift_name("encodeNull()")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (void)encodeNullableSerializableValueSerializer:(id<MockzillaKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeNullableSerializableValue(serializer:value:)")));
+- (void)encodeSerializableValueSerializer:(id<MockzillaKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeSerializableValue(serializer:value:)")));
+- (void)encodeShortValue:(int16_t)value __attribute__((swift_name("encodeShort(value:)")));
+- (void)encodeStringValue:(NSString *)value __attribute__((swift_name("encodeString(value:)")));
+@property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
+@end
+
+__attribute__((swift_name("Kotlinx_serialization_coreSerialDescriptor")))
+@protocol MockzillaKotlinx_serialization_coreSerialDescriptor
+@required
+- (NSArray<id<MockzillaKotlinAnnotation>> *)getElementAnnotationsIndex:(int32_t)index __attribute__((swift_name("getElementAnnotations(index:)")));
+- (id<MockzillaKotlinx_serialization_coreSerialDescriptor>)getElementDescriptorIndex:(int32_t)index __attribute__((swift_name("getElementDescriptor(index:)")));
+- (int32_t)getElementIndexName:(NSString *)name __attribute__((swift_name("getElementIndex(name:)")));
+- (NSString *)getElementNameIndex:(int32_t)index __attribute__((swift_name("getElementName(index:)")));
+- (BOOL)isElementOptionalIndex:(int32_t)index __attribute__((swift_name("isElementOptional(index:)")));
+@property (readonly) NSArray<id<MockzillaKotlinAnnotation>> *annotations __attribute__((swift_name("annotations")));
+@property (readonly) int32_t elementsCount __attribute__((swift_name("elementsCount")));
+@property (readonly) BOOL isInline __attribute__((swift_name("isInline")));
+@property (readonly) BOOL isNullable __attribute__((swift_name("isNullable")));
+@property (readonly) MockzillaKotlinx_serialization_coreSerialKind *kind __attribute__((swift_name("kind")));
+@property (readonly) NSString *serialName __attribute__((swift_name("serialName")));
+@end
+
+__attribute__((swift_name("Kotlinx_serialization_coreDecoder")))
+@protocol MockzillaKotlinx_serialization_coreDecoder
+@required
+- (id<MockzillaKotlinx_serialization_coreCompositeDecoder>)beginStructureDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("beginStructure(descriptor:)")));
+- (BOOL)decodeBoolean __attribute__((swift_name("decodeBoolean()")));
+- (int8_t)decodeByte __attribute__((swift_name("decodeByte()")));
+- (unichar)decodeChar __attribute__((swift_name("decodeChar()")));
+- (double)decodeDouble __attribute__((swift_name("decodeDouble()")));
+- (int32_t)decodeEnumEnumDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)enumDescriptor __attribute__((swift_name("decodeEnum(enumDescriptor:)")));
+- (float)decodeFloat __attribute__((swift_name("decodeFloat()")));
+- (id<MockzillaKotlinx_serialization_coreDecoder>)decodeInlineDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("decodeInline(descriptor:)")));
+- (int32_t)decodeInt __attribute__((swift_name("decodeInt()")));
+- (int64_t)decodeLong __attribute__((swift_name("decodeLong()")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (BOOL)decodeNotNullMark __attribute__((swift_name("decodeNotNullMark()")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (MockzillaKotlinNothing * _Nullable)decodeNull __attribute__((swift_name("decodeNull()")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (id _Nullable)decodeNullableSerializableValueDeserializer:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy>)deserializer __attribute__((swift_name("decodeNullableSerializableValue(deserializer:)")));
+- (id _Nullable)decodeSerializableValueDeserializer:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy>)deserializer __attribute__((swift_name("decodeSerializableValue(deserializer:)")));
+- (int16_t)decodeShort __attribute__((swift_name("decodeShort()")));
+- (NSString *)decodeString __attribute__((swift_name("decodeString()")));
+@property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
 @end
 
 
@@ -1458,137 +1587,110 @@ __attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse.Companion")))
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
+__attribute__((swift_name("Kotlinx_serialization_coreCompositeEncoder")))
+@protocol MockzillaKotlinx_serialization_coreCompositeEncoder
+@required
+- (void)encodeBooleanElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(BOOL)value __attribute__((swift_name("encodeBooleanElement(descriptor:index:value:)")));
+- (void)encodeByteElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(int8_t)value __attribute__((swift_name("encodeByteElement(descriptor:index:value:)")));
+- (void)encodeCharElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(unichar)value __attribute__((swift_name("encodeCharElement(descriptor:index:value:)")));
+- (void)encodeDoubleElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(double)value __attribute__((swift_name("encodeDoubleElement(descriptor:index:value:)")));
+- (void)encodeFloatElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(float)value __attribute__((swift_name("encodeFloatElement(descriptor:index:value:)")));
+- (id<MockzillaKotlinx_serialization_coreEncoder>)encodeInlineElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("encodeInlineElement(descriptor:index:)")));
+- (void)encodeIntElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(int32_t)value __attribute__((swift_name("encodeIntElement(descriptor:index:value:)")));
+- (void)encodeLongElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(int64_t)value __attribute__((swift_name("encodeLongElement(descriptor:index:value:)")));
 
 /**
- * @property key
- * @property value
- */
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonAuthHeaderProviderHeader")))
-@interface MockzillaMockzilla_commonAuthHeaderProviderHeader : MockzillaBase
-- (instancetype)initWithKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("init(key:value:)"))) __attribute__((objc_designated_initializer));
-- (MockzillaMockzilla_commonAuthHeaderProviderHeader *)doCopyKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("doCopy(key:value:)")));
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (void)encodeNullableSerializableElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index serializer:(id<MockzillaKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeNullableSerializableElement(descriptor:index:serializer:value:)")));
+- (void)encodeSerializableElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index serializer:(id<MockzillaKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeSerializableElement(descriptor:index:serializer:value:)")));
+- (void)encodeShortElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(int16_t)value __attribute__((swift_name("encodeShortElement(descriptor:index:value:)")));
+- (void)encodeStringElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(NSString *)value __attribute__((swift_name("encodeStringElement(descriptor:index:value:)")));
+- (void)endStructureDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("endStructure(descriptor:)")));
 
 /**
- * @property key
- * @property value
- */
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (BOOL)shouldEncodeElementDefaultDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("shouldEncodeElementDefault(descriptor:index:)")));
+@property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
+@end
+
+__attribute__((swift_name("Kotlinx_serialization_coreSerializersModule")))
+@interface MockzillaKotlinx_serialization_coreSerializersModule : MockzillaBase
 
 /**
- * @property key
- * @property value
- */
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (void)dumpToCollector:(id<MockzillaKotlinx_serialization_coreSerializersModuleCollector>)collector __attribute__((swift_name("dumpTo(collector:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (id<MockzillaKotlinx_serialization_coreKSerializer> _Nullable)getContextualKClass:(id<MockzillaKotlinKClass>)kClass typeArgumentsSerializers:(NSArray<id<MockzillaKotlinx_serialization_coreKSerializer>> *)typeArgumentsSerializers __attribute__((swift_name("getContextual(kClass:typeArgumentsSerializers:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (id<MockzillaKotlinx_serialization_coreSerializationStrategy> _Nullable)getPolymorphicBaseClass:(id<MockzillaKotlinKClass>)baseClass value:(id)value __attribute__((swift_name("getPolymorphic(baseClass:value:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (id<MockzillaKotlinx_serialization_coreDeserializationStrategy> _Nullable)getPolymorphicBaseClass:(id<MockzillaKotlinKClass>)baseClass serializedClassName:(NSString * _Nullable)serializedClassName __attribute__((swift_name("getPolymorphic(baseClass:serializedClassName:)")));
+@end
+
+__attribute__((swift_name("KotlinAnnotation")))
+@protocol MockzillaKotlinAnnotation
+@required
+@end
+
+__attribute__((swift_name("Kotlinx_serialization_coreSerialKind")))
+@interface MockzillaKotlinx_serialization_coreSerialKind : MockzillaBase
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@end
+
+__attribute__((swift_name("Kotlinx_serialization_coreCompositeDecoder")))
+@protocol MockzillaKotlinx_serialization_coreCompositeDecoder
+@required
+- (BOOL)decodeBooleanElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeBooleanElement(descriptor:index:)")));
+- (int8_t)decodeByteElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeByteElement(descriptor:index:)")));
+- (unichar)decodeCharElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeCharElement(descriptor:index:)")));
+- (int32_t)decodeCollectionSizeDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("decodeCollectionSize(descriptor:)")));
+- (double)decodeDoubleElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeDoubleElement(descriptor:index:)")));
+- (int32_t)decodeElementIndexDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("decodeElementIndex(descriptor:)")));
+- (float)decodeFloatElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeFloatElement(descriptor:index:)")));
+- (id<MockzillaKotlinx_serialization_coreDecoder>)decodeInlineElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeInlineElement(descriptor:index:)")));
+- (int32_t)decodeIntElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeIntElement(descriptor:index:)")));
+- (int64_t)decodeLongElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeLongElement(descriptor:index:)")));
 
 /**
- * @property key
- * @property value
- */
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSString *key __attribute__((swift_name("key")));
-@property (readonly) NSString *value __attribute__((swift_name("value")));
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (id _Nullable)decodeNullableSerializableElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index deserializer:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy>)deserializer previousValue:(id _Nullable)previousValue __attribute__((swift_name("decodeNullableSerializableElement(descriptor:index:deserializer:previousValue:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+- (BOOL)decodeSequentially __attribute__((swift_name("decodeSequentially()")));
+- (id _Nullable)decodeSerializableElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index deserializer:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy>)deserializer previousValue:(id _Nullable)previousValue __attribute__((swift_name("decodeSerializableElement(descriptor:index:deserializer:previousValue:)")));
+- (int16_t)decodeShortElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeShortElement(descriptor:index:)")));
+- (NSString *)decodeStringElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeStringElement(descriptor:index:)")));
+- (void)endStructureDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("endStructure(descriptor:)")));
+@property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
 @end
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Builder")))
-@interface MockzillaMockzilla_commonDashboardOptionsConfigBuilder : MockzillaBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addErrorPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addErrorPreset(response:name:description:)")));
-- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addSuccessPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addSuccessPreset(response:name:description:)")));
-- (MockzillaMockzilla_commonDashboardOptionsConfig *)build __attribute__((swift_name("build()")));
-@end
-
-__attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
-@protocol MockzillaKotlinx_serialization_coreEncoder
-@required
-- (id<MockzillaKotlinx_serialization_coreCompositeEncoder>)beginCollectionDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor collectionSize:(int32_t)collectionSize __attribute__((swift_name("beginCollection(descriptor:collectionSize:)")));
-- (id<MockzillaKotlinx_serialization_coreCompositeEncoder>)beginStructureDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("beginStructure(descriptor:)")));
-- (void)encodeBooleanValue:(BOOL)value __attribute__((swift_name("encodeBoolean(value:)")));
-- (void)encodeByteValue:(int8_t)value __attribute__((swift_name("encodeByte(value:)")));
-- (void)encodeCharValue:(unichar)value __attribute__((swift_name("encodeChar(value:)")));
-- (void)encodeDoubleValue:(double)value __attribute__((swift_name("encodeDouble(value:)")));
-- (void)encodeEnumEnumDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)enumDescriptor index:(int32_t)index __attribute__((swift_name("encodeEnum(enumDescriptor:index:)")));
-- (void)encodeFloatValue:(float)value __attribute__((swift_name("encodeFloat(value:)")));
-- (id<MockzillaKotlinx_serialization_coreEncoder>)encodeInlineDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("encodeInline(descriptor:)")));
-- (void)encodeIntValue:(int32_t)value __attribute__((swift_name("encodeInt(value:)")));
-- (void)encodeLongValue:(int64_t)value __attribute__((swift_name("encodeLong(value:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (void)encodeNotNullMark __attribute__((swift_name("encodeNotNullMark()")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (void)encodeNull __attribute__((swift_name("encodeNull()")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (void)encodeNullableSerializableValueSerializer:(id<MockzillaKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeNullableSerializableValue(serializer:value:)")));
-- (void)encodeSerializableValueSerializer:(id<MockzillaKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeSerializableValue(serializer:value:)")));
-- (void)encodeShortValue:(int16_t)value __attribute__((swift_name("encodeShort(value:)")));
-- (void)encodeStringValue:(NSString *)value __attribute__((swift_name("encodeString(value:)")));
-@property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
-@end
-
-__attribute__((swift_name("Kotlinx_serialization_coreSerialDescriptor")))
-@protocol MockzillaKotlinx_serialization_coreSerialDescriptor
-@required
-- (NSArray<id<MockzillaKotlinAnnotation>> *)getElementAnnotationsIndex:(int32_t)index __attribute__((swift_name("getElementAnnotations(index:)")));
-- (id<MockzillaKotlinx_serialization_coreSerialDescriptor>)getElementDescriptorIndex:(int32_t)index __attribute__((swift_name("getElementDescriptor(index:)")));
-- (int32_t)getElementIndexName:(NSString *)name __attribute__((swift_name("getElementIndex(name:)")));
-- (NSString *)getElementNameIndex:(int32_t)index __attribute__((swift_name("getElementName(index:)")));
-- (BOOL)isElementOptionalIndex:(int32_t)index __attribute__((swift_name("isElementOptional(index:)")));
-@property (readonly) NSArray<id<MockzillaKotlinAnnotation>> *annotations __attribute__((swift_name("annotations")));
-@property (readonly) int32_t elementsCount __attribute__((swift_name("elementsCount")));
-@property (readonly) BOOL isInline __attribute__((swift_name("isInline")));
-@property (readonly) BOOL isNullable __attribute__((swift_name("isNullable")));
-@property (readonly) MockzillaKotlinx_serialization_coreSerialKind *kind __attribute__((swift_name("kind")));
-@property (readonly) NSString *serialName __attribute__((swift_name("serialName")));
-@end
-
-__attribute__((swift_name("Kotlinx_serialization_coreDecoder")))
-@protocol MockzillaKotlinx_serialization_coreDecoder
-@required
-- (id<MockzillaKotlinx_serialization_coreCompositeDecoder>)beginStructureDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("beginStructure(descriptor:)")));
-- (BOOL)decodeBoolean __attribute__((swift_name("decodeBoolean()")));
-- (int8_t)decodeByte __attribute__((swift_name("decodeByte()")));
-- (unichar)decodeChar __attribute__((swift_name("decodeChar()")));
-- (double)decodeDouble __attribute__((swift_name("decodeDouble()")));
-- (int32_t)decodeEnumEnumDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)enumDescriptor __attribute__((swift_name("decodeEnum(enumDescriptor:)")));
-- (float)decodeFloat __attribute__((swift_name("decodeFloat()")));
-- (id<MockzillaKotlinx_serialization_coreDecoder>)decodeInlineDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("decodeInline(descriptor:)")));
-- (int32_t)decodeInt __attribute__((swift_name("decodeInt()")));
-- (int64_t)decodeLong __attribute__((swift_name("decodeLong()")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (BOOL)decodeNotNullMark __attribute__((swift_name("decodeNotNullMark()")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (MockzillaKotlinNothing * _Nullable)decodeNull __attribute__((swift_name("decodeNull()")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (id _Nullable)decodeNullableSerializableValueDeserializer:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy>)deserializer __attribute__((swift_name("decodeNullableSerializableValue(deserializer:)")));
-- (id _Nullable)decodeSerializableValueDeserializer:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy>)deserializer __attribute__((swift_name("decodeSerializableValue(deserializer:)")));
-- (int16_t)decodeShort __attribute__((swift_name("decodeShort()")));
-- (NSString *)decodeString __attribute__((swift_name("decodeString()")));
-@property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
+__attribute__((swift_name("KotlinNothing")))
+@interface MockzillaKotlinNothing : MockzillaBase
 @end
 
 
@@ -1812,110 +1914,53 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
 @property (readonly) NSArray<MockzillaKtor_httpHttpStatusCode *> *allStatusCodes __attribute__((swift_name("allStatusCodes")));
 @end
 
-__attribute__((swift_name("Kotlinx_serialization_coreCompositeEncoder")))
-@protocol MockzillaKotlinx_serialization_coreCompositeEncoder
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+__attribute__((swift_name("Kotlinx_serialization_coreSerializersModuleCollector")))
+@protocol MockzillaKotlinx_serialization_coreSerializersModuleCollector
 @required
-- (void)encodeBooleanElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(BOOL)value __attribute__((swift_name("encodeBooleanElement(descriptor:index:value:)")));
-- (void)encodeByteElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(int8_t)value __attribute__((swift_name("encodeByteElement(descriptor:index:value:)")));
-- (void)encodeCharElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(unichar)value __attribute__((swift_name("encodeCharElement(descriptor:index:value:)")));
-- (void)encodeDoubleElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(double)value __attribute__((swift_name("encodeDoubleElement(descriptor:index:value:)")));
-- (void)encodeFloatElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(float)value __attribute__((swift_name("encodeFloatElement(descriptor:index:value:)")));
-- (id<MockzillaKotlinx_serialization_coreEncoder>)encodeInlineElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("encodeInlineElement(descriptor:index:)")));
-- (void)encodeIntElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(int32_t)value __attribute__((swift_name("encodeIntElement(descriptor:index:value:)")));
-- (void)encodeLongElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(int64_t)value __attribute__((swift_name("encodeLongElement(descriptor:index:value:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (void)encodeNullableSerializableElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index serializer:(id<MockzillaKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeNullableSerializableElement(descriptor:index:serializer:value:)")));
-- (void)encodeSerializableElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index serializer:(id<MockzillaKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeSerializableElement(descriptor:index:serializer:value:)")));
-- (void)encodeShortElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(int16_t)value __attribute__((swift_name("encodeShortElement(descriptor:index:value:)")));
-- (void)encodeStringElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(NSString *)value __attribute__((swift_name("encodeStringElement(descriptor:index:value:)")));
-- (void)endStructureDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("endStructure(descriptor:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (BOOL)shouldEncodeElementDefaultDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("shouldEncodeElementDefault(descriptor:index:)")));
-@property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
+- (void)contextualKClass:(id<MockzillaKotlinKClass>)kClass provider:(id<MockzillaKotlinx_serialization_coreKSerializer> (^)(NSArray<id<MockzillaKotlinx_serialization_coreKSerializer>> *))provider __attribute__((swift_name("contextual(kClass:provider:)")));
+- (void)contextualKClass:(id<MockzillaKotlinKClass>)kClass serializer:(id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("contextual(kClass:serializer:)")));
+- (void)polymorphicBaseClass:(id<MockzillaKotlinKClass>)baseClass actualClass:(id<MockzillaKotlinKClass>)actualClass actualSerializer:(id<MockzillaKotlinx_serialization_coreKSerializer>)actualSerializer __attribute__((swift_name("polymorphic(baseClass:actualClass:actualSerializer:)")));
+- (void)polymorphicDefaultBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultDeserializerProvider:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultDeserializerProvider __attribute__((swift_name("polymorphicDefault(baseClass:defaultDeserializerProvider:)"))) __attribute__((deprecated("Deprecated in favor of function with more precise name: polymorphicDefaultDeserializer")));
+- (void)polymorphicDefaultDeserializerBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultDeserializerProvider:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultDeserializerProvider __attribute__((swift_name("polymorphicDefaultDeserializer(baseClass:defaultDeserializerProvider:)")));
+- (void)polymorphicDefaultSerializerBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultSerializerProvider:(id<MockzillaKotlinx_serialization_coreSerializationStrategy> _Nullable (^)(id))defaultSerializerProvider __attribute__((swift_name("polymorphicDefaultSerializer(baseClass:defaultSerializerProvider:)")));
 @end
 
-__attribute__((swift_name("Kotlinx_serialization_coreSerializersModule")))
-@interface MockzillaKotlinx_serialization_coreSerializersModule : MockzillaBase
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (void)dumpToCollector:(id<MockzillaKotlinx_serialization_coreSerializersModuleCollector>)collector __attribute__((swift_name("dumpTo(collector:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (id<MockzillaKotlinx_serialization_coreKSerializer> _Nullable)getContextualKClass:(id<MockzillaKotlinKClass>)kClass typeArgumentsSerializers:(NSArray<id<MockzillaKotlinx_serialization_coreKSerializer>> *)typeArgumentsSerializers __attribute__((swift_name("getContextual(kClass:typeArgumentsSerializers:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (id<MockzillaKotlinx_serialization_coreSerializationStrategy> _Nullable)getPolymorphicBaseClass:(id<MockzillaKotlinKClass>)baseClass value:(id)value __attribute__((swift_name("getPolymorphic(baseClass:value:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (id<MockzillaKotlinx_serialization_coreDeserializationStrategy> _Nullable)getPolymorphicBaseClass:(id<MockzillaKotlinKClass>)baseClass serializedClassName:(NSString * _Nullable)serializedClassName __attribute__((swift_name("getPolymorphic(baseClass:serializedClassName:)")));
-@end
-
-__attribute__((swift_name("KotlinAnnotation")))
-@protocol MockzillaKotlinAnnotation
+__attribute__((swift_name("KotlinKDeclarationContainer")))
+@protocol MockzillaKotlinKDeclarationContainer
 @required
 @end
 
-__attribute__((swift_name("Kotlinx_serialization_coreSerialKind")))
-@interface MockzillaKotlinx_serialization_coreSerialKind : MockzillaBase
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@end
-
-__attribute__((swift_name("Kotlinx_serialization_coreCompositeDecoder")))
-@protocol MockzillaKotlinx_serialization_coreCompositeDecoder
+__attribute__((swift_name("KotlinKAnnotatedElement")))
+@protocol MockzillaKotlinKAnnotatedElement
 @required
-- (BOOL)decodeBooleanElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeBooleanElement(descriptor:index:)")));
-- (int8_t)decodeByteElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeByteElement(descriptor:index:)")));
-- (unichar)decodeCharElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeCharElement(descriptor:index:)")));
-- (int32_t)decodeCollectionSizeDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("decodeCollectionSize(descriptor:)")));
-- (double)decodeDoubleElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeDoubleElement(descriptor:index:)")));
-- (int32_t)decodeElementIndexDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("decodeElementIndex(descriptor:)")));
-- (float)decodeFloatElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeFloatElement(descriptor:index:)")));
-- (id<MockzillaKotlinx_serialization_coreDecoder>)decodeInlineElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeInlineElement(descriptor:index:)")));
-- (int32_t)decodeIntElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeIntElement(descriptor:index:)")));
-- (int64_t)decodeLongElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeLongElement(descriptor:index:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (id _Nullable)decodeNullableSerializableElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index deserializer:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy>)deserializer previousValue:(id _Nullable)previousValue __attribute__((swift_name("decodeNullableSerializableElement(descriptor:index:deserializer:previousValue:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-- (BOOL)decodeSequentially __attribute__((swift_name("decodeSequentially()")));
-- (id _Nullable)decodeSerializableElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index deserializer:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy>)deserializer previousValue:(id _Nullable)previousValue __attribute__((swift_name("decodeSerializableElement(descriptor:index:deserializer:previousValue:)")));
-- (int16_t)decodeShortElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeShortElement(descriptor:index:)")));
-- (NSString *)decodeStringElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeStringElement(descriptor:index:)")));
-- (void)endStructureDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("endStructure(descriptor:)")));
-@property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
 @end
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("KotlinNothing")))
-@interface MockzillaKotlinNothing : MockzillaBase
+
+/**
+ * @note annotations
+ *   kotlin.SinceKotlin(version="1.1")
+*/
+__attribute__((swift_name("KotlinKClassifier")))
+@protocol MockzillaKotlinKClassifier
+@required
+@end
+
+__attribute__((swift_name("KotlinKClass")))
+@protocol MockzillaKotlinKClass <MockzillaKotlinKDeclarationContainer, MockzillaKotlinKAnnotatedElement, MockzillaKotlinKClassifier>
+@required
+
+/**
+ * @note annotations
+ *   kotlin.SinceKotlin(version="1.1")
+*/
+- (BOOL)isInstanceValue:(id _Nullable)value __attribute__((swift_name("isInstance(value:)")));
+@property (readonly) NSString * _Nullable qualifiedName __attribute__((swift_name("qualifiedName")));
+@property (readonly) NSString * _Nullable simpleName __attribute__((swift_name("simpleName")));
 @end
 
 
@@ -2087,55 +2132,6 @@ __attribute__((swift_name("KotlinMapEntry")))
 @required
 @property (readonly) id _Nullable key __attribute__((swift_name("key")));
 @property (readonly) id _Nullable value __attribute__((swift_name("value")));
-@end
-
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
-__attribute__((swift_name("Kotlinx_serialization_coreSerializersModuleCollector")))
-@protocol MockzillaKotlinx_serialization_coreSerializersModuleCollector
-@required
-- (void)contextualKClass:(id<MockzillaKotlinKClass>)kClass provider:(id<MockzillaKotlinx_serialization_coreKSerializer> (^)(NSArray<id<MockzillaKotlinx_serialization_coreKSerializer>> *))provider __attribute__((swift_name("contextual(kClass:provider:)")));
-- (void)contextualKClass:(id<MockzillaKotlinKClass>)kClass serializer:(id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("contextual(kClass:serializer:)")));
-- (void)polymorphicBaseClass:(id<MockzillaKotlinKClass>)baseClass actualClass:(id<MockzillaKotlinKClass>)actualClass actualSerializer:(id<MockzillaKotlinx_serialization_coreKSerializer>)actualSerializer __attribute__((swift_name("polymorphic(baseClass:actualClass:actualSerializer:)")));
-- (void)polymorphicDefaultBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultDeserializerProvider:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultDeserializerProvider __attribute__((swift_name("polymorphicDefault(baseClass:defaultDeserializerProvider:)"))) __attribute__((deprecated("Deprecated in favor of function with more precise name: polymorphicDefaultDeserializer")));
-- (void)polymorphicDefaultDeserializerBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultDeserializerProvider:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultDeserializerProvider __attribute__((swift_name("polymorphicDefaultDeserializer(baseClass:defaultDeserializerProvider:)")));
-- (void)polymorphicDefaultSerializerBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultSerializerProvider:(id<MockzillaKotlinx_serialization_coreSerializationStrategy> _Nullable (^)(id))defaultSerializerProvider __attribute__((swift_name("polymorphicDefaultSerializer(baseClass:defaultSerializerProvider:)")));
-@end
-
-__attribute__((swift_name("KotlinKDeclarationContainer")))
-@protocol MockzillaKotlinKDeclarationContainer
-@required
-@end
-
-__attribute__((swift_name("KotlinKAnnotatedElement")))
-@protocol MockzillaKotlinKAnnotatedElement
-@required
-@end
-
-
-/**
- * @note annotations
- *   kotlin.SinceKotlin(version="1.1")
-*/
-__attribute__((swift_name("KotlinKClassifier")))
-@protocol MockzillaKotlinKClassifier
-@required
-@end
-
-__attribute__((swift_name("KotlinKClass")))
-@protocol MockzillaKotlinKClass <MockzillaKotlinKDeclarationContainer, MockzillaKotlinKAnnotatedElement, MockzillaKotlinKClassifier>
-@required
-
-/**
- * @note annotations
- *   kotlin.SinceKotlin(version="1.1")
-*/
-- (BOOL)isInstanceValue:(id _Nullable)value __attribute__((swift_name("isInstance(value:)")));
-@property (readonly) NSString * _Nullable qualifiedName __attribute__((swift_name("qualifiedName")));
-@property (readonly) NSString * _Nullable simpleName __attribute__((swift_name("simpleName")));
 @end
 
 __attribute__((swift_name("Kotlinx_io_coreRawSink")))
