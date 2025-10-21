@@ -1520,30 +1520,119 @@ __attribute__((swift_name("KotlinByteArray")))
 @property (readonly) int32_t size __attribute__((swift_name("size")));
 @end
 
+
+/**
+ * Represents an HTTP method (verb)
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMethod)
+ *
+ * @property value contains method name
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpHttpMethod")))
 @interface MockzillaKtor_httpHttpMethod : MockzillaBase
 - (instancetype)initWithValue:(NSString *)value __attribute__((swift_name("init(value:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaKtor_httpHttpMethodCompanion *companion __attribute__((swift_name("companion")));
 - (MockzillaKtor_httpHttpMethod *)doCopyValue:(NSString *)value __attribute__((swift_name("doCopy(value:)")));
+
+/**
+ * Represents an HTTP method (verb)
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMethod)
+ *
+ * @property value contains method name
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Represents an HTTP method (verb)
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMethod)
+ *
+ * @property value contains method name
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *value __attribute__((swift_name("value")));
 @end
 
+
+/**
+ * A client's request.
+ * To learn how to handle incoming requests, see [Handling requests](https://ktor.io/docs/requests.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationRequest)
+ *
+ * @see [io.ktor.server.application.ApplicationCall]
+ * @see [io.ktor.server.response.ApplicationResponse]
+ */
 __attribute__((swift_name("Ktor_server_coreApplicationRequest")))
 @protocol MockzillaKtor_server_coreApplicationRequest
 @required
+
+/**
+ * Receives a raw body payload as a channel.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationRequest.receiveChannel)
+ */
 - (id<MockzillaKtor_ioByteReadChannel>)receiveChannel __attribute__((swift_name("receiveChannel()")));
+
+/**
+ * An [ApplicationCall] instance this [ApplicationRequest] is attached to.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationRequest.call)
+ */
 @property (readonly) id<MockzillaKtor_server_coreApplicationCall> call __attribute__((swift_name("call")));
+
+/**
+ * Provides access to cookies for this request.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationRequest.cookies)
+ */
 @property (readonly) MockzillaKtor_server_coreRequestCookies *cookies __attribute__((swift_name("cookies")));
+
+/**
+ * Provides access to headers for the current request.
+ * You can also get access to specific headers using dedicated extension functions,
+ * such as [acceptEncoding], [contentType], [cacheControl], and so on.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationRequest.headers)
+ */
 @property (readonly) id<MockzillaKtor_httpHeaders> headers __attribute__((swift_name("headers")));
+
+/**
+ * Provides access to connection details such as a host name, port, scheme, etc.
+ * To get information about a request passed through an HTTP proxy or a load balancer,
+ * install the ForwardedHeaders/XForwardedHeader plugin and use the [origin] property.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationRequest.local)
+ */
 @property (readonly) id<MockzillaKtor_httpRequestConnectionPoint> local __attribute__((swift_name("local")));
+
+/**
+ * Provides access to decoded parameters of a URL query string.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationRequest.queryParameters)
+ */
 @property (readonly) id<MockzillaKtor_httpParameters> queryParameters __attribute__((swift_name("queryParameters")));
+
+/**
+ * Provides access to parameters of a URL query string.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationRequest.rawQueryParameters)
+ */
 @property (readonly) id<MockzillaKtor_httpParameters> rawQueryParameters __attribute__((swift_name("rawQueryParameters")));
 @end
 
+
+/**
+ * Represents an HTTP status code and description.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode)
+ *
+ * @param value is a numeric code.
+ * @param description is free form description of a status.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpHttpStatusCode")))
 @interface MockzillaKtor_httpHttpStatusCode : MockzillaBase <MockzillaKotlinComparable>
@@ -1551,6 +1640,12 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode")))
 @property (class, readonly, getter=companion) MockzillaKtor_httpHttpStatusCodeCompanion *companion __attribute__((swift_name("companion")));
 - (int32_t)compareToOther:(MockzillaKtor_httpHttpStatusCode *)other __attribute__((swift_name("compareTo(other:)")));
 - (MockzillaKtor_httpHttpStatusCode *)doCopyValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("doCopy(value:description:)")));
+
+/**
+ * Returns a copy of `this` code with a description changed to [value].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.description)
+ */
 - (MockzillaKtor_httpHttpStatusCode *)descriptionValue:(NSString *)value __attribute__((swift_name("description(value:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -1736,7 +1831,19 @@ __attribute__((swift_name("Ktor_httpHttpMethod.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_httpHttpMethodCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Parse HTTP method by [method] string
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMethod.Companion.parse)
+ */
 - (MockzillaKtor_httpHttpMethod *)parseMethod:(NSString *)method __attribute__((swift_name("parse(method:)")));
+
+/**
+ * A list of default HTTP methods
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMethod.Companion.DefaultMethods)
+ */
 @property (readonly) NSArray<MockzillaKtor_httpHttpMethod *> *DefaultMethods __attribute__((swift_name("DefaultMethods")));
 @property (readonly) MockzillaKtor_httpHttpMethod *Delete __attribute__((swift_name("Delete")));
 @property (readonly) MockzillaKtor_httpHttpMethod *Get __attribute__((swift_name("Get")));
@@ -1747,11 +1854,28 @@ __attribute__((swift_name("Ktor_httpHttpMethod.Companion")))
 @property (readonly) MockzillaKtor_httpHttpMethod *Put __attribute__((swift_name("Put")));
 @end
 
+
+/**
+ * Channel for asynchronous reading of sequences of bytes.
+ * This is a **single-reader channel**.
+ *
+ * Operations on this channel cannot be invoked concurrently.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.utils.io.ByteReadChannel)
+ */
 __attribute__((swift_name("Ktor_ioByteReadChannel")))
 @protocol MockzillaKtor_ioByteReadChannel
 @required
 
 /**
+ * Suspend the channel until it has [min] bytes or gets closed. Throws exception if the channel was closed with an
+ * error. If there are bytes available in the channel, this function returns immediately.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.utils.io.ByteReadChannel.awaitContent)
+ *
+ * @return return `false` eof is reached, otherwise `true`.
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
@@ -1768,37 +1892,115 @@ __attribute__((swift_name("Kotlinx_coroutines_coreCoroutineScope")))
 @property (readonly) id<MockzillaKotlinCoroutineContext> coroutineContext __attribute__((swift_name("coroutineContext")));
 @end
 
+
+/**
+ * A single act of communication between a client and server.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCall)
+ *
+ * @see [io.ktor.server.request.ApplicationRequest]
+ * @see [io.ktor.server.response.ApplicationResponse]
+ */
 __attribute__((swift_name("Ktor_server_coreApplicationCall")))
 @protocol MockzillaKtor_server_coreApplicationCall <MockzillaKotlinx_coroutines_coreCoroutineScope>
 @required
 
 /**
+ * Receives content for this request.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCall.receiveNullable)
+ *
+ * @param typeInfo instance specifying type to be received.
+ * @return instance of [T] received from this call.
+ * @throws ContentTransformationException when content cannot be transformed to the requested type.
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)receiveNullableTypeInfo:(MockzillaKtor_utilsTypeInfo *)typeInfo completionHandler:(void (^)(id _Nullable_result, NSError * _Nullable))completionHandler __attribute__((swift_name("receiveNullable(typeInfo:completionHandler:)")));
 
 /**
+ * Sends a [message] as a response.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCall.respond)
+ *
+ * @see [io.ktor.server.response.PipelineResponse]
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)respondMessage:(id _Nullable)message typeInfo:(MockzillaKtor_utilsTypeInfo * _Nullable)typeInfo completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("respond(message:typeInfo:completionHandler:)")));
+
+/**
+ * An application being called.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCall.application)
+ */
 @property (readonly) MockzillaKtor_server_coreApplication *application __attribute__((swift_name("application")));
+
+/**
+ * [Attributes] attached to this call.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCall.attributes)
+ */
 @property (readonly) id<MockzillaKtor_utilsAttributes> attributes __attribute__((swift_name("attributes")));
+
+/**
+ * Parameters associated with this call.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCall.parameters)
+ */
 @property (readonly) id<MockzillaKtor_httpParameters> parameters __attribute__((swift_name("parameters")));
+
+/**
+ * An [ApplicationRequest] that is a client request.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCall.request)
+ */
 @property (readonly) id<MockzillaKtor_server_coreApplicationRequest> request __attribute__((swift_name("request")));
+
+/**
+ * An [PipelineResponse] that is a server response.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCall.response)
+ */
 @property (readonly) id<MockzillaKtor_server_coreApplicationResponse> response __attribute__((swift_name("response")));
 @end
 
+
+/**
+ * Server request's cookies.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.RequestCookies)
+ *
+ * @see [ApplicationRequest.cookies]
+ * @property request application request to fetch cookies from
+ */
 __attribute__((swift_name("Ktor_server_coreRequestCookies")))
 @interface MockzillaKtor_server_coreRequestCookies : MockzillaBase
 - (instancetype)initWithRequest:(id<MockzillaKtor_server_coreApplicationRequest>)request __attribute__((swift_name("init(request:)"))) __attribute__((objc_designated_initializer));
 
 /**
+ * Fetches cookies from a [request]. Could access cookies using an engine's native API.
+ *
  * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
 */
 - (NSDictionary<NSString *, NSString *> *)fetchCookies __attribute__((swift_name("fetchCookies()")));
+
+/**
+ * Gets a [name] cookie value decoded using an [encoding] strategy.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.RequestCookies.get)
+ */
 - (NSString * _Nullable)getName:(NSString *)name encoding:(MockzillaKtor_httpCookieEncoding *)encoding __attribute__((swift_name("get(name:encoding:)")));
+
+/**
+ * Provides access to raw cookie values.
+ * These values are not decoded so could have percent encoded values, quotes, escape characters, and so on.
+ * It is recommended to use [get] instead.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.RequestCookies.rawCookies)
+ */
 @property (readonly) NSDictionary<NSString *, NSString *> *rawCookies __attribute__((swift_name("rawCookies")));
 
 /**
@@ -1807,44 +2009,231 @@ __attribute__((swift_name("Ktor_server_coreRequestCookies")))
 @property (readonly) id<MockzillaKtor_server_coreApplicationRequest> request __attribute__((swift_name("request")));
 @end
 
+
+/**
+ * Provides data structure for associating a [String] with a [List] of Strings
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues)
+ */
 __attribute__((swift_name("Ktor_utilsStringValues")))
 @protocol MockzillaKtor_utilsStringValues
 @required
+
+/**
+ * Checks if the given [name] exists in the map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.contains)
+ */
 - (BOOL)containsName:(NSString *)name __attribute__((swift_name("contains(name:)")));
+
+/**
+ * Checks if the given [name] and [value] pair exists in the map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.contains)
+ */
 - (BOOL)containsName:(NSString *)name value:(NSString *)value __attribute__((swift_name("contains(name:value:)")));
+
+/**
+ * Gets all entries from the map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.entries)
+ */
 - (NSSet<id<MockzillaKotlinMapEntry>> *)entries __attribute__((swift_name("entries()")));
+
+/**
+ * Iterates over all entries in this map and calls [body] for each pair
+ *
+ * Can be optimized in implementations
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.forEach)
+ */
 - (void)forEachBody:(void (^)(NSString *, NSArray<NSString *> *))body __attribute__((swift_name("forEach(body:)")));
+
+/**
+ * Gets first value from the list of values associated with a [name], or null if the name is not present
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.get)
+ */
 - (NSString * _Nullable)getName:(NSString *)name __attribute__((swift_name("get(name:)")));
+
+/**
+ * Gets all values associated with the [name], or null if the name is not present
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.getAll)
+ */
 - (NSArray<NSString *> * _Nullable)getAllName:(NSString *)name __attribute__((swift_name("getAll(name:)")));
+
+/**
+ * Checks if this map is empty
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.isEmpty)
+ */
 - (BOOL)isEmpty __attribute__((swift_name("isEmpty()")));
+
+/**
+ * Gets all names from the map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.names)
+ */
 - (NSSet<NSString *> *)names __attribute__((swift_name("names()")));
+
+/**
+ * Specifies if map has case-sensitive or case-insensitive names
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.caseInsensitiveName)
+ */
 @property (readonly) BOOL caseInsensitiveName __attribute__((swift_name("caseInsensitiveName")));
 @end
 
+
+/**
+ * Represents HTTP headers as a map from case-insensitive names to collection of [String] values
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Headers)
+ */
 __attribute__((swift_name("Ktor_httpHeaders")))
 @protocol MockzillaKtor_httpHeaders <MockzillaKtor_utilsStringValues>
 @required
 @end
 
+
+/**
+ * Represents request address information is used to make a call.
+ * There are at least two possible instances: "local" is how we see request at the server application and
+ * "actual" is what we can recover from proxy provided headers.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint)
+ */
 __attribute__((swift_name("Ktor_httpRequestConnectionPoint")))
 @protocol MockzillaKtor_httpRequestConnectionPoint
 @required
+
+/**
+ * Request host, useful for virtual hosts routing
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.host)
+ */
 @property (readonly) NSString *host __attribute__((swift_name("host"))) __attribute__((unavailable("Use localHost or serverHost instead")));
+
+/**
+ * IP address on which the request was received.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.localAddress)
+ */
 @property (readonly) NSString *localAddress __attribute__((swift_name("localAddress")));
+
+/**
+ * Host on which the request was received, is useful for virtual hosts routing
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.localHost)
+ */
 @property (readonly) NSString *localHost __attribute__((swift_name("localHost")));
+
+/**
+ * Port on which the request was received, for example 80 or 443
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.localPort)
+ */
 @property (readonly) int32_t localPort __attribute__((swift_name("localPort")));
+
+/**
+ * Request HTTP method
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.method)
+ */
 @property (readonly) MockzillaKtor_httpHttpMethod *method __attribute__((swift_name("method")));
+
+/**
+ * Port, for example 80 or 443
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.port)
+ */
 @property (readonly) int32_t port __attribute__((swift_name("port"))) __attribute__((unavailable("Use localPort or serverPort instead")));
+
+/**
+ * Client address.
+ * For [io.ktor.server.request.ApplicationRequest.local] instance could point to
+ * a proxy our application running behind.
+ * NEVER use it for user authentication as it can be easily falsified (user can simply set some HTTP headers
+ * such as X-Forwarded-Host so you should NEVER rely on it in any security checks).
+ * If you are going to use it to create a back-connection, please do it with care as an offender can easily
+ * use it to force you to connect to some host that is not intended to be connected to so that may cause
+ * serious consequences.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.remoteAddress)
+ */
 @property (readonly) NSString *remoteAddress __attribute__((swift_name("remoteAddress")));
+
+/**
+ * Client address or host name if it can be resolved.
+ * For [io.ktor.server.request.ApplicationRequest.local] instance could point to
+ * a proxy our application running behind.
+ * NEVER use it for user authentication as it can be easily falsified (user can simply set some HTTP headers
+ * such as X-Forwarded-Host so you should NEVER rely on it in any security checks).
+ * If you are going to use it to create a back-connection, please do it with care as an offender can easily
+ * use it to force you to connect to some host that is not intended to be connected to so that may cause
+ * serious consequences.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.remoteHost)
+ */
 @property (readonly) NSString *remoteHost __attribute__((swift_name("remoteHost")));
+
+/**
+ * Client port.
+ * For [io.ktor.server.request.ApplicationRequest.local.local] instance could point to
+ * a proxy our application running behind.
+ * NEVER use it for user authentication as it can be easily falsified (user can simply set some HTTP headers
+ * such as X-Forwarded-Host so you should NEVER rely on it in any security checks).
+ * If you are going to use it to create a back-connection, please do it with care as an offender can easily
+ * use it to force you to connect to some host that is not intended to be connected to so that may cause
+ * serious consequences.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.remotePort)
+ */
 @property (readonly) int32_t remotePort __attribute__((swift_name("remotePort")));
+
+/**
+ * Scheme, for example "http" or "https"
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.scheme)
+ */
 @property (readonly) NSString *scheme __attribute__((swift_name("scheme")));
+
+/**
+ * Host to which the request was sent, is useful for virtual hosts routing
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.serverHost)
+ */
 @property (readonly) NSString *serverHost __attribute__((swift_name("serverHost")));
+
+/**
+ * Port to which the request was sent, for example, 80 or 443
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.serverPort)
+ */
 @property (readonly) int32_t serverPort __attribute__((swift_name("serverPort")));
+
+/**
+ * URI path with no host, port and no schema specification, but possibly with query
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.uri)
+ */
 @property (readonly) NSString *uri __attribute__((swift_name("uri")));
+
+/**
+ * Protocol version string
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.RequestConnectionPoint.version)
+ */
 @property (readonly) NSString *version __attribute__((swift_name("version")));
 @end
 
+
+/**
+ * Represents HTTP parameters as a map from case-insensitive names to collection of [String] values
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Parameters)
+ */
 __attribute__((swift_name("Ktor_httpParameters")))
 @protocol MockzillaKtor_httpParameters <MockzillaKtor_utilsStringValues>
 @required
@@ -1857,6 +2246,12 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_httpHttpStatusCodeCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Creates an instance of [HttpStatusCode] with the given numeric value.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.Companion.fromValue)
+ */
 - (MockzillaKtor_httpHttpStatusCode *)fromValueValue:(int32_t)value __attribute__((swift_name("fromValue(value:)")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *Accepted __attribute__((swift_name("Accepted")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *BadGateway __attribute__((swift_name("BadGateway")));
@@ -1911,6 +2306,12 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
 @property (readonly) MockzillaKtor_httpHttpStatusCode *UseProxy __attribute__((swift_name("UseProxy")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *VariantAlsoNegotiates __attribute__((swift_name("VariantAlsoNegotiates")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *VersionNotSupported __attribute__((swift_name("VersionNotSupported")));
+
+/**
+ * All known status codes
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.Companion.allStatusCodes)
+ */
 @property (readonly) NSArray<MockzillaKtor_httpHttpStatusCode *> *allStatusCodes __attribute__((swift_name("allStatusCodes")));
 @end
 
@@ -2003,6 +2404,15 @@ __attribute__((swift_name("Kotlinx_io_coreSource")))
 @property (readonly) MockzillaKotlinx_io_coreBuffer *buffer __attribute__((swift_name("buffer")));
 @end
 
+
+/**
+ * Ktor type information.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.reflect.TypeInfo)
+ *
+ * @property type Source KClass<*>
+ * @property kotlinType Kotlin reified type with all generic type parameters.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsTypeInfo")))
 @interface MockzillaKtor_utilsTypeInfo : MockzillaBase
@@ -2015,32 +2425,130 @@ __attribute__((swift_name("Ktor_utilsTypeInfo")))
 @property (readonly) id<MockzillaKotlinKClass> type __attribute__((swift_name("type")));
 @end
 
+
+/**
+ * Represents an execution pipeline for asynchronous extensible computations
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline)
+ */
 __attribute__((swift_name("Ktor_utilsPipeline")))
 @interface MockzillaKtor_utilsPipeline<TSubject, TContext> : MockzillaBase
 - (instancetype)initWithPhases:(MockzillaKotlinArray<MockzillaKtor_utilsPipelinePhase *> *)phases __attribute__((swift_name("init(phases:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithPhase:(MockzillaKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Adds [phase] to the end of this pipeline
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.addPhase)
+ */
 - (void)addPhasePhase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("addPhase(phase:)")));
+
+/**
+ * Invoked after an interceptor has been installed
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.afterIntercepted)
+ */
 - (void)afterIntercepted __attribute__((swift_name("afterIntercepted()")));
 
 /**
+ * Executes this pipeline in the given [context] and with the given [subject]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.execute)
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)executeContext:(TContext)context subject:(TSubject)subject completionHandler:(void (^)(TSubject _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("execute(context:subject:completionHandler:)")));
+
+/**
+ * Inserts [phase] after the [reference] phase. If there are other phases inserted after [reference], then [phase]
+ * will be inserted after them.
+ * Example:
+ * ```
+ * val pipeline = Pipeline<String, String>(a)
+ * pipeline.insertPhaseAfter(a, b)
+ * pipeline.insertPhaseAfter(a, c)
+ * assertEquals(listOf(a, b, c), pipeline.items)
+ * ```
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.insertPhaseAfter)
+ */
 - (void)insertPhaseAfterReference:(MockzillaKtor_utilsPipelinePhase *)reference phase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("insertPhaseAfter(reference:phase:)")));
+
+/**
+ * Inserts [phase] before the [reference] phase.
+ * Example:
+ * ```
+ * val pipeline = Pipeline<String, String>(c)
+ * pipeline.insertPhaseBefore(c, a)
+ * pipeline.insertPhaseBefore(c, b)
+ * assertEquals(listOf(a, b, c), pipeline.items)
+ * ```
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.insertPhaseBefore)
+ */
 - (void)insertPhaseBeforeReference:(MockzillaKtor_utilsPipelinePhase *)reference phase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("insertPhaseBefore(reference:phase:)")));
+
+/**
+ * Adds [block] to the [phase] of this pipeline
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.intercept)
+ */
 - (void)interceptPhase:(MockzillaKtor_utilsPipelinePhase *)phase block:(id<MockzillaKotlinSuspendFunction2>)block __attribute__((swift_name("intercept(phase:block:)")));
 - (NSArray<id<MockzillaKotlinSuspendFunction2>> *)interceptorsForPhasePhase:(MockzillaKtor_utilsPipelinePhase *)phase __attribute__((swift_name("interceptorsForPhase(phase:)")));
+
+/**
+ * Merges another pipeline into this pipeline, maintaining relative phases order
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.merge)
+ */
 - (void)mergeFrom:(MockzillaKtor_utilsPipeline<TSubject, TContext> *)from __attribute__((swift_name("merge(from:)")));
 - (void)mergePhasesFrom:(MockzillaKtor_utilsPipeline<TSubject, TContext> *)from __attribute__((swift_name("mergePhases(from:)")));
+
+/**
+ * Reset current pipeline from other.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.resetFrom)
+ */
 - (void)resetFromFrom:(MockzillaKtor_utilsPipeline<TSubject, TContext> *)from __attribute__((swift_name("resetFrom(from:)")));
 - (NSString *)description __attribute__((swift_name("description()")));
+
+/**
+ * Provides common place to store pipeline attributes
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.attributes)
+ */
 @property (readonly) id<MockzillaKtor_utilsAttributes> attributes __attribute__((swift_name("attributes")));
+
+/**
+ * Indicated if debug mode is enabled. In debug mode users will get more details in the stacktrace.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.developmentMode)
+ */
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
+
+/**
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.isEmpty)
+ *
+ * @return `true` if there are no interceptors installed regardless number of phases
+ */
 @property (readonly, getter=isEmpty_) BOOL isEmpty __attribute__((swift_name("isEmpty")));
+
+/**
+ * Phases of this pipeline
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.items)
+ */
 @property (readonly) NSArray<MockzillaKtor_utilsPipelinePhase *> *items __attribute__((swift_name("items")));
 @end
 
+
+/**
+ * Pipeline configuration for executing [PipelineCall] instances.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCallPipeline)
+ */
 __attribute__((swift_name("Ktor_server_coreApplicationCallPipeline")))
 @interface MockzillaKtor_server_coreApplicationCallPipeline : MockzillaKtor_utilsPipeline<MockzillaKotlinUnit *, id<MockzillaKtor_server_corePipelineCall>>
 - (instancetype)initWithDevelopmentMode:(BOOL)developmentMode environment:(id<MockzillaKtor_server_coreApplicationEnvironment>)environment __attribute__((swift_name("init(developmentMode:environment:)"))) __attribute__((objc_designated_initializer));
@@ -2049,17 +2557,47 @@ __attribute__((swift_name("Ktor_server_coreApplicationCallPipeline")))
 @property (class, readonly, getter=companion) MockzillaKtor_server_coreApplicationCallPipelineApplicationPhase *companion __attribute__((swift_name("companion")));
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @property (readonly) id<MockzillaKtor_server_coreApplicationEnvironment> environment __attribute__((swift_name("environment")));
+
+/**
+ * Pipeline for receiving content
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCallPipeline.receivePipeline)
+ */
 @property (readonly) MockzillaKtor_server_coreApplicationReceivePipeline *receivePipeline __attribute__((swift_name("receivePipeline")));
+
+/**
+ * Pipeline for sending content
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCallPipeline.sendPipeline)
+ */
 @property (readonly) MockzillaKtor_server_coreApplicationSendPipeline *sendPipeline __attribute__((swift_name("sendPipeline")));
 @end
 
+
+/**
+ * Represents configured and running web application, capable of handling requests.
+ * It is also the application coroutine scope that is cancelled immediately at application stop so useful
+ * for launching background coroutines.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.Application)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_server_coreApplication")))
 @interface MockzillaKtor_server_coreApplication : MockzillaKtor_server_coreApplicationCallPipeline <MockzillaKotlinx_coroutines_coreCoroutineScope>
 - (instancetype)initWithDevelopmentMode:(BOOL)developmentMode environment:(id<MockzillaKtor_server_coreApplicationEnvironment>)environment __attribute__((swift_name("init(developmentMode:environment:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+
+/**
+ * Cancels the application job without waiting for join.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.Application.dispose)
+ */
 - (void)dispose __attribute__((swift_name("dispose()"))) __attribute__((deprecated("Use disposeAndJoin() instead.")));
 
 /**
+ * Called by [ApplicationEngine] when [Application] is terminated.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.Application.disposeAndJoin)
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
@@ -2071,31 +2609,156 @@ __attribute__((swift_name("Ktor_server_coreApplication")))
 @property NSString *rootPath __attribute__((swift_name("rootPath")));
 @end
 
+
+/**
+ * Map of attributes accessible by [AttributeKey] in a typed manner
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes)
+ */
 __attribute__((swift_name("Ktor_utilsAttributes")))
 @protocol MockzillaKtor_utilsAttributes
 @required
+
+/**
+ * Gets a value of the attribute for the specified [key], or calls supplied [block] to compute its value
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.computeIfAbsent)
+ */
 - (id)computeIfAbsentKey:(MockzillaKtor_utilsAttributeKey<id> *)key block:(id (^)(void))block __attribute__((swift_name("computeIfAbsent(key:block:)")));
+
+/**
+ * Checks if an attribute with the specified [key] exists
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.contains)
+ */
 - (BOOL)containsKey:(MockzillaKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("contains(key:)")));
+
+/**
+ * Gets a value of the attribute for the specified [key], or throws an exception if an attribute doesn't exist
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.get)
+ */
 - (id)getKey:(MockzillaKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("get(key:)")));
+
+/**
+ * Gets a value of the attribute for the specified [key], or return `null` if an attribute doesn't exist
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.getOrNull)
+ */
 - (id _Nullable)getOrNullKey:(MockzillaKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("getOrNull(key:)")));
+
+/**
+ * Creates or changes an attribute with the specified [key] using [value]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.put)
+ */
 - (void)putKey:(MockzillaKtor_utilsAttributeKey<id> *)key value:(id)value __attribute__((swift_name("put(key:value:)")));
+
+/**
+ * Removes an attribute with the specified [key]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.remove)
+ */
 - (void)removeKey:(MockzillaKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("remove(key:)")));
+
+/**
+ * Creates or changes an attribute with the specified [key] using [value]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.set)
+ */
 - (void)setKey:(MockzillaKtor_utilsAttributeKey<id> *)key value:(id)value __attribute__((swift_name("set(key:value:)")));
+
+/**
+ * Removes an attribute with the specified [key] and returns its current value, throws an exception if an attribute doesn't exist
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.take)
+ */
 - (id)takeKey:(MockzillaKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("take(key:)")));
+
+/**
+ * Removes an attribute with the specified [key] and returns its current value, returns `null` if an attribute doesn't exist
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.takeOrNull)
+ */
 - (id _Nullable)takeOrNullKey:(MockzillaKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("takeOrNull(key:)")));
+
+/**
+ * Returns [List] of all [AttributeKey] instances in this map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.allKeys)
+ */
 @property (readonly) NSArray<MockzillaKtor_utilsAttributeKey<id> *> *allKeys __attribute__((swift_name("allKeys")));
 @end
 
+
+/**
+ * A server's response.
+ * To learn how to send responses inside route handlers, see [Sending responses](https://ktor.io/docs/responses.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationResponse)
+ *
+ * @see [ApplicationCall]
+ * @see [io.ktor.server.request.ApplicationRequest]
+ */
 __attribute__((swift_name("Ktor_server_coreApplicationResponse")))
 @protocol MockzillaKtor_server_coreApplicationResponse
 @required
+
+/**
+ * Produces HTTP/2 push from a server to a client or sets an HTTP/1.x hint header
+ * or does nothing. Exact behaviour is up to engine implementation.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationResponse.push)
+ */
 - (void)pushBuilder:(id<MockzillaKtor_server_coreResponsePushBuilder>)builder __attribute__((swift_name("push(builder:)")));
+
+/**
+ * Returns a response status code or `null` if a status code is not set.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationResponse.status)
+ */
 - (MockzillaKtor_httpHttpStatusCode * _Nullable)status __attribute__((swift_name("status()")));
+
+/**
+ * Specifies a status code for a response.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationResponse.status)
+ */
 - (void)statusValue:(MockzillaKtor_httpHttpStatusCode *)value __attribute__((swift_name("status(value:)")));
+
+/**
+ * An [ApplicationCall] instance this [ApplicationResponse] is attached to.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationResponse.call)
+ */
 @property (readonly) id<MockzillaKtor_server_coreApplicationCall> call __attribute__((swift_name("call")));
+
+/**
+ * Provides access to cookies for this response.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationResponse.cookies)
+ */
 @property (readonly) MockzillaKtor_server_coreResponseCookies *cookies __attribute__((swift_name("cookies")));
+
+/**
+ * Provides access to headers for the current response.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationResponse.headers)
+ */
 @property (readonly) MockzillaKtor_server_coreResponseHeaders *headers __attribute__((swift_name("headers")));
+
+/**
+ * Indicates that this response is already committed and no further changes are allowed.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationResponse.isCommitted)
+ */
 @property (readonly) BOOL isCommitted __attribute__((swift_name("isCommitted")));
+
+/**
+ * Indicates that this response is already fully sent to the client.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationResponse.isSent)
+ */
 @property (readonly) BOOL isSent __attribute__((swift_name("isSent")));
 @end
 
@@ -2113,10 +2776,22 @@ __attribute__((swift_name("KotlinCoroutineContext")))
 - (id<MockzillaKotlinCoroutineContext>)plusContext:(id<MockzillaKotlinCoroutineContext>)context __attribute__((swift_name("plus(context:)")));
 @end
 
+
+/**
+ * Cooke encoding strategy
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.CookieEncoding)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpCookieEncoding")))
 @interface MockzillaKtor_httpCookieEncoding : MockzillaKotlinEnum<MockzillaKtor_httpCookieEncoding *>
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Cooke encoding strategy
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.CookieEncoding)
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 - (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly) MockzillaKtor_httpCookieEncoding *raw __attribute__((swift_name("raw")));
@@ -2233,6 +2908,15 @@ __attribute__((swift_name("KotlinKType")))
 @property (readonly) BOOL isMarkedNullable __attribute__((swift_name("isMarkedNullable")));
 @end
 
+
+/**
+ * Represents a phase in a pipeline
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.PipelinePhase)
+ *
+ * @param name a name for this phase
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsPipelinePhase")))
 @interface MockzillaKtor_utilsPipelinePhase : MockzillaBase
@@ -2260,26 +2944,99 @@ __attribute__((swift_name("KotlinSuspendFunction2")))
 __attribute__((swift_name("Ktor_server_coreApplicationEnvironment")))
 @protocol MockzillaKtor_server_coreApplicationEnvironment
 @required
+
+/**
+ * Configuration for the [Application]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationEnvironment.config)
+ */
 @property (readonly) id<MockzillaKtor_server_coreApplicationConfig> config __attribute__((swift_name("config")));
+
+/**
+ * Instance of [Logger] to be used for logging.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationEnvironment.log)
+ */
 @property (readonly) id<MockzillaKtor_utilsLogger> log __attribute__((swift_name("log")));
+
+/**
+ * Provides events on Application lifecycle
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationEnvironment.monitor)
+ */
 @property (readonly) MockzillaKtor_eventsEvents *monitor __attribute__((swift_name("monitor"))) __attribute__((deprecated("Moved to Application")));
 @end
 
+
+/**
+ * Standard phases for application call pipelines
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCallPipeline.ApplicationPhase)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_server_coreApplicationCallPipeline.ApplicationPhase")))
 @interface MockzillaKtor_server_coreApplicationCallPipelineApplicationPhase : MockzillaBase
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Standard phases for application call pipelines
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCallPipeline.ApplicationPhase)
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)applicationPhase __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_server_coreApplicationCallPipelineApplicationPhase *shared __attribute__((swift_name("shared")));
+
+/**
+ * Phase for processing a call and sending a response
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCallPipeline.ApplicationPhase.Call)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Call __attribute__((swift_name("Call")));
+
+/**
+ * Phase for handling unprocessed calls
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCallPipeline.ApplicationPhase.Fallback)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Fallback __attribute__((swift_name("Fallback")));
+
+/**
+ * Phase for plugins. Most plugins should intercept this phase.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCallPipeline.ApplicationPhase.Features)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Features __attribute__((swift_name("Features"))) __attribute__((unavailable("Renamed to Plugins")));
+
+/**
+ * Phase for tracing calls, useful for logging, metrics, error handling and so on
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCallPipeline.ApplicationPhase.Monitoring)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Monitoring __attribute__((swift_name("Monitoring")));
+
+/**
+ * Phase for plugins. Most plugins should intercept this phase.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCallPipeline.ApplicationPhase.Plugins)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Plugins __attribute__((swift_name("Plugins")));
+
+/**
+ * Phase for preparing call and it's attributes for processing
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.ApplicationCallPipeline.ApplicationPhase.Setup)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Setup __attribute__((swift_name("Setup")));
 @end
 
+
+/**
+ * A pipeline for processing incoming content.
+ * When executed, this pipeline starts with an instance of [ByteReadChannel].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationReceivePipeline)
+ */
 __attribute__((swift_name("Ktor_server_coreApplicationReceivePipeline")))
 @interface MockzillaKtor_server_coreApplicationReceivePipeline : MockzillaKtor_utilsPipeline<id, id<MockzillaKtor_server_corePipelineCall>>
 - (instancetype)initWithDevelopmentMode:(BOOL)developmentMode __attribute__((swift_name("init(developmentMode:)"))) __attribute__((objc_designated_initializer));
@@ -2289,6 +3046,12 @@ __attribute__((swift_name("Ktor_server_coreApplicationReceivePipeline")))
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @end
 
+
+/**
+ * Server response send pipeline.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationSendPipeline)
+ */
 __attribute__((swift_name("Ktor_server_coreApplicationSendPipeline")))
 @interface MockzillaKtor_server_coreApplicationSendPipeline : MockzillaKtor_utilsPipeline<id, id<MockzillaKtor_server_corePipelineCall>>
 - (instancetype)initWithDevelopmentMode:(BOOL)developmentMode __attribute__((swift_name("init(developmentMode:)"))) __attribute__((objc_designated_initializer));
@@ -2298,34 +3061,102 @@ __attribute__((swift_name("Ktor_server_coreApplicationSendPipeline")))
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @end
 
+
+/**
+ * A single act of communication between a client and server.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.application.PipelineCall)
+ *
+ * @see [io.ktor.server.request.PipelineRequest]
+ * @see [io.ktor.server.response.PipelineResponse]
+ */
 __attribute__((swift_name("Ktor_server_corePipelineCall")))
 @protocol MockzillaKtor_server_corePipelineCall <MockzillaKtor_server_coreApplicationCall>
 @required
 @end
 
+
+/**
+ * An engine which runs an application.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ApplicationEngine)
+ */
 __attribute__((swift_name("Ktor_server_coreApplicationEngine")))
 @protocol MockzillaKtor_server_coreApplicationEngine
 @required
 
 /**
+ * Local addresses for application connectors.
+ * If [environment]'s [connector]s was configured to use port=0, you can use this function to get an actual port
+ * for these connectors.
+ * Available after a server is started.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ApplicationEngine.resolvedConnectors)
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)resolvedConnectorsWithCompletionHandler:(void (^)(NSArray<id<MockzillaKtor_server_coreEngineConnectorConfig>> * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("resolvedConnectors(completionHandler:)")));
+
+/**
+ * Starts this [ApplicationEngine].
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ApplicationEngine.start)
+ *
+ * @param wait if true, then the `start` call blocks a current thread until it finishes its execution.
+ * If you run `start` from the main thread with `wait = false` and nothing else blocking this thread,
+ * then your application will be terminated without handling any requests.
+ * @return returns this instance
+ */
 - (id<MockzillaKtor_server_coreApplicationEngine>)startWait:(BOOL)wait __attribute__((swift_name("start(wait:)")));
 
 /**
+ * Starts this [ApplicationEngine].
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ApplicationEngine.startSuspend)
+ *
+ * @param wait if true, then the `start` call blocks a current thread until it finishes its execution.
+ * If you run `start` from the main thread with `wait = false` and nothing else blocking this thread,
+ * then your application will be terminated without handling any requests.
+ * @return returns this instance
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)startSuspendWait:(BOOL)wait completionHandler:(void (^)(id<MockzillaKtor_server_coreApplicationEngine> _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("startSuspend(wait:completionHandler:)")));
+
+/**
+ * Stops this [ApplicationEngine].
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ApplicationEngine.stop)
+ *
+ * @param gracePeriodMillis the maximum amount of time for activity to cool down
+ * @param timeoutMillis the maximum amount of time to wait until a server stops gracefully
+ */
 - (void)stopGracePeriodMillis:(int64_t)gracePeriodMillis timeoutMillis:(int64_t)timeoutMillis __attribute__((swift_name("stop(gracePeriodMillis:timeoutMillis:)")));
 
 /**
+ * Stops this [ApplicationEngine].
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ApplicationEngine.stopSuspend)
+ *
+ * @param gracePeriodMillis the maximum amount of time for activity to cool down
+ * @param timeoutMillis the maximum amount of time to wait until a server stops gracefully
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)stopSuspendGracePeriodMillis:(int64_t)gracePeriodMillis timeoutMillis:(int64_t)timeoutMillis completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("stopSuspend(gracePeriodMillis:timeoutMillis:completionHandler:)")));
+
+/**
+ * An environment used to run this engine.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ApplicationEngine.environment)
+ */
 @property (readonly) id<MockzillaKtor_server_coreApplicationEnvironment> environment __attribute__((swift_name("environment")));
 @end
 
@@ -2334,11 +3165,42 @@ __attribute__((swift_name("Ktor_eventsEvents")))
 @interface MockzillaKtor_eventsEvents : MockzillaBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+
+/**
+ * Raises the event specified by [definition] with the [value] and calls all handlers.
+ *
+ * Handlers are called in order of subscriptions.
+ * If some handler throws an exception, all remaining handlers will still run. The exception will eventually be re-thrown.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.events.Events.raise)
+ */
 - (void)raiseDefinition:(MockzillaKtor_eventsEventDefinition<id> *)definition value:(id _Nullable)value __attribute__((swift_name("raise(definition:value:)")));
+
+/**
+ * Subscribe [handler] to an event specified by [definition]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.events.Events.subscribe)
+ */
 - (id<MockzillaKotlinx_coroutines_coreDisposableHandle>)subscribeDefinition:(MockzillaKtor_eventsEventDefinition<id> *)definition handler:(void (^)(id _Nullable))handler __attribute__((swift_name("subscribe(definition:handler:)")));
+
+/**
+ * Unsubscribe [handler] from an event specified by [definition]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.events.Events.unsubscribe)
+ */
 - (void)unsubscribeDefinition:(MockzillaKtor_eventsEventDefinition<id> *)definition handler:(void (^)(id _Nullable))handler __attribute__((swift_name("unsubscribe(definition:handler:)")));
 @end
 
+
+/**
+ * Specifies a key for an attribute in [Attributes]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.AttributeKey)
+ *
+ * @param T is a type of the value stored in the attribute
+ * @property name is a name of the attribute for diagnostic purposes. Can't be blank
+ * @property type the recorded kotlin type of T
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsAttributeKey")))
 @interface MockzillaKtor_utilsAttributeKey<T> : MockzillaBase
@@ -2349,12 +3211,44 @@ __attribute__((swift_name("Ktor_utilsAttributeKey")))
 */
 - (instancetype)initWithName:(NSString *)name type:(MockzillaKtor_utilsTypeInfo *)type __attribute__((swift_name("init(name:type:)"))) __attribute__((objc_designated_initializer));
 - (MockzillaKtor_utilsAttributeKey<T> *)doCopyName:(NSString *)name type:(MockzillaKtor_utilsTypeInfo *)type __attribute__((swift_name("doCopy(name:type:)")));
+
+/**
+ * Specifies a key for an attribute in [Attributes]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.AttributeKey)
+ *
+ * @param T is a type of the value stored in the attribute
+ * @property name is a name of the attribute for diagnostic purposes. Can't be blank
+ * @property type the recorded kotlin type of T
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Specifies a key for an attribute in [Attributes]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.AttributeKey)
+ *
+ * @param T is a type of the value stored in the attribute
+ * @property name is a name of the attribute for diagnostic purposes. Can't be blank
+ * @property type the recorded kotlin type of T
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *name __attribute__((swift_name("name")));
 @end
 
+
+/**
+ * An HTTP/2 push builder interface.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponsePushBuilder)
+ *
+ * @property url push URL
+ * @property headers request headers
+ * @property method request method
+ * @property versions request versions (last modification date, etag, and so on)
+ */
 __attribute__((swift_name("Ktor_server_coreResponsePushBuilder")))
 @protocol MockzillaKtor_server_coreResponsePushBuilder
 @required
@@ -2364,42 +3258,138 @@ __attribute__((swift_name("Ktor_server_coreResponsePushBuilder")))
 @property (readonly) NSMutableArray<id<MockzillaKtor_httpVersion>> *versions __attribute__((swift_name("versions")));
 @end
 
+
+/**
+ * Server's response cookies.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseCookies)
+ *
+ * @see [ApplicationResponse.cookies]
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_server_coreResponseCookies")))
 @interface MockzillaKtor_server_coreResponseCookies : MockzillaBase
 - (instancetype)initWithResponse:(id<MockzillaKtor_server_corePipelineResponse>)response __attribute__((swift_name("init(response:)"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Appends a cookie [item] using the `Set-Cookie` response header.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseCookies.append)
+ */
 - (void)appendItem:(MockzillaKtor_httpCookie *)item __attribute__((swift_name("append(item:)")));
+
+/**
+ * Appends a cookie using the `Set-Cookie` response header from the specified parameters.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseCookies.append)
+ */
 - (void)appendName:(NSString *)name value:(NSString *)value encoding:(MockzillaKtor_httpCookieEncoding *)encoding maxAge:(MockzillaLong * _Nullable)maxAge expires:(MockzillaKtor_utilsGMTDate * _Nullable)expires domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path secure:(BOOL)secure httpOnly:(BOOL)httpOnly extensions:(NSDictionary<NSString *, id> *)extensions __attribute__((swift_name("append(name:value:encoding:maxAge:expires:domain:path:secure:httpOnly:extensions:)")));
+
+/**
+ * Appends an already expired cookie. Useful to remove client cookies.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseCookies.appendExpired)
+ */
 - (void)appendExpiredName:(NSString *)name domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path __attribute__((swift_name("appendExpired(name:domain:path:)"))) __attribute__((unavailable("This method doesn't bypass all flags and extensions so it will be removed in future major release. Please consider using append with expires parameter instead.")));
+
+/**
+ * Gets a cookie from a response's `Set-Cookie` header.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseCookies.get)
+ */
 - (MockzillaKtor_httpCookie * _Nullable)getName:(NSString *)name __attribute__((swift_name("get(name:)")));
 @end
 
+
+/**
+ * Server's response headers.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseHeaders)
+ *
+ * @see [ApplicationResponse.headers]
+ */
 __attribute__((swift_name("Ktor_server_coreResponseHeaders")))
 @interface MockzillaKtor_server_coreResponseHeaders : MockzillaBase
+
+/**
+ * Server's response headers.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseHeaders)
+ *
+ * @see [ApplicationResponse.headers]
+ */
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Server's response headers.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseHeaders)
+ *
+ * @see [ApplicationResponse.headers]
+ */
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+
+/***
+ * Builds a [Headers] instance from a response header values.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseHeaders.allValues)
+ */
 - (id<MockzillaKtor_httpHeaders>)allValues __attribute__((swift_name("allValues()")));
+
+/**
+ * Appends a response header with the specified [name] and [value].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseHeaders.append)
+ *
+ * @param safeOnly prevents from setting unsafe headers; `true` by default
+ */
 - (void)appendName:(NSString *)name value:(NSString *)value safeOnly:(BOOL)safeOnly __attribute__((swift_name("append(name:value:safeOnly:)")));
+
+/**
+ * Checks whether a [name] response header is set.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseHeaders.contains)
+ */
 - (BOOL)containsName:(NSString *)name __attribute__((swift_name("contains(name:)")));
 
 /**
+ * An engine's header appending implementation.
+ *
  * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
 */
 - (void)engineAppendHeaderName:(NSString *)name value:(NSString *)value __attribute__((swift_name("engineAppendHeader(name:value:)")));
+
+/**
+ * Gets a first response header with the specified [name] or returns `null`.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseHeaders.get)
+ */
 - (NSString * _Nullable)getName:(NSString *)name __attribute__((swift_name("get(name:)")));
 
 /**
+ * An engine's response header names extractor.
+ *
  * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
 */
 - (NSArray<NSString *> *)getEngineHeaderNames __attribute__((swift_name("getEngineHeaderNames()")));
 
 /**
+ * An engine's response header values extractor.
+ *
  * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
 */
 - (NSArray<NSString *> *)getEngineHeaderValuesName:(NSString *)name __attribute__((swift_name("getEngineHeaderValues(name:)")));
+
+/**
+ * Gets values of a response header with the specified [name].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseHeaders.values)
+ */
 - (NSArray<NSString *> *)valuesName:(NSString *)name __attribute__((swift_name("values(name:)")));
 
 /**
+ * A set of headers that is managed by an engine and should not be modified manually.
+ *
  * @note This property has protected visibility in Kotlin source and is intended only for use by subclasses.
 */
 @property (readonly) NSSet<NSString *> *managedByEngineHeaders __attribute__((swift_name("managedByEngineHeaders")));
@@ -2434,14 +3424,69 @@ __attribute__((swift_name("KotlinKTypeProjection")))
 @property (readonly) MockzillaKotlinKVariance * _Nullable variance __attribute__((swift_name("variance")));
 @end
 
+
+/**
+ * Represents an application config node
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfig)
+ */
 __attribute__((swift_name("Ktor_server_coreApplicationConfig")))
 @protocol MockzillaKtor_server_coreApplicationConfig
 @required
+
+/**
+ * Get config child node or fail
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfig.config)
+ *
+ * @throws ApplicationConfigurationException
+ */
 - (id<MockzillaKtor_server_coreApplicationConfig>)configPath:(NSString *)path __attribute__((swift_name("config(path:)")));
+
+/**
+ * Get a list of child nodes for [path] or fail
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfig.configList)
+ *
+ * @throws ApplicationConfigurationException
+ */
 - (NSArray<id<MockzillaKtor_server_coreApplicationConfig>> *)configListPath:(NSString *)path __attribute__((swift_name("configList(path:)")));
+
+/**
+ * Returns the set of keys, found by recursing the root object.
+ * All entries represent leaf nodes' keys, meaning that there would be no nested
+ * objects directly included as values for returned keys.
+ * It's still possible that entries may be a list and the lists may contain objects.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfig.keys)
+ *
+ * @return set of paths with non-null values, built up by recursing the entire tree of
+ * config and creating an entry for each leaf value.
+ */
 - (NSSet<NSString *> *)keys __attribute__((swift_name("keys()")));
+
+/**
+ * Get config property with [path] or fail
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfig.property)
+ *
+ * @throws ApplicationConfigurationException
+ */
 - (id<MockzillaKtor_server_coreApplicationConfigValue>)propertyPath:(NSString *)path __attribute__((swift_name("property(path:)")));
+
+/**
+ * Get config property value for [path] or return `null`
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfig.propertyOrNull)
+ */
 - (id<MockzillaKtor_server_coreApplicationConfigValue> _Nullable)propertyOrNullPath:(NSString *)path __attribute__((swift_name("propertyOrNull(path:)")));
+
+/**
+ * Returns map representation of this config.
+ * Values can be `String`, `Map<String, Any>`, `List<String>` and `List<Map<String, Any>>`
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfig.toMap)
+ */
 - (NSDictionary<NSString *, id> *)toMap __attribute__((swift_name("toMap()")));
 @end
 
@@ -2461,45 +3506,191 @@ __attribute__((swift_name("Ktor_utilsLogger")))
 @property (readonly) MockzillaKtor_utilsLogLevel *level __attribute__((swift_name("level")));
 @end
 
+
+/**
+ * Pipeline phases.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationReceivePipeline.Phases)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_server_coreApplicationReceivePipeline.Phases")))
 @interface MockzillaKtor_server_coreApplicationReceivePipelinePhases : MockzillaBase
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Pipeline phases.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationReceivePipeline.Phases)
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)phases __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_server_coreApplicationReceivePipelinePhases *shared __attribute__((swift_name("shared")));
+
+/**
+ * Executes after all transformations.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationReceivePipeline.Phases.After)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *After __attribute__((swift_name("After")));
+
+/**
+ * Executes before any transformations are made.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationReceivePipeline.Phases.Before)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Before __attribute__((swift_name("Before")));
+
+/**
+ * Executes transformations.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationReceivePipeline.Phases.Transform)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Transform __attribute__((swift_name("Transform")));
 @end
 
+
+/**
+ * Send pipeline phases.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationSendPipeline.Phases)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_server_coreApplicationSendPipeline.Phases")))
 @interface MockzillaKtor_server_coreApplicationSendPipelinePhases : MockzillaBase
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Send pipeline phases.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationSendPipeline.Phases)
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)phases __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_server_coreApplicationSendPipelinePhases *shared __attribute__((swift_name("shared")));
+
+/**
+ * The latest application phase that happens right before an engine sends a response.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationSendPipeline.Phases.After)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *After __attribute__((swift_name("After")));
+
+/**
+ * The earliest phase that happens before any other
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationSendPipeline.Phases.Before)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Before __attribute__((swift_name("Before")));
+
+/**
+ * A phase for processing `Content-Encoding`, like compression and partial content.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationSendPipeline.Phases.ContentEncoding)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *ContentEncoding __attribute__((swift_name("ContentEncoding")));
+
+/**
+ * A phase for Engine to send the response out to the client.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationSendPipeline.Phases.Engine)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Engine __attribute__((swift_name("Engine")));
+
+/**
+ * A phase to render any current pipeline subject into [io.ktor.http.content.OutgoingContent].
+ *
+ * Beyond this phase, only [io.ktor.http.content.OutgoingContent] should be produced by any interceptor.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationSendPipeline.Phases.Render)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Render __attribute__((swift_name("Render")));
+
+/**
+ * A phase for handling `Transfer-Encoding`, like if chunked encoding is being done manually and not by engine.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationSendPipeline.Phases.TransferEncoding)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *TransferEncoding __attribute__((swift_name("TransferEncoding")));
+
+/**
+ * A transformation phase that can proceed with any supported data like String.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ApplicationSendPipeline.Phases.Transform)
+ */
 @property (readonly) MockzillaKtor_utilsPipelinePhase *Transform __attribute__((swift_name("Transform")));
 @end
 
+
+/**
+ * Represents a connector configuration.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.EngineConnectorConfig)
+ */
 __attribute__((swift_name("Ktor_server_coreEngineConnectorConfig")))
 @protocol MockzillaKtor_server_coreEngineConnectorConfig
 @required
+
+/**
+ * The network interface this host binds to as an IP address or a hostname. If null or 0.0.0.0, then bind to all interfaces.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.EngineConnectorConfig.host)
+ */
 @property (readonly) NSString *host __attribute__((swift_name("host")));
+
+/**
+ * The port this application should be bound to.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.EngineConnectorConfig.port)
+ */
 @property (readonly) int32_t port __attribute__((swift_name("port")));
+
+/**
+ * Type of the connector, e.g HTTP or HTTPS.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.EngineConnectorConfig.type)
+ */
 @property (readonly) MockzillaKtor_server_coreConnectorType *type __attribute__((swift_name("type")));
 @end
 
+
+/**
+ * Definition of an event.
+ * Event is used as a key so both [hashCode] and [equals] need to be implemented properly.
+ * Inheriting of this class is an experimental feature.
+ * Instantiate directly if inheritance not necessary.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.events.EventDefinition)
+ *
+ * @param T specifies what is a type of value passed to the event
+ */
 __attribute__((swift_name("Ktor_eventsEventDefinition")))
 @interface MockzillaKtor_eventsEventDefinition<T> : MockzillaBase
+
+/**
+ * Definition of an event.
+ * Event is used as a key so both [hashCode] and [equals] need to be implemented properly.
+ * Inheriting of this class is an experimental feature.
+ * Instantiate directly if inheritance not necessary.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.events.EventDefinition)
+ *
+ * @param T specifies what is a type of value passed to the event
+ */
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Definition of an event.
+ * Event is used as a key so both [hashCode] and [equals] need to be implemented properly.
+ * Inheriting of this class is an experimental feature.
+ * Instantiate directly if inheritance not necessary.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.events.EventDefinition)
+ *
+ * @param T specifies what is a type of value passed to the event
+ */
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 @end
 
@@ -2590,12 +3781,41 @@ __attribute__((swift_name("Ktor_httpHeadersBuilder")))
 - (void)validateValueValue:(NSString *)value __attribute__((swift_name("validateValue(value:)")));
 @end
 
+
+/**
+ * A URL builder with all mutable components
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLBuilder)
+ *
+ * @property protocol URL protocol (scheme)
+ * @property host name without port (domain)
+ * @property port port number
+ * @property user username part (optional)
+ * @property password password part (optional)
+ * @property pathSegments URL path without query
+ * @property parameters URL query parameters
+ * @property fragment URL fragment (anchor name)
+ * @property trailingQuery keep a trailing question character even if there are no query parameters
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpURLBuilder")))
 @interface MockzillaKtor_httpURLBuilder : MockzillaBase
 - (instancetype)initWithProtocol:(MockzillaKtor_httpURLProtocol * _Nullable)protocol host:(NSString *)host port:(int32_t)port user:(NSString * _Nullable)user password:(NSString * _Nullable)password pathSegments:(NSArray<NSString *> *)pathSegments parameters:(id<MockzillaKtor_httpParameters>)parameters fragment:(NSString *)fragment trailingQuery:(BOOL)trailingQuery __attribute__((swift_name("init(protocol:host:port:user:password:pathSegments:parameters:fragment:trailingQuery:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaKtor_httpURLBuilderCompanion *companion __attribute__((swift_name("companion")));
+
+/**
+ * Build a [Url] instance (everything is copied to a new instance)
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLBuilder.build)
+ */
 - (MockzillaKtor_httpUrl *)build __attribute__((swift_name("build()")));
+
+/**
+ * Build a URL string
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLBuilder.buildString)
+ */
 - (NSString *)buildString __attribute__((swift_name("buildString()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property NSString *encodedFragment __attribute__((swift_name("encodedFragment")));
@@ -2615,16 +3835,52 @@ __attribute__((swift_name("Ktor_httpURLBuilder")))
 @property NSString * _Nullable user __attribute__((swift_name("user")));
 @end
 
+
+/**
+ * A content version.
+ *
+ * An example of version is [EntityTagVersion] or [LastModifiedVersion].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.Version)
+ */
 __attribute__((swift_name("Ktor_httpVersion")))
 @protocol MockzillaKtor_httpVersion
 @required
+
+/**
+ * Appends relevant headers to the builder.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.Version.appendHeadersTo)
+ */
 - (void)appendHeadersToBuilder:(MockzillaKtor_httpHeadersBuilder *)builder __attribute__((swift_name("appendHeadersTo(builder:)")));
+
+/**
+ * Checks [requestHeaders] against this version and returns [VersionCheckResult].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.Version.check)
+ */
 - (MockzillaKtor_httpVersionCheckResult *)checkRequestHeaders:(id<MockzillaKtor_httpHeaders>)requestHeaders __attribute__((swift_name("check(requestHeaders:)")));
 @end
 
+
+/**
+ * A server's response that is used in [ApplicationPlugin].
+ * To learn how to send responses inside route handlers, see [Sending responses](https://ktor.io/docs/responses.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.PipelineResponse)
+ *
+ * @see [PipelineCall]
+ * @see [io.ktor.server.request.PipelineRequest]
+ */
 __attribute__((swift_name("Ktor_server_corePipelineResponse")))
 @protocol MockzillaKtor_server_corePipelineResponse <MockzillaKtor_server_coreApplicationResponse>
 @required
+
+/**
+ * A pipeline for sending content.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.PipelineResponse.pipeline)
+ */
 @property (readonly) MockzillaKtor_server_coreApplicationSendPipeline *pipeline __attribute__((swift_name("pipeline")));
 @end
 
@@ -2635,6 +3891,23 @@ __attribute__((swift_name("Ktor_ioJvmSerializable")))
 
 
 /**
+ * Represents a cookie with name, content and a set of settings such as expiration, visibility and security.
+ * A cookie with neither [expires] nor [maxAge] is a session cookie.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Cookie)
+ *
+ * @property name
+ * @property value
+ * @property encoding - cookie encoding type [CookieEncoding]
+ * @property maxAge number of seconds to keep cookie
+ * @property expires date when it expires
+ * @property domain for which it is set
+ * @property path for which it is set
+ * @property secure send it via secure connection only
+ * @property httpOnly only transfer cookie over HTTP, no access from JavaScript
+ * @property extensions additional cookie extensions
+ *
  * @note annotations
  *   kotlinx.serialization.Serializable
 */
@@ -2644,8 +3917,65 @@ __attribute__((swift_name("Ktor_httpCookie")))
 - (instancetype)initWithName:(NSString *)name value:(NSString *)value encoding:(MockzillaKtor_httpCookieEncoding *)encoding maxAge:(MockzillaInt * _Nullable)maxAge expires:(MockzillaKtor_utilsGMTDate * _Nullable)expires domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path secure:(BOOL)secure httpOnly:(BOOL)httpOnly extensions:(NSDictionary<NSString *, id> *)extensions __attribute__((swift_name("init(name:value:encoding:maxAge:expires:domain:path:secure:httpOnly:extensions:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaKtor_httpCookieCompanion *companion __attribute__((swift_name("companion")));
 - (MockzillaKtor_httpCookie *)doCopyName:(NSString *)name value:(NSString *)value encoding:(MockzillaKtor_httpCookieEncoding *)encoding maxAge:(MockzillaInt * _Nullable)maxAge expires:(MockzillaKtor_utilsGMTDate * _Nullable)expires domain:(NSString * _Nullable)domain path:(NSString * _Nullable)path secure:(BOOL)secure httpOnly:(BOOL)httpOnly extensions:(NSDictionary<NSString *, id> *)extensions __attribute__((swift_name("doCopy(name:value:encoding:maxAge:expires:domain:path:secure:httpOnly:extensions:)")));
+
+/**
+ * Represents a cookie with name, content and a set of settings such as expiration, visibility and security.
+ * A cookie with neither [expires] nor [maxAge] is a session cookie.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Cookie)
+ *
+ * @property name
+ * @property value
+ * @property encoding - cookie encoding type [CookieEncoding]
+ * @property maxAge number of seconds to keep cookie
+ * @property expires date when it expires
+ * @property domain for which it is set
+ * @property path for which it is set
+ * @property secure send it via secure connection only
+ * @property httpOnly only transfer cookie over HTTP, no access from JavaScript
+ * @property extensions additional cookie extensions
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Represents a cookie with name, content and a set of settings such as expiration, visibility and security.
+ * A cookie with neither [expires] nor [maxAge] is a session cookie.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Cookie)
+ *
+ * @property name
+ * @property value
+ * @property encoding - cookie encoding type [CookieEncoding]
+ * @property maxAge number of seconds to keep cookie
+ * @property expires date when it expires
+ * @property domain for which it is set
+ * @property path for which it is set
+ * @property secure send it via secure connection only
+ * @property httpOnly only transfer cookie over HTTP, no access from JavaScript
+ * @property extensions additional cookie extensions
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * Represents a cookie with name, content and a set of settings such as expiration, visibility and security.
+ * A cookie with neither [expires] nor [maxAge] is a session cookie.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Cookie)
+ *
+ * @property name
+ * @property value
+ * @property encoding - cookie encoding type [CookieEncoding]
+ * @property maxAge number of seconds to keep cookie
+ * @property expires date when it expires
+ * @property domain for which it is set
+ * @property path for which it is set
+ * @property secure send it via secure connection only
+ * @property httpOnly only transfer cookie over HTTP, no access from JavaScript
+ * @property extensions additional cookie extensions
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString * _Nullable domain __attribute__((swift_name("domain")));
 @property (readonly) MockzillaKtor_httpCookieEncoding *encoding __attribute__((swift_name("encoding")));
@@ -2661,6 +3991,22 @@ __attribute__((swift_name("Ktor_httpCookie")))
 
 
 /**
+ * Date in GMT timezone
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.GMTDate)
+ *
+ * @property seconds: seconds from 0 to 60(last is for leap second)
+ * @property minutes: minutes from 0 to 59
+ * @property hours: hours from 0 to 23
+ * @property dayOfWeek an instance of the corresponding day of week
+ * @property dayOfMonth: day of month from 1 to 31
+ * @property dayOfYear: day of year from 1 to 366
+ * @property month an instance of the corresponding month
+ * @property year: year in common era(CE: https://en.wikipedia.org/wiki/Common_Era)
+ *
+ * @property timestamp is a number of epoch milliseconds
+ *
  * @note annotations
  *   kotlinx.serialization.Serializable
 */
@@ -2672,8 +4018,62 @@ __attribute__((swift_name("Ktor_utilsGMTDate")))
 - (int32_t)compareToOther:(MockzillaKtor_utilsGMTDate *)other __attribute__((swift_name("compareTo(other:)")));
 - (MockzillaKtor_utilsGMTDate *)doCopy __attribute__((swift_name("doCopy()")));
 - (MockzillaKtor_utilsGMTDate *)doCopySeconds:(int32_t)seconds minutes:(int32_t)minutes hours:(int32_t)hours dayOfWeek:(MockzillaKtor_utilsWeekDay *)dayOfWeek dayOfMonth:(int32_t)dayOfMonth dayOfYear:(int32_t)dayOfYear month:(MockzillaKtor_utilsMonth *)month year:(int32_t)year timestamp:(int64_t)timestamp __attribute__((swift_name("doCopy(seconds:minutes:hours:dayOfWeek:dayOfMonth:dayOfYear:month:year:timestamp:)")));
+
+/**
+ * Date in GMT timezone
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.GMTDate)
+ *
+ * @property seconds: seconds from 0 to 60(last is for leap second)
+ * @property minutes: minutes from 0 to 59
+ * @property hours: hours from 0 to 23
+ * @property dayOfWeek an instance of the corresponding day of week
+ * @property dayOfMonth: day of month from 1 to 31
+ * @property dayOfYear: day of year from 1 to 366
+ * @property month an instance of the corresponding month
+ * @property year: year in common era(CE: https://en.wikipedia.org/wiki/Common_Era)
+ *
+ * @property timestamp is a number of epoch milliseconds
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Date in GMT timezone
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.GMTDate)
+ *
+ * @property seconds: seconds from 0 to 60(last is for leap second)
+ * @property minutes: minutes from 0 to 59
+ * @property hours: hours from 0 to 23
+ * @property dayOfWeek an instance of the corresponding day of week
+ * @property dayOfMonth: day of month from 1 to 31
+ * @property dayOfYear: day of year from 1 to 366
+ * @property month an instance of the corresponding month
+ * @property year: year in common era(CE: https://en.wikipedia.org/wiki/Common_Era)
+ *
+ * @property timestamp is a number of epoch milliseconds
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * Date in GMT timezone
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.GMTDate)
+ *
+ * @property seconds: seconds from 0 to 60(last is for leap second)
+ * @property minutes: minutes from 0 to 59
+ * @property hours: hours from 0 to 23
+ * @property dayOfWeek an instance of the corresponding day of week
+ * @property dayOfMonth: day of month from 1 to 31
+ * @property dayOfYear: day of year from 1 to 366
+ * @property month an instance of the corresponding month
+ * @property year: year in common era(CE: https://en.wikipedia.org/wiki/Common_Era)
+ *
+ * @property timestamp is a number of epoch milliseconds
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) int32_t dayOfMonth __attribute__((swift_name("dayOfMonth")));
 @property (readonly) MockzillaKtor_utilsWeekDay *dayOfWeek __attribute__((swift_name("dayOfWeek")));
@@ -2732,13 +4132,58 @@ __attribute__((swift_name("KotlinKTypeProjection.Companion")))
 @property (readonly) MockzillaKotlinKTypeProjection *STAR __attribute__((swift_name("STAR")));
 @end
 
+
+/**
+ * Represents an application config value
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfigValue)
+ */
 __attribute__((swift_name("Ktor_server_coreApplicationConfigValue")))
 @protocol MockzillaKtor_server_coreApplicationConfigValue
 @required
+
+/**
+ * Convert the property to an arbitrary type using deserialization.
+ *
+ * @param type the desired type of the return value provided by `typeInfo<T>()`
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfigValue.getAs)
+ */
 - (id _Nullable)getAsType:(MockzillaKtor_utilsTypeInfo *)type __attribute__((swift_name("getAs(type:)")));
+
+/**
+ * Get property list value
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfigValue.getList)
+ */
 - (NSArray<NSString *> *)getList __attribute__((swift_name("getList()")));
+
+/**
+ * Get property as a map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfigValue.getMap)
+ */
 - (NSDictionary<NSString *, id> *)getMap __attribute__((swift_name("getMap()")));
+
+/**
+ * Get property string value
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfigValue.getString)
+ */
 - (NSString *)getString __attribute__((swift_name("getString()")));
+
+/**
+ * Represents the type of the application configuration value.
+ *
+ * The `kind` property indicates the structure or nature of the application configuration value,
+ * which can assist in its processing or resolution. This property corresponds to the [Type] enum,
+ * which defines the following possible values:
+ * - `Single`: A single configuration value.
+ * - `List`: A collection of multiple values.
+ * - `Object`: A structured or nested configuration object.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfigValue.type)
+ */
 @property (readonly) MockzillaKtor_server_coreApplicationConfigValueType *type __attribute__((swift_name("type")));
 @end
 
@@ -2757,26 +4202,102 @@ __attribute__((swift_name("Ktor_utilsLogLevel")))
 @property (class, readonly) NSArray<MockzillaKtor_utilsLogLevel *> *entries __attribute__((swift_name("entries")));
 @end
 
+
+/**
+ * Represents a type of a connector, e.g HTTP or HTTPS.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ConnectorType)
+ *
+ * @param name name of the connector.
+ *
+ * Some engines can support other connector types, hence not a enum.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_server_coreConnectorType")))
 @interface MockzillaKtor_server_coreConnectorType : MockzillaBase
 - (instancetype)initWithName:(NSString *)name __attribute__((swift_name("init(name:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaKtor_server_coreConnectorTypeCompanion *companion __attribute__((swift_name("companion")));
 - (MockzillaKtor_server_coreConnectorType *)doCopyName:(NSString *)name __attribute__((swift_name("doCopy(name:)")));
+
+/**
+ * Represents a type of a connector, e.g HTTP or HTTPS.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ConnectorType)
+ *
+ * @param name name of the connector.
+ *
+ * Some engines can support other connector types, hence not a enum.
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Represents a type of a connector, e.g HTTP or HTTPS.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ConnectorType)
+ *
+ * @param name name of the connector.
+ *
+ * Some engines can support other connector types, hence not a enum.
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * Represents a type of a connector, e.g HTTP or HTTPS.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ConnectorType)
+ *
+ * @param name name of the connector.
+ *
+ * Some engines can support other connector types, hence not a enum.
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *name __attribute__((swift_name("name")));
 @end
 
+
+/**
+ * Represents URL protocol
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol)
+ *
+ * @property name of protocol (schema)
+ * @property defaultPort default port for protocol or `-1` if not known
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpURLProtocol")))
 @interface MockzillaKtor_httpURLProtocol : MockzillaBase <MockzillaKtor_ioJvmSerializable>
 - (instancetype)initWithName:(NSString *)name defaultPort:(int32_t)defaultPort __attribute__((swift_name("init(name:defaultPort:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaKtor_httpURLProtocolCompanion *companion __attribute__((swift_name("companion")));
 - (MockzillaKtor_httpURLProtocol *)doCopyName:(NSString *)name defaultPort:(int32_t)defaultPort __attribute__((swift_name("doCopy(name:defaultPort:)")));
+
+/**
+ * Represents URL protocol
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol)
+ *
+ * @property name of protocol (schema)
+ * @property defaultPort default port for protocol or `-1` if not known
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Represents URL protocol
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol)
+ *
+ * @property name of protocol (schema)
+ * @property defaultPort default port for protocol or `-1` if not known
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * Represents URL protocol
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol)
+ *
+ * @property name of protocol (schema)
+ * @property defaultPort default port for protocol or `-1` if not known
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) int32_t defaultPort __attribute__((swift_name("defaultPort")));
 @property (readonly) NSString *name __attribute__((swift_name("name")));
@@ -2793,6 +4314,22 @@ __attribute__((swift_name("Ktor_httpURLBuilder.Companion")))
 
 
 /**
+ * Represents an immutable URL
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Url)
+ *
+ * @property protocol
+ * @property host name without port (domain)
+ * @property port the specified port or protocol default port
+ * @property specifiedPort port number that was specified to override protocol's default
+ * @property encodedPath encoded path without query string
+ * @property parameters URL query parameters
+ * @property fragment URL fragment (anchor name)
+ * @property user username part of URL
+ * @property password password part of URL
+ * @property trailingQuery keep trailing question character even if there are no query parameters
+ *
  * @note annotations
  *   kotlinx.serialization.Serializable(with=NormalClass(value=io/ktor/http/UrlSerializer))
 */
@@ -2813,11 +4350,102 @@ __attribute__((swift_name("Ktor_httpUrl")))
 @property (readonly) NSString *host __attribute__((swift_name("host")));
 @property (readonly) id<MockzillaKtor_httpParameters> parameters __attribute__((swift_name("parameters")));
 @property (readonly) NSString * _Nullable password __attribute__((swift_name("password")));
+
+/**
+ * A list containing the segments of the URL path.
+ *
+ * This property was designed to distinguish between absolute and relative paths,
+ * so it will have an empty segment at the beginning for URLs with a hostname
+ * and an empty segment at the end for URLs with a trailing slash.
+ *
+ * ```kotlin
+ * val fullUrl = Url("http://ktor.io/docs/")
+ * fullUrl.pathSegments == listOf("", "docs", "")
+ *
+ * val absolute = Url("/docs/")
+ * absolute.pathSegments == listOf("", "docs", "")
+ *
+ * val relative = Url("docs")
+ * relative.pathSegments == listOf("docs")
+ * ```
+ *
+ * This behaviour may not be ideal if you're working only with full URLs.
+ * If you don't require the specific handling of empty segments, consider using the [segments] property instead:
+ *
+ * ```kotlin
+ * val fullUrl = Url("http://ktor.io/docs/")
+ * fullUrl.segments == listOf("docs")
+ *
+ * val absolute = Url("/docs/")
+ * absolute.segments == listOf("docs")
+ *
+ * val relative = Url("docs")
+ * relative.segments == listOf("docs")
+ * ```
+ *
+ * To address this issue, the current [pathSegments] property will be renamed to [rawSegments].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Url.pathSegments)
+ */
 @property (readonly) NSArray<NSString *> *pathSegments __attribute__((swift_name("pathSegments"))) __attribute__((deprecated("\n        `pathSegments` is deprecated.\n\n        This property will contain an empty path segment at the beginning for URLs with a hostname,\n        and an empty path segment at the end for the URLs with a trailing slash. If you need to keep this behaviour please\n        use [rawSegments]. If you only need to access the meaningful parts of the path, consider using [segments] instead.\n             \n        Please decide if you need [rawSegments] or [segments] explicitly.\n        ")));
 @property (readonly) int32_t port __attribute__((swift_name("port")));
 @property (readonly) MockzillaKtor_httpURLProtocol *protocol __attribute__((swift_name("protocol")));
 @property (readonly) MockzillaKtor_httpURLProtocol * _Nullable protocolOrNull __attribute__((swift_name("protocolOrNull")));
+
+/**
+ * A list containing the segments of the URL path.
+ *
+ * This property is designed to distinguish between absolute and relative paths,
+ * so it will have an empty segment at the beginning for URLs with a hostname
+ * and an empty segment at the end for URLs with a trailing slash.
+ *
+ * ```kotlin
+ * val fullUrl = Url("http://ktor.io/docs/")
+ * fullUrl.rawSegments == listOf("", "docs", "")
+ *
+ * val absolute = Url("/docs/")
+ * absolute.rawSegments == listOf("", "docs", "")
+ *
+ * val relative = Url("docs")
+ * relative.rawSegments == listOf("docs")
+ * ```
+ *
+ * This behaviour may not be ideal if you're working only with full URLs.
+ * If you don't require the specific handling of empty segments, consider using the [segments] property instead:
+ *
+ * ```kotlin
+ * val fullUrl = Url("http://ktor.io/docs/")
+ * fullUrl.segments == listOf("docs")
+ *
+ * val absolute = Url("/docs/")
+ * absolute.segments == listOf("docs")
+ *
+ * val relative = Url("docs")
+ * relative.segments == listOf("docs")
+ * ```
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Url.rawSegments)
+ */
 @property (readonly) NSArray<NSString *> *rawSegments __attribute__((swift_name("rawSegments")));
+
+/**
+ * A list of path segments derived from the URL, excluding any leading
+ * and trailing empty segments.
+ *
+ * ```kotlin
+ * val fullUrl = Url("http://ktor.io/docs/")
+ * fullUrl.segments == listOf("docs")
+ *
+ * val absolute = Url("/docs/")
+ * absolute.segments == listOf("docs")
+ * val relative = Url("docs")
+ * relative.segments == listOf("docs")
+ * ```
+ *
+ * If you need to check for trailing slash and relative/absolute paths, please check the [rawSegments] property.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Url.segments)
+ **/
 @property (readonly) NSArray<NSString *> *segments __attribute__((swift_name("segments")));
 @property (readonly) int32_t specifiedPort __attribute__((swift_name("specifiedPort")));
 @property (readonly) BOOL trailingQuery __attribute__((swift_name("trailingQuery")));
@@ -2829,10 +4457,28 @@ __attribute__((swift_name("Ktor_httpParametersBuilder")))
 @required
 @end
 
+
+/**
+ * Represent the result of the version comparison between content being sent and HTTP request.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.VersionCheckResult)
+ *
+ * @param statusCode represents [HttpStatusCode] associated with the result.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpVersionCheckResult")))
 @interface MockzillaKtor_httpVersionCheckResult : MockzillaKotlinEnum<MockzillaKtor_httpVersionCheckResult *>
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Represent the result of the version comparison between content being sent and HTTP request.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.VersionCheckResult)
+ *
+ * @param statusCode represents [HttpStatusCode] associated with the result.
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 - (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly) MockzillaKtor_httpVersionCheckResult *ok __attribute__((swift_name("ok")));
@@ -2843,20 +4489,91 @@ __attribute__((swift_name("Ktor_httpVersionCheckResult")))
 @property (readonly) MockzillaKtor_httpHttpStatusCode *statusCode __attribute__((swift_name("statusCode")));
 @end
 
+
+/**
+ * Represents a cookie with name, content and a set of settings such as expiration, visibility and security.
+ * A cookie with neither [expires] nor [maxAge] is a session cookie.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Cookie)
+ *
+ * @property name
+ * @property value
+ * @property encoding - cookie encoding type [CookieEncoding]
+ * @property maxAge number of seconds to keep cookie
+ * @property expires date when it expires
+ * @property domain for which it is set
+ * @property path for which it is set
+ * @property secure send it via secure connection only
+ * @property httpOnly only transfer cookie over HTTP, no access from JavaScript
+ * @property extensions additional cookie extensions
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpCookie.Companion")))
 @interface MockzillaKtor_httpCookieCompanion : MockzillaBase
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Represents a cookie with name, content and a set of settings such as expiration, visibility and security.
+ * A cookie with neither [expires] nor [maxAge] is a session cookie.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Cookie)
+ *
+ * @property name
+ * @property value
+ * @property encoding - cookie encoding type [CookieEncoding]
+ * @property maxAge number of seconds to keep cookie
+ * @property expires date when it expires
+ * @property domain for which it is set
+ * @property path for which it is set
+ * @property secure send it via secure connection only
+ * @property httpOnly only transfer cookie over HTTP, no access from JavaScript
+ * @property extensions additional cookie extensions
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_httpCookieCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Represents a cookie with name, content and a set of settings such as expiration, visibility and security.
+ * A cookie with neither [expires] nor [maxAge] is a session cookie.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Cookie)
+ *
+ * @property name
+ * @property value
+ * @property encoding - cookie encoding type [CookieEncoding]
+ * @property maxAge number of seconds to keep cookie
+ * @property expires date when it expires
+ * @property domain for which it is set
+ * @property path for which it is set
+ * @property secure send it via secure connection only
+ * @property httpOnly only transfer cookie over HTTP, no access from JavaScript
+ * @property extensions additional cookie extensions
+ */
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
+
+/**
+ * Day of week
+ * [value] is 3 letter shortcut
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.WeekDay)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsWeekDay")))
 @interface MockzillaKtor_utilsWeekDay : MockzillaKotlinEnum<MockzillaKtor_utilsWeekDay *>
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Day of week
+ * [value] is 3 letter shortcut
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.WeekDay)
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 - (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly, getter=companion) MockzillaKtor_utilsWeekDayCompanion *companion __attribute__((swift_name("companion")));
@@ -2872,10 +4589,24 @@ __attribute__((swift_name("Ktor_utilsWeekDay")))
 @property (readonly) NSString *value __attribute__((swift_name("value")));
 @end
 
+
+/**
+ * Month
+ * [value] is 3 letter shortcut
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.Month)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsMonth")))
 @interface MockzillaKtor_utilsMonth : MockzillaKotlinEnum<MockzillaKtor_utilsMonth *>
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Month
+ * [value] is 3 letter shortcut
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.Month)
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 - (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly, getter=companion) MockzillaKtor_utilsMonthCompanion *companion __attribute__((swift_name("companion")));
@@ -2904,13 +4635,45 @@ __attribute__((swift_name("Ktor_utilsGMTDate.Companion")))
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_utilsGMTDateCompanion *shared __attribute__((swift_name("shared")));
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+
+/**
+ * An instance of [GMTDate] corresponding to the epoch beginning
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.GMTDate.Companion.START)
+ */
 @property (readonly) MockzillaKtor_utilsGMTDate *START __attribute__((swift_name("START")));
 @end
 
+
+/**
+ * Represents the type of application configuration value.
+ *
+ * `Type` enum outlines the structure or behavior of the config value, aiding in its resolution or manipulation.
+ *
+ * - `NULL`: Indicates an absence of value.
+ * - `SINGLE`: Indicates a single value.
+ * - `LIST`: Represents multiple values in list form.
+ * - `OBJECT`: Represents a structured or nested configuration object.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfigValue.Type)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_server_coreApplicationConfigValueType")))
 @interface MockzillaKtor_server_coreApplicationConfigValueType : MockzillaKotlinEnum<MockzillaKtor_server_coreApplicationConfigValueType *>
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Represents the type of application configuration value.
+ *
+ * `Type` enum outlines the structure or behavior of the config value, aiding in its resolution or manipulation.
+ *
+ * - `NULL`: Indicates an absence of value.
+ * - `SINGLE`: Indicates a single value.
+ * - `LIST`: Represents multiple values in list form.
+ * - `OBJECT`: Represents a structured or nested configuration object.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.config.ApplicationConfigValue.Type)
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 - (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly) MockzillaKtor_server_coreApplicationConfigValueType *null __attribute__((swift_name("null")));
@@ -2928,8 +4691,26 @@ __attribute__((swift_name("Ktor_server_coreConnectorType.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_server_coreConnectorTypeCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Non-secure HTTP connector.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ConnectorType.Companion.HTTP)
+ */
 @property (readonly) MockzillaKtor_server_coreConnectorType *HTTP __attribute__((swift_name("HTTP")));
+
+/**
+ * Secure HTTP connector.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ConnectorType.Companion.HTTPS)
+ */
 @property (readonly) MockzillaKtor_server_coreConnectorType *HTTPS __attribute__((swift_name("HTTPS")));
+
+/**
+ * Unix domain socket connector.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.engine.ConnectorType.Companion.UNIX)
+ */
 @property (readonly) MockzillaKtor_server_coreConnectorType *UNIX __attribute__((swift_name("UNIX")));
 @end
 
@@ -2940,12 +4721,54 @@ __attribute__((swift_name("Ktor_httpURLProtocol.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_httpURLProtocolCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Create an instance by [name] or use already existing instance
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.createOrDefault)
+ */
 - (MockzillaKtor_httpURLProtocol *)createOrDefaultName:(NSString *)name __attribute__((swift_name("createOrDefault(name:)")));
+
+/**
+ * HTTP with port 80
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.HTTP)
+ */
 @property (readonly) MockzillaKtor_httpURLProtocol *HTTP __attribute__((swift_name("HTTP")));
+
+/**
+ * secure HTTPS with port 443
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.HTTPS)
+ */
 @property (readonly) MockzillaKtor_httpURLProtocol *HTTPS __attribute__((swift_name("HTTPS")));
+
+/**
+ * Socks proxy url protocol.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.SOCKS)
+ */
 @property (readonly) MockzillaKtor_httpURLProtocol *SOCKS __attribute__((swift_name("SOCKS")));
+
+/**
+ * Web socket over HTTP on port 80
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.WS)
+ */
 @property (readonly) MockzillaKtor_httpURLProtocol *WS __attribute__((swift_name("WS")));
+
+/**
+ * Web socket over secure HTTPS on port 443
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.WSS)
+ */
 @property (readonly) MockzillaKtor_httpURLProtocol *WSS __attribute__((swift_name("WSS")));
+
+/**
+ * Protocols by names map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.byName)
+ */
 @property (readonly) NSDictionary<NSString *, MockzillaKtor_httpURLProtocol *> *byName __attribute__((swift_name("byName")));
 @end
 
@@ -2966,7 +4789,19 @@ __attribute__((swift_name("Ktor_utilsWeekDay.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_utilsWeekDayCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Lookup an instance by [ordinal]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.WeekDay.Companion.from)
+ */
 - (MockzillaKtor_utilsWeekDay *)fromOrdinal:(int32_t)ordinal __attribute__((swift_name("from(ordinal:)")));
+
+/**
+ * Lookup an instance by short week day name [WeekDay.value]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.WeekDay.Companion.from)
+ */
 - (MockzillaKtor_utilsWeekDay *)fromValue:(NSString *)value __attribute__((swift_name("from(value:)")));
 @end
 
@@ -2977,7 +4812,19 @@ __attribute__((swift_name("Ktor_utilsMonth.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_utilsMonthCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Lookup an instance by [ordinal]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.Month.Companion.from)
+ */
 - (MockzillaKtor_utilsMonth *)fromOrdinal:(int32_t)ordinal __attribute__((swift_name("from(ordinal:)")));
+
+/**
+ * Lookup an instance by short month name [Month.value]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.Month.Companion.from)
+ */
 - (MockzillaKtor_utilsMonth *)fromValue:(NSString *)value __attribute__((swift_name("from(value:)")));
 @end
 
