@@ -403,6 +403,8 @@ __attribute__((swift_name("KotlinCancellationException")))
  *
  * Don't add non optional fields to this type since that will break backward compatibility
  *
+ * Short alternative JsonNames used for encoding/decoding when ZeroConf is used to reduce payload size
+ *
  *
  * @note annotations
  *   kotlinx.serialization.Serializable
@@ -425,6 +427,8 @@ __attribute__((swift_name("Mockzilla_commonMetaData")))
  *
  * Don't add non optional fields to this type since that will break backward compatibility
  *
+ * Short alternative JsonNames used for encoding/decoding when ZeroConf is used to reduce payload size
+ *
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
@@ -438,6 +442,8 @@ __attribute__((swift_name("Mockzilla_commonMetaData")))
  * @property mockzillaVersion
  *
  * Don't add non optional fields to this type since that will break backward compatibility
+ *
+ * Short alternative JsonNames used for encoding/decoding when ZeroConf is used to reduce payload size
  *
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -454,15 +460,52 @@ __attribute__((swift_name("Mockzilla_commonMetaData")))
  *
  * Don't add non optional fields to this type since that will break backward compatibility
  *
+ * Short alternative JsonNames used for encoding/decoding when ZeroConf is used to reduce payload size
+ *
  */
 - (NSString *)description __attribute__((swift_name("description()")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.SerialName(value="appName")
+*/
 @property (readonly) NSString *appName __attribute__((swift_name("appName")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.SerialName(value="appPkg")
+*/
 @property (readonly) NSString *appPackage __attribute__((swift_name("appPackage")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.SerialName(value="appVer")
+*/
 @property (readonly) NSString *appVersion __attribute__((swift_name("appVersion")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.SerialName(value="devModel")
+*/
 @property (readonly) NSString *deviceModel __attribute__((swift_name("deviceModel")));
 @property (readonly) BOOL isAndroid __attribute__((swift_name("isAndroid")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.SerialName(value="mzVer")
+*/
 @property (readonly) NSString *mockzillaVersion __attribute__((swift_name("mockzillaVersion")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.SerialName(value="osVer")
+*/
 @property (readonly) NSString *operatingSystemVersion __attribute__((swift_name("operatingSystemVersion")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.SerialName(value="runTarg")
+*/
 @property (readonly) MockzillaMockzilla_commonRunTarget * _Nullable runTarget __attribute__((swift_name("runTarget")));
 @end
 
