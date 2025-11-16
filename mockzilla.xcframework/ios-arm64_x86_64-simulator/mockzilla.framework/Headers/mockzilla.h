@@ -315,6 +315,14 @@ __attribute__((swift_name("KotlinThrowable")))
 @end
 
 __attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("AsyncUtilsKt")))
+@interface MockzillaAsyncUtilsKt : MockzillaBase
++ (void)setDefaultHandlerCallbackBuilder:(MockzillaMockzilla_commonEndpointConfigurationBuilder *)builder block:(void (^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>, MockzillaKotlinUnit *(^)(MockzillaMockzilla_commonMockzillaHttpResponse *)))block __attribute__((swift_name("setDefaultHandlerCallback(builder:block:)")));
++ (void)setErrorHandlerCallbackBuilder:(MockzillaMockzilla_commonEndpointConfigurationBuilder *)builder block:(void (^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>, MockzillaKotlinUnit *(^)(MockzillaMockzilla_commonMockzillaHttpResponse *)))block __attribute__((swift_name("setErrorHandlerCallback(builder:block:)")));
++ (void)setPatternMatcherCallbackBuilder:(MockzillaMockzilla_commonEndpointConfigurationBuilder *)builder block:(void (^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>, MockzillaKotlinUnit *(^)(MockzillaBoolean *)))block __attribute__((swift_name("setPatternMatcherCallback(builder:block:)")));
+@end
+
+__attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("MockzillaKt")))
 @interface MockzillaMockzillaKt : MockzillaBase
 
@@ -749,6 +757,147 @@ __attribute__((swift_name("Ktor_server_coreApplicationRequest")))
  * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.request.ApplicationRequest.rawQueryParameters)
  */
 @property (readonly) id<MockzillaKtor_httpParameters> rawQueryParameters __attribute__((swift_name("rawQueryParameters")));
+@end
+
+
+/**
+ * @param key An identifier for this endpoint. Endpoints cannot share an id.
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
+@interface MockzillaMockzilla_commonEndpointConfigurationBuilder : MockzillaBase
+- (instancetype)initWithKey:(NSString *)key __attribute__((swift_name("init(key:)"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Completes the builder - returns the configuration.
+ *
+ * @return [EndpointConfiguration]
+ */
+- (MockzillaMockzilla_commonEndpointConfiguration *)build __attribute__((swift_name("build()")));
+
+/**
+ * Configure the presets that are available to users of the dashboard.
+ *
+ * @param action
+ * @return
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)configureDashboardOverridesAction:(MockzillaMockzilla_commonDashboardOptionsConfigBuilder *(^)(MockzillaMockzilla_commonDashboardOptionsConfigBuilder *))action __attribute__((swift_name("configureDashboardOverrides(action:)")));
+
+/**
+ * The block called when a network request is made to this endpoint. Note: If the value of
+ * [setShouldFail] causes Mockzilla to generate a failure response, then this block
+ * will *not* be called, instead the block specified by [setErrorHandler] is called.
+ *
+ * @param handler
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setDefaultHandlerHandler:(id<MockzillaKotlinSuspendFunction1>)handler __attribute__((swift_name("setDefaultHandler(handler:)")));
+
+/**
+ * The block called when a network request is made to this endpoint but Mockzilladecides to
+ * simulate a server failure.
+ *
+ * @param handler
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setErrorHandlerHandler:(id<MockzillaKotlinSuspendFunction1>)handler __attribute__((swift_name("setErrorHandler(handler:)")));
+
+/**
+ * Probability of Mockzilla returning a simulated http error for this endpoint. 100 being a
+ * guaranteed error .
+ *
+ * @param percentage (0 -> 100 inclusive)
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setFailureProbabilityPercentage:(int32_t)percentage __attribute__((swift_name("setFailureProbability(percentage:)"))) __attribute__((deprecated("Probabilities are no longer supported")));
+
+/**
+ * Used to simulate latency: The artificial mean delay Mockzilla with add to a network request.
+ * Used alongside [setMeanDelayMillis] to calculate the actual artificial delay on each invocation.
+ *
+ * @param delay delay in milliseconds
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setMeanDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setMeanDelayMillis(delay:)")));
+
+/**
+ * Sets the human readable name of the endpoint (defaults to the value of the `key`)
+ *
+ * @param name
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setNameName:(NSString *)name __attribute__((swift_name("setName(name:)")));
+
+/**
+ * Specifies whether Mockzilla should map a network request to this endpoint.
+ *
+ * Used to map an incoming network request to the correct endpoint. The URI is matched against
+ * the given regex.
+ *
+ * This is just a utility wrapper around the more flexible [setPatternMatcher] endpoint.
+ *
+ * @param regex
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setPatternRegex:(NSString *)regex __attribute__((swift_name("setPattern(regex:)")));
+
+/**
+ * Specifies whether Mockzilla should map a network request to this endpoint.
+ *
+ * @param matcher Used to map an incoming network request to the correct endpoint.
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setPatternMatcherMatcher:(id<MockzillaKotlinSuspendFunction1>)matcher __attribute__((swift_name("setPatternMatcher(matcher:)")));
+
+/**
+ * Controls whether calls to this endpoint should fail by default
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setShouldFailShouldFail:(BOOL)shouldFail __attribute__((swift_name("setShouldFail(shouldFail:)")));
+
+/**
+ * Sets the version this endpoint is currently set to. A change in the version code will
+ * automatically clear any caches on the device associated with this endpoint.
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setVersionCodeCode:(int32_t)code __attribute__((swift_name("setVersionCode(code:)")));
+@end
+
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ *
+ * @note annotations
+ *   kotlinx.serialization.Serializable
+*/
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse")))
+@interface MockzillaMockzilla_commonMockzillaHttpResponse : MockzillaBase
+- (instancetype)initWithStatusCode:(MockzillaKtor_httpHttpStatusCode *)statusCode headers:(NSDictionary<NSString *, NSString *> *)headers body:(NSString *)body __attribute__((swift_name("init(statusCode:headers:body:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) MockzillaMockzilla_commonMockzillaHttpResponseCompanion *companion __attribute__((swift_name("companion")));
+- (MockzillaMockzilla_commonMockzillaHttpResponse *)doCopyStatusCode:(MockzillaKtor_httpHttpStatusCode *)statusCode headers:(NSDictionary<NSString *, NSString *> *)headers body:(NSString *)body __attribute__((swift_name("doCopy(statusCode:headers:body:)")));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *body __attribute__((swift_name("body")));
+@property (readonly) NSDictionary<NSString *, NSString *> *headers __attribute__((swift_name("headers")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.Serializable(with=NormalClass(value=com/apadmi/mockzilla/lib/internal/utils/HttpStatusCodeSerializer))
+*/
+@property (readonly) MockzillaKtor_httpHttpStatusCode *statusCode __attribute__((swift_name("statusCode")));
 @end
 
 
@@ -1542,17 +1691,6 @@ __attribute__((swift_name("Ktor_httpParameters")))
 @required
 @end
 
-__attribute__((swift_name("Mockzilla_commonAuthHeaderProvider")))
-@protocol MockzillaMockzilla_commonAuthHeaderProvider
-@required
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)generateHeaderWithCompletionHandler:(void (^)(MockzillaMockzilla_commonAuthHeaderProviderHeader * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("generateHeader(completionHandler:)")));
-@end
-
 
 /**
  * @property name
@@ -1618,6 +1756,101 @@ __attribute__((swift_name("Mockzilla_commonEndpointConfiguration")))
 @property (readonly) NSString *name __attribute__((swift_name("name")));
 @property (readonly) BOOL shouldFail __attribute__((swift_name("shouldFail")));
 @property (readonly) int32_t versionCode __attribute__((swift_name("versionCode")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Builder")))
+@interface MockzillaMockzilla_commonDashboardOptionsConfigBuilder : MockzillaBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addErrorPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addErrorPreset(response:name:description:)")));
+- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addSuccessPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addSuccessPreset(response:name:description:)")));
+- (MockzillaMockzilla_commonDashboardOptionsConfig *)build __attribute__((swift_name("build()")));
+@end
+
+__attribute__((swift_name("KotlinFunction")))
+@protocol MockzillaKotlinFunction
+@required
+@end
+
+__attribute__((swift_name("KotlinSuspendFunction1")))
+@protocol MockzillaKotlinSuspendFunction1 <MockzillaKotlinFunction>
+@required
+
+/**
+ * @note This method converts instances of CancellationException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (void)invokeP1:(id _Nullable)p1 completionHandler:(void (^)(id _Nullable_result, NSError * _Nullable))completionHandler __attribute__((swift_name("invoke(p1:completionHandler:)")));
+@end
+
+
+/**
+ * Represents an HTTP status code and description.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode)
+ *
+ * @param value is a numeric code.
+ * @param description is free form description of a status.
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_httpHttpStatusCode")))
+@interface MockzillaKtor_httpHttpStatusCode : MockzillaBase <MockzillaKotlinComparable>
+- (instancetype)initWithValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("init(value:description:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) MockzillaKtor_httpHttpStatusCodeCompanion *companion __attribute__((swift_name("companion")));
+- (int32_t)compareToOther:(MockzillaKtor_httpHttpStatusCode *)other __attribute__((swift_name("compareTo(other:)")));
+- (MockzillaKtor_httpHttpStatusCode *)doCopyValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("doCopy(value:description:)")));
+
+/**
+ * Returns a copy of `this` code with a description changed to [value].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.description)
+ */
+- (MockzillaKtor_httpHttpStatusCode *)descriptionValue:(NSString *)value __attribute__((swift_name("description(value:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *description_ __attribute__((swift_name("description_")));
+@property (readonly) int32_t value __attribute__((swift_name("value")));
+@end
+
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse.Companion")))
+@interface MockzillaMockzilla_commonMockzillaHttpResponseCompanion : MockzillaBase
++ (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MockzillaMockzilla_commonMockzillaHttpResponseCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
+- (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@end
+
+__attribute__((swift_name("Mockzilla_commonAuthHeaderProvider")))
+@protocol MockzillaMockzilla_commonAuthHeaderProvider
+@required
+
+/**
+ * @note This method converts instances of CancellationException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (void)generateHeaderWithCompletionHandler:(void (^)(MockzillaMockzilla_commonAuthHeaderProviderHeader * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("generateHeader(completionHandler:)")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -1699,101 +1932,6 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.BuilderCompanion")))
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaMockzilla_commonMockzillaConfigBuilderCompanion *shared __attribute__((swift_name("shared")));
 @property (readonly) int32_t defaultPort __attribute__((swift_name("defaultPort")));
-@end
-
-
-/**
- * @param key An identifier for this endpoint. Endpoints cannot share an id.
- */
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
-@interface MockzillaMockzilla_commonEndpointConfigurationBuilder : MockzillaBase
-- (instancetype)initWithKey:(NSString *)key __attribute__((swift_name("init(key:)"))) __attribute__((objc_designated_initializer));
-
-/**
- * Completes the builder - returns the configuration.
- *
- * @return [EndpointConfiguration]
- */
-- (MockzillaMockzilla_commonEndpointConfiguration *)build __attribute__((swift_name("build()")));
-
-/**
- * Configure the presets that are available to users of the dashboard.
- *
- * @param action
- * @return
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)configureDashboardOverridesAction:(MockzillaMockzilla_commonDashboardOptionsConfigBuilder *(^)(MockzillaMockzilla_commonDashboardOptionsConfigBuilder *))action __attribute__((swift_name("configureDashboardOverrides(action:)")));
-
-/**
- * The block called when a network request is made to this endpoint. Note: If the value of
- * [setShouldFail] causes Mockzilla to generate a failure response, then this block
- * will *not* be called, instead the block specified by [setErrorHandler] is called.
- *
- * @param handler
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setDefaultHandlerHandler:(id<MockzillaKotlinSuspendFunction1>)handler __attribute__((swift_name("setDefaultHandler(handler:)")));
-
-/**
- * The block called when a network request is made to this endpoint but Mockzilladecides to
- * simulate a server failure.
- *
- * @param handler
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setErrorHandlerHandler:(MockzillaMockzilla_commonMockzillaHttpResponse *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))handler __attribute__((swift_name("setErrorHandler(handler:)")));
-
-/**
- * Probability of Mockzilla returning a simulated http error for this endpoint. 100 being a
- * guaranteed error .
- *
- * @param percentage (0 -> 100 inclusive)
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setFailureProbabilityPercentage:(int32_t)percentage __attribute__((swift_name("setFailureProbability(percentage:)"))) __attribute__((deprecated("Probabilities are no longer supported")));
-
-/**
- * Used to simulate latency: The artificial mean delay Mockzilla with add to a network request.
- * Used alongside [setMeanDelayMillis] to calculate the actual artificial delay on each invocation.
- *
- * @param delay delay in milliseconds
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setMeanDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setMeanDelayMillis(delay:)")));
-
-/**
- * Sets the human readable name of the endpoint (defaults to the value of the `key`)
- *
- * @param name
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setNameName:(NSString *)name __attribute__((swift_name("setName(name:)")));
-
-/**
- * Specifies whether Mockzilla should map a network request to this endpoint.
- *
- * Used to map an incoming network request to the correct endpoint. The URI is matched against
- * the given regex.
- *
- * This is just a utility wrapper around the more flexible [setPatternMatcher] endpoint.
- *
- * @param regex
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setPatternRegex:(NSString *)regex __attribute__((swift_name("setPattern(regex:)")));
-
-/**
- * Specifies whether Mockzilla should map a network request to this endpoint.
- *
- * @param matcher Used to map an incoming network request to the correct endpoint.
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setPatternMatcherMatcher:(MockzillaBoolean *(^)(id<MockzillaMockzilla_commonMockzillaHttpRequest>))matcher __attribute__((swift_name("setPatternMatcher(matcher:)")));
-
-/**
- * Controls whether calls to this endpoint should fail by default
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setShouldFailShouldFail:(BOOL)shouldFail __attribute__((swift_name("setShouldFail(shouldFail:)")));
-
-/**
- * Sets the version this endpoint is currently set to. A change in the version code will
- * automatically clear any caches on the device associated with this endpoint.
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setVersionCodeCode:(int32_t)code __attribute__((swift_name("setVersionCode(code:)")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -2279,38 +2417,6 @@ __attribute__((swift_name("KotlinMapEntry")))
 
 
 /**
- * @property key
- * @property value
- */
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonAuthHeaderProviderHeader")))
-@interface MockzillaMockzilla_commonAuthHeaderProviderHeader : MockzillaBase
-- (instancetype)initWithKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("init(key:value:)"))) __attribute__((objc_designated_initializer));
-- (MockzillaMockzilla_commonAuthHeaderProviderHeader *)doCopyKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("doCopy(key:value:)")));
-
-/**
- * @property key
- * @property value
- */
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-
-/**
- * @property key
- * @property value
- */
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-
-/**
- * @property key
- * @property value
- */
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSString *key __attribute__((swift_name("key")));
-@property (readonly) NSString *value __attribute__((swift_name("value")));
-@end
-
-
-/**
  * @property errorPresets
  * @property successPresets
  *
@@ -2345,76 +2451,112 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig")))
 @property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *successPresets __attribute__((swift_name("successPresets")));
 @end
 
-__attribute__((swift_name("KotlinFunction")))
-@protocol MockzillaKotlinFunction
-@required
-@end
-
-__attribute__((swift_name("KotlinSuspendFunction1")))
-@protocol MockzillaKotlinSuspendFunction1 <MockzillaKotlinFunction>
-@required
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)invokeP1:(id _Nullable)p1 completionHandler:(void (^)(id _Nullable_result, NSError * _Nullable))completionHandler __attribute__((swift_name("invoke(p1:completionHandler:)")));
-@end
-
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Builder")))
-@interface MockzillaMockzilla_commonDashboardOptionsConfigBuilder : MockzillaBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addErrorPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addErrorPreset(response:name:description:)")));
-- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addSuccessPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addSuccessPreset(response:name:description:)")));
-- (MockzillaMockzilla_commonDashboardOptionsConfig *)build __attribute__((swift_name("build()")));
-@end
-
+__attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
+@interface MockzillaKtor_httpHttpStatusCodeCompanion : MockzillaBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MockzillaKtor_httpHttpStatusCodeCompanion *shared __attribute__((swift_name("shared")));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * Creates an instance of [HttpStatusCode] with the given numeric value.
  *
- * @note annotations
- *   kotlinx.serialization.Serializable
-*/
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse")))
-@interface MockzillaMockzilla_commonMockzillaHttpResponse : MockzillaBase
-- (instancetype)initWithStatusCode:(MockzillaKtor_httpHttpStatusCode *)statusCode headers:(NSDictionary<NSString *, NSString *> *)headers body:(NSString *)body __attribute__((swift_name("init(statusCode:headers:body:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) MockzillaMockzilla_commonMockzillaHttpResponseCompanion *companion __attribute__((swift_name("companion")));
-- (MockzillaMockzilla_commonMockzillaHttpResponse *)doCopyStatusCode:(MockzillaKtor_httpHttpStatusCode *)statusCode headers:(NSDictionary<NSString *, NSString *> *)headers body:(NSString *)body __attribute__((swift_name("doCopy(statusCode:headers:body:)")));
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.Companion.fromValue)
+ */
+- (MockzillaKtor_httpHttpStatusCode *)fromValueValue:(int32_t)value __attribute__((swift_name("fromValue(value:)")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *Accepted __attribute__((swift_name("Accepted")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *BadGateway __attribute__((swift_name("BadGateway")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *BadRequest __attribute__((swift_name("BadRequest")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *Conflict __attribute__((swift_name("Conflict")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *Continue __attribute__((swift_name("Continue")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *Created __attribute__((swift_name("Created")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *ExpectationFailed __attribute__((swift_name("ExpectationFailed")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *FailedDependency __attribute__((swift_name("FailedDependency")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *Forbidden __attribute__((swift_name("Forbidden")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *Found __attribute__((swift_name("Found")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *GatewayTimeout __attribute__((swift_name("GatewayTimeout")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *Gone __attribute__((swift_name("Gone")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *InsufficientStorage __attribute__((swift_name("InsufficientStorage")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *InternalServerError __attribute__((swift_name("InternalServerError")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *LengthRequired __attribute__((swift_name("LengthRequired")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *Locked __attribute__((swift_name("Locked")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *MethodNotAllowed __attribute__((swift_name("MethodNotAllowed")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *MovedPermanently __attribute__((swift_name("MovedPermanently")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *MultiStatus __attribute__((swift_name("MultiStatus")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *MultipleChoices __attribute__((swift_name("MultipleChoices")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *NoContent __attribute__((swift_name("NoContent")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *NonAuthoritativeInformation __attribute__((swift_name("NonAuthoritativeInformation")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *NotAcceptable __attribute__((swift_name("NotAcceptable")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *NotFound __attribute__((swift_name("NotFound")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *NotImplemented __attribute__((swift_name("NotImplemented")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *NotModified __attribute__((swift_name("NotModified")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *OK __attribute__((swift_name("OK")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *PartialContent __attribute__((swift_name("PartialContent")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *PayloadTooLarge __attribute__((swift_name("PayloadTooLarge")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *PaymentRequired __attribute__((swift_name("PaymentRequired")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *PermanentRedirect __attribute__((swift_name("PermanentRedirect")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *PreconditionFailed __attribute__((swift_name("PreconditionFailed")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *Processing __attribute__((swift_name("Processing")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *ProxyAuthenticationRequired __attribute__((swift_name("ProxyAuthenticationRequired")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *RequestHeaderFieldTooLarge __attribute__((swift_name("RequestHeaderFieldTooLarge")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *RequestTimeout __attribute__((swift_name("RequestTimeout")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *RequestURITooLong __attribute__((swift_name("RequestURITooLong")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *RequestedRangeNotSatisfiable __attribute__((swift_name("RequestedRangeNotSatisfiable")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *ResetContent __attribute__((swift_name("ResetContent")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *SeeOther __attribute__((swift_name("SeeOther")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *ServiceUnavailable __attribute__((swift_name("ServiceUnavailable")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *SwitchProxy __attribute__((swift_name("SwitchProxy")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *SwitchingProtocols __attribute__((swift_name("SwitchingProtocols")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *TemporaryRedirect __attribute__((swift_name("TemporaryRedirect")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *TooEarly __attribute__((swift_name("TooEarly")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *TooManyRequests __attribute__((swift_name("TooManyRequests")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *Unauthorized __attribute__((swift_name("Unauthorized")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *UnprocessableEntity __attribute__((swift_name("UnprocessableEntity")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *UnsupportedMediaType __attribute__((swift_name("UnsupportedMediaType")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *UpgradeRequired __attribute__((swift_name("UpgradeRequired")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *UseProxy __attribute__((swift_name("UseProxy")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *VariantAlsoNegotiates __attribute__((swift_name("VariantAlsoNegotiates")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *VersionNotSupported __attribute__((swift_name("VersionNotSupported")));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * All known status codes
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.Companion.allStatusCodes)
+ */
+@property (readonly) NSArray<MockzillaKtor_httpHttpStatusCode *> *allStatusCodes __attribute__((swift_name("allStatusCodes")));
+@end
+
+
+/**
+ * @property key
+ * @property value
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonAuthHeaderProviderHeader")))
+@interface MockzillaMockzilla_commonAuthHeaderProviderHeader : MockzillaBase
+- (instancetype)initWithKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("init(key:value:)"))) __attribute__((objc_designated_initializer));
+- (MockzillaMockzilla_commonAuthHeaderProviderHeader *)doCopyKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("doCopy(key:value:)")));
+
+/**
+ * @property key
+ * @property value
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * @property key
+ * @property value
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * @property key
+ * @property value
  */
 - (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSString *body __attribute__((swift_name("body")));
-@property (readonly) NSDictionary<NSString *, NSString *> *headers __attribute__((swift_name("headers")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.Serializable(with=NormalClass(value=com/apadmi/mockzilla/lib/internal/utils/HttpStatusCodeSerializer))
-*/
-@property (readonly) MockzillaKtor_httpHttpStatusCode *statusCode __attribute__((swift_name("statusCode")));
+@property (readonly) NSString *key __attribute__((swift_name("key")));
+@property (readonly) NSString *value __attribute__((swift_name("value")));
 @end
 
 __attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
@@ -2987,36 +3129,6 @@ __attribute__((swift_name("Ktor_server_coreResponsePushBuilder")))
 
 
 /**
- * Represents an HTTP status code and description.
- *
- * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode)
- *
- * @param value is a numeric code.
- * @param description is free form description of a status.
- */
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_httpHttpStatusCode")))
-@interface MockzillaKtor_httpHttpStatusCode : MockzillaBase <MockzillaKotlinComparable>
-- (instancetype)initWithValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("init(value:description:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) MockzillaKtor_httpHttpStatusCodeCompanion *companion __attribute__((swift_name("companion")));
-- (int32_t)compareToOther:(MockzillaKtor_httpHttpStatusCode *)other __attribute__((swift_name("compareTo(other:)")));
-- (MockzillaKtor_httpHttpStatusCode *)doCopyValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("doCopy(value:description:)")));
-
-/**
- * Returns a copy of `this` code with a description changed to [value].
- *
- * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.description)
- */
-- (MockzillaKtor_httpHttpStatusCode *)descriptionValue:(NSString *)value __attribute__((swift_name("description(value:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSString *description_ __attribute__((swift_name("description_")));
-@property (readonly) int32_t value __attribute__((swift_name("value")));
-@end
-
-
-/**
  * Server's response cookies.
  *
  * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.server.response.ResponseCookies)
@@ -3225,34 +3337,6 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Companion")))
 /**
  * @property errorPresets
  * @property successPresets
- */
-- (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
-@end
-
-
-/**
- * @property statusCode
- * @property headers
- * @property body
- */
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse.Companion")))
-@interface MockzillaMockzilla_commonMockzillaHttpResponseCompanion : MockzillaBase
-+ (instancetype)alloc __attribute__((unavailable));
-
-/**
- * @property statusCode
- * @property headers
- * @property body
- */
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MockzillaMockzilla_commonMockzillaHttpResponseCompanion *shared __attribute__((swift_name("shared")));
-
-/**
- * @property statusCode
- * @property headers
- * @property body
  */
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
@@ -3817,82 +3901,6 @@ __attribute__((swift_name("Ktor_httpVersion")))
  * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.Version.check)
  */
 - (MockzillaKtor_httpVersionCheckResult *)checkRequestHeaders:(id<MockzillaKtor_httpHeaders>)requestHeaders __attribute__((swift_name("check(requestHeaders:)")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
-@interface MockzillaKtor_httpHttpStatusCodeCompanion : MockzillaBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MockzillaKtor_httpHttpStatusCodeCompanion *shared __attribute__((swift_name("shared")));
-
-/**
- * Creates an instance of [HttpStatusCode] with the given numeric value.
- *
- * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.Companion.fromValue)
- */
-- (MockzillaKtor_httpHttpStatusCode *)fromValueValue:(int32_t)value __attribute__((swift_name("fromValue(value:)")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *Accepted __attribute__((swift_name("Accepted")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *BadGateway __attribute__((swift_name("BadGateway")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *BadRequest __attribute__((swift_name("BadRequest")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *Conflict __attribute__((swift_name("Conflict")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *Continue __attribute__((swift_name("Continue")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *Created __attribute__((swift_name("Created")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *ExpectationFailed __attribute__((swift_name("ExpectationFailed")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *FailedDependency __attribute__((swift_name("FailedDependency")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *Forbidden __attribute__((swift_name("Forbidden")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *Found __attribute__((swift_name("Found")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *GatewayTimeout __attribute__((swift_name("GatewayTimeout")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *Gone __attribute__((swift_name("Gone")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *InsufficientStorage __attribute__((swift_name("InsufficientStorage")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *InternalServerError __attribute__((swift_name("InternalServerError")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *LengthRequired __attribute__((swift_name("LengthRequired")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *Locked __attribute__((swift_name("Locked")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *MethodNotAllowed __attribute__((swift_name("MethodNotAllowed")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *MovedPermanently __attribute__((swift_name("MovedPermanently")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *MultiStatus __attribute__((swift_name("MultiStatus")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *MultipleChoices __attribute__((swift_name("MultipleChoices")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *NoContent __attribute__((swift_name("NoContent")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *NonAuthoritativeInformation __attribute__((swift_name("NonAuthoritativeInformation")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *NotAcceptable __attribute__((swift_name("NotAcceptable")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *NotFound __attribute__((swift_name("NotFound")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *NotImplemented __attribute__((swift_name("NotImplemented")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *NotModified __attribute__((swift_name("NotModified")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *OK __attribute__((swift_name("OK")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *PartialContent __attribute__((swift_name("PartialContent")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *PayloadTooLarge __attribute__((swift_name("PayloadTooLarge")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *PaymentRequired __attribute__((swift_name("PaymentRequired")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *PermanentRedirect __attribute__((swift_name("PermanentRedirect")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *PreconditionFailed __attribute__((swift_name("PreconditionFailed")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *Processing __attribute__((swift_name("Processing")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *ProxyAuthenticationRequired __attribute__((swift_name("ProxyAuthenticationRequired")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *RequestHeaderFieldTooLarge __attribute__((swift_name("RequestHeaderFieldTooLarge")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *RequestTimeout __attribute__((swift_name("RequestTimeout")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *RequestURITooLong __attribute__((swift_name("RequestURITooLong")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *RequestedRangeNotSatisfiable __attribute__((swift_name("RequestedRangeNotSatisfiable")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *ResetContent __attribute__((swift_name("ResetContent")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *SeeOther __attribute__((swift_name("SeeOther")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *ServiceUnavailable __attribute__((swift_name("ServiceUnavailable")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *SwitchProxy __attribute__((swift_name("SwitchProxy")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *SwitchingProtocols __attribute__((swift_name("SwitchingProtocols")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *TemporaryRedirect __attribute__((swift_name("TemporaryRedirect")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *TooEarly __attribute__((swift_name("TooEarly")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *TooManyRequests __attribute__((swift_name("TooManyRequests")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *Unauthorized __attribute__((swift_name("Unauthorized")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *UnprocessableEntity __attribute__((swift_name("UnprocessableEntity")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *UnsupportedMediaType __attribute__((swift_name("UnsupportedMediaType")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *UpgradeRequired __attribute__((swift_name("UpgradeRequired")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *UseProxy __attribute__((swift_name("UseProxy")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *VariantAlsoNegotiates __attribute__((swift_name("VariantAlsoNegotiates")));
-@property (readonly) MockzillaKtor_httpHttpStatusCode *VersionNotSupported __attribute__((swift_name("VersionNotSupported")));
-
-/**
- * All known status codes
- *
- * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.Companion.allStatusCodes)
- */
-@property (readonly) NSArray<MockzillaKtor_httpHttpStatusCode *> *allStatusCodes __attribute__((swift_name("allStatusCodes")));
 @end
 
 
