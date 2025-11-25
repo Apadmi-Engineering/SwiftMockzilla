@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class MockzillaKermitLogger, MockzillaKermitLoggerCompanion, MockzillaKermit_coreBaseLogger, MockzillaKermit_coreLogWriter, MockzillaKermit_coreSeverity, MockzillaKeychainSettings, MockzillaKotlinArray<T>, MockzillaKotlinByteArray, MockzillaKotlinByteIterator, MockzillaKotlinEnum<E>, MockzillaKotlinEnumCompanion, MockzillaKotlinException, MockzillaKotlinIllegalStateException, MockzillaKotlinKTypeProjection, MockzillaKotlinKTypeProjectionCompanion, MockzillaKotlinKVariance, MockzillaKotlinNothing, MockzillaKotlinPair<__covariant A, __covariant B>, MockzillaKotlinRuntimeException, MockzillaKotlinThrowable, MockzillaKotlinUnit, MockzillaKotlinx_io_coreBuffer, MockzillaKotlinx_serialization_coreSerialKind, MockzillaKotlinx_serialization_coreSerializersModule, MockzillaKtor_eventsEventDefinition<T>, MockzillaKtor_eventsEvents, MockzillaKtor_httpCookie, MockzillaKtor_httpCookieCompanion, MockzillaKtor_httpCookieEncoding, MockzillaKtor_httpHeadersBuilder, MockzillaKtor_httpHttpMethod, MockzillaKtor_httpHttpMethodCompanion, MockzillaKtor_httpHttpStatusCode, MockzillaKtor_httpHttpStatusCodeCompanion, MockzillaKtor_httpURLBuilder, MockzillaKtor_httpURLBuilderCompanion, MockzillaKtor_httpURLProtocol, MockzillaKtor_httpURLProtocolCompanion, MockzillaKtor_httpUrl, MockzillaKtor_httpUrlCompanion, MockzillaKtor_httpVersionCheckResult, MockzillaKtor_server_coreApplication, MockzillaKtor_server_coreApplicationCallPipeline, MockzillaKtor_server_coreApplicationCallPipelineApplicationPhase, MockzillaKtor_server_coreApplicationConfigValueType, MockzillaKtor_server_coreApplicationReceivePipeline, MockzillaKtor_server_coreApplicationReceivePipelinePhases, MockzillaKtor_server_coreApplicationSendPipeline, MockzillaKtor_server_coreApplicationSendPipelinePhases, MockzillaKtor_server_coreConnectorType, MockzillaKtor_server_coreConnectorTypeCompanion, MockzillaKtor_server_coreRequestCookies, MockzillaKtor_server_coreResponseCookies, MockzillaKtor_server_coreResponseHeaders, MockzillaKtor_utilsAttributeKey<T>, MockzillaKtor_utilsGMTDate, MockzillaKtor_utilsGMTDateCompanion, MockzillaKtor_utilsLogLevel, MockzillaKtor_utilsMonth, MockzillaKtor_utilsMonthCompanion, MockzillaKtor_utilsPipeline<TSubject, TContext>, MockzillaKtor_utilsPipelinePhase, MockzillaKtor_utilsStringValuesBuilderImpl, MockzillaKtor_utilsTypeInfo, MockzillaKtor_utilsWeekDay, MockzillaKtor_utilsWeekDayCompanion, MockzillaMockzilla_commonAuthHeaderProviderHeader, MockzillaMockzilla_commonDashboardOptionsConfig, MockzillaMockzilla_commonDashboardOptionsConfigBuilder, MockzillaMockzilla_commonDashboardOptionsConfigCompanion, MockzillaMockzilla_commonDashboardOverridePreset, MockzillaMockzilla_commonDashboardOverridePresetCompanion, MockzillaMockzilla_commonEndpointConfiguration, MockzillaMockzilla_commonEndpointConfigurationBuilder, MockzillaMockzilla_commonMetaData, MockzillaMockzilla_commonMetaDataCompanion, MockzillaMockzilla_commonMockzillaConfig, MockzillaMockzilla_commonMockzillaConfigBuilder, MockzillaMockzilla_commonMockzillaConfigBuilderCompanion, MockzillaMockzilla_commonMockzillaConfigLogLevel, MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig, MockzillaMockzilla_commonMockzillaHttpResponse, MockzillaMockzilla_commonMockzillaHttpResponseCompanion, MockzillaMockzilla_commonMockzillaRuntimeParams, MockzillaMockzilla_commonRunTarget, MockzillaZeroConfDiscoveryServiceImplCompanion;
+@class MockzillaKermitLogger, MockzillaKermitLoggerCompanion, MockzillaKermit_coreBaseLogger, MockzillaKermit_coreLogWriter, MockzillaKermit_coreSeverity, MockzillaKeychainSettings, MockzillaKotlinArray<T>, MockzillaKotlinByteArray, MockzillaKotlinByteIterator, MockzillaKotlinEnum<E>, MockzillaKotlinEnumCompanion, MockzillaKotlinException, MockzillaKotlinIllegalStateException, MockzillaKotlinKTypeProjection, MockzillaKotlinKTypeProjectionCompanion, MockzillaKotlinKVariance, MockzillaKotlinNothing, MockzillaKotlinPair<__covariant A, __covariant B>, MockzillaKotlinRuntimeException, MockzillaKotlinThrowable, MockzillaKotlinUnit, MockzillaKotlinx_io_coreBuffer, MockzillaKotlinx_serialization_coreSerialKind, MockzillaKotlinx_serialization_coreSerializersModule, MockzillaKtor_eventsEventDefinition<T>, MockzillaKtor_eventsEvents, MockzillaKtor_httpCookie, MockzillaKtor_httpCookieCompanion, MockzillaKtor_httpCookieEncoding, MockzillaKtor_httpHeadersBuilder, MockzillaKtor_httpHttpMethod, MockzillaKtor_httpHttpMethodCompanion, MockzillaKtor_httpHttpStatusCode, MockzillaKtor_httpHttpStatusCodeCompanion, MockzillaKtor_httpURLBuilder, MockzillaKtor_httpURLBuilderCompanion, MockzillaKtor_httpURLProtocol, MockzillaKtor_httpURLProtocolCompanion, MockzillaKtor_httpUrl, MockzillaKtor_httpUrlCompanion, MockzillaKtor_httpVersionCheckResult, MockzillaKtor_server_coreApplication, MockzillaKtor_server_coreApplicationCallPipeline, MockzillaKtor_server_coreApplicationCallPipelineApplicationPhase, MockzillaKtor_server_coreApplicationConfigValueType, MockzillaKtor_server_coreApplicationReceivePipeline, MockzillaKtor_server_coreApplicationReceivePipelinePhases, MockzillaKtor_server_coreApplicationSendPipeline, MockzillaKtor_server_coreApplicationSendPipelinePhases, MockzillaKtor_server_coreConnectorType, MockzillaKtor_server_coreConnectorTypeCompanion, MockzillaKtor_server_coreRequestCookies, MockzillaKtor_server_coreResponseCookies, MockzillaKtor_server_coreResponseHeaders, MockzillaKtor_utilsAttributeKey<T>, MockzillaKtor_utilsGMTDate, MockzillaKtor_utilsGMTDateCompanion, MockzillaKtor_utilsLogLevel, MockzillaKtor_utilsMonth, MockzillaKtor_utilsMonthCompanion, MockzillaKtor_utilsPipeline<TSubject, TContext>, MockzillaKtor_utilsPipelinePhase, MockzillaKtor_utilsStringValuesBuilderImpl, MockzillaKtor_utilsTypeInfo, MockzillaKtor_utilsWeekDay, MockzillaKtor_utilsWeekDayCompanion, MockzillaMockzilla_commonAuthHeaderProviderHeader, MockzillaMockzilla_commonDashboardOptionsConfig, MockzillaMockzilla_commonDashboardOptionsConfigBuilder, MockzillaMockzilla_commonDashboardOptionsConfigCompanion, MockzillaMockzilla_commonDashboardOverridePreset, MockzillaMockzilla_commonDashboardOverridePresetCompanion, MockzillaMockzilla_commonDashboardOverridePresetType, MockzillaMockzilla_commonDashboardOverridePresetTypeCompanion, MockzillaMockzilla_commonEndpointConfiguration, MockzillaMockzilla_commonEndpointConfigurationBuilder, MockzillaMockzilla_commonMetaData, MockzillaMockzilla_commonMetaDataCompanion, MockzillaMockzilla_commonMockzillaConfig, MockzillaMockzilla_commonMockzillaConfigBuilder, MockzillaMockzilla_commonMockzillaConfigBuilderCompanion, MockzillaMockzilla_commonMockzillaConfigLogLevel, MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig, MockzillaMockzilla_commonMockzillaHttpResponse, MockzillaMockzilla_commonMockzillaHttpResponseCompanion, MockzillaMockzilla_commonMockzillaRuntimeParams, MockzillaMockzilla_commonPartialMockzillaHttpResponse, MockzillaMockzilla_commonPartialMockzillaHttpResponseCompanion, MockzillaMockzilla_commonRunTarget, MockzillaZeroConfDiscoveryServiceImplCompanion;
 
 @protocol MockzillaKermit_coreLoggerConfig, MockzillaKermit_coreMutableLoggerConfig, MockzillaKotlinAnnotation, MockzillaKotlinAutoCloseable, MockzillaKotlinComparable, MockzillaKotlinCoroutineContext, MockzillaKotlinCoroutineContextElement, MockzillaKotlinCoroutineContextKey, MockzillaKotlinFunction, MockzillaKotlinIterator, MockzillaKotlinKAnnotatedElement, MockzillaKotlinKClass, MockzillaKotlinKClassifier, MockzillaKotlinKDeclarationContainer, MockzillaKotlinKType, MockzillaKotlinMapEntry, MockzillaKotlinSuspendFunction1, MockzillaKotlinSuspendFunction2, MockzillaKotlinx_coroutines_coreCoroutineScope, MockzillaKotlinx_coroutines_coreDisposableHandle, MockzillaKotlinx_io_coreRawSink, MockzillaKotlinx_io_coreRawSource, MockzillaKotlinx_io_coreSink, MockzillaKotlinx_io_coreSource, MockzillaKotlinx_serialization_coreCompositeDecoder, MockzillaKotlinx_serialization_coreCompositeEncoder, MockzillaKotlinx_serialization_coreDecoder, MockzillaKotlinx_serialization_coreDeserializationStrategy, MockzillaKotlinx_serialization_coreEncoder, MockzillaKotlinx_serialization_coreKSerializer, MockzillaKotlinx_serialization_coreSerialDescriptor, MockzillaKotlinx_serialization_coreSerializationStrategy, MockzillaKotlinx_serialization_coreSerializersModuleCollector, MockzillaKtor_httpHeaders, MockzillaKtor_httpParameters, MockzillaKtor_httpParametersBuilder, MockzillaKtor_httpRequestConnectionPoint, MockzillaKtor_httpVersion, MockzillaKtor_ioByteReadChannel, MockzillaKtor_ioJvmSerializable, MockzillaKtor_server_coreApplicationCall, MockzillaKtor_server_coreApplicationConfig, MockzillaKtor_server_coreApplicationConfigValue, MockzillaKtor_server_coreApplicationEngine, MockzillaKtor_server_coreApplicationEnvironment, MockzillaKtor_server_coreApplicationRequest, MockzillaKtor_server_coreApplicationResponse, MockzillaKtor_server_coreEngineConnectorConfig, MockzillaKtor_server_corePipelineCall, MockzillaKtor_server_corePipelineResponse, MockzillaKtor_server_coreResponsePushBuilder, MockzillaKtor_utilsAttributes, MockzillaKtor_utilsLogger, MockzillaKtor_utilsStringValues, MockzillaKtor_utilsStringValuesBuilder, MockzillaMockzilla_commonAuthHeaderProvider, MockzillaMockzilla_commonMockzillaHttpRequest, MockzillaMockzilla_commonMockzillaLogWriter, MockzillaZeroConfDiscoveryService;
 
@@ -883,6 +883,7 @@ __attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse")))
  * @property body
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (MockzillaMockzilla_commonPartialMockzillaHttpResponse *)toPartial __attribute__((swift_name("toPartial()")));
 
 /**
  * @property statusCode
@@ -1763,8 +1764,10 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Builder")))
 @interface MockzillaMockzilla_commonDashboardOptionsConfigBuilder : MockzillaBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addErrorPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addErrorPreset(response:name:description:)")));
-- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addSuccessPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addSuccessPreset(response:name:description:)")));
+- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addErrorPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addErrorPreset(response:name:description:)"))) __attribute__((deprecated("Separate success/error presets are no longer supported")));
+- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description type:(MockzillaMockzilla_commonDashboardOverridePresetType * _Nullable)type __attribute__((swift_name("addPreset(response:name:description:type:)")));
+- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addPresetResponse:(MockzillaMockzilla_commonPartialMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description type_:(MockzillaMockzilla_commonDashboardOverridePresetType * _Nullable)type __attribute__((swift_name("addPreset(response:name:description:type_:)")));
+- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addSuccessPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addSuccessPreset(response:name:description:)"))) __attribute__((deprecated("Separate success/error presets are no longer supported")));
 - (MockzillaMockzilla_commonDashboardOptionsConfig *)build __attribute__((swift_name("build()")));
 @end
 
@@ -1840,6 +1843,52 @@ __attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse.Companion")))
  * @property body
  */
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@end
+
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ *
+ * @note annotations
+ *   kotlinx.serialization.Serializable
+*/
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonPartialMockzillaHttpResponse")))
+@interface MockzillaMockzilla_commonPartialMockzillaHttpResponse : MockzillaBase
+- (instancetype)initWithStatusCode:(MockzillaKtor_httpHttpStatusCode * _Nullable)statusCode headers:(NSDictionary<NSString *, NSString *> * _Nullable)headers body:(NSString * _Nullable)body __attribute__((swift_name("init(statusCode:headers:body:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) MockzillaMockzilla_commonPartialMockzillaHttpResponseCompanion *companion __attribute__((swift_name("companion")));
+- (MockzillaMockzilla_commonPartialMockzillaHttpResponse *)doCopyStatusCode:(MockzillaKtor_httpHttpStatusCode * _Nullable)statusCode headers:(NSDictionary<NSString *, NSString *> * _Nullable)headers body:(NSString * _Nullable)body __attribute__((swift_name("doCopy(statusCode:headers:body:)")));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString * _Nullable body __attribute__((swift_name("body")));
+@property (readonly) NSDictionary<NSString *, NSString *> * _Nullable headers __attribute__((swift_name("headers")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.Serializable(with=NormalClass(value=com/apadmi/mockzilla/lib/internal/utils/HttpStatusCodeSerializer))
+*/
+@property (readonly) MockzillaKtor_httpHttpStatusCode * _Nullable statusCode __attribute__((swift_name("statusCode")));
 @end
 
 __attribute__((swift_name("Mockzilla_commonAuthHeaderProvider")))
@@ -2447,8 +2496,31 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig")))
  * @property successPresets
  */
 - (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *errorPresets __attribute__((swift_name("errorPresets")));
-@property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *successPresets __attribute__((swift_name("successPresets")));
+@property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *errorPresets __attribute__((swift_name("errorPresets"))) __attribute__((deprecated("Error Presets will be removed in a future version")));
+@property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *presets __attribute__((swift_name("presets")));
+@property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *successPresets __attribute__((swift_name("successPresets"))) __attribute__((deprecated("Deprecated")));
+@end
+
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.Serializable
+*/
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonDashboardOverridePreset.Type_")))
+@interface MockzillaMockzilla_commonDashboardOverridePresetType : MockzillaKotlinEnum<MockzillaMockzilla_commonDashboardOverridePresetType *>
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (class, readonly, getter=companion) MockzillaMockzilla_commonDashboardOverridePresetTypeCompanion *companion __attribute__((swift_name("companion")));
+@property (class, readonly) MockzillaMockzilla_commonDashboardOverridePresetType *clienterror __attribute__((swift_name("clienterror")));
+@property (class, readonly) MockzillaMockzilla_commonDashboardOverridePresetType *informational __attribute__((swift_name("informational")));
+@property (class, readonly) MockzillaMockzilla_commonDashboardOverridePresetType *other __attribute__((swift_name("other")));
+@property (class, readonly) MockzillaMockzilla_commonDashboardOverridePresetType *redirect __attribute__((swift_name("redirect")));
+@property (class, readonly) MockzillaMockzilla_commonDashboardOverridePresetType *servererror __attribute__((swift_name("servererror")));
+@property (class, readonly) MockzillaMockzilla_commonDashboardOverridePresetType *success __attribute__((swift_name("success")));
++ (MockzillaKotlinArray<MockzillaMockzilla_commonDashboardOverridePresetType *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePresetType *> *entries __attribute__((swift_name("entries")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -2525,6 +2597,34 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
  * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.Companion.allStatusCodes)
  */
 @property (readonly) NSArray<MockzillaKtor_httpHttpStatusCode *> *allStatusCodes __attribute__((swift_name("allStatusCodes")));
+@end
+
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonPartialMockzillaHttpResponse.Companion")))
+@interface MockzillaMockzilla_commonPartialMockzillaHttpResponseCompanion : MockzillaBase
++ (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MockzillaMockzilla_commonPartialMockzillaHttpResponseCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * @property statusCode
+ * @property headers
+ * @property body
+ */
+- (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
 
@@ -3279,7 +3379,9 @@ __attribute__((swift_name("KotlinCoroutineContextKey")))
 /**
  * @property name
  * @property description
+ * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
  * @property response
+ * @property isManagementUiDefinedCustomPreset
  *
  * @note annotations
  *   kotlinx.serialization.Serializable
@@ -3287,33 +3389,41 @@ __attribute__((swift_name("KotlinCoroutineContextKey")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset")))
 @interface MockzillaMockzilla_commonDashboardOverridePreset : MockzillaBase
-- (instancetype)initWithName:(NSString *)name description:(NSString * _Nullable)description response:(MockzillaMockzilla_commonMockzillaHttpResponse *)response __attribute__((swift_name("init(name:description:response:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithName:(NSString *)name description:(NSString * _Nullable)description type:(MockzillaMockzilla_commonDashboardOverridePresetType * _Nullable)type response:(MockzillaMockzilla_commonPartialMockzillaHttpResponse *)response isManagementUiDefinedCustomPreset:(BOOL)isManagementUiDefinedCustomPreset __attribute__((swift_name("init(name:description:type:response:isManagementUiDefinedCustomPreset:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaMockzilla_commonDashboardOverridePresetCompanion *companion __attribute__((swift_name("companion")));
-- (MockzillaMockzilla_commonDashboardOverridePreset *)doCopyName:(NSString *)name description:(NSString * _Nullable)description response:(MockzillaMockzilla_commonMockzillaHttpResponse *)response __attribute__((swift_name("doCopy(name:description:response:)")));
+- (MockzillaMockzilla_commonDashboardOverridePreset *)doCopyName:(NSString *)name description:(NSString * _Nullable)description type:(MockzillaMockzilla_commonDashboardOverridePresetType * _Nullable)type response:(MockzillaMockzilla_commonPartialMockzillaHttpResponse *)response isManagementUiDefinedCustomPreset:(BOOL)isManagementUiDefinedCustomPreset __attribute__((swift_name("doCopy(name:description:type:response:isManagementUiDefinedCustomPreset:)")));
 
 /**
  * @property name
  * @property description
+ * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
  * @property response
+ * @property isManagementUiDefinedCustomPreset
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
 /**
  * @property name
  * @property description
+ * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
  * @property response
+ * @property isManagementUiDefinedCustomPreset
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 
 /**
  * @property name
  * @property description
+ * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
  * @property response
+ * @property isManagementUiDefinedCustomPreset
  */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString * _Nullable description_ __attribute__((swift_name("description_")));
+@property (readonly) BOOL isManagementUiDefinedCustomPreset __attribute__((swift_name("isManagementUiDefinedCustomPreset")));
 @property (readonly) NSString *name __attribute__((swift_name("name")));
-@property (readonly) MockzillaMockzilla_commonMockzillaHttpResponse *response __attribute__((swift_name("response")));
+@property (readonly) MockzillaMockzilla_commonPartialMockzillaHttpResponse *response __attribute__((swift_name("response")));
+@property (readonly) MockzillaMockzilla_commonDashboardOverridePresetType * _Nullable type __attribute__((swift_name("type")));
 @end
 
 
@@ -3339,6 +3449,17 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Companion")))
  * @property successPresets
  */
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Mockzilla_commonDashboardOverridePreset.Type_Companion")))
+@interface MockzillaMockzilla_commonDashboardOverridePresetTypeCompanion : MockzillaBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MockzillaMockzilla_commonDashboardOverridePresetTypeCompanion *shared __attribute__((swift_name("shared")));
+- (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+- (id<MockzillaKotlinx_serialization_coreKSerializer>)serializerTypeParamsSerializers:(MockzillaKotlinArray<id<MockzillaKotlinx_serialization_coreKSerializer>> *)typeParamsSerializers __attribute__((swift_name("serializer(typeParamsSerializers:)")));
 @end
 
 __attribute__((swift_name("Kotlinx_serialization_coreCompositeEncoder")))
@@ -4131,7 +4252,9 @@ __attribute__((swift_name("Ktor_utilsGMTDate")))
 /**
  * @property name
  * @property description
+ * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
  * @property response
+ * @property isManagementUiDefinedCustomPreset
  */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset.Companion")))
@@ -4141,7 +4264,9 @@ __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset.Companion")))
 /**
  * @property name
  * @property description
+ * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
  * @property response
+ * @property isManagementUiDefinedCustomPreset
  */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
@@ -4150,7 +4275,9 @@ __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset.Companion")))
 /**
  * @property name
  * @property description
+ * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
  * @property response
+ * @property isManagementUiDefinedCustomPreset
  */
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
