@@ -30,7 +30,7 @@ public extension EndpointConfigurationBuilder {
         AsyncUtilsKt.setPatternMatcherCallback(builder: self) { request, callback in
             Task {
                 let result = await block(request)
-                callback(KotlinBoolean(bool: result))
+                let _ = callback(KotlinBoolean(bool: result))
             }
         }
         return self
@@ -40,7 +40,7 @@ public extension EndpointConfigurationBuilder {
         AsyncUtilsKt.setDefaultHandlerCallback(builder: self) { request, callback in
             Task {
                 let result = await block(request)
-                callback(result)
+                let _ = callback(result)
             }
         }
         return self
@@ -50,7 +50,7 @@ public extension EndpointConfigurationBuilder {
         AsyncUtilsKt.setErrorHandlerCallback(builder: self) { request, callback in
             Task {
                 let result = await block(request)
-                callback(result)
+                let _ = callback(result)
             }
         }
         return self
