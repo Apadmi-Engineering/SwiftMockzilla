@@ -153,6 +153,12 @@ __attribute__((swift_name("ZeroConfDiscoveryService")))
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)makeDiscoverableMetaData:(MockzillaMockzilla_commonMetaData *)metaData port:(int32_t)port completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("makeDiscoverable(metaData:port:completionHandler:)")));
+
+/**
+ * @note This method converts instances of CancellationException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (void)stopWithCompletionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("stop(completionHandler:)")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -166,7 +172,12 @@ __attribute__((swift_name("ZeroConfDiscoveryServiceImpl")))
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)makeDiscoverableMetaData:(MockzillaMockzilla_commonMetaData *)metaData port:(int32_t)port completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("makeDiscoverable(metaData:port:completionHandler:)")));
-- (MockzillaKotlinUnit * _Nullable)stopBonjourService __attribute__((swift_name("stopBonjourService()")));
+
+/**
+ * @note This method converts instances of CancellationException to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (void)stopWithCompletionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("stop(completionHandler:)")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -327,10 +338,10 @@ __attribute__((swift_name("MockzillaKt")))
 @interface MockzillaMockzillaKt : MockzillaBase
 
 /**
- * Internal method to start the Mockzilla server. Consumer apps should prefer using the top-level
- * `startMockzilla()` function to avoid breaking changes.
+ * Starts the Mockzilla server.
  *
  * @param config The config with which to initialise mockzilla.
+ * @throws PortConflictException if the port specified in [config] is already in use.
  *
  * @note This method converts instances of PortConflictException to errors.
  * Other uncaught Kotlin exceptions are fatal.
@@ -338,7 +349,8 @@ __attribute__((swift_name("MockzillaKt")))
 + (MockzillaMockzilla_commonMockzillaRuntimeParams * _Nullable)startMockzillaConfig:(MockzillaMockzilla_commonMockzillaConfig *)config error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startMockzilla(config:)")));
 
 /**
- * Stops the Mockzilla server,
+ * Stops the running Mockzilla server.
+ *
  */
 + (void)stopMockzilla __attribute__((swift_name("stopMockzilla()")));
 @end
@@ -401,18 +413,18 @@ __attribute__((swift_name("KotlinCancellationException")))
 
 
 /**
- * @property appName
- * @property appPackage
- * @property operatingSystemVersion
- * @property deviceModel
- * @property appVersion
- * @property runTarget
- * @property mockzillaVersion
+ * Device and application metadata collected when Mockzilla starts. Displayed in the management
+ * dashboard to identify the connected device, and used in ZeroConf service records.
  *
- * Don't add non optional fields to this type since that will break backward compatibility
+ * Don't add non-optional fields to this type since that will break backward compatibility
  *
- * Short alternative JsonNames used for encoding/decoding when ZeroConf is used to reduce payload size
- *
+ * @property appName The name of the application.
+ * @property appPackage The application package name or bundle identifier.
+ * @property operatingSystemVersion The OS version string of the device.
+ * @property deviceModel The device model identifier.
+ * @property appVersion The application version string.
+ * @property runTarget The platform the server is running on, or `null` if unknown.
+ * @property mockzillaVersion The version of the Mockzilla library.
  *
  * @note annotations
  *   kotlinx.serialization.Serializable
@@ -425,51 +437,57 @@ __attribute__((swift_name("Mockzilla_commonMetaData")))
 - (MockzillaMockzilla_commonMetaData *)doCopyAppName:(NSString *)appName appPackage:(NSString *)appPackage operatingSystemVersion:(NSString *)operatingSystemVersion deviceModel:(NSString *)deviceModel appVersion:(NSString *)appVersion runTarget:(MockzillaMockzilla_commonRunTarget * _Nullable)runTarget mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("doCopy(appName:appPackage:operatingSystemVersion:deviceModel:appVersion:runTarget:mockzillaVersion:)")));
 
 /**
- * @property appName
- * @property appPackage
- * @property operatingSystemVersion
- * @property deviceModel
- * @property appVersion
- * @property runTarget
- * @property mockzillaVersion
+ * Device and application metadata collected when Mockzilla starts. Displayed in the management
+ * dashboard to identify the connected device, and used in ZeroConf service records.
  *
- * Don't add non optional fields to this type since that will break backward compatibility
+ * Don't add non-optional fields to this type since that will break backward compatibility
  *
- * Short alternative JsonNames used for encoding/decoding when ZeroConf is used to reduce payload size
- *
+ * @property appName The name of the application.
+ * @property appPackage The application package name or bundle identifier.
+ * @property operatingSystemVersion The OS version string of the device.
+ * @property deviceModel The device model identifier.
+ * @property appVersion The application version string.
+ * @property runTarget The platform the server is running on, or `null` if unknown.
+ * @property mockzillaVersion The version of the Mockzilla library.
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
 /**
- * @property appName
- * @property appPackage
- * @property operatingSystemVersion
- * @property deviceModel
- * @property appVersion
- * @property runTarget
- * @property mockzillaVersion
+ * Device and application metadata collected when Mockzilla starts. Displayed in the management
+ * dashboard to identify the connected device, and used in ZeroConf service records.
  *
- * Don't add non optional fields to this type since that will break backward compatibility
+ * Don't add non-optional fields to this type since that will break backward compatibility
  *
- * Short alternative JsonNames used for encoding/decoding when ZeroConf is used to reduce payload size
- *
+ * @property appName The name of the application.
+ * @property appPackage The application package name or bundle identifier.
+ * @property operatingSystemVersion The OS version string of the device.
+ * @property deviceModel The device model identifier.
+ * @property appVersion The application version string.
+ * @property runTarget The platform the server is running on, or `null` if unknown.
+ * @property mockzillaVersion The version of the Mockzilla library.
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * Serialises this metadata to a [Map] for embedding in ZeroConf TXT records.
+ *
+ * @return A map of field names to string values.
+ */
 - (NSDictionary<NSString *, NSString *> *)toMap __attribute__((swift_name("toMap()")));
 
 /**
- * @property appName
- * @property appPackage
- * @property operatingSystemVersion
- * @property deviceModel
- * @property appVersion
- * @property runTarget
- * @property mockzillaVersion
+ * Device and application metadata collected when Mockzilla starts. Displayed in the management
+ * dashboard to identify the connected device, and used in ZeroConf service records.
  *
- * Don't add non optional fields to this type since that will break backward compatibility
+ * Don't add non-optional fields to this type since that will break backward compatibility
  *
- * Short alternative JsonNames used for encoding/decoding when ZeroConf is used to reduce payload size
- *
+ * @property appName The name of the application.
+ * @property appPackage The application package name or bundle identifier.
+ * @property operatingSystemVersion The OS version string of the device.
+ * @property deviceModel The device model identifier.
+ * @property appVersion The application version string.
+ * @property runTarget The platform the server is running on, or `null` if unknown.
+ * @property mockzillaVersion The version of the Mockzilla library.
  */
 - (NSString *)description __attribute__((swift_name("description()")));
 
@@ -496,6 +514,10 @@ __attribute__((swift_name("Mockzilla_commonMetaData")))
  *   kotlinx.serialization.SerialName(value="devModel")
 */
 @property (readonly) NSString *deviceModel __attribute__((swift_name("deviceModel")));
+
+/**
+ * `true` if the server is running on an Android device or emulator.
+ */
 @property (readonly) BOOL isAndroid __attribute__((swift_name("isAndroid")));
 
 /**
@@ -537,6 +559,12 @@ __attribute__((swift_name("KermitLogger")))
  * @note annotations
  *   kotlin.jvm.JvmOverloads
 */
+- (void)aWithTag:(NSString *)withTag throwable:(MockzillaKotlinThrowable * _Nullable)throwable message:(NSString *(^)(void))message __attribute__((swift_name("a(withTag:throwable:message:)"))) __attribute__((deprecated("Prefer the throwable-first overload and pass the tag using the named `tag` parameter.")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmOverloads
+*/
 - (void)aMessageString:(NSString *)messageString throwable:(MockzillaKotlinThrowable * _Nullable)throwable tag:(NSString *)tag __attribute__((swift_name("a(messageString:throwable:tag:)")));
 
 /**
@@ -544,6 +572,12 @@ __attribute__((swift_name("KermitLogger")))
  *   kotlin.jvm.JvmOverloads
 */
 - (void)aThrowable:(MockzillaKotlinThrowable * _Nullable)throwable tag:(NSString *)tag message:(NSString *(^)(void))message __attribute__((swift_name("a(throwable:tag:message:)")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmOverloads
+*/
+- (void)dWithTag:(NSString *)withTag throwable:(MockzillaKotlinThrowable * _Nullable)throwable message:(NSString *(^)(void))message __attribute__((swift_name("d(withTag:throwable:message:)"))) __attribute__((deprecated("Prefer the throwable-first overload and pass the tag using the named `tag` parameter.")));
 
 /**
  * @note annotations
@@ -561,6 +595,12 @@ __attribute__((swift_name("KermitLogger")))
  * @note annotations
  *   kotlin.jvm.JvmOverloads
 */
+- (void)eWithTag:(NSString *)withTag throwable:(MockzillaKotlinThrowable * _Nullable)throwable message:(NSString *(^)(void))message __attribute__((swift_name("e(withTag:throwable:message:)"))) __attribute__((deprecated("Prefer the throwable-first overload and pass the tag using the named `tag` parameter.")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmOverloads
+*/
 - (void)eMessageString:(NSString *)messageString throwable:(MockzillaKotlinThrowable * _Nullable)throwable tag:(NSString *)tag __attribute__((swift_name("e(messageString:throwable:tag:)")));
 
 /**
@@ -568,6 +608,12 @@ __attribute__((swift_name("KermitLogger")))
  *   kotlin.jvm.JvmOverloads
 */
 - (void)eThrowable:(MockzillaKotlinThrowable * _Nullable)throwable tag:(NSString *)tag message:(NSString *(^)(void))message __attribute__((swift_name("e(throwable:tag:message:)")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmOverloads
+*/
+- (void)iWithTag:(NSString *)withTag throwable:(MockzillaKotlinThrowable * _Nullable)throwable message:(NSString *(^)(void))message __attribute__((swift_name("i(withTag:throwable:message:)"))) __attribute__((deprecated("Prefer the throwable-first overload and pass the tag using the named `tag` parameter.")));
 
 /**
  * @note annotations
@@ -585,6 +631,12 @@ __attribute__((swift_name("KermitLogger")))
  * @note annotations
  *   kotlin.jvm.JvmOverloads
 */
+- (void)vWithTag:(NSString *)withTag throwable:(MockzillaKotlinThrowable * _Nullable)throwable message:(NSString *(^)(void))message __attribute__((swift_name("v(withTag:throwable:message:)"))) __attribute__((deprecated("Prefer the throwable-first overload and pass the tag using the named `tag` parameter.")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmOverloads
+*/
 - (void)vMessageString:(NSString *)messageString throwable:(MockzillaKotlinThrowable * _Nullable)throwable tag:(NSString *)tag __attribute__((swift_name("v(messageString:throwable:tag:)")));
 
 /**
@@ -592,6 +644,12 @@ __attribute__((swift_name("KermitLogger")))
  *   kotlin.jvm.JvmOverloads
 */
 - (void)vThrowable:(MockzillaKotlinThrowable * _Nullable)throwable tag:(NSString *)tag message:(NSString *(^)(void))message __attribute__((swift_name("v(throwable:tag:message:)")));
+
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmOverloads
+*/
+- (void)wWithTag:(NSString *)withTag throwable:(MockzillaKotlinThrowable * _Nullable)throwable message:(NSString *(^)(void))message __attribute__((swift_name("w(withTag:throwable:message:)"))) __attribute__((deprecated("Prefer the throwable-first overload and pass the tag using the named `tag` parameter.")));
 
 /**
  * @note annotations
@@ -606,16 +664,6 @@ __attribute__((swift_name("KermitLogger")))
 - (void)wThrowable:(MockzillaKotlinThrowable * _Nullable)throwable tag:(NSString *)tag message:(NSString *(^)(void))message __attribute__((swift_name("w(throwable:tag:message:)")));
 - (MockzillaKermitLogger *)withTagTag:(NSString *)tag __attribute__((swift_name("withTag(tag:)")));
 @property (readonly) NSString *tag __attribute__((swift_name("tag")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("KotlinUnit")))
-@interface MockzillaKotlinUnit : MockzillaBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)unit __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MockzillaKotlinUnit *shared __attribute__((swift_name("shared")));
-- (NSString *)description __attribute__((swift_name("description()")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -778,8 +826,8 @@ __attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
 /**
  * Configure the presets that are available to users of the dashboard.
  *
- * @param action
- * @return
+ * @param action Builder block for configuring dashboard presets.
+ * @return This builder, for chaining.
  */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)configureDashboardOverridesAction:(MockzillaMockzilla_commonDashboardOptionsConfigBuilder *(^)(MockzillaMockzilla_commonDashboardOptionsConfigBuilder *))action __attribute__((swift_name("configureDashboardOverrides(action:)")));
 
@@ -788,15 +836,15 @@ __attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
  * [setShouldFail] causes Mockzilla to generate a failure response, then this block
  * will *not* be called, instead the block specified by [setErrorHandler] is called.
  *
- * @param handler
+ * @param handler Lambda invoked with the incoming request that returns the mock response.
  */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setDefaultHandlerHandler:(id<MockzillaKotlinSuspendFunction1>)handler __attribute__((swift_name("setDefaultHandler(handler:)")));
 
 /**
- * The block called when a network request is made to this endpoint but Mockzilladecides to
+ * The block called when a network request is made to this endpoint but Mockzilla decides to
  * simulate a server failure.
  *
- * @param handler
+ * @param handler Lambda invoked with the incoming request that returns the simulated error response.
  */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setErrorHandlerHandler:(id<MockzillaKotlinSuspendFunction1>)handler __attribute__((swift_name("setErrorHandler(handler:)")));
 
@@ -819,7 +867,7 @@ __attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
 /**
  * Sets the human readable name of the endpoint (defaults to the value of the `key`)
  *
- * @param name
+ * @param name The human-readable display name for this endpoint.
  */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setNameName:(NSString *)name __attribute__((swift_name("setName(name:)")));
 
@@ -831,7 +879,7 @@ __attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
  *
  * This is just a utility wrapper around the more flexible [setPatternMatcher] endpoint.
  *
- * @param regex
+ * @param regex The regular expression to match against the full request URI.
  */
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setPatternRegex:(NSString *)regex __attribute__((swift_name("setPattern(regex:)")));
 
@@ -854,11 +902,25 @@ __attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setVersionCodeCode:(int32_t)code __attribute__((swift_name("setVersionCode(code:)")));
 @end
 
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KotlinUnit")))
+@interface MockzillaKotlinUnit : MockzillaBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)unit __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MockzillaKotlinUnit *shared __attribute__((swift_name("shared")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@end
+
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * An HTTP response returned by a mock endpoint handler. Returned from
+ * [EndpointConfiguration.Builder.setDefaultHandler] and [EndpointConfiguration.Builder.setErrorHandler]
+ * lambdas.
+ *
+ * @property statusCode The HTTP status code of the response. Defaults to `200 OK`.
+ * @property headers HTTP response headers.
+ * @property body The response body as a string.
  *
  * @note annotations
  *   kotlinx.serialization.Serializable
@@ -871,24 +933,36 @@ __attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse")))
 - (MockzillaMockzilla_commonMockzillaHttpResponse *)doCopyStatusCode:(MockzillaKtor_httpHttpStatusCode *)statusCode headers:(NSDictionary<NSString *, NSString *> *)headers body:(NSString *)body __attribute__((swift_name("doCopy(statusCode:headers:body:)")));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * An HTTP response returned by a mock endpoint handler. Returned from
+ * [EndpointConfiguration.Builder.setDefaultHandler] and [EndpointConfiguration.Builder.setErrorHandler]
+ * lambdas.
+ *
+ * @property statusCode The HTTP status code of the response. Defaults to `200 OK`.
+ * @property headers HTTP response headers.
+ * @property body The response body as a string.
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * An HTTP response returned by a mock endpoint handler. Returned from
+ * [EndpointConfiguration.Builder.setDefaultHandler] and [EndpointConfiguration.Builder.setErrorHandler]
+ * lambdas.
+ *
+ * @property statusCode The HTTP status code of the response. Defaults to `200 OK`.
+ * @property headers HTTP response headers.
+ * @property body The response body as a string.
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (MockzillaMockzilla_commonPartialMockzillaHttpResponse *)toPartial __attribute__((swift_name("toPartial()")));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * An HTTP response returned by a mock endpoint handler. Returned from
+ * [EndpointConfiguration.Builder.setDefaultHandler] and [EndpointConfiguration.Builder.setErrorHandler]
+ * lambdas.
+ *
+ * @property statusCode The HTTP status code of the response. Defaults to `200 OK`.
+ * @property headers HTTP response headers.
+ * @property body The response body as a string.
  */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *body __attribute__((swift_name("body")));
@@ -926,13 +1000,18 @@ __attribute__((swift_name("Mockzilla_commonPortConflictException")))
 
 
 /**
- * @property config
- * @property mockBaseUrl
- * @property apiBaseUrl
- * @property port
- * @property authHeaderProvider
- * @property mockzillaVersion
- * @property ip
+ * Runtime details of a started Mockzilla server, returned by `startMockzilla`. Use [mockBaseUrl]
+ * as the base URL in the app under test's HTTP client to route requests through the mock server.
+ *
+ * @property config The configuration the server was started with.
+ * @property ip The IP address the server is listening on.
+ * @property mockBaseUrl Base URL for mock endpoint requests. Configure the app under test's HTTP
+ * client to use this URL.
+ * @property apiBaseUrl Base URL for the Mockzilla control API.
+ * @property port The port the server is bound to.
+ * @property authHeaderProvider Provides authentication headers for making requests to this server
+ * instance.
+ * @property mockzillaVersion The version of the Mockzilla library.
  */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonMockzillaRuntimeParams")))
@@ -941,35 +1020,50 @@ __attribute__((swift_name("Mockzilla_commonMockzillaRuntimeParams")))
 - (MockzillaMockzilla_commonMockzillaRuntimeParams *)doCopyConfig:(MockzillaMockzilla_commonMockzillaConfig *)config ip:(NSString *)ip mockBaseUrl:(NSString *)mockBaseUrl apiBaseUrl:(NSString *)apiBaseUrl port:(int32_t)port authHeaderProvider:(id<MockzillaMockzilla_commonAuthHeaderProvider>)authHeaderProvider mockzillaVersion:(NSString *)mockzillaVersion __attribute__((swift_name("doCopy(config:ip:mockBaseUrl:apiBaseUrl:port:authHeaderProvider:mockzillaVersion:)")));
 
 /**
- * @property config
- * @property mockBaseUrl
- * @property apiBaseUrl
- * @property port
- * @property authHeaderProvider
- * @property mockzillaVersion
- * @property ip
+ * Runtime details of a started Mockzilla server, returned by `startMockzilla`. Use [mockBaseUrl]
+ * as the base URL in the app under test's HTTP client to route requests through the mock server.
+ *
+ * @property config The configuration the server was started with.
+ * @property ip The IP address the server is listening on.
+ * @property mockBaseUrl Base URL for mock endpoint requests. Configure the app under test's HTTP
+ * client to use this URL.
+ * @property apiBaseUrl Base URL for the Mockzilla control API.
+ * @property port The port the server is bound to.
+ * @property authHeaderProvider Provides authentication headers for making requests to this server
+ * instance.
+ * @property mockzillaVersion The version of the Mockzilla library.
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
 /**
- * @property config
- * @property mockBaseUrl
- * @property apiBaseUrl
- * @property port
- * @property authHeaderProvider
- * @property mockzillaVersion
- * @property ip
+ * Runtime details of a started Mockzilla server, returned by `startMockzilla`. Use [mockBaseUrl]
+ * as the base URL in the app under test's HTTP client to route requests through the mock server.
+ *
+ * @property config The configuration the server was started with.
+ * @property ip The IP address the server is listening on.
+ * @property mockBaseUrl Base URL for mock endpoint requests. Configure the app under test's HTTP
+ * client to use this URL.
+ * @property apiBaseUrl Base URL for the Mockzilla control API.
+ * @property port The port the server is bound to.
+ * @property authHeaderProvider Provides authentication headers for making requests to this server
+ * instance.
+ * @property mockzillaVersion The version of the Mockzilla library.
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 
 /**
- * @property config
- * @property mockBaseUrl
- * @property apiBaseUrl
- * @property port
- * @property authHeaderProvider
- * @property mockzillaVersion
- * @property ip
+ * Runtime details of a started Mockzilla server, returned by `startMockzilla`. Use [mockBaseUrl]
+ * as the base URL in the app under test's HTTP client to route requests through the mock server.
+ *
+ * @property config The configuration the server was started with.
+ * @property ip The IP address the server is listening on.
+ * @property mockBaseUrl Base URL for mock endpoint requests. Configure the app under test's HTTP
+ * client to use this URL.
+ * @property apiBaseUrl Base URL for the Mockzilla control API.
+ * @property port The port the server is bound to.
+ * @property authHeaderProvider Provides authentication headers for making requests to this server
+ * instance.
+ * @property mockzillaVersion The version of the Mockzilla library.
  */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *apiBaseUrl __attribute__((swift_name("apiBaseUrl")));
@@ -983,14 +1077,20 @@ __attribute__((swift_name("Mockzilla_commonMockzillaRuntimeParams")))
 
 
 /**
- * @property port
- * @property endpoints
- * @property logLevel
- * @property isRelease
- * @property releaseModeConfig
- * @property localhostOnly
- * @property additionalLogWriters
- * @property isNetworkDiscoveryEnabled
+ * Top-level configuration for a Mockzilla server instance. All properties are set via
+ * [MockzillaConfig.Builder].
+ *
+ * @property port The port the server binds to. `0` causes the OS to assign an available port.
+ * @property endpoints The mock endpoints registered on this server.
+ * @property isRelease When `true`, activates release mode: rate limiting, token authentication,
+ * and localhost-only restrictions are applied. See [ReleaseModeConfig] for details.
+ * @property localhostOnly When `true`, the server only accepts connections from `127.0.0.1`,
+ * blocking the management desktop interface and other external tools.
+ * @property logLevel Verbosity of Mockzilla's internal logging.
+ * @property releaseModeConfig Rate limiting and authentication config applied in release mode.
+ * @property isNetworkDiscoveryEnabled When `true`, Mockzilla broadcasts itself via ZeroConf
+ * (Bonjour) so the management desktop can discover it. Always disabled in release mode.
+ * @property additionalLogWriters Extra log sinks in addition to standard output.
  */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonMockzillaConfig")))
@@ -999,38 +1099,56 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig")))
 - (MockzillaMockzilla_commonMockzillaConfig *)doCopyPort:(int32_t)port endpoints:(NSArray<MockzillaMockzilla_commonEndpointConfiguration *> *)endpoints isRelease:(BOOL)isRelease localhostOnly:(BOOL)localhostOnly logLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel releaseModeConfig:(MockzillaMockzilla_commonMockzillaConfigReleaseModeConfig *)releaseModeConfig isNetworkDiscoveryEnabled:(BOOL)isNetworkDiscoveryEnabled additionalLogWriters:(NSArray<id<MockzillaMockzilla_commonMockzillaLogWriter>> *)additionalLogWriters __attribute__((swift_name("doCopy(port:endpoints:isRelease:localhostOnly:logLevel:releaseModeConfig:isNetworkDiscoveryEnabled:additionalLogWriters:)")));
 
 /**
- * @property port
- * @property endpoints
- * @property logLevel
- * @property isRelease
- * @property releaseModeConfig
- * @property localhostOnly
- * @property additionalLogWriters
- * @property isNetworkDiscoveryEnabled
+ * Top-level configuration for a Mockzilla server instance. All properties are set via
+ * [MockzillaConfig.Builder].
+ *
+ * @property port The port the server binds to. `0` causes the OS to assign an available port.
+ * @property endpoints The mock endpoints registered on this server.
+ * @property isRelease When `true`, activates release mode: rate limiting, token authentication,
+ * and localhost-only restrictions are applied. See [ReleaseModeConfig] for details.
+ * @property localhostOnly When `true`, the server only accepts connections from `127.0.0.1`,
+ * blocking the management desktop interface and other external tools.
+ * @property logLevel Verbosity of Mockzilla's internal logging.
+ * @property releaseModeConfig Rate limiting and authentication config applied in release mode.
+ * @property isNetworkDiscoveryEnabled When `true`, Mockzilla broadcasts itself via ZeroConf
+ * (Bonjour) so the management desktop can discover it. Always disabled in release mode.
+ * @property additionalLogWriters Extra log sinks in addition to standard output.
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
 /**
- * @property port
- * @property endpoints
- * @property logLevel
- * @property isRelease
- * @property releaseModeConfig
- * @property localhostOnly
- * @property additionalLogWriters
- * @property isNetworkDiscoveryEnabled
+ * Top-level configuration for a Mockzilla server instance. All properties are set via
+ * [MockzillaConfig.Builder].
+ *
+ * @property port The port the server binds to. `0` causes the OS to assign an available port.
+ * @property endpoints The mock endpoints registered on this server.
+ * @property isRelease When `true`, activates release mode: rate limiting, token authentication,
+ * and localhost-only restrictions are applied. See [ReleaseModeConfig] for details.
+ * @property localhostOnly When `true`, the server only accepts connections from `127.0.0.1`,
+ * blocking the management desktop interface and other external tools.
+ * @property logLevel Verbosity of Mockzilla's internal logging.
+ * @property releaseModeConfig Rate limiting and authentication config applied in release mode.
+ * @property isNetworkDiscoveryEnabled When `true`, Mockzilla broadcasts itself via ZeroConf
+ * (Bonjour) so the management desktop can discover it. Always disabled in release mode.
+ * @property additionalLogWriters Extra log sinks in addition to standard output.
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 
 /**
- * @property port
- * @property endpoints
- * @property logLevel
- * @property isRelease
- * @property releaseModeConfig
- * @property localhostOnly
- * @property additionalLogWriters
- * @property isNetworkDiscoveryEnabled
+ * Top-level configuration for a Mockzilla server instance. All properties are set via
+ * [MockzillaConfig.Builder].
+ *
+ * @property port The port the server binds to. `0` causes the OS to assign an available port.
+ * @property endpoints The mock endpoints registered on this server.
+ * @property isRelease When `true`, activates release mode: rate limiting, token authentication,
+ * and localhost-only restrictions are applied. See [ReleaseModeConfig] for details.
+ * @property localhostOnly When `true`, the server only accepts connections from `127.0.0.1`,
+ * blocking the management desktop interface and other external tools.
+ * @property logLevel Verbosity of Mockzilla's internal logging.
+ * @property releaseModeConfig Rate limiting and authentication config applied in release mode.
+ * @property isNetworkDiscoveryEnabled When `true`, Mockzilla broadcasts itself via ZeroConf
+ * (Bonjour) so the management desktop can discover it. Always disabled in release mode.
+ * @property additionalLogWriters Extra log sinks in addition to standard output.
  */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSArray<id<MockzillaMockzilla_commonMockzillaLogWriter>> *additionalLogWriters __attribute__((swift_name("additionalLogWriters")));
@@ -1053,15 +1171,15 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.Builder")))
 /**
  * Register an new endpoint configuration
  *
- * @param endpoint
- * @return
+ * @param endpoint The endpoint configuration to register.
+ * @return This builder, for chaining.
  */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)addEndpointEndpoint:(MockzillaMockzilla_commonEndpointConfiguration *)endpoint __attribute__((swift_name("addEndpoint(endpoint:)")));
 
 /**
  * Register an new endpoint configuration
  *
- * @param endpoint
+ * @param endpoint The endpoint builder to register.
  */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)addEndpointEndpoint_:(MockzillaMockzilla_commonEndpointConfigurationBuilder *)endpoint __attribute__((swift_name("addEndpoint(endpoint_:)")));
 
@@ -1070,15 +1188,15 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.Builder")))
  *
  * Mockzilla logs will then log to standard output and to any additional log writers
  *
- * @param logWriter
- * @return
+ * @param logWriter The log writer to register.
+ * @return This builder, for chaining.
  */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)addLogWriterLogWriter:(id<MockzillaMockzilla_commonMockzillaLogWriter>)logWriter __attribute__((swift_name("addLogWriter(logWriter:)")));
 
 /**
  * Completes the builder pattern, returning an immutable config.
  *
- * @return
+ * @return The fully constructed [MockzillaConfig].
  */
 - (MockzillaMockzilla_commonMockzillaConfig *)build __attribute__((swift_name("build()")));
 
@@ -1117,7 +1235,7 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.Builder")))
 /**
  * Enable or disable release mode. See [setReleaseModeConfig] for more details
  *
- * @param isRelease
+ * @param isRelease `true` to enable release mode, `false` to disable.
  */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setIsReleaseModeEnabledIsRelease:(BOOL)isRelease __attribute__((swift_name("setIsReleaseModeEnabled(isRelease:)")));
 
@@ -1125,7 +1243,7 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.Builder")))
  * Setting this value to `true` means the mockzilla server will only accept calls from localhost.
  * Calls from other IPs will be blocked (including blocking the Mockzilla desktop interface)
  *
- * @param localhostOnly
+ * @param localhostOnly `true` to restrict connections to localhost only.
  */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setLocalhostOnlyLocalhostOnly:(BOOL)localhostOnly __attribute__((swift_name("setLocalhostOnly(localhostOnly:)")));
 
@@ -1147,9 +1265,9 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.Builder")))
 
 /**
  * Sets the port which the server will bind to. Setting port to `0` will cause the server to
- * choose it's port auto-magically.
+ * choose its port automatically.
  *
- * @param port
+ * @param port Port number to bind to. Use `0` for automatic port assignment.
  */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setPortPort:(int32_t)port __attribute__((swift_name("setPort(port:)")));
 
@@ -1182,10 +1300,20 @@ __attribute__((swift_name("KotlinEnum")))
 @property (readonly) int32_t ordinal __attribute__((swift_name("ordinal")));
 @end
 
+
+/**
+ * Identifies the platform on which the Mockzilla server is running. Reported in [MetaData] and
+ * visible in the management dashboard.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonRunTarget")))
 @interface MockzillaMockzilla_commonRunTarget : MockzillaKotlinEnum<MockzillaMockzilla_commonRunTarget *>
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Identifies the platform on which the Mockzilla server is running. Reported in [MetaData] and
+ * visible in the management dashboard.
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 - (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly) MockzillaMockzilla_commonRunTarget *androiddevice __attribute__((swift_name("androiddevice")));
@@ -1205,8 +1333,22 @@ __attribute__((swift_name("Mockzilla_commonMetaData.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaMockzilla_commonMetaDataCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Deserialises a [MetaData] instance from a [Map] of field names to string values, as
+ * produced by [MetaData.toMap]. Intended for reconstructing metadata received via ZeroConf
+ * TXT records.
+ *
+ * @return The deserialised [MetaData].
+ */
 - (MockzillaMockzilla_commonMetaData *)parseMetaData:(NSDictionary<NSString *, NSString *> *)receiver __attribute__((swift_name("parseMetaData(_:)")));
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+
+/**
+ * Maximum length in characters for each metadata field. Fields collected from the platform
+ * (device model, OS version, etc.) are truncated to this limit to comply with ZeroConf
+ * DNS-SD payload constraints (RFC 1035).
+ */
 @property (readonly) int32_t maxFieldLength __attribute__((swift_name("maxFieldLength")));
 @end
 
@@ -1248,17 +1390,11 @@ __attribute__((swift_name("KermitLogger.Companion")))
 - (instancetype)initWithConfig:(id<MockzillaKermit_coreLoggerConfig>)config tag:(NSString *)tag __attribute__((swift_name("init(config:tag:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKermitLoggerCompanion *shared __attribute__((swift_name("shared")));
-- (void)aTag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable message:(NSString *(^)(void))message __attribute__((swift_name("a(tag:throwable:message:)")));
 - (void)addLogWriterLogWriter:(MockzillaKotlinArray<MockzillaKermit_coreLogWriter *> *)logWriter __attribute__((swift_name("addLogWriter(logWriter:)")));
-- (void)dTag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable message:(NSString *(^)(void))message __attribute__((swift_name("d(tag:throwable:message:)")));
-- (void)eTag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable message:(NSString *(^)(void))message __attribute__((swift_name("e(tag:throwable:message:)")));
-- (void)iTag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable message:(NSString *(^)(void))message __attribute__((swift_name("i(tag:throwable:message:)")));
 - (void)setLogWritersLogWriter:(MockzillaKotlinArray<MockzillaKermit_coreLogWriter *> *)logWriter __attribute__((swift_name("setLogWriters(logWriter:)")));
 - (void)setLogWritersLogWriters:(NSArray<MockzillaKermit_coreLogWriter *> *)logWriters __attribute__((swift_name("setLogWriters(logWriters:)")));
 - (void)setMinSeveritySeverity:(MockzillaKermit_coreSeverity *)severity __attribute__((swift_name("setMinSeverity(severity:)")));
 - (void)setTagTag:(NSString *)tag __attribute__((swift_name("setTag(tag:)")));
-- (void)vTag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable message:(NSString *(^)(void))message __attribute__((swift_name("v(tag:throwable:message:)")));
-- (void)wTag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable message:(NSString *(^)(void))message __attribute__((swift_name("w(tag:throwable:message:)")));
 @property (readonly) NSString *tag __attribute__((swift_name("tag")));
 @end
 
@@ -1284,6 +1420,15 @@ __attribute__((swift_name("Ktor_httpHttpMethod.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKtor_httpHttpMethodCompanion *shared __attribute__((swift_name("shared")));
+- (NSArray<MockzillaKtor_httpHttpMethod *> *)getDefaultMethods __attribute__((swift_name("getDefaultMethods()"))) __attribute__((deprecated("Use DefaultMethods const instead")));
+- (MockzillaKtor_httpHttpMethod *)getDelete __attribute__((swift_name("getDelete()"))) __attribute__((deprecated("Use Delete const instead")));
+- (MockzillaKtor_httpHttpMethod *)getGet __attribute__((swift_name("getGet()"))) __attribute__((deprecated("Use Get const instead")));
+- (MockzillaKtor_httpHttpMethod *)getHead __attribute__((swift_name("getHead()"))) __attribute__((deprecated("Use Head const instead")));
+- (MockzillaKtor_httpHttpMethod *)getOptions __attribute__((swift_name("getOptions()"))) __attribute__((deprecated("Use Options const instead")));
+- (MockzillaKtor_httpHttpMethod *)getPatch __attribute__((swift_name("getPatch()"))) __attribute__((deprecated("Use Patch const instead")));
+- (MockzillaKtor_httpHttpMethod *)getPost __attribute__((swift_name("getPost()"))) __attribute__((deprecated("Use Post const instead")));
+- (MockzillaKtor_httpHttpMethod *)getPut __attribute__((swift_name("getPut()"))) __attribute__((deprecated("Use Put const instead")));
+- (MockzillaKtor_httpHttpMethod *)getTrace __attribute__((swift_name("getTrace()"))) __attribute__((deprecated("Use Trace const instead")));
 
 /**
  * Parse HTTP method by [method] string
@@ -1305,6 +1450,8 @@ __attribute__((swift_name("Ktor_httpHttpMethod.Companion")))
 @property (readonly) MockzillaKtor_httpHttpMethod *Patch __attribute__((swift_name("Patch")));
 @property (readonly) MockzillaKtor_httpHttpMethod *Post __attribute__((swift_name("Post")));
 @property (readonly) MockzillaKtor_httpHttpMethod *Put __attribute__((swift_name("Put")));
+@property (readonly) MockzillaKtor_httpHttpMethod *Query __attribute__((swift_name("Query")));
+@property (readonly) MockzillaKtor_httpHttpMethod *Trace __attribute__((swift_name("Trace")));
 @end
 
 
@@ -1339,9 +1486,449 @@ __attribute__((swift_name("Ktor_ioByteReadChannel")))
 @property (readonly) id<MockzillaKotlinx_io_coreSource> readBuffer __attribute__((swift_name("readBuffer")));
 @end
 
+
+/**
+ * A scope in which coroutines run.
+ *
+ * A coroutine scope allows managing the lifecycles of several coroutines simultaneously
+ * and setting the execution properties with which coroutines (its "children") are launched.
+ *
+ * Execution properties are [CoroutineContext.Element] values that may affect the behavior of
+ * `kotlinx.coroutines`—for example, which thread pool a coroutine should run on.
+ * See a more detailed explanation of coroutine context elements in a separate section below.
+ *
+ * A set of rules called "structured concurrency" ensures that the lifecycles of children
+ * are nested inside the lifecycles of their parent scopes.
+ * For example, if a scope is cancelled, all coroutines in it are cancelled too, and the scope itself
+ * cannot be completed until all its children are completed.
+ * See a more detailed explanation of structured concurrency in a separate section below.
+ *
+ * ## Using coroutine scopes
+ *
+ * The methods of this interface are not intended to be called directly.
+ * Instead, a [CoroutineScope] is passed as a receiver to the coroutine builders such as [launch] and [async]
+ * and affects the execution properties and lifetimes of the created coroutines.
+ *
+ * ## Coroutine context elements
+ *
+ * A [CoroutineScope] is defined by a set of [CoroutineContext] elements, one of which is typically a [Job],
+ * described in the section on structured concurrency and responsible for managing lifetimes of coroutines.
+ *
+ * Other coroutine context elements include, but are not limited to, the following:
+ *
+ * - The scheduling policy, represented by a [CoroutineDispatcher] element.
+ *   Some commonly used dispatchers are provided in the [Dispatchers] object.
+ * - [CoroutineExceptionHandler] that defines how to handle coroutine failures that cannot
+ *   be propagated to any other coroutine.
+ * - A [CoroutineName] element that can be used to name coroutines for debugging purposes.
+ * - On the JVM, a `ThreadContextElement` ensures that a specific thread-local value gets set on the thread
+ *   that executes the coroutine.
+ *
+ * ## Obtaining a coroutine scope
+ *
+ * Manual implementations of this interface are not recommended.
+ * Instead, a [CoroutineScope] should be obtained in a way that reflects the
+ * intended structured concurrency relationships.
+ *
+ * ### Lexical scopes
+ *
+ * [coroutineScope] and [supervisorScope] functions can be called in any `suspend` function to define a scope
+ * lexically, ensuring that all coroutines launched in this scope complete by the time the scope-limiting
+ * function exits.
+ *
+ * ```
+ * suspend fun doSomething() = coroutineScope { // scope `A`
+ *     repeat(5) { outer ->
+ *         // spawn a new coroutine in the scope `A`
+ *         launch {
+ *             println("Coroutine $outer started")
+ *             coroutineScope { // scope `B`, separate for each `outer` coroutine
+ *                 repeat(5) { inner ->
+ *                     // spawn a new coroutine in the scope `B`
+ *                     launch {
+ *                         println("Coroutine $outer.$inner started")
+ *                         delay(10.milliseconds)
+ *                         println("Coroutine $outer.$inner finished")
+ *                     }
+ *                 }
+ *             }
+ *             // will only exit once all `Coroutine $outer.X finished` messages are printed
+ *             println("Coroutine $outer finished")
+ *         }
+ *     }
+ * } // will only exit once all `Coroutine X finished` messages are printed
+ * ```
+ *
+ * This is the preferred way to create a [CoroutineScope].
+ *
+ * ### `CoroutineScope` constructor function
+ *
+ * When the lifecycle of the scope is not limited lexically
+ * (for example, when coroutines should outlive the function that creates them)
+ * but is tied to the lifecycle of some entity, the [CoroutineScope] constructor function can be used
+ * to define a personal scope for the entity. This scope should be stored as a field in the entity.
+ *
+ * **The key part of using a custom `CoroutineScope` is cancelling it at the end of the lifecycle.**
+ * The [CoroutineScope.cancel] extension function shall be used when the entity launching coroutines
+ * is no longer needed. It cancels all the coroutines that might still be running on its behalf.
+ *
+ * ```
+ * class MyEntity(scope: CoroutineScope? = null): AutoCloseable {
+ *    // careful: do not write `get() =` here by accident!
+ *    private val scope = scope ?: CoroutineScope(SupervisorJob() + CoroutineExceptionHandler { _, e ->
+ *        println("Error in coroutine: $e")
+ *    })
+ *
+ *    fun doSomethingWhileEntityExists() = scope.launch {
+ *        while (true) {
+ *            // do some work
+ *            delay(50.milliseconds)
+ *            println("Doing something")
+ *        }
+ *    }
+ *
+ *    override fun close() {
+ *        // cancel all computations related to this entity
+ *        scope.cancel()
+ *    }
+ * }
+ *
+ * fun main() {
+ *     MyEntity().use { entity ->
+ *         entity.doSomethingWhileEntityExists()
+ *         Thread.sleep(200)
+ *     }
+ * }
+ * ```
+ *
+ * Usually, a custom [CoroutineScope] should be created with a [SupervisorJob] and
+ * a [CoroutineExceptionHandler] to handle exceptions in child coroutines.
+ * See the documentation for the [CoroutineScope] constructor function for more details.
+ * Also note that `MyEntity` accepts the `scope` parameter that can be used to pass a custom scope for testing.
+ *
+ * Sometimes, coroutine-aware frameworks provide [CoroutineScope] instances like this out of the box.
+ * For example, on Android, all entities with a lifecycle and all `ViewModel` instances expose a [CoroutineScope]:
+ * see [the corresponding documentation](https://developer.android.com/topic/libraries/architecture/coroutines).
+ *
+ * ### Taking another view of an existing scope
+ *
+ * Occasionally, several coroutines need to be launched with the same additional [CoroutineContext] that is not
+ * present in the original scope.
+ * In this case, the [CoroutineScope.plus] operator can be used to create a new view of an existing scope:
+ *
+ * ```
+ * coroutineScope {
+ *     val sameScopeButInUiThread = this + Dispatchers.Main
+ *     sameScopeButInUiThread.launch {
+ *         println("Running on the main thread")
+ *     }
+ *     launch {
+ *         println("This will run using the original dispatcher")
+ *     }
+ *     sameScopeButInUiThread.launch {
+ *         println("And this will also run on the main thread")
+ *     }
+ * }
+ * ```
+ *
+ * The lifecycle of the new scope is the same as the original one, but the context includes new elements.
+ *
+ * ### Application lifecycle scope
+ *
+ * [GlobalScope] is a [CoroutineScope] that has the lifetime of the whole application.
+ * Although it is convenient for launching top-level coroutines that are not tied to the lifecycle of any entity,
+ * it is easy to misuse it and create memory or resource leaks when a coroutine actually should be tied
+ * to the lifecycle of some entity.
+ *
+ * ```
+ * GlobalScope.launch(CoroutineExceptionHandler { _, e ->
+ *     println("Error in coroutine: $e")
+ * }) {
+ *    while (true) {
+ *        println("I will be running forever, you cannot stop me!")
+ *        delay(1.seconds)
+ *    }
+ * }
+ * ```
+ *
+ * ### `by`-delegation
+ *
+ * When the approaches listed above are not applicable and a custom [CoroutineScope] implementation is needed,
+ * it is recommended to use `by`-delegation to implement the interface:
+ *
+ * ```
+ * class MyEntity : CoroutineScope by CoroutineScope(
+ *     SupervisorJob() + Dispatchers.Main + CoroutineExceptionHandler { _, e ->
+ *         println("Error in coroutine: $e")
+ *     }
+ * )
+ * ```
+ *
+ * ## Structured concurrency in detail
+ *
+ * ### Overview
+ *
+ * *Structured concurrency* is an approach to concurrent programming that attempts to clarify the lifecycles of
+ * concurrent operations and to make them easier to reason about.
+ *
+ * Skim the following motivating example:
+ *
+ * ```
+ * suspend fun downloadFile(url: String): ByteArray {
+ *     return withContext(Dispatchers.IO) {
+ *         // this code will execute on a thread for blocking work
+ *         val file = byteArrayOf()
+ *         // download the file
+ *         file
+ *     }
+ * }
+ *
+ * suspend fun downloadAndCompareTwoFiles() {
+ *     coroutineScope {
+ *         val file1 = async {
+ *             // if this fails, everything else quickly fails too
+ *             downloadFile("http://example.com/file1")
+ *         }
+ *         val file2 = async {
+ *             downloadFile("http://example.com/file2")
+ *         }
+ *         launch(Dispatchers.Main) {
+ *             // create a separate coroutine on the UI thread
+ *             if (file1.await().contentEquals(file2.await())) {
+ *                 uiShow("Files are equal")
+ *             } else {
+ *                 uiShow("Files are not equal")
+ *             }
+ *         }
+ *     }
+ *     // this line will only run once all the coroutines created above
+ *     // finish their work or get cancelled
+ * }
+ * ```
+ *
+ * In this example, two asynchronous operations are launched in parallel to download two files.
+ * If one of the files fails to download, the other one is cancelled too, and the whole operation fails.
+ * The `coroutineScope` function will not return until all the coroutines inside it are completed or cancelled.
+ * In addition, it is possible to cancel the coroutine calling `downloadAndCompareTwoFiles`, and all the coroutines
+ * inside it will be cancelled too.
+ *
+ * Without structured concurrency, ensuring that no resource leaks occur by the end of the operation and that
+ * the operation responds promptly to failure and cancellation requests is challenging.
+ * With structured concurrency, this orchestration is done automatically by the coroutine library,
+ * and it is enough to specify the relationships between operations declaratively, as shown in the example,
+ * without being overwhelmed by intricate inter-thread communications.
+ *
+ * ### Specifics
+ *
+ * Coroutines and [CoroutineScope] instances have an associated lifecycle.
+ * A runtime representation of a lifecycle in `kotlinx.coroutines` is called a [Job].
+ * [Job] instances form a hierarchy of parent-child relationships,
+ * and the [Job] of every coroutine spawned in a [CoroutineScope] is a child of the [Job] of that scope.
+ * This is often shortened to saying that the coroutine is the scope's child.
+ *
+ * See the [Job] documentation for a detailed explanation of the lifecycle stages.
+ *
+ * ```
+ * coroutineScope {
+ *     val job = coroutineContext[Job]
+ *     val childJob = launch { }
+ *     check(job === childJob.parent)
+ * }
+ * ```
+ *
+ * Because every coroutine has a lifecycle represented by a [Job], a [CoroutineScope] can be associated with it.
+ * Most coroutine builders in `kotlinx.coroutines` expose the [CoroutineScope] of the coroutine on creation:
+ *
+ * ```
+ * coroutineScope { // this block has a `CoroutineScope` receiver
+ *     val parentScope = this
+ *     var grandChildFinished = false
+ *     val childJob = launch {
+ *         // this block has a `CoroutineScope` receiver, too
+ *         val childScope = this
+ *         check(childScope.coroutineContext[Job]?.parent
+ *             === parentScope.coroutineContext[Job])
+ *         launch {
+ *             // This block also has a `CoroutineScope` receiver!
+ *             val grandChildScope = this
+ *             check(grandChildScope.coroutineContext[Job]?.parent
+ *                 === childScope.coroutineContext[Job])
+ *             delay(100.milliseconds)
+ *             grandChildFinished = true
+ *         }
+ *         // Because the grandchild coroutine
+ *         // is a child of the child coroutine,
+ *         // the child coroutine will not complete
+ *         // until the grandchild coroutine does.
+ *     }
+ *     // Await completion of the child coroutine,
+ *     // and therefore the grandchild coroutine too.
+ *     childJob.join()
+ *     check(grandChildFinished)
+ * }
+ * ```
+ *
+ * Such a [CoroutineScope] receiver is provided for [launch], [async], and other coroutine builders,
+ * as well as for lexically scoping functions like [coroutineScope], [supervisorScope], and [withContext].
+ * Each of these [CoroutineScope] instances is tied to the lifecycle of the code block it runs in.
+ *
+ * Like the example above shows, a coroutine does not complete until all its children are completed.
+ * This means that [Job.join] on a [launch] or [async] result or [Deferred.await] on an [async] result
+ * will not return until all the children of that coroutine are completed.
+ * Likewise, lexically scoping functions like [coroutineScope] and [withContext] will not return
+ * until all the coroutines launched in them are completed.
+ *
+ * #### Interactions between coroutines
+ *
+ * See the [Job] documentation for a detailed explanation of interactions between [Job] values.
+ * Below is a summary of the most important points for structuring code in day-to-day usage.
+ *
+ * A coroutine cannot reach the final state until all its children have reached their final states.
+ * See the example above.
+ *
+ * If a [CoroutineScope] is cancelled (either explicitly or because it corresponds to some coroutine that failed
+ * with an exception), all its children are cancelled too:
+ *
+ * ```
+ * val scope = CoroutineScope(
+ *     SupervisorJob() + CoroutineExceptionHandler { _, e -> }
+ * )
+ * val job = scope.launch {
+ *      // this coroutine will be cancelled
+ *      awaitCancellation()
+ * }
+ * scope.cancel() // comment this out for the line below to hang
+ * job.join() // finishes normally
+ * ```
+ *
+ * A failure of a child coroutine causes the parent to fail with the same exception if all of the following conditions
+ * are met:
+ * 1. The exception is not a [CancellationException].
+ * 2. The failed child coroutine was not created with lexically scoped coroutine builders
+ *    like [coroutineScope] or [withContext].
+ * 3. The parent coroutine's [Job] is not a [SupervisorJob].
+ *
+ * The same logic applies recursively to the parent of the parent, etc.
+ * Example:
+ *
+ * ```
+ * check(
+ *     runCatching {
+ *         coroutineScope {
+ *             launch {
+ *                 // This cancels the `coroutineScope` coroutine, since
+ *                 // 1. The coroutine fails with a non-`CancellationException` exception,
+ *                 // 2. `launch` is not a lexically scoped coroutine builder,
+ *                 // 3. `coroutineScope` has a non-supervisor `Job`
+ *                 throw IllegalStateException()
+ *             }
+ *             launch {
+ *                 // this coroutine will be cancelled
+ *                 // when the parent gets cancelled
+ *                 awaitCancellation()
+ *             }
+ *         }
+ *     }.exceptionOrNull()
+ *     is IllegalStateException
+ * )
+ * // The currently running coroutine will *not* be cancelled
+ * // because the failed coroutine (`coroutineScope`) is lexically scoped.
+ * check(currentCoroutineContext().isActive)
+ * ```
+ *
+ * Child jobs can lead to the failure of the parent even if the parent has already finished its work
+ * and was ready to return a value:
+ *
+ * ```
+ * val deferred = GlobalScope.async {
+ *     launch {
+ *         delay(100.milliseconds)
+ *         throw IllegalStateException()
+ *     }
+ *     10 // this value will be lost!
+ * }
+ * check(
+ *     runCatching { deferred.await() }.exceptionOrNull()
+ *     is IllegalStateException
+ * )
+ * ```
+ *
+ * If several coroutines fail with non-[CancellationException] exceptions,
+ * the first observed failure will be propagated, and the rest will be attached to it as
+ * [suppressed exceptions][Throwable.suppressedExceptions].
+ *
+ * Failing with a [CancellationException] only cancels the coroutine itself and its children.
+ * It does not affect the parent or sibling coroutines and is not considered a failure.
+ *
+ * ### How-to: stop failures of child coroutines from cancelling other coroutines
+ *
+ * If not affecting the [CoroutineScope] on a failure in a child coroutine is the desired behaviour,
+ * then a [SupervisorJob] should be used instead of `Job()` when constructing the scope:
+ *
+ * ```
+ * val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main + CoroutineExceptionHandler { _, e ->
+ *     println("Coroutine failed with exception $e")
+ * })
+ * val failingCoroutine = scope.launch(Dispatchers.IO) {
+ *     throw IllegalStateException("This exception will not cancel the scope")
+ * }
+ * failingCoroutine.join()
+ * scope.launch(Dispatchers.IO) {
+ *     println("This coroutine is active! See: ${isActive}")
+ * }
+ * ```
+ *
+ * Likewise, [supervisorScope] can replace [coroutineScope]:
+ *
+ * ```
+ * supervisorScope {
+ *     val failingCoroutine = launch(CoroutineExceptionHandler { _, e ->
+ *         println("Coroutine failed with exception $e")
+ *     }) {
+ *         throw IllegalStateException("This exception will not cancel the scope")
+ *     }
+ *     failingCoroutine.join()
+ *     launch {
+ *         println("This coroutine is active! See: ${isActive}")
+ *     }
+ * }
+ * ```
+ *
+ * ### How-to: prevent a child coroutine from being cancelled
+ *
+ * Sometimes, you may want to run a coroutine even if the parent coroutine is cancelled.
+ * This pattern provides a way to achieve that:
+ *
+ * ```
+ * scope.launch(start = CoroutineStart.ATOMIC) {
+ *     // Do not move `NonCancellable` to the `context` argument of `launch`!
+ *     withContext(NonCancellable) {
+ *         // This code will run even if the parent coroutine is cancelled
+ *     }
+ * }
+ * ```
+ *
+ * [CoroutineStart.ATOMIC] ensures that the new coroutine is not cancelled until it at least started to execute.
+ * [NonCancellable] in [withContext] ensures that the code inside the block is executed even if the coroutine
+ * created by [launch] is cancelled.
+ */
 __attribute__((swift_name("Kotlinx_coroutines_coreCoroutineScope")))
 @protocol MockzillaKotlinx_coroutines_coreCoroutineScope
 @required
+
+/**
+ * The context of this scope.
+ *
+ * The context represents various execution properties of the coroutines launched in this scope,
+ * such as the [dispatcher][CoroutineDispatcher] or
+ * the [procedure for handling exceptions without a propagation path][CoroutineExceptionHandler].
+ * Except [GlobalScope], a [job][Job] instance for enforcing structured concurrency
+ * must also be present in the context of every [CoroutineScope].
+ * See the documentation of [CoroutineScope] for details.
+ *
+ * Accessing this property in general code is not recommended for any purposes
+ * except accessing the [Job] instance for advanced usages.
+ */
 @property (readonly) id<MockzillaKotlinCoroutineContext> coroutineContext __attribute__((swift_name("coroutineContext")));
 @end
 
@@ -1694,15 +2281,27 @@ __attribute__((swift_name("Ktor_httpParameters")))
 
 
 /**
- * @property name
- * @property key
- * @property shouldFail
- * @property delay
- * @property endpointMatcher
- * @property versionCode
- * @property defaultHandler
- * @property errorHandler
- * @property dashboardOptionsConfig
+ * Configures a single mock endpoint within a Mockzilla server. Defines how incoming requests are
+ * matched to this endpoint and what response to return, along with optional dashboard presets and
+ * latency simulation.
+ *
+ * Construct via [Builder].
+ *
+ * @property name Human-readable display name shown in the management dashboard.
+ * @property key Unique identifier for this endpoint, used in management API operations.
+ * @property shouldFail Whether this endpoint returns an error response by default. When `true`,
+ * [errorHandler] is called instead of [defaultHandler].
+ * @property delay Artificial response delay in milliseconds. `null` falls back to the global delay
+ * set on [MockzillaConfig.Builder].
+ * @property dashboardOptionsConfig Preset responses available to users in the management dashboard.
+ * @property versionCode Version number for this endpoint's configuration. Incrementing this value
+ * automatically invalidates any cached responses on connected devices.
+ * @property endpointMatcher Predicate that determines whether an incoming request should be routed
+ * to this endpoint. The first matching endpoint wins.
+ * @property defaultHandler Called when a request matches this endpoint and [shouldFail] is `false`.
+ * Returns the mock response to send back to the caller.
+ * @property errorHandler Called when a request matches this endpoint and [shouldFail] is `true`.
+ * Returns the simulated error response to send back to the caller.
  */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonEndpointConfiguration")))
@@ -1711,41 +2310,77 @@ __attribute__((swift_name("Mockzilla_commonEndpointConfiguration")))
 - (MockzillaMockzilla_commonEndpointConfiguration *)doCopyName:(NSString *)name key:(id)key shouldFail:(BOOL)shouldFail delay:(MockzillaInt * _Nullable)delay dashboardOptionsConfig:(MockzillaMockzilla_commonDashboardOptionsConfig *)dashboardOptionsConfig versionCode:(int32_t)versionCode endpointMatcher:(id<MockzillaKotlinSuspendFunction1>)endpointMatcher defaultHandler:(id<MockzillaKotlinSuspendFunction1>)defaultHandler errorHandler:(id<MockzillaKotlinSuspendFunction1>)errorHandler __attribute__((swift_name("doCopy(name:key:shouldFail:delay:dashboardOptionsConfig:versionCode:endpointMatcher:defaultHandler:errorHandler:)")));
 
 /**
- * @property name
- * @property key
- * @property shouldFail
- * @property delay
- * @property endpointMatcher
- * @property versionCode
- * @property defaultHandler
- * @property errorHandler
- * @property dashboardOptionsConfig
+ * Configures a single mock endpoint within a Mockzilla server. Defines how incoming requests are
+ * matched to this endpoint and what response to return, along with optional dashboard presets and
+ * latency simulation.
+ *
+ * Construct via [Builder].
+ *
+ * @property name Human-readable display name shown in the management dashboard.
+ * @property key Unique identifier for this endpoint, used in management API operations.
+ * @property shouldFail Whether this endpoint returns an error response by default. When `true`,
+ * [errorHandler] is called instead of [defaultHandler].
+ * @property delay Artificial response delay in milliseconds. `null` falls back to the global delay
+ * set on [MockzillaConfig.Builder].
+ * @property dashboardOptionsConfig Preset responses available to users in the management dashboard.
+ * @property versionCode Version number for this endpoint's configuration. Incrementing this value
+ * automatically invalidates any cached responses on connected devices.
+ * @property endpointMatcher Predicate that determines whether an incoming request should be routed
+ * to this endpoint. The first matching endpoint wins.
+ * @property defaultHandler Called when a request matches this endpoint and [shouldFail] is `false`.
+ * Returns the mock response to send back to the caller.
+ * @property errorHandler Called when a request matches this endpoint and [shouldFail] is `true`.
+ * Returns the simulated error response to send back to the caller.
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
 /**
- * @property name
- * @property key
- * @property shouldFail
- * @property delay
- * @property endpointMatcher
- * @property versionCode
- * @property defaultHandler
- * @property errorHandler
- * @property dashboardOptionsConfig
+ * Configures a single mock endpoint within a Mockzilla server. Defines how incoming requests are
+ * matched to this endpoint and what response to return, along with optional dashboard presets and
+ * latency simulation.
+ *
+ * Construct via [Builder].
+ *
+ * @property name Human-readable display name shown in the management dashboard.
+ * @property key Unique identifier for this endpoint, used in management API operations.
+ * @property shouldFail Whether this endpoint returns an error response by default. When `true`,
+ * [errorHandler] is called instead of [defaultHandler].
+ * @property delay Artificial response delay in milliseconds. `null` falls back to the global delay
+ * set on [MockzillaConfig.Builder].
+ * @property dashboardOptionsConfig Preset responses available to users in the management dashboard.
+ * @property versionCode Version number for this endpoint's configuration. Incrementing this value
+ * automatically invalidates any cached responses on connected devices.
+ * @property endpointMatcher Predicate that determines whether an incoming request should be routed
+ * to this endpoint. The first matching endpoint wins.
+ * @property defaultHandler Called when a request matches this endpoint and [shouldFail] is `false`.
+ * Returns the mock response to send back to the caller.
+ * @property errorHandler Called when a request matches this endpoint and [shouldFail] is `true`.
+ * Returns the simulated error response to send back to the caller.
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 
 /**
- * @property name
- * @property key
- * @property shouldFail
- * @property delay
- * @property endpointMatcher
- * @property versionCode
- * @property defaultHandler
- * @property errorHandler
- * @property dashboardOptionsConfig
+ * Configures a single mock endpoint within a Mockzilla server. Defines how incoming requests are
+ * matched to this endpoint and what response to return, along with optional dashboard presets and
+ * latency simulation.
+ *
+ * Construct via [Builder].
+ *
+ * @property name Human-readable display name shown in the management dashboard.
+ * @property key Unique identifier for this endpoint, used in management API operations.
+ * @property shouldFail Whether this endpoint returns an error response by default. When `true`,
+ * [errorHandler] is called instead of [defaultHandler].
+ * @property delay Artificial response delay in milliseconds. `null` falls back to the global delay
+ * set on [MockzillaConfig.Builder].
+ * @property dashboardOptionsConfig Preset responses available to users in the management dashboard.
+ * @property versionCode Version number for this endpoint's configuration. Incrementing this value
+ * automatically invalidates any cached responses on connected devices.
+ * @property endpointMatcher Predicate that determines whether an incoming request should be routed
+ * to this endpoint. The first matching endpoint wins.
+ * @property defaultHandler Called when a request matches this endpoint and [shouldFail] is `false`.
+ * Returns the mock response to send back to the caller.
+ * @property errorHandler Called when a request matches this endpoint and [shouldFail] is `true`.
+ * Returns the simulated error response to send back to the caller.
  */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) MockzillaMockzilla_commonDashboardOptionsConfig *dashboardOptionsConfig __attribute__((swift_name("dashboardOptionsConfig")));
@@ -1765,7 +2400,30 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Builder")))
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addErrorPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addErrorPreset(response:name:description:)"))) __attribute__((deprecated("Separate success/error presets are no longer supported")));
+
+/**
+ * Adds a preset response option to the dashboard for this endpoint.
+ *
+ * @param response The full response this preset applies when selected.
+ * @param name Display name for this preset in the dashboard. Defaults to "Preset N".
+ * @param description Optional description shown alongside the preset.
+ * @param type Visual classification for this preset. Defaults to a type inferred from the
+ * response status code when `null`.
+ * @return This builder, for chaining.
+ */
 - (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description type:(MockzillaMockzilla_commonDashboardOverridePresetType * _Nullable)type __attribute__((swift_name("addPreset(response:name:description:type:)")));
+
+/**
+ * Adds a partial preset response option to the dashboard for this endpoint. Only fields
+ * set on [response] are overridden; `null` fields retain the endpoint's default values.
+ *
+ * @param response The partial response this preset applies when selected.
+ * @param name Display name for this preset in the dashboard. Defaults to "Preset N".
+ * @param description Optional description shown alongside the preset.
+ * @param type Visual classification for this preset. Defaults to a type inferred from the
+ * response status code when `null`.
+ * @return This builder, for chaining.
+ */
 - (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addPresetResponse:(MockzillaMockzilla_commonPartialMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description type_:(MockzillaMockzilla_commonDashboardOverridePresetType * _Nullable)type __attribute__((swift_name("addPreset(response:name:description:type_:)")));
 - (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addSuccessPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addSuccessPreset(response:name:description:)"))) __attribute__((deprecated("Separate success/error presets are no longer supported")));
 - (MockzillaMockzilla_commonDashboardOptionsConfig *)build __attribute__((swift_name("build()")));
@@ -1794,7 +2452,7 @@ __attribute__((swift_name("KotlinSuspendFunction1")))
  * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode)
  *
  * @param value is a numeric code.
- * @param description is free form description of a status.
+ * @param description is a free form description of a status.
  */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpHttpStatusCode")))
@@ -1819,9 +2477,13 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode")))
 
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * An HTTP response returned by a mock endpoint handler. Returned from
+ * [EndpointConfiguration.Builder.setDefaultHandler] and [EndpointConfiguration.Builder.setErrorHandler]
+ * lambdas.
+ *
+ * @property statusCode The HTTP status code of the response. Defaults to `200 OK`.
+ * @property headers HTTP response headers.
+ * @property body The response body as a string.
  */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse.Companion")))
@@ -1829,27 +2491,38 @@ __attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse.Companion")))
 + (instancetype)alloc __attribute__((unavailable));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * An HTTP response returned by a mock endpoint handler. Returned from
+ * [EndpointConfiguration.Builder.setDefaultHandler] and [EndpointConfiguration.Builder.setErrorHandler]
+ * lambdas.
+ *
+ * @property statusCode The HTTP status code of the response. Defaults to `200 OK`.
+ * @property headers HTTP response headers.
+ * @property body The response body as a string.
  */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaMockzilla_commonMockzillaHttpResponseCompanion *shared __attribute__((swift_name("shared")));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * An HTTP response returned by a mock endpoint handler. Returned from
+ * [EndpointConfiguration.Builder.setDefaultHandler] and [EndpointConfiguration.Builder.setErrorHandler]
+ * lambdas.
+ *
+ * @property statusCode The HTTP status code of the response. Defaults to `200 OK`.
+ * @property headers HTTP response headers.
+ * @property body The response body as a string.
  */
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * A partial HTTP response used by dashboard presets, allowing a subset of response fields to
+ * be overridden. `null` fields are left unchanged from the endpoint's default response.
+ *
+ * @property statusCode The HTTP status code override, or `null` to leave unchanged.
+ * @property headers HTTP response headers override, or `null` to leave unchanged.
+ * @property body The response body override, or `null` to leave unchanged.
  *
  * @note annotations
  *   kotlinx.serialization.Serializable
@@ -1862,23 +2535,32 @@ __attribute__((swift_name("Mockzilla_commonPartialMockzillaHttpResponse")))
 - (MockzillaMockzilla_commonPartialMockzillaHttpResponse *)doCopyStatusCode:(MockzillaKtor_httpHttpStatusCode * _Nullable)statusCode headers:(NSDictionary<NSString *, NSString *> * _Nullable)headers body:(NSString * _Nullable)body __attribute__((swift_name("doCopy(statusCode:headers:body:)")));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * A partial HTTP response used by dashboard presets, allowing a subset of response fields to
+ * be overridden. `null` fields are left unchanged from the endpoint's default response.
+ *
+ * @property statusCode The HTTP status code override, or `null` to leave unchanged.
+ * @property headers HTTP response headers override, or `null` to leave unchanged.
+ * @property body The response body override, or `null` to leave unchanged.
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * A partial HTTP response used by dashboard presets, allowing a subset of response fields to
+ * be overridden. `null` fields are left unchanged from the endpoint's default response.
+ *
+ * @property statusCode The HTTP status code override, or `null` to leave unchanged.
+ * @property headers HTTP response headers override, or `null` to leave unchanged.
+ * @property body The response body override, or `null` to leave unchanged.
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * A partial HTTP response used by dashboard presets, allowing a subset of response fields to
+ * be overridden. `null` fields are left unchanged from the endpoint's default response.
+ *
+ * @property statusCode The HTTP status code override, or `null` to leave unchanged.
+ * @property headers HTTP response headers override, or `null` to leave unchanged.
+ * @property body The response body override, or `null` to leave unchanged.
  */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString * _Nullable body __attribute__((swift_name("body")));
@@ -1891,21 +2573,39 @@ __attribute__((swift_name("Mockzilla_commonPartialMockzillaHttpResponse")))
 @property (readonly) MockzillaKtor_httpHttpStatusCode * _Nullable statusCode __attribute__((swift_name("statusCode")));
 @end
 
+
+/**
+ * Generates the authentication header required to make requests to a running Mockzilla server.
+ * An instance pre-configured for the running server is available via
+ * [com.apadmi.mockzilla.lib.models.MockzillaRuntimeParams.authHeaderProvider].
+ */
 __attribute__((swift_name("Mockzilla_commonAuthHeaderProvider")))
 @protocol MockzillaMockzilla_commonAuthHeaderProvider
 @required
 
 /**
+ * Generates a fresh authentication header. Each invocation may produce a new token value.
+ *
+ * @return The header key and value to include in requests to the Mockzilla server.
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)generateHeaderWithCompletionHandler:(void (^)(MockzillaMockzilla_commonAuthHeaderProviderHeader * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("generateHeader(completionHandler:)")));
 @end
 
+
+/**
+ * Defines the verbosity of Mockzilla's internal logging.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonMockzillaConfig.LogLevel")))
 @interface MockzillaMockzilla_commonMockzillaConfigLogLevel : MockzillaKotlinEnum<MockzillaMockzilla_commonMockzillaConfigLogLevel *>
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Defines the verbosity of Mockzilla's internal logging.
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 - (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly) MockzillaMockzilla_commonMockzillaConfigLogLevel *assert __attribute__((swift_name("assert")));
@@ -1967,9 +2667,23 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.ReleaseModeConfig")))
 @property (readonly) int64_t tokenLifeSpan __attribute__((swift_name("tokenLifeSpan")));
 @end
 
+
+/**
+ * Extension point for routing Mockzilla's internal log output to a custom sink, such as a crash
+ * reporting service or custom logger. Register via [MockzillaConfig.Builder.addLogWriter].
+ */
 __attribute__((swift_name("Mockzilla_commonMockzillaLogWriter")))
 @protocol MockzillaMockzilla_commonMockzillaLogWriter
 @required
+
+/**
+ * Called by Mockzilla for each log entry.
+ *
+ * @param logLevel The severity of this log entry.
+ * @param message The log message.
+ * @param tag The source tag identifying the component that produced this log entry.
+ * @param throwable An associated exception, if any.
+ */
 - (void)logLogLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)logLevel message:(NSString *)message tag:(NSString *)tag throwable:(MockzillaKotlinThrowable * _Nullable)throwable __attribute__((swift_name("log(logLevel:message:tag:throwable:)")));
 @end
 
@@ -1992,20 +2706,187 @@ __attribute__((swift_name("KotlinEnumCompanion")))
 @property (class, readonly, getter=shared) MockzillaKotlinEnumCompanion *shared __attribute__((swift_name("shared")));
 @end
 
+
+/**
+ * Serialization strategy defines the serial form of a type [T], including its structural description,
+ * declared by the [descriptor] and the actual serialization process, defined by the implementation
+ * of the [serialize] method.
+ *
+ * [serialize] method takes an instance of [T] and transforms it into its serial form (a sequence of primitives),
+ * calling the corresponding [Encoder] methods.
+ *
+ * A serial form of the type is a transformation of the concrete instance into a sequence of primitive values
+ * and vice versa. The serial form is not required to completely mimic the structure of the class, for example,
+ * a specific implementation may represent multiple integer values as a single string, omit or add some
+ * values that are present in the type, but not in the instance.
+ *
+ * For a more detailed explanation of the serialization process, please refer to [KSerializer] documentation.
+ */
 __attribute__((swift_name("Kotlinx_serialization_coreSerializationStrategy")))
 @protocol MockzillaKotlinx_serialization_coreSerializationStrategy
 @required
+
+/**
+ * Serializes the [value] of type [T] using the format that is represented by the given [encoder].
+ * [serialize] method is format-agnostic and operates with a high-level structured [Encoder] API.
+ * Throws [SerializationException] if value cannot be serialized.
+ *
+ * Example of serialize method:
+ * ```
+ * class MyData(int: Int, stringList: List<String>, alwaysZero: Long)
+ *
+ * fun serialize(encoder: Encoder, value: MyData): Unit = encoder.encodeStructure(descriptor) {
+ *     // encodeStructure encodes beginning and end of the structure
+ *     // encode 'int' property as Int
+ *     encodeIntElement(descriptor, index = 0, value.int)
+ *     // encode 'stringList' property as List<String>
+ *     encodeSerializableElement(descriptor, index = 1, serializer<List<String>>, value.stringList)
+ *     // don't encode 'alwaysZero' property because we decided to do so
+ * } // end of the structure
+ * ```
+ *
+ * @throws SerializationException in case of any serialization-specific error
+ * @throws IllegalArgumentException if the supplied input does not comply encoder's specification
+ * @see KSerializer for additional information about general contracts and exception specifics
+ */
 - (void)serializeEncoder:(id<MockzillaKotlinx_serialization_coreEncoder>)encoder value:(id _Nullable)value __attribute__((swift_name("serialize(encoder:value:)")));
+
+/**
+ * Describes the structure of the serializable representation of [T], produced
+ * by this serializer.
+ */
 @property (readonly) id<MockzillaKotlinx_serialization_coreSerialDescriptor> descriptor __attribute__((swift_name("descriptor")));
 @end
 
+
+/**
+ * Deserialization strategy defines the serial form of a type [T], including its structural description,
+ * declared by the [descriptor] and the actual deserialization process, defined by the implementation
+ * of the [deserialize] method.
+ *
+ * [deserialize] method takes an instance of [Decoder], and, knowing the serial form of the [T],
+ * invokes primitive retrieval methods on the decoder and then transforms the received primitives
+ * to an instance of [T].
+ *
+ * A serial form of the type is a transformation of the concrete instance into a sequence of primitive values
+ * and vice versa. The serial form is not required to completely mimic the structure of the class, for example,
+ * a specific implementation may represent multiple integer values as a single string, omit or add some
+ * values that are present in the type, but not in the instance.
+ *
+ * For a more detailed explanation of the serialization process, please refer to [KSerializer] documentation.
+ */
 __attribute__((swift_name("Kotlinx_serialization_coreDeserializationStrategy")))
 @protocol MockzillaKotlinx_serialization_coreDeserializationStrategy
 @required
+
+/**
+ * Deserializes the value of type [T] using the format that is represented by the given [decoder].
+ * [deserialize] method is format-agnostic and operates with a high-level structured [Decoder] API.
+ * As long as most of the formats imply an arbitrary order of properties, deserializer should be able
+ * to decode these properties in an arbitrary order and in a format-agnostic way.
+ * For that purposes, [CompositeDecoder.decodeElementIndex]-based loop is used: decoder firstly
+ * signals property at which index it is ready to decode and then expects caller to decode
+ * property with the given index.
+ *
+ * Throws [SerializationException] if value cannot be deserialized.
+ *
+ * Example of deserialize method:
+ * ```
+ * class MyData(int: Int, stringList: List<String>, alwaysZero: Long)
+ *
+ * fun deserialize(decoder: Decoder): MyData = decoder.decodeStructure(descriptor) {
+ *     // decodeStructure decodes beginning and end of the structure
+ *     var int: Int? = null
+ *     var list: List<String>? = null
+ *     loop@ while (true) {
+ *         when (val index = decodeElementIndex(descriptor)) {
+ *             DECODE_DONE -> break@loop
+ *             0 -> {
+ *                 // Decode 'int' property as Int
+ *                 int = decodeIntElement(descriptor, index = 0)
+ *             }
+ *             1 -> {
+ *                 // Decode 'stringList' property as List<String>
+ *                 list = decodeSerializableElement(descriptor, index = 1, serializer<List<String>>())
+ *             }
+ *             else -> throw SerializationException("Unexpected index $index")
+ *         }
+ *      }
+ *     if (int == null || list == null) throwMissingFieldException()
+ *     // Always use 0 as a value for alwaysZero property because we decided to do so.
+ *     return MyData(int, list, alwaysZero = 0L)
+ * }
+ * ```
+ *
+ * @throws MissingFieldException if non-optional fields were not found during deserialization
+ * @throws SerializationException in case of any deserialization-specific error
+ * @throws IllegalArgumentException if the decoded input is not a valid instance of [T]
+ * @see KSerializer for additional information about general contracts and exception specifics
+ */
 - (id _Nullable)deserializeDecoder:(id<MockzillaKotlinx_serialization_coreDecoder>)decoder __attribute__((swift_name("deserialize(decoder:)")));
+
+/**
+ * Describes the structure of the serializable representation of [T], that current
+ * deserializer is able to deserialize.
+ */
 @property (readonly) id<MockzillaKotlinx_serialization_coreSerialDescriptor> descriptor __attribute__((swift_name("descriptor")));
 @end
 
+
+/**
+ * KSerializer is responsible for the representation of a serial form of a type [T]
+ * in terms of [encoders][Encoder] and [decoders][Decoder] and for constructing and deconstructing [T]
+ * from/to a sequence of encoding primitives. For classes marked with [@Serializable][Serializable], can be
+ * obtained from generated companion extension `.serializer()` or from [serializer<T>()][serializer] function.
+ *
+ * Serialization is decoupled from the encoding process to make it completely format-agnostic.
+ * Serialization represents a type as its serial form and is abstracted from the actual
+ * format (whether its JSON, ProtoBuf or a hashing) and unaware of the underlying storage
+ * (whether it is a string builder, byte array or a network socket), while
+ * encoding/decoding is abstracted from a particular type and its serial form and is responsible
+ * for transforming primitives ("here in an int property 'foo'" call from a serializer) into a particular
+ * format-specific representation ("for a given int, append a property name in quotation marks,
+ * then append a colon, then append an actual value" for JSON) and how to retrieve a primitive
+ * ("give me an int that is 'foo' property") from the underlying representation ("expect the next string to be 'foo',
+ * parse it, then parse colon, then parse a string until the next comma as an int and return it).
+ *
+ * Serial form consists of a structural description, declared by the [descriptor] and
+ * actual serialization and deserialization processes, defined by the corresponding
+ * [serialize] and [deserialize] methods implementation.
+ *
+ * Structural description specifies how the [T] is represented in the serial form:
+ * its [kind][SerialKind] (e.g. whether it is represented as a primitive, a list or a class),
+ * its [elements][SerialDescriptor.elementNames] and their [positional names][SerialDescriptor.getElementName].
+ *
+ * Serialization process is defined as a sequence of calls to an [Encoder], and transforms a type [T]
+ * into a stream of format-agnostic primitives that represent [T], such as "here is an int, here is a double
+ * and here is another nested object". It can be demonstrated by the example:
+ * ```
+ * class MyData(int: Int, stringList: List<String>, alwaysZero: Long)
+ *
+ * // .. serialize method of a corresponding serializer
+ * fun serialize(encoder: Encoder, value: MyData): Unit = encoder.encodeStructure(descriptor) {
+ *     // encodeStructure encodes beginning and end of the structure
+ *     // encode 'int' property as Int
+ *     encodeIntElement(descriptor, index = 0, value.int)
+ *     // encode 'stringList' property as List<String>
+ *     encodeSerializableElement(descriptor, index = 1, serializer<List<String>>, value.stringList)
+ *     // don't encode 'alwaysZero' property because we decided to do so
+ * } // end of the structure
+ * ```
+ *
+ * Deserialization process is symmetric and uses [Decoder].
+ *
+ * ### Exception types for `KSerializer` implementation
+ *
+ * Implementations of [serialize] and [deserialize] methods are allowed to throw
+ * any subtype of [IllegalArgumentException] in order to indicate serialization
+ * and deserialization errors.
+ *
+ * For serializer implementations, it is recommended to throw subclasses of [SerializationException] for
+ * any serialization-specific errors related to invalid or unsupported format of the data
+ * and [IllegalStateException] for errors during validation of the data.
+ */
 __attribute__((swift_name("Kotlinx_serialization_coreKSerializer")))
 @protocol MockzillaKotlinx_serialization_coreKSerializer <MockzillaKotlinx_serialization_coreSerializationStrategy, MockzillaKotlinx_serialization_coreDeserializationStrategy>
 @required
@@ -2466,6 +3347,12 @@ __attribute__((swift_name("KotlinMapEntry")))
 
 
 /**
+ * Configures the preset responses available to users in the Mockzilla management dashboard for a
+ * specific endpoint. Presets let dashboard users quickly switch between common response scenarios
+ * without modifying code.
+ *
+ * Construct via [Builder] and attach to an endpoint using
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  * @property errorPresets
  * @property successPresets
  *
@@ -2480,29 +3367,54 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig")))
 - (MockzillaMockzilla_commonDashboardOptionsConfig *)doCopyErrorPresets:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)errorPresets successPresets:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)successPresets __attribute__((swift_name("doCopy(errorPresets:successPresets:)")));
 
 /**
+ * Configures the preset responses available to users in the Mockzilla management dashboard for a
+ * specific endpoint. Presets let dashboard users quickly switch between common response scenarios
+ * without modifying code.
+ *
+ * Construct via [Builder] and attach to an endpoint using
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  * @property errorPresets
  * @property successPresets
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
 /**
+ * Configures the preset responses available to users in the Mockzilla management dashboard for a
+ * specific endpoint. Presets let dashboard users quickly switch between common response scenarios
+ * without modifying code.
+ *
+ * Construct via [Builder] and attach to an endpoint using
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  * @property errorPresets
  * @property successPresets
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 
 /**
+ * Configures the preset responses available to users in the Mockzilla management dashboard for a
+ * specific endpoint. Presets let dashboard users quickly switch between common response scenarios
+ * without modifying code.
+ *
+ * Construct via [Builder] and attach to an endpoint using
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  * @property errorPresets
  * @property successPresets
  */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *errorPresets __attribute__((swift_name("errorPresets"))) __attribute__((deprecated("Error Presets will be removed in a future version")));
+
+/**
+ * The list of preset responses available in the dashboard for this endpoint.
+ */
 @property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *presets __attribute__((swift_name("presets")));
 @property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *successPresets __attribute__((swift_name("successPresets"))) __attribute__((deprecated("Deprecated")));
 @end
 
 
 /**
+ * Visual classification for a [DashboardOverridePreset] in the management dashboard. Used to
+ * display presets with appropriate styling.
+ *
  * @note annotations
  *   kotlinx.serialization.Serializable
 */
@@ -2510,6 +3422,11 @@ __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset.Type_")))
 @interface MockzillaMockzilla_commonDashboardOverridePresetType : MockzillaKotlinEnum<MockzillaMockzilla_commonDashboardOverridePresetType *>
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Visual classification for a [DashboardOverridePreset] in the management dashboard. Used to
+ * display presets with appropriate styling.
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 - (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly, getter=companion) MockzillaMockzilla_commonDashboardOverridePresetTypeCompanion *companion __attribute__((swift_name("companion")));
@@ -2601,9 +3518,12 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
 
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * A partial HTTP response used by dashboard presets, allowing a subset of response fields to
+ * be overridden. `null` fields are left unchanged from the endpoint's default response.
+ *
+ * @property statusCode The HTTP status code override, or `null` to leave unchanged.
+ * @property headers HTTP response headers override, or `null` to leave unchanged.
+ * @property body The response body override, or `null` to leave unchanged.
  */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonPartialMockzillaHttpResponse.Companion")))
@@ -2611,26 +3531,34 @@ __attribute__((swift_name("Mockzilla_commonPartialMockzillaHttpResponse.Companio
 + (instancetype)alloc __attribute__((unavailable));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * A partial HTTP response used by dashboard presets, allowing a subset of response fields to
+ * be overridden. `null` fields are left unchanged from the endpoint's default response.
+ *
+ * @property statusCode The HTTP status code override, or `null` to leave unchanged.
+ * @property headers HTTP response headers override, or `null` to leave unchanged.
+ * @property body The response body override, or `null` to leave unchanged.
  */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaMockzilla_commonPartialMockzillaHttpResponseCompanion *shared __attribute__((swift_name("shared")));
 
 /**
- * @property statusCode
- * @property headers
- * @property body
+ * A partial HTTP response used by dashboard presets, allowing a subset of response fields to
+ * be overridden. `null` fields are left unchanged from the endpoint's default response.
+ *
+ * @property statusCode The HTTP status code override, or `null` to leave unchanged.
+ * @property headers HTTP response headers override, or `null` to leave unchanged.
+ * @property body The response body override, or `null` to leave unchanged.
  */
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
 
 /**
- * @property key
- * @property value
+ * An HTTP header represented as a key-value pair.
+ *
+ * @property key The header field name.
+ * @property value The header field value.
  */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonAuthHeaderProviderHeader")))
@@ -2639,114 +3567,972 @@ __attribute__((swift_name("Mockzilla_commonAuthHeaderProviderHeader")))
 - (MockzillaMockzilla_commonAuthHeaderProviderHeader *)doCopyKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("doCopy(key:value:)")));
 
 /**
- * @property key
- * @property value
+ * An HTTP header represented as a key-value pair.
+ *
+ * @property key The header field name.
+ * @property value The header field value.
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
 /**
- * @property key
- * @property value
+ * An HTTP header represented as a key-value pair.
+ *
+ * @property key The header field name.
+ * @property value The header field value.
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 
 /**
- * @property key
- * @property value
+ * An HTTP header represented as a key-value pair.
+ *
+ * @property key The header field name.
+ * @property value The header field value.
  */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *key __attribute__((swift_name("key")));
 @property (readonly) NSString *value __attribute__((swift_name("value")));
 @end
 
+
+/**
+ * Encoder is a core serialization primitive that encapsulates the knowledge of the underlying
+ * format and its storage, exposing only structural methods to the serializer, making it completely
+ * format-agnostic. Serialization process transforms a single value into the sequence of its
+ * primitive elements, also called its serial form, while encoding transforms these primitive elements into an actual
+ * format representation: JSON string, ProtoBuf ByteArray, in-memory map representation etc.
+ *
+ * Encoder provides high-level API that operates with basic primitive types, collections
+ * and nested structures. Internally, encoder represents output storage and operates with its state
+ * and lower level format-specific details.
+ *
+ * To be more specific, serialization transforms a value into a sequence of "here is an int, here is
+ * a double, here a list of strings and here is another object that is a nested int", while encoding
+ * transforms this sequence into a format-specific commands such as "insert opening curly bracket
+ * for a nested object start, insert a name of the value, and the value separated with colon for an int etc."
+ *
+ * The symmetric interface for the deserialization process is [Decoder].
+ *
+ * ### Serialization. Primitives
+ *
+ * If a class is represented as a single [primitive][PrimitiveKind] value in its serialized form,
+ * then one of the `encode*` methods (e.g. [encodeInt]) can be used directly.
+ *
+ * ### Serialization. Structured types.
+ *
+ * If a class is represented as a structure or has multiple values in its serialized form,
+ * `encode*` methods are not that helpful, because they do not allow working with collection types or establish structure boundaries.
+ * All these capabilities are delegated to the [CompositeEncoder] interface with a more specific API surface.
+ * To denote a structure start, [beginStructure] should be used.
+ * ```
+ * // Denote the structure start,
+ * val composite = encoder.beginStructure(descriptor)
+ * // Encoding all elements within the structure using 'composite'
+ * ...
+ * // Denote the structure end
+ * composite.endStructure(descriptor)
+ * ```
+ *
+ * E.g. if the encoder belongs to JSON format, then [beginStructure] will write an opening bracket
+ * (`{` or `[`, depending on the descriptor kind), returning the [CompositeEncoder] that is aware of colon separator,
+ * that should be appended between each key-value pair, whilst [CompositeEncoder.endStructure] will write a closing bracket.
+ *
+ * ### Exception guarantees
+ *
+ * For the regular exceptions, such as invalid input, conflicting serial names,
+ * [SerializationException] can be thrown by any encoder methods.
+ * It is recommended to declare a format-specific subclass of [SerializationException] and throw it.
+ *
+ * ### Exception safety
+ *
+ * In general, catching [SerializationException] from any of `encode*` methods is not allowed and produces unspecified behaviour.
+ * After thrown exception, the current encoder is left in an arbitrary state, no longer suitable for further encoding.
+ *
+ * ### Format encapsulation
+ *
+ * For example, for the following serializer:
+ * ```
+ * class StringHolder(val stringValue: String)
+ *
+ * object StringPairDeserializer : SerializationStrategy<StringHolder> {
+ *    override val descriptor = ...
+ *
+ *    override fun serializer(encoder: Encoder, value: StringHolder) {
+ *        // Denotes start of the structure, StringHolder is not a "plain" data type
+ *        val composite = encoder.beginStructure(descriptor)
+ *        // Encode the nested string value
+ *        composite.encodeStringElement(descriptor, index = 0)
+ *        // Denotes end of the structure
+ *        composite.endStructure(descriptor)
+ *    }
+ * }
+ * ```
+ *
+ * This serializer does not know anything about the underlying storage and will work with any properly-implemented encoder.
+ * JSON, for example, writes an opening bracket `{` during the `beginStructure` call, writes `stringValue` key along
+ * with its value in `encodeStringElement` and writes the closing bracket `}` during the `endStructure`.
+ * XML would do roughly the same, but with different separators and structures, while ProtoBuf
+ * machinery could be completely different.
+ * In any case, all these parsing details are encapsulated by an encoder.
+ *
+ * ### Encoder implementation.
+ *
+ * While being strictly typed, an underlying format can transform actual types in the way it wants.
+ * For example, a format can support only string types and encode/decode all primitives in a string form:
+ * ```
+ * StringFormatEncoder : Encoder {
+ *
+ *     ...
+ *     override fun encodeDouble(value: Double) = encodeString(value.toString())
+ *     override fun encodeInt(value: Int) = encodeString(value.toString())
+ *     ...
+ * }
+ * ```
+ *
+ * ### Not stable for inheritance
+ *
+ * `Encoder` interface is not stable for inheritance in 3rd party libraries, as new methods
+ * might be added to this interface or contracts of the existing methods can be changed.
+ */
 __attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
 @protocol MockzillaKotlinx_serialization_coreEncoder
 @required
+
+/**
+ * Encodes the beginning of the collection with size [collectionSize] and the given serializer of its type parameters.
+ * This method has to be implemented only if you need to know collection size in advance, otherwise, [beginStructure] can be used.
+ */
 - (id<MockzillaKotlinx_serialization_coreCompositeEncoder>)beginCollectionDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor collectionSize:(int32_t)collectionSize __attribute__((swift_name("beginCollection(descriptor:collectionSize:)")));
+
+/**
+ * Encodes the beginning of the nested structure in a serialized form
+ * and returns [CompositeDecoder] responsible for encoding this very structure.
+ * E.g the hierarchy:
+ * ```
+ * class StringHolder(val stringValue: String)
+ * class Holder(val stringHolder: StringHolder)
+ * ```
+ *
+ * with the following serialized form in JSON:
+ * ```
+ * {
+ *   "stringHolder" : { "stringValue": "value" }
+ * }
+ * ```
+ *
+ * will be roughly represented as the following sequence of calls:
+ * ```
+ * // Holder serializer
+ * fun serialize(encoder: Encoder, value: Holder) {
+ *     val composite = encoder.beginStructure(descriptor) // the very first opening bracket '{'
+ *     composite.encodeSerializableElement(descriptor, 0, value.stringHolder) // Serialize nested StringHolder
+ *     composite.endStructure(descriptor) // The very last closing bracket
+ * }
+ *
+ * // StringHolder serializer
+ * fun serialize(encoder: Encoder, value: StringHolder) {
+ *     val composite = encoder.beginStructure(descriptor) // One more '{' when the key "stringHolder" is already written
+ *     composite.encodeStringElement(descriptor, 0, value.stringValue) // Serialize actual value
+ *     composite.endStructure(descriptor) // Closing bracket
+ * }
+ * ```
+ */
 - (id<MockzillaKotlinx_serialization_coreCompositeEncoder>)beginStructureDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("beginStructure(descriptor:)")));
+
+/**
+ * Encodes a boolean value.
+ * Corresponding kind is [PrimitiveKind.BOOLEAN].
+ */
 - (void)encodeBooleanValue:(BOOL)value __attribute__((swift_name("encodeBoolean(value:)")));
+
+/**
+ * Encodes a single byte value.
+ * Corresponding kind is [PrimitiveKind.BYTE].
+ */
 - (void)encodeByteValue:(int8_t)value __attribute__((swift_name("encodeByte(value:)")));
+
+/**
+ * Encodes a 16-bit unicode character value.
+ * Corresponding kind is [PrimitiveKind.CHAR].
+ */
 - (void)encodeCharValue:(unichar)value __attribute__((swift_name("encodeChar(value:)")));
+
+/**
+ * Encodes a 64-bit IEEE 754 floating point value.
+ * Corresponding kind is [PrimitiveKind.DOUBLE].
+ */
 - (void)encodeDoubleValue:(double)value __attribute__((swift_name("encodeDouble(value:)")));
+
+/**
+ * Encodes a enum value that is stored at the [index] in [enumDescriptor] elements collection.
+ * Corresponding kind is [SerialKind.ENUM].
+ *
+ * E.g. for the enum `enum class Letters { A, B, C, D }` and
+ * serializable value "C", [encodeEnum] method should be called with `2` as am index.
+ *
+ * This method does not imply any restrictions on the output format,
+ * the format is free to store the enum by its name, index, ordinal or any other
+ */
 - (void)encodeEnumEnumDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)enumDescriptor index:(int32_t)index __attribute__((swift_name("encodeEnum(enumDescriptor:index:)")));
+
+/**
+ * Encodes a 32-bit IEEE 754 floating point value.
+ * Corresponding kind is [PrimitiveKind.FLOAT].
+ */
 - (void)encodeFloatValue:(float)value __attribute__((swift_name("encodeFloat(value:)")));
+
+/**
+ * Returns [Encoder] for encoding an underlying type of a value class in an inline manner.
+ * [descriptor] describes a serializable value class.
+ *
+ * Namely, for the `@Serializable @JvmInline value class MyInt(val my: Int)`,
+ * the following sequence is used:
+ * ```
+ * thisEncoder.encodeInline(MyInt.serializer().descriptor).encodeInt(my)
+ * ```
+ *
+ * Current encoder may return any other instance of [Encoder] class, depending on the provided [descriptor].
+ * For example, when this function is called on Json encoder with `UInt.serializer().descriptor`, the returned encoder is able
+ * to encode unsigned integers.
+ *
+ * Note that this function returns [Encoder] instead of the [CompositeEncoder]
+ * because value classes always have the single property.
+ * Calling [Encoder.beginStructure] on returned instance leads to an unspecified behavior and, in general, is prohibited.
+ */
 - (id<MockzillaKotlinx_serialization_coreEncoder>)encodeInlineDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("encodeInline(descriptor:)")));
+
+/**
+ * Encodes a 32-bit integer value.
+ * Corresponding kind is [PrimitiveKind.INT].
+ */
 - (void)encodeIntValue:(int32_t)value __attribute__((swift_name("encodeInt(value:)")));
+
+/**
+ * Encodes a 64-bit integer value.
+ * Corresponding kind is [PrimitiveKind.LONG].
+ */
 - (void)encodeLongValue:(int64_t)value __attribute__((swift_name("encodeLong(value:)")));
 
 /**
+ * Notifies the encoder that value of a nullable type that is
+ * being serialized is not null. It should be called before writing a non-null value
+ * of nullable type:
+ * ```
+ * // Could be String? serialize method
+ * if (value != null) {
+ *     encoder.encodeNotNullMark()
+ *     encoder.encodeStringValue(value)
+ * } else {
+ *     encoder.encodeNull()
+ * }
+ * ```
+ *
+ * This method has a use in highly-performant binary formats and can
+ * be safely ignore by most of the regular formats.
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (void)encodeNotNullMark __attribute__((swift_name("encodeNotNullMark()")));
 
 /**
+ * Encodes `null` value.
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (void)encodeNull __attribute__((swift_name("encodeNull()")));
 
 /**
+ * Encodes the nullable [value] of type [T] by delegating the encoding process to the given [serializer].
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (void)encodeNullableSerializableValueSerializer:(id<MockzillaKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeNullableSerializableValue(serializer:value:)")));
+
+/**
+ * Encodes the [value] of type [T] by delegating the encoding process to the given [serializer].
+ * For example, `encodeInt` call is equivalent to delegating integer encoding to [Int.serializer][Int.Companion.serializer]:
+ * `encodeSerializableValue(Int.serializer())`
+ */
 - (void)encodeSerializableValueSerializer:(id<MockzillaKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeSerializableValue(serializer:value:)")));
+
+/**
+ * Encodes a 16-bit short value.
+ * Corresponding kind is [PrimitiveKind.SHORT].
+ */
 - (void)encodeShortValue:(int16_t)value __attribute__((swift_name("encodeShort(value:)")));
+
+/**
+ * Encodes a string value.
+ * Corresponding kind is [PrimitiveKind.STRING].
+ */
 - (void)encodeStringValue:(NSString *)value __attribute__((swift_name("encodeString(value:)")));
+
+/**
+ * Context of the current serialization process, including contextual and polymorphic serialization and,
+ * potentially, a format-specific configuration.
+ */
 @property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
 @end
 
+
+/**
+ * Serial descriptor is an inherent property of [KSerializer] that describes the structure of the serializable type.
+ * The structure of the serializable type is not only the characteristic of the type itself, but also of the serializer as well,
+ * meaning that one type can have multiple descriptors that have completely different structures.
+ *
+ * For example, the class `class Color(val rgb: Int)` can have multiple serializable representations,
+ * such as `{"rgb": 255}`, `"#0000FF"`, `[0, 0, 255]` and `{"red": 0, "green": 0, "blue": 255}`.
+ * Representations are determined by serializers, and each such serializer has its own descriptor that identifies
+ * each structure in a distinguishable and format-agnostic manner.
+ *
+ * ### Structure
+ * Serial descriptor is identified by its [name][serialName] and consists of a kind, potentially empty set of
+ * children elements, and additional metadata.
+ *
+ * * [serialName] uniquely identifies the descriptor (and the corresponding serializer) for non-generic types.
+ *   For generic types, the actual type substitution is omitted from the string representation, and the name
+ *   identifies the family of the serializers without type substitutions. However, type substitution is accounted for
+ *   in [equals] and [hashCode] operations, meaning that descriptors of generic classes with the same name but different type
+ *   arguments are not equal to each other.
+ *   [serialName] is typically used to specify the type of the target class during serialization of polymorphic and sealed
+ *   classes, for observability and diagnostics.
+ * * [Kind][SerialKind] defines what this descriptor represents: primitive, enum, object, collection, etc.
+ * * Children elements are represented as serial descriptors as well and define the structure of the type's elements.
+ * * Metadata carries additional information, such as [nullability][nullable], [optionality][isElementOptional]
+ *   and [serial annotations][getElementAnnotations].
+ *
+ * ### Usages
+ * There are two general usages of the descriptors: THE serialization process and serialization introspection.
+ *
+ * #### Serialization
+ * Serial descriptor is used as a bridge between decoders/encoders and serializers.
+ * When asking for a next element, the serializer provides an expected descriptor to the decoder, and,
+ * based on the descriptor content, the decoder decides how to parse its input.
+ * In JSON, for example, when the encoder is asked to encode the next element and this element
+ * is a subtype of [List], the encoder receives a descriptor with [StructureKind.LIST] and, based on that,
+ * first writes an opening square bracket before writing the content of the list.
+ *
+ * Serial descriptor _encapsulates_ the structure of the data, so serializers can be free from
+ * format-specific details. `ListSerializer` knows nothing about JSON and square brackets, providing
+ * only the structure of the data and delegating encoding decision to the format itself.
+ *
+ * #### Introspection
+ * Another usage of a serial descriptor is type introspection without its serialization.
+ * Introspection can be used to check whether the given serializable class complies the
+ * corresponding scheme and to generate JSON or ProtoBuf schema from the given class.
+ *
+ * ### Indices
+ * Serial descriptor API operates with children indices.
+ * For the fixed-size structures, such as regular classes, index is represented by a value in
+ * the range from zero to [elementsCount] and represent and index of the property in this class.
+ * Consequently, primitives do not have children and their element count is zero.
+ *
+ * For collections and maps indices do not have a fixed bound. Regular collections descriptors usually
+ * have one element (`T`, maps have two, one for keys and one for values), but potentially unlimited
+ * number of actual children values. Valid indices range is not known statically,
+ * and implementations of such a descriptor should provide consistent and unbounded names and indices.
+ *
+ * In practice, for regular classes it is allowed to invoke `getElement*(index)` methods
+ * with an index from `0` to [elementsCount] range and the element at the particular index corresponds to the
+ * serializable property at the given position.
+ * For collections and maps, index parameter for `getElement*(index)` methods is effectively bounded
+ * by the maximal number of collection/map elements.
+ *
+ * ### Thread-safety and mutability
+ * Serial descriptor implementation should be immutable and, thus, thread-safe.
+ *
+ * ### Equality and caching
+ * Serial descriptor can be used as a unique identifier for format-specific data or schemas and
+ * this implies the following restrictions on its `equals` and `hashCode`:
+ *
+ * An [equals] implementation should use both [serialName] and elements structure.
+ * Comparing [elementDescriptors] directly is discouraged,
+ * because it may cause a stack overflow error, e.g., if a serializable class `T` contains elements of type `T`.
+ * To avoid it, a serial descriptor implementation should compare only descriptors
+ * of class' type parameters, in a way that `serializer<Box<Int>>().descriptor != serializer<Box<String>>().descriptor`.
+ * If type parameters are equal, descriptor structure should be compared by using children elements
+ * descriptors' [serialName]s, which correspond to class names
+ * (do not confuse with elements' own names, which correspond to properties' names); and/or other [SerialDescriptor]
+ * properties, such as [kind].
+ * An example of [equals] implementation:
+ * ```
+ * if (this === other) return true
+ * if (other::class != this::class) return false
+ * if (serialName != other.serialName) return false
+ * if (!typeParametersAreEqual(other)) return false
+ * if (this.elementDescriptors().map { it.serialName } != other.elementDescriptors().map { it.serialName }) return false
+ * return true
+ * ```
+ *
+ * [hashCode] implementation should use the same properties for computing the result.
+ *
+ * ### User-defined serial descriptors
+ * The best way to define a custom descriptor is to use [buildClassSerialDescriptor] builder function, where
+ * for each serializable property the corresponding element is declared.
+ *
+ * Example:
+ * ```
+ * // Class with custom serializer and custom serial descriptor
+ * class Data(
+ *     val intField: Int, // This field is ignored by custom serializer
+ *     val longField: Long, // This field is written as long, but in serialized form is named as "_longField"
+ *     val stringList: List<String> // This field is written as regular list of strings
+ * )
+ *
+ * // Descriptor for such class:
+ * buildClassSerialDescriptor("my.package.Data") {
+ *     // intField is deliberately ignored by serializer -- not present in the descriptor as well
+ *     element<Long>("_longField") // longField is named as _longField
+ *     element("stringField", listSerialDescriptor<String>())
+ * }
+ *
+ * // Example of 'serialize' function for such descriptor
+ * override fun serialize(encoder: Encoder, value: Data) {
+ *     encoder.encodeStructure(descriptor) {
+ *         encodeLongElement(descriptor, 0, value.longField) // Will be written as "_longField" because descriptor's child at index 0 says so
+ *         encodeSerializableElement(descriptor, 1, ListSerializer(String.serializer()), value.stringList)
+ *     }
+ * }
+ * ```
+ *
+ * For classes that are represented as a single primitive value, [PrimitiveSerialDescriptor] builder function can be used instead.
+ *
+ * ### Consistency violations
+ * An implementation of [SerialDescriptor] should be consistent with the implementation of the corresponding [KSerializer].
+ * Yet it is not type-checked statically, thus making it possible to declare a non-consistent implementation of descriptor and serializer.
+ * In such cases, the behavior of an underlying format is unspecified and may lead to both runtime errors and encoding of
+ * corrupted data that is impossible to decode back.
+ *
+ * ### Not for implementation
+ *
+ * `SerialDescriptor` interface should not be implemented in 3rd party libraries, as new methods
+ * might be added to this interface when kotlinx.serialization adds support for new Kotlin features.
+ * This interface is safe to use and construct via [buildClassSerialDescriptor], [PrimitiveSerialDescriptor], and `SerialDescriptor` factory function.
+ *
+ * @note annotations
+ *   kotlin.SubclassOptInRequired(markerClass=[NormalClass(value=kotlinx/serialization/SealedSerializationApi)])
+*/
 __attribute__((swift_name("Kotlinx_serialization_coreSerialDescriptor")))
 @protocol MockzillaKotlinx_serialization_coreSerialDescriptor
 @required
+
+/**
+ * Returns serial annotations of the child element at the given [index].
+ * This method differs from `getElementDescriptor(index).annotations` by reporting only
+ * element-specific annotations:
+ * ```
+ * @Serializable
+ * @OnClassSerialAnnotation
+ * class Nested(...)
+ *
+ * @Serializable
+ * class Outer(@OnPropertySerialAnnotation val nested: Nested)
+ *
+ * val outerDescriptor = Outer.serializer().descriptor
+ *
+ * outerDescriptor.getElementAnnotations(0) // Returns [@OnPropertySerialAnnotation]
+ * outerDescriptor.getElementDescriptor(0).annotations // Returns [@OnClassSerialAnnotation]
+ * ```
+ * Only annotations marked with [SerialInfo] are added to the resulting list.
+ *
+ * @throws IndexOutOfBoundsException for an illegal [index] values.
+ * @throws IllegalStateException if the current descriptor does not support children elements (e.g. is a primitive).
+ */
 - (NSArray<id<MockzillaKotlinAnnotation>> *)getElementAnnotationsIndex:(int32_t)index __attribute__((swift_name("getElementAnnotations(index:)")));
+
+/**
+ * Retrieves the descriptor of the child element for the given [index].
+ * For the property of type `T` on the position `i`, `getElementDescriptor(i)` yields the same result
+ * as for `T.serializer().descriptor`, if the serializer for this property is not explicitly overridden
+ * with `@Serializable(with = ...`)`, [Polymorphic] or [Contextual].
+ * This method can be used to completely introspect the type that the current descriptor describes.
+ *
+ * Example:
+ * ```
+ * @Serializable
+ * @OnClassSerialAnnotation
+ * class Nested(...)
+ *
+ * @Serializable
+ * class Outer(val nested: Nested)
+ *
+ * val outerDescriptor = Outer.serializer().descriptor
+ *
+ * outerDescriptor.getElementDescriptor(0).serialName // Returns "Nested"
+ * outerDescriptor.getElementDescriptor(0).annotations // Returns [@OnClassSerialAnnotation]
+ * ```
+ *
+ * @throws IndexOutOfBoundsException for illegal [index] values.
+ * @throws IllegalStateException if the current descriptor does not support children elements (e.g. is a primitive).
+ */
 - (id<MockzillaKotlinx_serialization_coreSerialDescriptor>)getElementDescriptorIndex:(int32_t)index __attribute__((swift_name("getElementDescriptor(index:)")));
+
+/**
+ * Returns an index in the children list of the given element by its name or [CompositeDecoder.UNKNOWN_NAME]
+ * if there is no such element.
+ * The resulting index, if it is not [CompositeDecoder.UNKNOWN_NAME], is guaranteed to be usable with [getElementName].
+ *
+ * Example:
+ *
+ * ```
+ * @Serializable
+ * class User(val name: String, val alias: String?)
+ *
+ * val userDescriptor = User.serializer().descriptor
+ *
+ * userDescriptor.getElementIndex("name") // Returns 0
+ * userDescriptor.getElementIndex("alias") // Returns 1
+ * userDescriptor.getElementIndex("lastName") // Returns CompositeDecoder.UNKNOWN_NAME = -3
+ * ```
+ */
 - (int32_t)getElementIndexName:(NSString *)name __attribute__((swift_name("getElementIndex(name:)")));
+
+/**
+ * Returns a positional name of the child at the given [index].
+ * Positional name represents a corresponding property name in the class, associated with
+ * the current descriptor.
+ *
+ * Do not confuse with [serialName], which returns class name:
+ *
+ * ```
+ * package my.app
+ *
+ * @Serializable
+ * class User(val name: String)
+ *
+ * val userDescriptor = User.serializer().descriptor
+ *
+ * userDescriptor.serialName // Returns "my.app.User"
+ * userDescriptor.getElementName(0) // Returns "name"
+ * ```
+ *
+ * @throws IndexOutOfBoundsException for an illegal [index] values.
+ * @throws IllegalStateException if the current descriptor does not support children elements (e.g. is a primitive)
+ */
 - (NSString *)getElementNameIndex:(int32_t)index __attribute__((swift_name("getElementName(index:)")));
+
+/**
+ * Whether the element at the given [index] is optional (can be absent in serialized form).
+ * For generated descriptors, all elements that have a corresponding default parameter value are
+ * marked as optional. Custom serializers can treat optional values in a serialization-specific manner
+ * without a default parameters constraint.
+ *
+ * Example of optionality:
+ * ```
+ * @Serializable
+ * class Holder(
+ *     val a: Int, // isElementOptional(0) == false
+ *     val b: Int?, // isElementOptional(1) == false
+ *     val c: Int? = null, // isElementOptional(2) == true
+ *     val d: List<Int>, // isElementOptional(3) == false
+ *     val e: List<Int> = listOf(1), // isElementOptional(4) == true
+ * )
+ * ```
+ * Returns `false` for valid indices of collections, maps, and enums.
+ *
+ * @throws IndexOutOfBoundsException for an illegal [index] values.
+ * @throws IllegalStateException if the current descriptor does not support children elements (e.g. is a primitive).
+ */
 - (BOOL)isElementOptionalIndex:(int32_t)index __attribute__((swift_name("isElementOptional(index:)")));
+
+/**
+ * Returns serial annotations of the associated class.
+ * Serial annotations can be used to specify additional metadata that may be used during serialization.
+ * Only annotations marked with [SerialInfo] are added to the resulting list.
+ *
+ * Do not confuse with [getElementAnnotations]:
+ * ```
+ * @Serializable
+ * @OnClassSerialAnnotation
+ * class Nested(...)
+ *
+ * @Serializable
+ * class Outer(@OnPropertySerialAnnotation val nested: Nested)
+ *
+ * val outerDescriptor = Outer.serializer().descriptor
+ *
+ * outerDescriptor.getElementAnnotations(0) // Returns [@OnPropertySerialAnnotation]
+ * outerDescriptor.getElementDescriptor(0).annotations // Returns [@OnClassSerialAnnotation]
+ * ```
+ */
 @property (readonly) NSArray<id<MockzillaKotlinAnnotation>> *annotations __attribute__((swift_name("annotations")));
+
+/**
+ * The number of elements this descriptor describes, besides from the class itself.
+ * [elementsCount] describes the number of **semantic** elements, not the number
+ * of actual fields/properties in the serialized form, even though they frequently match.
+ *
+ * For example, for the following class
+ * `class Complex(val real: Long, val imaginary: Long)` the corresponding descriptor
+ * and the serialized form both have two elements, while for `List<Int>`
+ * the corresponding descriptor has a single element (`IntDescriptor`, the type of list element),
+ * but from zero up to `Int.MAX_VALUE` values in the serialized form:
+ *
+ * ```
+ * @Serializable
+ * class Complex(val real: Long, val imaginary: Long)
+ *
+ * Complex.serializer().descriptor.elementsCount // Returns 2
+ *
+ * @Serializable
+ * class OuterList(val list: List<Int>)
+ *
+ * OuterList.serializer().descriptor.getElementDescriptor(0).elementsCount // Returns 1
+ * ```
+ */
 @property (readonly) int32_t elementsCount __attribute__((swift_name("elementsCount")));
+
+/**
+ * Returns `true` if this descriptor describes a serializable value class which underlying value
+ * is serialized directly.
+ *
+ * This property is true for serializable `@JvmInline value` classes:
+ * ```
+ * @Serializable
+ * class User(val name: Name)
+ *
+ * @Serializable
+ * @JvmInline
+ * value class Name(val value: String)
+ *
+ * User.serializer().descriptor.isInline // false
+ * User.serializer().descriptor.getElementDescriptor(0).isInline // true
+ * Name.serializer().descriptor.isInline // true
+ * ```
+ */
 @property (readonly) BOOL isInline __attribute__((swift_name("isInline")));
+
+/**
+ * Whether the descriptor describes a nullable type.
+ * Returns `true` if associated serializer can serialize/deserialize nullable elements of the described type.
+ *
+ * Example:
+ *
+ * ```
+ * @Serializable
+ * class User(val name: String, val alias: String?)
+ *
+ * val userDescriptor = User.serializer().descriptor
+ *
+ * userDescriptor.isNullable // Returns false
+ * userDescriptor.getElementDescriptor(0).isNullable // Returns false
+ * userDescriptor.getElementDescriptor(1).isNullable // Returns true
+ * ```
+ */
 @property (readonly) BOOL isNullable __attribute__((swift_name("isNullable")));
+
+/**
+ * The kind of the serialized form that determines **the shape** of the serialized data.
+ * Formats use serial kind to add and parse serializer-agnostic metadata to the result.
+ *
+ * For example, JSON format wraps [classes][StructureKind.CLASS] and [StructureKind.MAP] into
+ * brackets, while ProtoBuf just serialize these types in separate ways.
+ *
+ * Kind should be consistent with the implementation, for example, if it is a [primitive][PrimitiveKind],
+ * then its element count should be zero and vice versa.
+ *
+ * Example of introspecting kinds:
+ *
+ * ```
+ * @Serializable
+ * class User(val name: String)
+ *
+ * val userDescriptor = User.serializer().descriptor
+ *
+ * userDescriptor.kind // Returns StructureKind.CLASS
+ * userDescriptor.getElementDescriptor(0).kind // Returns PrimitiveKind.STRING
+ * ```
+ */
 @property (readonly) MockzillaKotlinx_serialization_coreSerialKind *kind __attribute__((swift_name("kind")));
+
+/**
+ * Serial name of the descriptor that identifies a pair of the associated serializer and target class.
+ *
+ * For generated and default serializers, the serial name is equal to the corresponding class's fully qualified name
+ * or, if overridden, [SerialName].
+ * Custom serializers should provide a unique serial name that identifies both the serializable class and
+ * the serializer itself, ignoring type arguments if they are present, for example: `my.package.LongAsTrimmedString`.
+ *
+ * Do not confuse with [getElementName], which returns property name:
+ *
+ * ```
+ * package my.app
+ *
+ * @Serializable
+ * class User(val name: String)
+ *
+ * val userDescriptor = User.serializer().descriptor
+ *
+ * userDescriptor.serialName // Returns "my.app.User"
+ * userDescriptor.getElementName(0) // Returns "name"
+ * ```
+ */
 @property (readonly) NSString *serialName __attribute__((swift_name("serialName")));
 @end
 
+
+/**
+ * Decoder is a core deserialization primitive that encapsulates the knowledge of the underlying
+ * format and an underlying storage, exposing only structural methods to the deserializer, making it completely
+ * format-agnostic. Deserialization process takes a decoder and asks him for a sequence of primitive elements,
+ * defined by a deserializer serial form, while decoder knows how to retrieve these primitive elements from an actual format
+ * representations.
+ *
+ * Decoder provides high-level API that operates with basic primitive types, collections
+ * and nested structures. Internally, the decoder represents input storage, and operates with its state
+ * and lower level format-specific details.
+ *
+ * To be more specific, serialization asks a decoder for a sequence of "give me an int, give me
+ * a double, give me a list of strings and give me another object that is a nested int", while decoding
+ * transforms this sequence into a format-specific commands such as "parse the part of the string until the next quotation mark
+ * as an int to retrieve an int, parse everything within the next curly braces to retrieve elements of a nested object etc."
+ *
+ * The symmetric interface for the serialization process is [Encoder].
+ *
+ * ### Deserialization. Primitives
+ *
+ * If a class is represented as a single [primitive][PrimitiveKind] value in its serialized form,
+ * then one of the `decode*` methods (e.g. [decodeInt]) can be used directly.
+ *
+ * ### Deserialization. Structured types
+ *
+ * If a class is represented as a structure or has multiple values in its serialized form,
+ * `decode*` methods are not that helpful, because format may not require a strict order of data
+ * (e.g. JSON or XML), do not allow working with collection types or establish structure boundaries.
+ * All these capabilities are delegated to the [CompositeDecoder] interface with a more specific API surface.
+ * To denote a structure start, [beginStructure] should be used.
+ * ```
+ * // Denote the structure start,
+ * val composite = decoder.beginStructure(descriptor)
+ * // Decode all elements within the structure using 'composite'
+ * ...
+ * // Denote the structure end
+ * composite.endStructure(descriptor)
+ * ```
+ *
+ * E.g. if the decoder belongs to JSON format, then [beginStructure] will parse an opening bracket
+ * (`{` or `[`, depending on the descriptor kind), returning the [CompositeDecoder] that is aware of colon separator,
+ * that should be read after each key-value pair, whilst [CompositeDecoder.endStructure] will parse a closing bracket.
+ *
+ * ### Exception guarantees
+ *
+ * For the regular exceptions, such as invalid input, missing control symbols or attributes, and unknown symbols,
+ * [SerializationException] can be thrown by any decoder methods. It is recommended to declare a format-specific
+ * subclass of [SerializationException] and throw it.
+ *
+ * ### Exception safety
+ *
+ * In general, catching [SerializationException] from any of `decode*` methods is not allowed and produces unspecified behavior.
+ * After thrown exception, the current decoder is left in an arbitrary state, no longer suitable for further decoding.
+ *
+ * ### Format encapsulation
+ *
+ * For example, for the following deserializer:
+ * ```
+ * class StringHolder(val stringValue: String)
+ *
+ * object StringPairDeserializer : DeserializationStrategy<StringHolder> {
+ *    override val descriptor = ...
+ *
+ *    override fun deserializer(decoder: Decoder): StringHolder {
+ *        // Denotes start of the structure, StringHolder is not a "plain" data type
+ *        val composite = decoder.beginStructure(descriptor)
+ *        if (composite.decodeElementIndex(descriptor) != 0)
+ *            throw MissingFieldException("Field 'stringValue' is missing")
+ *        // Decode the nested string value
+ *        val value = composite.decodeStringElement(descriptor, index = 0)
+ *        // Denotes end of the structure
+ *        composite.endStructure(descriptor)
+ *    }
+ * }
+ * ```
+ *
+ * This deserializer does not know anything about the underlying data and will work with any properly-implemented decoder.
+ * JSON, for example, parses an opening bracket `{` during the `beginStructure` call, checks that the next key
+ * after this bracket is `stringValue` (using the descriptor), returns the value after the colon as string value
+ * and parses closing bracket `}` during the `endStructure`.
+ * XML would do roughly the same, but with different separators and parsing structures, while ProtoBuf
+ * machinery could be completely different.
+ * In any case, all these parsing details are encapsulated by a decoder.
+ *
+ * ### Decoder implementation
+ *
+ * While being strictly typed, an underlying format can transform actual types in the way it wants.
+ * For example, a format can support only string types and encode/decode all primitives in a string form:
+ * ```
+ * StringFormatDecoder : Decoder {
+ *
+ *     ...
+ *     override fun decodeDouble(): Double = decodeString().toDouble()
+ *     override fun decodeInt(): Int = decodeString().toInt()
+ *     ...
+ * }
+ * ```
+ *
+ * ### Not stable for inheritance
+ *
+ * `Decoder` interface is not stable for inheritance in 3rd-party libraries, as new methods
+ * might be added to this interface or contracts of the existing methods can be changed.
+ */
 __attribute__((swift_name("Kotlinx_serialization_coreDecoder")))
 @protocol MockzillaKotlinx_serialization_coreDecoder
 @required
+
+/**
+ * Decodes the beginning of the nested structure in a serialized form
+ * and returns [CompositeDecoder] responsible for decoding this very structure.
+ *
+ * Typically, classes, collections and maps are represented as a nested structure in a serialized form.
+ * E.g. the following JSON
+ * ```
+ * {
+ *     "a": 2,
+ *     "b": { "nested": "c" }
+ *     "c": [1, 2, 3],
+ *     "d": null
+ * }
+ * ```
+ * has three nested structures: the very beginning of the data, "b" value and "c" value.
+ */
 - (id<MockzillaKotlinx_serialization_coreCompositeDecoder>)beginStructureDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("beginStructure(descriptor:)")));
+
+/**
+ * Decodes a boolean value.
+ * Corresponding kind is [PrimitiveKind.BOOLEAN].
+ */
 - (BOOL)decodeBoolean __attribute__((swift_name("decodeBoolean()")));
+
+/**
+ * Decodes a single byte value.
+ * Corresponding kind is [PrimitiveKind.BYTE].
+ */
 - (int8_t)decodeByte __attribute__((swift_name("decodeByte()")));
+
+/**
+ * Decodes a 16-bit unicode character value.
+ * Corresponding kind is [PrimitiveKind.CHAR].
+ */
 - (unichar)decodeChar __attribute__((swift_name("decodeChar()")));
+
+/**
+ * Decodes a 64-bit IEEE 754 floating point value.
+ * Corresponding kind is [PrimitiveKind.DOUBLE].
+ */
 - (double)decodeDouble __attribute__((swift_name("decodeDouble()")));
+
+/**
+ * Decodes a enum value and returns its index in [enumDescriptor] elements collection.
+ * Corresponding kind is [SerialKind.ENUM].
+ *
+ * E.g. for the enum `enum class Letters { A, B, C, D }` and
+ * underlying input "C", [decodeEnum] method should return `2` as a result.
+ *
+ * This method does not imply any restrictions on the input format,
+ * the format is free to store the enum by its name, index, ordinal or any other enum representation.
+ */
 - (int32_t)decodeEnumEnumDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)enumDescriptor __attribute__((swift_name("decodeEnum(enumDescriptor:)")));
+
+/**
+ * Decodes a 32-bit IEEE 754 floating point value.
+ * Corresponding kind is [PrimitiveKind.FLOAT].
+ */
 - (float)decodeFloat __attribute__((swift_name("decodeFloat()")));
+
+/**
+ * Returns [Decoder] for decoding an underlying type of a value class in an inline manner.
+ * [descriptor] describes a target value class.
+ *
+ * Namely, for the `@Serializable @JvmInline value class MyInt(val my: Int)`, the following sequence is used:
+ * ```
+ * thisDecoder.decodeInline(MyInt.serializer().descriptor).decodeInt()
+ * ```
+ *
+ * Current decoder may return any other instance of [Decoder] class, depending on the provided [descriptor].
+ * For example, when this function is called on `Json` decoder with
+ * `UInt.serializer().descriptor`, the returned decoder is able to decode unsigned integers.
+ *
+ * Note that this function returns [Decoder] instead of the [CompositeDecoder]
+ * because value classes always have the single property.
+ *
+ * Calling [Decoder.beginStructure] on returned instance leads to an unspecified behavior and, in general, is prohibited.
+ */
 - (id<MockzillaKotlinx_serialization_coreDecoder>)decodeInlineDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("decodeInline(descriptor:)")));
+
+/**
+ * Decodes a 32-bit integer value.
+ * Corresponding kind is [PrimitiveKind.INT].
+ */
 - (int32_t)decodeInt __attribute__((swift_name("decodeInt()")));
+
+/**
+ * Decodes a 64-bit integer value.
+ * Corresponding kind is [PrimitiveKind.LONG].
+ */
 - (int64_t)decodeLong __attribute__((swift_name("decodeLong()")));
 
 /**
+ * Returns `true` if the current value in decoder is not null, false otherwise.
+ * This method is usually used to decode potentially nullable data:
+ * ```
+ * // Could be String? deserialize() method
+ * public fun deserialize(decoder: Decoder): String? {
+ *     if (decoder.decodeNotNullMark()) {
+ *         return decoder.decodeString()
+ *     } else {
+ *         return decoder.decodeNull()
+ *     }
+ * }
+ * ```
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (BOOL)decodeNotNullMark __attribute__((swift_name("decodeNotNullMark()")));
 
 /**
+ * Decodes the `null` value and returns it.
+ *
+ * It is expected that `decodeNotNullMark` was called
+ * prior to `decodeNull` invocation and the case when it returned `true` was handled.
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (MockzillaKotlinNothing * _Nullable)decodeNull __attribute__((swift_name("decodeNull()")));
 
 /**
+ * Decodes the nullable value of type [T] by delegating the decoding process to the given [deserializer].
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (id _Nullable)decodeNullableSerializableValueDeserializer:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy>)deserializer __attribute__((swift_name("decodeNullableSerializableValue(deserializer:)")));
+
+/**
+ * Decodes the value of type [T] by delegating the decoding process to the given [deserializer].
+ * For example, `decodeInt` call is equivalent to delegating integer decoding to [Int.serializer][Int.Companion.serializer]:
+ * `decodeSerializableValue(Int.serializer())`
+ */
 - (id _Nullable)decodeSerializableValueDeserializer:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy>)deserializer __attribute__((swift_name("decodeSerializableValue(deserializer:)")));
+
+/**
+ * Decodes a 16-bit short value.
+ * Corresponding kind is [PrimitiveKind.SHORT].
+ */
 - (int16_t)decodeShort __attribute__((swift_name("decodeShort()")));
+
+/**
+ * Decodes a string value.
+ * Corresponding kind is [PrimitiveKind.STRING].
+ */
 - (NSString *)decodeString __attribute__((swift_name("decodeString()")));
+
+/**
+ * Context of the current serialization process, including contextual and polymorphic serialization and,
+ * potentially, a format-specific configuration.
+ */
 @property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
 @end
 
@@ -3173,11 +4959,6 @@ __attribute__((swift_name("Ktor_eventsEvents")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsAttributeKey")))
 @interface MockzillaKtor_utilsAttributeKey<T> : MockzillaBase
-
-/**
- * @note annotations
- *   kotlin.jvm.JvmOverloads
-*/
 - (instancetype)initWithName:(NSString *)name type:(MockzillaKtor_utilsTypeInfo *)type __attribute__((swift_name("init(name:type:)"))) __attribute__((objc_designated_initializer));
 - (MockzillaKtor_utilsAttributeKey<T> *)doCopyName:(NSString *)name type:(MockzillaKtor_utilsTypeInfo *)type __attribute__((swift_name("doCopy(name:type:)")));
 
@@ -3377,11 +5158,17 @@ __attribute__((swift_name("KotlinCoroutineContextKey")))
 
 
 /**
- * @property name
- * @property description
- * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
- * @property response
- * @property isManagementUiDefinedCustomPreset
+ * A named response configuration that can be applied to an endpoint from the Mockzilla management
+ * dashboard, overriding the endpoint's default or error response for a session.
+ *
+ * @property name Display name shown in the dashboard preset list.
+ * @property description Optional description shown alongside the preset in the dashboard.
+ * @property type Visual classification for the preset in the dashboard. Defaults to a type
+ * inferred from the response status code when `null`.
+ * @property response The partial response this preset applies when selected.
+ * @property isManagementUiDefinedCustomPreset `true` when this preset was created interactively
+ * by a user in the management dashboard, as opposed to being defined in code via
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  *
  * @note annotations
  *   kotlinx.serialization.Serializable
@@ -3394,29 +5181,47 @@ __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset")))
 - (MockzillaMockzilla_commonDashboardOverridePreset *)doCopyName:(NSString *)name description:(NSString * _Nullable)description type:(MockzillaMockzilla_commonDashboardOverridePresetType * _Nullable)type response:(MockzillaMockzilla_commonPartialMockzillaHttpResponse *)response isManagementUiDefinedCustomPreset:(BOOL)isManagementUiDefinedCustomPreset __attribute__((swift_name("doCopy(name:description:type:response:isManagementUiDefinedCustomPreset:)")));
 
 /**
- * @property name
- * @property description
- * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
- * @property response
- * @property isManagementUiDefinedCustomPreset
+ * A named response configuration that can be applied to an endpoint from the Mockzilla management
+ * dashboard, overriding the endpoint's default or error response for a session.
+ *
+ * @property name Display name shown in the dashboard preset list.
+ * @property description Optional description shown alongside the preset in the dashboard.
+ * @property type Visual classification for the preset in the dashboard. Defaults to a type
+ * inferred from the response status code when `null`.
+ * @property response The partial response this preset applies when selected.
+ * @property isManagementUiDefinedCustomPreset `true` when this preset was created interactively
+ * by a user in the management dashboard, as opposed to being defined in code via
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
 /**
- * @property name
- * @property description
- * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
- * @property response
- * @property isManagementUiDefinedCustomPreset
+ * A named response configuration that can be applied to an endpoint from the Mockzilla management
+ * dashboard, overriding the endpoint's default or error response for a session.
+ *
+ * @property name Display name shown in the dashboard preset list.
+ * @property description Optional description shown alongside the preset in the dashboard.
+ * @property type Visual classification for the preset in the dashboard. Defaults to a type
+ * inferred from the response status code when `null`.
+ * @property response The partial response this preset applies when selected.
+ * @property isManagementUiDefinedCustomPreset `true` when this preset was created interactively
+ * by a user in the management dashboard, as opposed to being defined in code via
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 
 /**
- * @property name
- * @property description
- * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
- * @property response
- * @property isManagementUiDefinedCustomPreset
+ * A named response configuration that can be applied to an endpoint from the Mockzilla management
+ * dashboard, overriding the endpoint's default or error response for a session.
+ *
+ * @property name Display name shown in the dashboard preset list.
+ * @property description Optional description shown alongside the preset in the dashboard.
+ * @property type Visual classification for the preset in the dashboard. Defaults to a type
+ * inferred from the response status code when `null`.
+ * @property response The partial response this preset applies when selected.
+ * @property isManagementUiDefinedCustomPreset `true` when this preset was created interactively
+ * by a user in the management dashboard, as opposed to being defined in code via
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString * _Nullable description_ __attribute__((swift_name("description_")));
@@ -3428,6 +5233,12 @@ __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset")))
 
 
 /**
+ * Configures the preset responses available to users in the Mockzilla management dashboard for a
+ * specific endpoint. Presets let dashboard users quickly switch between common response scenarios
+ * without modifying code.
+ *
+ * Construct via [Builder] and attach to an endpoint using
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  * @property errorPresets
  * @property successPresets
  */
@@ -3437,6 +5248,12 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Companion")))
 + (instancetype)alloc __attribute__((unavailable));
 
 /**
+ * Configures the preset responses available to users in the Mockzilla management dashboard for a
+ * specific endpoint. Presets let dashboard users quickly switch between common response scenarios
+ * without modifying code.
+ *
+ * Construct via [Builder] and attach to an endpoint using
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  * @property errorPresets
  * @property successPresets
  */
@@ -3445,6 +5262,12 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Companion")))
 @property (class, readonly, getter=shared) MockzillaMockzilla_commonDashboardOptionsConfigCompanion *shared __attribute__((swift_name("shared")));
 
 /**
+ * Configures the preset responses available to users in the Mockzilla management dashboard for a
+ * specific endpoint. Presets let dashboard users quickly switch between common response scenarios
+ * without modifying code.
+ *
+ * Construct via [Builder] and attach to an endpoint using
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  * @property errorPresets
  * @property successPresets
  */
@@ -3458,62 +5281,221 @@ __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset.Type_Companio
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaMockzilla_commonDashboardOverridePresetTypeCompanion *shared __attribute__((swift_name("shared")));
+- (MockzillaMockzilla_commonDashboardOverridePresetType * _Nullable)fromStringStr:(NSString *)str __attribute__((swift_name("fromString(str:)")));
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializerTypeParamsSerializers:(MockzillaKotlinArray<id<MockzillaKotlinx_serialization_coreKSerializer>> *)typeParamsSerializers __attribute__((swift_name("serializer(typeParamsSerializers:)")));
 @end
 
+
+/**
+ * [CompositeEncoder] is a part of encoding process that is bound to a particular structured part of
+ * the serialized form, described by the serial descriptor passed to [Encoder.beginStructure].
+ *
+ * All `encode*` methods have `index` and `serialDescriptor` parameters with a strict semantics and constraints:
+ *   * `descriptor` is always the same as one used in [Encoder.beginStructure]. While this parameter may seem redundant,
+ *      it is required for efficient serialization process to avoid excessive field spilling.
+ *      If you are writing your own format, you can safely ignore this parameter and use one used in `beginStructure`
+ *      for simplicity.
+ *   * `index` of the element being encoded. This element at this index in the descriptor should be associated with
+ *      the one being written.
+ *
+ * The symmetric interface for the deserialization process is [CompositeDecoder].
+ *
+ * ### Not stable for inheritance
+ *
+ * `CompositeEncoder` interface is not stable for inheritance in 3rd party libraries, as new methods
+ * might be added to this interface or contracts of the existing methods can be changed.
+ */
 __attribute__((swift_name("Kotlinx_serialization_coreCompositeEncoder")))
 @protocol MockzillaKotlinx_serialization_coreCompositeEncoder
 @required
+
+/**
+ * Encodes a boolean [value] associated with an element at the given [index] in [serial descriptor][descriptor].
+ * The element at the given [index] should have [PrimitiveKind.BOOLEAN] kind.
+ */
 - (void)encodeBooleanElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(BOOL)value __attribute__((swift_name("encodeBooleanElement(descriptor:index:value:)")));
+
+/**
+ * Encodes a single byte [value] associated with an element at the given [index] in [serial descriptor][descriptor].
+ * The element at the given [index] should have [PrimitiveKind.BYTE] kind.
+ */
 - (void)encodeByteElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(int8_t)value __attribute__((swift_name("encodeByteElement(descriptor:index:value:)")));
+
+/**
+ * Encodes a 16-bit unicode character [value] associated with an element at the given [index] in [serial descriptor][descriptor].
+ * The element at the given [index] should have [PrimitiveKind.CHAR] kind.
+ */
 - (void)encodeCharElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(unichar)value __attribute__((swift_name("encodeCharElement(descriptor:index:value:)")));
+
+/**
+ * Encodes a 64-bit IEEE 754 floating point [value] associated with an element
+ * at the given [index] in [serial descriptor][descriptor].
+ * The element at the given [index] should have [PrimitiveKind.DOUBLE] kind.
+ */
 - (void)encodeDoubleElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(double)value __attribute__((swift_name("encodeDoubleElement(descriptor:index:value:)")));
+
+/**
+ * Encodes a 32-bit IEEE 754 floating point [value] associated with an element
+ * at the given [index] in [serial descriptor][descriptor].
+ * The element at the given [index] should have [PrimitiveKind.FLOAT] kind.
+ */
 - (void)encodeFloatElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(float)value __attribute__((swift_name("encodeFloatElement(descriptor:index:value:)")));
+
+/**
+ * Returns [Encoder] for decoding an underlying type of a value class in an inline manner.
+ * Serializable value class is described by the [child descriptor][SerialDescriptor.getElementDescriptor]
+ * of given [descriptor] at [index].
+ *
+ * Namely, for the `@Serializable @JvmInline value class MyInt(val my: Int)`,
+ * and `@Serializable class MyData(val myInt: MyInt)` the following sequence is used:
+ * ```
+ * thisEncoder.encodeInlineElement(MyData.serializer.descriptor, 0).encodeInt(my)
+ * ```
+ *
+ * This method provides an opportunity for the optimization to avoid boxing of a carried value
+ * and its invocation should be equivalent to the following:
+ * ```
+ * thisEncoder.encodeSerializableElement(MyData.serializer.descriptor, 0, MyInt.serializer(), myInt)
+ * ```
+ *
+ * Current encoder may return any other instance of [Encoder] class, depending on provided descriptor.
+ * For example, when this function is called on Json encoder with descriptor that has
+ * `UInt.serializer().descriptor` at the given [index], the returned encoder is able
+ * to encode unsigned integers.
+ *
+ * Note that this function returns [Encoder] instead of the [CompositeEncoder]
+ * because value classes always have the single property.
+ * Calling [Encoder.beginStructure] on returned instance leads to an unspecified behavior and, in general, is prohibited.
+ *
+ * @see Encoder.encodeInline
+ * @see SerialDescriptor.getElementDescriptor
+ */
 - (id<MockzillaKotlinx_serialization_coreEncoder>)encodeInlineElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("encodeInlineElement(descriptor:index:)")));
+
+/**
+ * Encodes a 32-bit integer [value] associated with an element at the given [index] in [serial descriptor][descriptor].
+ * The element at the given [index] should have [PrimitiveKind.INT] kind.
+ */
 - (void)encodeIntElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(int32_t)value __attribute__((swift_name("encodeIntElement(descriptor:index:value:)")));
+
+/**
+ * Encodes a 64-bit integer [value] associated with an element at the given [index] in [serial descriptor][descriptor].
+ * The element at the given [index] should have [PrimitiveKind.LONG] kind.
+ */
 - (void)encodeLongElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(int64_t)value __attribute__((swift_name("encodeLongElement(descriptor:index:value:)")));
 
 /**
+ * Delegates nullable [value] encoding of the type [T] to the given [serializer].
+ * [value] is associated with an element at the given [index] in [serial descriptor][descriptor].
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (void)encodeNullableSerializableElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index serializer:(id<MockzillaKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeNullableSerializableElement(descriptor:index:serializer:value:)")));
+
+/**
+ * Delegates [value] encoding of the type [T] to the given [serializer].
+ * [value] is associated with an element at the given [index] in [serial descriptor][descriptor].
+ */
 - (void)encodeSerializableElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index serializer:(id<MockzillaKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeSerializableElement(descriptor:index:serializer:value:)")));
+
+/**
+ * Encodes a 16-bit short [value] associated with an element at the given [index] in [serial descriptor][descriptor].
+ * The element at the given [index] should have [PrimitiveKind.SHORT] kind.
+ */
 - (void)encodeShortElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(int16_t)value __attribute__((swift_name("encodeShortElement(descriptor:index:value:)")));
+
+/**
+ * Encodes a string [value] associated with an element at the given [index] in [serial descriptor][descriptor].
+ * The element at the given [index] should have [PrimitiveKind.STRING] kind.
+ */
 - (void)encodeStringElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index value:(NSString *)value __attribute__((swift_name("encodeStringElement(descriptor:index:value:)")));
+
+/**
+ * Denotes the end of the structure associated with current encoder.
+ * For example, composite encoder of JSON format will write
+ * a closing bracket in the underlying input and reduce the number of nesting for pretty printing.
+ */
 - (void)endStructureDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("endStructure(descriptor:)")));
 
 /**
+ * Whether the format should encode values that are equal to the default values.
+ * This method is used by plugin-generated serializers for properties with default values:
+ * ```
+ * @Serializable
+ * class WithDefault(val int: Int = 42)
+ * // serialize method
+ * if (value.int != 42 || output.shouldEncodeElementDefault(serialDesc, 0)) {
+ *    encoder.encodeIntElement(serialDesc, 0, value.int);
+ * }
+ * ```
+ *
+ * This method is never invoked for properties annotated with [EncodeDefault].
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (BOOL)shouldEncodeElementDefaultDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("shouldEncodeElementDefault(descriptor:index:)")));
+
+/**
+ * Context of the current serialization process, including contextual and polymorphic serialization and,
+ * potentially, a format-specific configuration.
+ */
 @property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
 @end
 
+
+/**
+ * [SerializersModule] is a collection of serializers used by [ContextualSerializer] and [PolymorphicSerializer]
+ * to override or provide serializers at the runtime, whereas at the compile-time they provided by the serialization plugin.
+ * It can be considered as a map where serializers can be found using their statically known KClasses.
+ *
+ * To enable runtime serializers resolution, one of the special annotations must be used on target types
+ * ([Polymorphic] or [Contextual]), and a serial module with serializers should be used during construction of [SerialFormat].
+ *
+ * Serializers module can be built with `SerializersModule {}` builder function.
+ * Empty module can be obtained with `EmptySerializersModule()` factory function.
+ *
+ * @see Contextual
+ * @see Polymorphic
+ */
 __attribute__((swift_name("Kotlinx_serialization_coreSerializersModule")))
 @interface MockzillaKotlinx_serialization_coreSerializersModule : MockzillaBase
 
 /**
+ * Copies contents of this module to the given [collector].
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (void)dumpToCollector:(id<MockzillaKotlinx_serialization_coreSerializersModuleCollector>)collector __attribute__((swift_name("dumpTo(collector:)")));
 
 /**
+ * Returns a contextual serializer associated with a given [kClass].
+ * If given class has generic parameters and module has provider for [kClass],
+ * [typeArgumentsSerializers] are used to create serializer.
+ * This method is used in context-sensitive operations on a property marked with [Contextual] by a [ContextualSerializer].
+ *
+ * @see SerializersModuleBuilder.contextual
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (id<MockzillaKotlinx_serialization_coreKSerializer> _Nullable)getContextualKClass:(id<MockzillaKotlinKClass>)kClass typeArgumentsSerializers:(NSArray<id<MockzillaKotlinx_serialization_coreKSerializer>> *)typeArgumentsSerializers __attribute__((swift_name("getContextual(kClass:typeArgumentsSerializers:)")));
 
 /**
+ * Returns a polymorphic serializer registered for a class of the given [value] in the scope of [baseClass].
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (id<MockzillaKotlinx_serialization_coreSerializationStrategy> _Nullable)getPolymorphicBaseClass:(id<MockzillaKotlinKClass>)baseClass value:(id)value __attribute__((swift_name("getPolymorphic(baseClass:value:)")));
 
 /**
+ * Returns a polymorphic deserializer registered for a [serializedClassName] in the scope of [baseClass]
+ * or default value constructed from [serializedClassName] if a default serializer provider was registered.
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
@@ -3525,41 +5507,293 @@ __attribute__((swift_name("KotlinAnnotation")))
 @required
 @end
 
+
+/**
+ * Serial kind is an intrinsic property of [SerialDescriptor] that indicates how
+ * the corresponding type is structurally represented by its serializer.
+ *
+ * Kind is used by serialization formats to determine how exactly the given type
+ * should be serialized. For example, JSON format detects the kind of the value and,
+ * depending on that, may write it as a plain value for primitive kinds, open a
+ * curly brace '{' for class-like structures and square bracket '[' for list- and array- like structures.
+ *
+ * Kinds are used both during serialization, to serialize a value properly and statically, and
+ * to introspect the type structure or build serialization schema.
+ *
+ * Kind should match the structure of the serialized form, not the structure of the corresponding Kotlin class.
+ * Meaning that if serializable class `class IntPair(val left: Int, val right: Int)` is represented by the serializer
+ * as a single `Long` value, its descriptor should have [PrimitiveKind.LONG] without nested elements even though the class itself
+ * represents a structure with two primitive fields.
+ */
 __attribute__((swift_name("Kotlinx_serialization_coreSerialKind")))
 @interface MockzillaKotlinx_serialization_coreSerialKind : MockzillaBase
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @end
 
+
+/**
+ * [CompositeDecoder] is a part of decoding process that is bound to a particular structured part of
+ * the serialized form, described by the serial descriptor passed to [Decoder.beginStructure].
+ *
+ * Typically, for unordered data, [CompositeDecoder] is used by a serializer withing a [decodeElementIndex]-based
+ * loop that decodes all the required data one-by-one in any order and then terminates by calling [endStructure].
+ * Please refer to [decodeElementIndex] for example of such loop.
+ *
+ * All `decode*` methods have `index` and `serialDescriptor` parameters with a strict semantics and constraints:
+ *   * `descriptor` argument is always the same as one used in [Decoder.beginStructure].
+ *   * `index` of the element being decoded. For [sequential][decodeSequentially] decoding, it is always a monotonic
+ *      sequence from `0` to `descriptor.elementsCount` and for indexing-loop it is always an index that [decodeElementIndex]
+ *      has returned from the last call.
+ *
+ * The symmetric interface for the serialization process is [CompositeEncoder].
+ *
+ * ### Not stable for inheritance
+ *
+ * `CompositeDecoder` interface is not stable for inheritance in 3rd party libraries, as new methods
+ * might be added to this interface or contracts of the existing methods can be changed.
+ */
 __attribute__((swift_name("Kotlinx_serialization_coreCompositeDecoder")))
 @protocol MockzillaKotlinx_serialization_coreCompositeDecoder
 @required
+
+/**
+ * Decodes a boolean value from the underlying input.
+ * The resulting value is associated with the [descriptor] element at the given [index].
+ * The element at the given index should have [PrimitiveKind.BOOLEAN] kind.
+ */
 - (BOOL)decodeBooleanElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeBooleanElement(descriptor:index:)")));
+
+/**
+ * Decodes a single byte value from the underlying input.
+ * The resulting value is associated with the [descriptor] element at the given [index].
+ * The element at the given index should have [PrimitiveKind.BYTE] kind.
+ */
 - (int8_t)decodeByteElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeByteElement(descriptor:index:)")));
+
+/**
+ * Decodes a 16-bit unicode character value from the underlying input.
+ * The resulting value is associated with the [descriptor] element at the given [index].
+ * The element at the given index should have [PrimitiveKind.CHAR] kind.
+ */
 - (unichar)decodeCharElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeCharElement(descriptor:index:)")));
+
+/**
+ * Method to decode collection size that may be called before the collection decoding.
+ * Collection type includes [Collection], [Map] and [Array] (including primitive arrays).
+ * Method can return `-1` if the size is not known in advance, though for [sequential decoding][decodeSequentially]
+ * knowing precise size is a mandatory requirement.
+ */
 - (int32_t)decodeCollectionSizeDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("decodeCollectionSize(descriptor:)")));
+
+/**
+ * Decodes a 64-bit IEEE 754 floating point value from the underlying input.
+ * The resulting value is associated with the [descriptor] element at the given [index].
+ * The element at the given index should have [PrimitiveKind.DOUBLE] kind.
+ */
 - (double)decodeDoubleElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeDoubleElement(descriptor:index:)")));
+
+/**
+ *  Decodes the index of the next element to be decoded.
+ *  Index represents a position of the current element in the serial descriptor element that can be found
+ *  with [SerialDescriptor.getElementIndex].
+ *
+ *  If this method returns non-negative index, the caller should call one of the `decode*Element` methods
+ *  with a resulting index.
+ *  Apart from positive values, this method can return [DECODE_DONE] to indicate that no more elements
+ *  are left or [UNKNOWN_NAME] to indicate that symbol with an unknown name was encountered.
+ *
+ * Example of usage:
+ * ```
+ * class MyPair(i: Int, d: Double)
+ *
+ * object MyPairSerializer : KSerializer<MyPair> {
+ *     // ... other methods omitted
+ *
+ *    fun deserialize(decoder: Decoder): MyPair {
+ *        val composite = decoder.beginStructure(descriptor)
+ *        var i: Int? = null
+ *        var d: Double? = null
+ *        while (true) {
+ *            when (val index = composite.decodeElementIndex(descriptor)) {
+ *                0 -> i = composite.decodeIntElement(descriptor, 0)
+ *                1 -> d = composite.decodeDoubleElement(descriptor, 1)
+ *                DECODE_DONE -> break // Input is over
+ *                else -> error("Unexpected index: $index)
+ *            }
+ *        }
+ *        composite.endStructure(descriptor)
+ *        require(i != null && d != null)
+ *        return MyPair(i, d)
+ *    }
+ * }
+ * ```
+ * This example is a rough equivalent of what serialization plugin generates for serializable pair class.
+ *
+ * The need in such a loop comes from unstructured nature of most serialization formats.
+ * For example, JSON for the following input `{"d": 2.0, "i": 1}`, will first read `d` key with index `1`
+ * and only after `i` with the index `0`.
+ *
+ * A potential implementation of this method for JSON format can be the following:
+ * ```
+ * fun decodeElementIndex(descriptor: SerialDescriptor): Int {
+ *     // Ignore arrays
+ *     val nextKey: String? = myStringJsonParser.nextKey()
+ *     if (nextKey == null) return DECODE_DONE
+ *     return descriptor.getElementIndex(nextKey) // getElementIndex can return UNKNOWN_NAME
+ * }
+ * ```
+ *
+ * If [decodeSequentially] returns `true`, the caller might skip calling this method.
+ */
 - (int32_t)decodeElementIndexDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("decodeElementIndex(descriptor:)")));
+
+/**
+ * Decodes a 32-bit IEEE 754 floating point value from the underlying input.
+ * The resulting value is associated with the [descriptor] element at the given [index].
+ * The element at the given index should have [PrimitiveKind.FLOAT] kind.
+ */
 - (float)decodeFloatElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeFloatElement(descriptor:index:)")));
+
+/**
+ * Returns [Decoder] for decoding an underlying type of a value class in an inline manner.
+ * Serializable value class is described by the [child descriptor][SerialDescriptor.getElementDescriptor]
+ * of given [descriptor] at [index].
+ *
+ * Namely, for the `@Serializable @JvmInline value class MyInt(val my: Int)`,
+ * and `@Serializable class MyData(val myInt: MyInt)` the following sequence is used:
+ * ```
+ * thisDecoder.decodeInlineElement(MyData.serializer().descriptor, 0).decodeInt()
+ * ```
+ *
+ * This method provides an opportunity for the optimization to avoid boxing of a carried value
+ * and its invocation should be equivalent to the following:
+ * ```
+ * thisDecoder.decodeSerializableElement(MyData.serializer.descriptor, 0, MyInt.serializer())
+ * ```
+ *
+ * Current decoder may return any other instance of [Decoder] class, depending on the provided descriptor.
+ * For example, when this function is called on `Json` decoder with descriptor that has
+ * `UInt.serializer().descriptor` at the given [index], the returned decoder is able
+ * to decode unsigned integers.
+ *
+ * Note that this function returns [Decoder] instead of the [CompositeDecoder]
+ * because value classes always have the single property.
+ * Calling [Decoder.beginStructure] on returned instance leads to an unspecified behavior and, in general, is prohibited.
+ *
+ * @see Decoder.decodeInline
+ * @see SerialDescriptor.getElementDescriptor
+ */
 - (id<MockzillaKotlinx_serialization_coreDecoder>)decodeInlineElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeInlineElement(descriptor:index:)")));
+
+/**
+ * Decodes a 32-bit integer value from the underlying input.
+ * The resulting value is associated with the [descriptor] element at the given [index].
+ * The element at the given index should have [PrimitiveKind.INT] kind.
+ */
 - (int32_t)decodeIntElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeIntElement(descriptor:index:)")));
+
+/**
+ * Decodes a 64-bit integer value from the underlying input.
+ * The resulting value is associated with the [descriptor] element at the given [index].
+ * The element at the given index should have [PrimitiveKind.LONG] kind.
+ */
 - (int64_t)decodeLongElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeLongElement(descriptor:index:)")));
 
 /**
+ * Decodes nullable value of the type [T] with the given [deserializer].
+ *
+ * If value at given [index] was already decoded with previous [decodeSerializableElement] call with the same index,
+ * [previousValue] would contain a previously decoded value.
+ * This parameter can be used to aggregate multiple values of the given property to the only one.
+ * Implementation can safely ignore it and return a new value, efficiently using 'the last one wins' strategy,
+ * or apply format-specific aggregating strategies, e.g. appending scattered Protobuf lists to a single one.
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (id _Nullable)decodeNullableSerializableElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index deserializer:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy>)deserializer previousValue:(id _Nullable)previousValue __attribute__((swift_name("decodeNullableSerializableElement(descriptor:index:deserializer:previousValue:)")));
 
 /**
+ * Checks whether the current decoder supports strictly ordered decoding of the data
+ * without calling to [decodeElementIndex].
+ * If the method returns `true`, the caller might skip [decodeElementIndex] calls
+ * and start invoking `decode*Element` directly, incrementing the index of the element one by one.
+ * This method can be called by serializers (either generated or user-defined) as a performance optimization,
+ * but there is no guarantee that the method will be ever called. Practically, it means that implementations
+ * that may benefit from sequential decoding should also support a regular [decodeElementIndex]-based decoding as well.
+ *
+ * Example of usage:
+ * ```
+ * class MyPair(i: Int, d: Double)
+ *
+ * object MyPairSerializer : KSerializer<MyPair> {
+ *     // ... other methods omitted
+ *
+ *    fun deserialize(decoder: Decoder): MyPair {
+ *        val composite = decoder.beginStructure(descriptor)
+ *        if (composite.decodeSequentially()) {
+ *            val i = composite.decodeIntElement(descriptor, index = 0) // Mind the sequential indexing
+ *            val d = composite.decodeIntElement(descriptor, index = 1)
+ *            composite.endStructure(descriptor)
+ *            return MyPair(i, d)
+ *        } else {
+ *            // Fallback to `decodeElementIndex` loop, refer to its documentation for details
+ *        }
+ *    }
+ * }
+ * ```
+ * This example is a rough equivalent of what serialization plugin generates for serializable pair class.
+ *
+ * Sequential decoding is a performance optimization for formats with strictly ordered schema,
+ * usually binary ones. Regular formats such as JSON or ProtoBuf cannot use this optimization,
+ * because e.g. in the latter example, the same data can be represented both as
+ * `{"i": 1, "d": 1.0}` and `{"d": 1.0, "i": 1}` (thus, unordered).
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 - (BOOL)decodeSequentially __attribute__((swift_name("decodeSequentially()")));
+
+/**
+ * Decodes value of the type [T] with the given [deserializer].
+ *
+ * Implementations of [CompositeDecoder] may use their format-specific deserializers
+ * for particular data types, e.g. handle [ByteArray] specifically if format is binary.
+ *
+ * If value at given [index] was already decoded with previous [decodeSerializableElement] call with the same index,
+ * [previousValue] would contain a previously decoded value.
+ * This parameter can be used to aggregate multiple values of the given property to the only one.
+ * Implementation can safely ignore it and return a new value, effectively using 'the last one wins' strategy,
+ * or apply format-specific aggregating strategies, e.g. appending scattered Protobuf lists to a single one.
+ */
 - (id _Nullable)decodeSerializableElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index deserializer:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy>)deserializer previousValue:(id _Nullable)previousValue __attribute__((swift_name("decodeSerializableElement(descriptor:index:deserializer:previousValue:)")));
+
+/**
+ * Decodes a 16-bit short value from the underlying input.
+ * The resulting value is associated with the [descriptor] element at the given [index].
+ * The element at the given index should have [PrimitiveKind.SHORT] kind.
+ */
 - (int16_t)decodeShortElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeShortElement(descriptor:index:)")));
+
+/**
+ * Decodes a string value from the underlying input.
+ * The resulting value is associated with the [descriptor] element at the given [index].
+ * The element at the given index should have [PrimitiveKind.STRING] kind.
+ */
 - (NSString *)decodeStringElementDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor index:(int32_t)index __attribute__((swift_name("decodeStringElement(descriptor:index:)")));
+
+/**
+ * Denotes the end of the structure associated with current decoder.
+ * For example, composite decoder of JSON format will expect (and parse)
+ * a closing bracket in the underlying input.
+ */
 - (void)endStructureDescriptor:(id<MockzillaKotlinx_serialization_coreSerialDescriptor>)descriptor __attribute__((swift_name("endStructure(descriptor:)")));
+
+/**
+ * Context of the current decoding process, including contextual and polymorphic serialization and,
+ * potentially, a format-specific configuration.
+ */
 @property (readonly) MockzillaKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
 @end
 
@@ -3856,9 +6090,18 @@ __attribute__((swift_name("Ktor_eventsEventDefinition")))
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 @end
 
+
+/**
+ * A handle to an allocated object that can be disposed to make it eligible for garbage collection.
+ */
 __attribute__((swift_name("Kotlinx_coroutines_coreDisposableHandle")))
 @protocol MockzillaKotlinx_coroutines_coreDisposableHandle
 @required
+
+/**
+ * Disposes the corresponding object, making it eligible for garbage collection.
+ * Repeated invocation of this function has no effect.
+ */
 - (void)dispose __attribute__((swift_name("dispose()")));
 @end
 
@@ -4250,11 +6493,17 @@ __attribute__((swift_name("Ktor_utilsGMTDate")))
 
 
 /**
- * @property name
- * @property description
- * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
- * @property response
- * @property isManagementUiDefinedCustomPreset
+ * A named response configuration that can be applied to an endpoint from the Mockzilla management
+ * dashboard, overriding the endpoint's default or error response for a session.
+ *
+ * @property name Display name shown in the dashboard preset list.
+ * @property description Optional description shown alongside the preset in the dashboard.
+ * @property type Visual classification for the preset in the dashboard. Defaults to a type
+ * inferred from the response status code when `null`.
+ * @property response The partial response this preset applies when selected.
+ * @property isManagementUiDefinedCustomPreset `true` when this preset was created interactively
+ * by a user in the management dashboard, as opposed to being defined in code via
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset.Companion")))
@@ -4262,39 +6511,109 @@ __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset.Companion")))
 + (instancetype)alloc __attribute__((unavailable));
 
 /**
- * @property name
- * @property description
- * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
- * @property response
- * @property isManagementUiDefinedCustomPreset
+ * A named response configuration that can be applied to an endpoint from the Mockzilla management
+ * dashboard, overriding the endpoint's default or error response for a session.
+ *
+ * @property name Display name shown in the dashboard preset list.
+ * @property description Optional description shown alongside the preset in the dashboard.
+ * @property type Visual classification for the preset in the dashboard. Defaults to a type
+ * inferred from the response status code when `null`.
+ * @property response The partial response this preset applies when selected.
+ * @property isManagementUiDefinedCustomPreset `true` when this preset was created interactively
+ * by a user in the management dashboard, as opposed to being defined in code via
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaMockzilla_commonDashboardOverridePresetCompanion *shared __attribute__((swift_name("shared")));
 
 /**
- * @property name
- * @property description
- * @property type Overrides the type of the preset shown in UI, defaults to correspond with status code
- * @property response
- * @property isManagementUiDefinedCustomPreset
+ * A named response configuration that can be applied to an endpoint from the Mockzilla management
+ * dashboard, overriding the endpoint's default or error response for a session.
+ *
+ * @property name Display name shown in the dashboard preset list.
+ * @property description Optional description shown alongside the preset in the dashboard.
+ * @property type Visual classification for the preset in the dashboard. Defaults to a type
+ * inferred from the response status code when `null`.
+ * @property response The partial response this preset applies when selected.
+ * @property isManagementUiDefinedCustomPreset `true` when this preset was created interactively
+ * by a user in the management dashboard, as opposed to being defined in code via
+ * [EndpointConfiguration.Builder.configureDashboardOverrides].
  */
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
 
 /**
+ * [SerializersModuleCollector] can introspect and accumulate content of any [SerializersModule] via [SerializersModule.dumpTo],
+ * using a visitor-like pattern: [contextual] and [polymorphic] functions are invoked for each registered serializer.
+ *
+ * ### Not stable for inheritance
+ *
+ * `SerializersModuleCollector` interface is not stable for inheritance in 3rd party libraries, as new methods
+ * might be added to this interface or contracts of the existing methods can be changed.
+ *
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
 __attribute__((swift_name("Kotlinx_serialization_coreSerializersModuleCollector")))
 @protocol MockzillaKotlinx_serialization_coreSerializersModuleCollector
 @required
+
+/**
+ * Accept a provider, associated with generic [kClass] for contextual serialization.
+ */
 - (void)contextualKClass:(id<MockzillaKotlinKClass>)kClass provider:(id<MockzillaKotlinx_serialization_coreKSerializer> (^)(NSArray<id<MockzillaKotlinx_serialization_coreKSerializer>> *))provider __attribute__((swift_name("contextual(kClass:provider:)")));
+
+/**
+ * Accept a serializer, associated with [kClass] for contextual serialization.
+ */
 - (void)contextualKClass:(id<MockzillaKotlinKClass>)kClass serializer:(id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("contextual(kClass:serializer:)")));
+
+/**
+ * Accept a serializer, associated with [actualClass] for polymorphic serialization.
+ */
 - (void)polymorphicBaseClass:(id<MockzillaKotlinKClass>)baseClass actualClass:(id<MockzillaKotlinKClass>)actualClass actualSerializer:(id<MockzillaKotlinx_serialization_coreKSerializer>)actualSerializer __attribute__((swift_name("polymorphic(baseClass:actualClass:actualSerializer:)")));
+
+/**
+ * Accept a default deserializer provider, associated with the [baseClass] for polymorphic deserialization.
+ *
+ * This function affect only deserialization process. To avoid confusion, it was deprecated and replaced with [polymorphicDefaultDeserializer].
+ * To affect serialization process, use [SerializersModuleCollector.polymorphicDefaultSerializer].
+ *
+ * [defaultDeserializerProvider] is invoked when no polymorphic serializers associated with the `className`
+ * in the scope of [baseClass] were found. `className` could be `null` for formats that support nullable class discriminators
+ * (currently only `Json` with `useArrayPolymorphism` set to `false`).
+ *
+ * [defaultDeserializerProvider] can be stateful and lookup a serializer for the missing type dynamically.
+ *
+ * @see SerializersModuleCollector.polymorphicDefaultDeserializer
+ * @see SerializersModuleCollector.polymorphicDefaultSerializer
+ */
 - (void)polymorphicDefaultBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultDeserializerProvider:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultDeserializerProvider __attribute__((swift_name("polymorphicDefault(baseClass:defaultDeserializerProvider:)"))) __attribute__((deprecated("Deprecated in favor of function with more precise name: polymorphicDefaultDeserializer")));
+
+/**
+ * Accept a default deserializer provider, associated with the [baseClass] for polymorphic deserialization.
+ * [defaultDeserializerProvider] is invoked when no polymorphic serializers associated with the `className`
+ * in the scope of [baseClass] were found. `className` could be `null` for formats that support nullable class discriminators
+ * (currently only `Json` with `useArrayPolymorphism` set to `false`).
+ *
+ * Default deserializers provider affects only deserialization process. Serializers are accepted in the
+ * [SerializersModuleCollector.polymorphicDefaultSerializer] method.
+ *
+ * [defaultDeserializerProvider] can be stateful and lookup a serializer for the missing type dynamically.
+ */
 - (void)polymorphicDefaultDeserializerBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultDeserializerProvider:(id<MockzillaKotlinx_serialization_coreDeserializationStrategy> _Nullable (^)(NSString * _Nullable))defaultDeserializerProvider __attribute__((swift_name("polymorphicDefaultDeserializer(baseClass:defaultDeserializerProvider:)")));
+
+/**
+ * Accept a default serializer provider, associated with the [baseClass] for polymorphic serialization.
+ * [defaultSerializerProvider] is invoked when no polymorphic serializers for `value` in the scope of [baseClass] were found.
+ *
+ * Default serializers provider affects only serialization process. Deserializers are accepted in the
+ * [SerializersModuleCollector.polymorphicDefaultDeserializer] method.
+ *
+ * [defaultSerializerProvider] can be stateful and lookup a serializer for the missing type dynamically.
+ */
 - (void)polymorphicDefaultSerializerBaseClass:(id<MockzillaKotlinKClass>)baseClass defaultSerializerProvider:(id<MockzillaKotlinx_serialization_coreSerializationStrategy> _Nullable (^)(id))defaultSerializerProvider __attribute__((swift_name("polymorphicDefaultSerializer(baseClass:defaultSerializerProvider:)")));
 @end
 
@@ -4323,23 +6642,8 @@ __attribute__((swift_name("KotlinKTypeProjection.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaKotlinKTypeProjectionCompanion *shared __attribute__((swift_name("shared")));
-
-/**
- * @note annotations
- *   kotlin.jvm.JvmStatic
-*/
 - (MockzillaKotlinKTypeProjection *)contravariantType:(id<MockzillaKotlinKType>)type __attribute__((swift_name("contravariant(type:)")));
-
-/**
- * @note annotations
- *   kotlin.jvm.JvmStatic
-*/
 - (MockzillaKotlinKTypeProjection *)covariantType:(id<MockzillaKotlinKType>)type __attribute__((swift_name("covariant(type:)")));
-
-/**
- * @note annotations
- *   kotlin.jvm.JvmStatic
-*/
 - (MockzillaKotlinKTypeProjection *)invariantType:(id<MockzillaKotlinKType>)type __attribute__((swift_name("invariant(type:)")));
 @property (readonly) MockzillaKotlinKTypeProjection *STAR __attribute__((swift_name("STAR")));
 @end
