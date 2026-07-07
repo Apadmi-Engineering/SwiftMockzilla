@@ -223,6 +223,13 @@ __attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setDefaultHandlerHandler:(id<MockzillaKotlinSuspendFunction1>)handler __attribute__((swift_name("setDefaultHandler(handler:)")));
 
 /**
+ * Used to simulate latency: The artificial delay Mockzilla with add to the network request.
+ *
+ * @param delay delay in milliseconds
+ */
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setDelayMillis(delay:)")));
+
+/**
  * The block called when a network request is made to this endpoint but Mockzilla decides to
  * simulate a server failure.
  *
@@ -240,11 +247,10 @@ __attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
 
 /**
  * Used to simulate latency: The artificial mean delay Mockzilla with add to a network request.
- * Used alongside [setMeanDelayMillis] to calculate the actual artificial delay on each invocation.
  *
  * @param delay delay in milliseconds
  */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setMeanDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setMeanDelayMillis(delay:)")));
+- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setMeanDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setMeanDelayMillis(delay:)"))) __attribute__((deprecated("Delay is now constant with no variance")));
 
 /**
  * Sets the human readable name of the endpoint (defaults to the value of the `key`)
@@ -1014,44 +1020,22 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode")))
 @property (readonly) int32_t value __attribute__((swift_name("value")));
 @end
 
-
-/**
- * An HTTP response returned by a mock endpoint handler. Returned from
- * [EndpointConfiguration.Builder.setDefaultHandler] and [EndpointConfiguration.Builder.setErrorHandler]
- * lambdas.
- *
- * @property statusCode The HTTP status code of the response. Defaults to `200 OK`.
- * @property headers HTTP response headers.
- * @property body The response body as a string.
- */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonMockzillaHttpResponse.Companion")))
 @interface MockzillaMockzilla_commonMockzillaHttpResponseCompanion : MockzillaBase
 + (instancetype)alloc __attribute__((unavailable));
-
-/**
- * An HTTP response returned by a mock endpoint handler. Returned from
- * [EndpointConfiguration.Builder.setDefaultHandler] and [EndpointConfiguration.Builder.setErrorHandler]
- * lambdas.
- *
- * @property statusCode The HTTP status code of the response. Defaults to `200 OK`.
- * @property headers HTTP response headers.
- * @property body The response body as a string.
- */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MockzillaMockzilla_commonMockzillaHttpResponseCompanion *shared __attribute__((swift_name("shared")));
+- (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 
 /**
- * An HTTP response returned by a mock endpoint handler. Returned from
- * [EndpointConfiguration.Builder.setDefaultHandler] and [EndpointConfiguration.Builder.setErrorHandler]
- * lambdas.
+ * Creates a response with JSON content type and 200 success code for a given body
  *
- * @property statusCode The HTTP status code of the response. Defaults to `200 OK`.
- * @property headers HTTP response headers.
- * @property body The response body as a string.
+ * @param body The response body as a string.
+ * @return
  */
-- (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+- (MockzillaMockzilla_commonMockzillaHttpResponse *)successJsonBody:(NSString *)body __attribute__((swift_name("successJson(body:)")));
 @end
 
 
