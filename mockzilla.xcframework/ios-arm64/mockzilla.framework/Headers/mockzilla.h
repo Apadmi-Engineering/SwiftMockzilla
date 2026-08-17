@@ -238,21 +238,6 @@ __attribute__((swift_name("Mockzilla_commonEndpointConfiguration.Builder")))
 - (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setErrorHandlerHandler:(id<MockzillaKotlinSuspendFunction1>)handler __attribute__((swift_name("setErrorHandler(handler:)")));
 
 /**
- * Probability of Mockzilla returning a simulated http error for this endpoint. 100 being a
- * guaranteed error .
- *
- * @param percentage (0 -> 100 inclusive)
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setFailureProbabilityPercentage:(int32_t)percentage __attribute__((swift_name("setFailureProbability(percentage:)"))) __attribute__((deprecated("Probabilities are no longer supported")));
-
-/**
- * Used to simulate latency: The artificial mean delay Mockzilla with add to a network request.
- *
- * @param delay delay in milliseconds
- */
-- (MockzillaMockzilla_commonEndpointConfigurationBuilder *)setMeanDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setMeanDelayMillis(delay:)"))) __attribute__((deprecated("Delay is now constant with no variance")));
-
-/**
  * Sets the human readable name of the endpoint (defaults to the value of the `key`)
  *
  * @param name The human-readable display name for this endpoint.
@@ -673,24 +658,6 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.Builder")))
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setDelayMillis(delay:)")));
 
 /**
- * Used to simulate latency:  The artificial variance in the delay Mockzillaadds to a network
- * request. Used alongside [setMeanDelayMillis] to calculate the actual artificial delay on each
- * invocation. Set this value to 0 to remove any randomness from the delay.
- *
- * Value set on individual endpoints takes priority over this value
- *
- * @param delay delay in milliseconds
- */
-- (MockzillaMockzilla_commonMockzillaConfigBuilder *)setDelayVarianceMillisVariance:(int32_t)variance __attribute__((swift_name("setDelayVarianceMillis(variance:)"))) __attribute__((deprecated("No longer supported, now does nothing")));
-
-/**
- * No-Op
- *
- * @param percentage Not supported
- */
-- (MockzillaMockzilla_commonMockzillaConfigBuilder *)setFailureProbabilityPercentagePercentage:(int32_t)percentage __attribute__((swift_name("setFailureProbabilityPercentage(percentage:)"))) __attribute__((deprecated("Configuring failure on top level config is now not supported")));
-
-/**
  * Setting this to false will stop Mockzilla from using Bonjour to broadcast itself on the network
  * Note: Broadcast is disabled in release mode regardless of this flag's value
  */
@@ -717,15 +684,6 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.Builder")))
  * @param level Defaults to `LogLevel.Info`
  */
 - (MockzillaMockzilla_commonMockzillaConfigBuilder *)setLogLevelLevel:(MockzillaMockzilla_commonMockzillaConfigLogLevel *)level __attribute__((swift_name("setLogLevel(level:)")));
-
-/**
- * Used to simulate latency: The artificial mean delay Mockzilla with add to a network request.
- *
- * Value set on individual endpoints takes priority over this value
- *
- * @param delay delay in milliseconds
- */
-- (MockzillaMockzilla_commonMockzillaConfigBuilder *)setMeanDelayMillisDelay:(int32_t)delay __attribute__((swift_name("setMeanDelayMillis(delay:)"))) __attribute__((deprecated("Delay is now constant with no variance")));
 
 /**
  * Sets the port which the server will bind to. Setting port to `0` will cause the server to
@@ -866,7 +824,6 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Builder")))
 @interface MockzillaMockzilla_commonDashboardOptionsConfigBuilder : MockzillaBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addErrorPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addErrorPreset(response:name:description:)"))) __attribute__((deprecated("Separate success/error presets are no longer supported")));
 
 /**
  * Adds a preset response option to the dashboard for this endpoint.
@@ -892,7 +849,6 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Builder")))
  * @return This builder, for chaining.
  */
 - (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addPresetResponse:(MockzillaMockzilla_commonPartialMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description type_:(MockzillaMockzilla_commonDashboardOverridePresetType * _Nullable)type __attribute__((swift_name("addPreset(response:name:description:type_:)")));
-- (MockzillaMockzilla_commonDashboardOptionsConfigBuilder *)addSuccessPresetResponse:(MockzillaMockzilla_commonMockzillaHttpResponse *)response name:(NSString * _Nullable)name description:(NSString * _Nullable)description __attribute__((swift_name("addSuccessPreset(response:name:description:)"))) __attribute__((deprecated("Separate success/error presets are no longer supported")));
 - (MockzillaMockzilla_commonDashboardOptionsConfig *)build __attribute__((swift_name("build()")));
 @end
 
@@ -1252,8 +1208,8 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.BuilderCompanion")))
  *
  * Construct via [Builder] and attach to an endpoint using
  * [EndpointConfiguration.Builder.configureDashboardOverrides].
- * @property errorPresets
- * @property successPresets
+ * @property errorPresetsDeprecated Do not use, this is for legacy parsing only
+ * @property presets
  *
  * @note annotations
  *   kotlinx.serialization.Serializable
@@ -1261,9 +1217,9 @@ __attribute__((swift_name("Mockzilla_commonMockzillaConfig.BuilderCompanion")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig")))
 @interface MockzillaMockzilla_commonDashboardOptionsConfig : MockzillaBase
-- (instancetype)initWithErrorPresets:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)errorPresets successPresets:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)successPresets __attribute__((swift_name("init(errorPresets:successPresets:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithErrorPresetsDeprecated:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)errorPresetsDeprecated presets:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)presets __attribute__((swift_name("init(errorPresetsDeprecated:presets:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MockzillaMockzilla_commonDashboardOptionsConfigCompanion *companion __attribute__((swift_name("companion")));
-- (MockzillaMockzilla_commonDashboardOptionsConfig *)doCopyErrorPresets:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)errorPresets successPresets:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)successPresets __attribute__((swift_name("doCopy(errorPresets:successPresets:)")));
+- (MockzillaMockzilla_commonDashboardOptionsConfig *)doCopyErrorPresetsDeprecated:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)errorPresetsDeprecated presets:(NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *)presets __attribute__((swift_name("doCopy(errorPresetsDeprecated:presets:)")));
 
 /**
  * Configures the preset responses available to users in the Mockzilla management dashboard for a
@@ -1272,8 +1228,8 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig")))
  *
  * Construct via [Builder] and attach to an endpoint using
  * [EndpointConfiguration.Builder.configureDashboardOverrides].
- * @property errorPresets
- * @property successPresets
+ * @property errorPresetsDeprecated Do not use, this is for legacy parsing only
+ * @property presets
  */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 
@@ -1284,8 +1240,8 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig")))
  *
  * Construct via [Builder] and attach to an endpoint using
  * [EndpointConfiguration.Builder.configureDashboardOverrides].
- * @property errorPresets
- * @property successPresets
+ * @property errorPresetsDeprecated Do not use, this is for legacy parsing only
+ * @property presets
  */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 
@@ -1296,17 +1252,18 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig")))
  *
  * Construct via [Builder] and attach to an endpoint using
  * [EndpointConfiguration.Builder.configureDashboardOverrides].
- * @property errorPresets
- * @property successPresets
+ * @property errorPresetsDeprecated Do not use, this is for legacy parsing only
+ * @property presets
  */
 - (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *errorPresets __attribute__((swift_name("errorPresets"))) __attribute__((deprecated("Error Presets will be removed in a future version")));
 
 /**
- * The list of preset responses available in the dashboard for this endpoint.
- */
+ * @note annotations
+ *   kotlinx.serialization.EncodeDefault
+ *   kotlinx.serialization.SerialName(value="errorPresets")
+*/
+@property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *errorPresetsDeprecated __attribute__((swift_name("errorPresetsDeprecated")));
 @property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *presets __attribute__((swift_name("presets")));
-@property (readonly) NSArray<MockzillaMockzilla_commonDashboardOverridePreset *> *successPresets __attribute__((swift_name("successPresets"))) __attribute__((deprecated("Deprecated")));
 @end
 
 
@@ -1826,8 +1783,8 @@ __attribute__((swift_name("Mockzilla_commonDashboardOverridePreset")))
  *
  * Construct via [Builder] and attach to an endpoint using
  * [EndpointConfiguration.Builder.configureDashboardOverrides].
- * @property errorPresets
- * @property successPresets
+ * @property errorPresetsDeprecated Do not use, this is for legacy parsing only
+ * @property presets
  */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Companion")))
@@ -1841,8 +1798,8 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Companion")))
  *
  * Construct via [Builder] and attach to an endpoint using
  * [EndpointConfiguration.Builder.configureDashboardOverrides].
- * @property errorPresets
- * @property successPresets
+ * @property errorPresetsDeprecated Do not use, this is for legacy parsing only
+ * @property presets
  */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
@@ -1855,8 +1812,8 @@ __attribute__((swift_name("Mockzilla_commonDashboardOptionsConfig.Companion")))
  *
  * Construct via [Builder] and attach to an endpoint using
  * [EndpointConfiguration.Builder.configureDashboardOverrides].
- * @property errorPresets
- * @property successPresets
+ * @property errorPresetsDeprecated Do not use, this is for legacy parsing only
+ * @property presets
  */
 - (id<MockzillaKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
