@@ -1,13 +1,13 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'SwiftMockzilla'
-    spec.version                  = '4.0.0'
+    spec.version                  = '5.0.0'
     spec.homepage                 = 'https://mockzilla.apadmi.dev/'
-    spec.source                   = { :git => 'https://github.com/Apadmi-Engineering/SwiftMockzilla.git', :tag => 'v4.0.0' }
+    spec.source                   = { :git => 'https://github.com/Apadmi-Engineering/SwiftMockzilla.git', :tag => 'v5.0.0' }
     spec.authors                  = ''
     spec.license                  = {:type => 'MIT', :file => 'LICENSE'}
     spec.summary                  = 'A solution for running and configuring a local HTTP server to mimic REST API endpoints used by your application.'
     spec.libraries                = 'c++'
-    spec.ios.deployment_target    = '13.0'
+    spec.ios.deployment_target    = '15.0'
     spec.vendored_frameworks = 'Mockzilla.xcframework'
     spec.source_files = 'Sources/SwiftMockzilla/SwiftMockzilla.swift'
     spec.swift_version = '5.9.2'
