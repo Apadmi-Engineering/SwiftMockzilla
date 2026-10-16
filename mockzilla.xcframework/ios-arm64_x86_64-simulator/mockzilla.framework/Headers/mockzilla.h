@@ -1398,6 +1398,7 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
 @property (readonly) MockzillaKtor_httpHttpStatusCode *PaymentRequired __attribute__((swift_name("PaymentRequired")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *PermanentRedirect __attribute__((swift_name("PermanentRedirect")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *PreconditionFailed __attribute__((swift_name("PreconditionFailed")));
+@property (readonly) MockzillaKtor_httpHttpStatusCode *PreconditionRequired __attribute__((swift_name("PreconditionRequired")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *Processing __attribute__((swift_name("Processing")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *ProxyAuthenticationRequired __attribute__((swift_name("ProxyAuthenticationRequired")));
 @property (readonly) MockzillaKtor_httpHttpStatusCode *RequestHeaderFieldTooLarge __attribute__((swift_name("RequestHeaderFieldTooLarge")));
